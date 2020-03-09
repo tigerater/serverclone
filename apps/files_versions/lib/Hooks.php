@@ -35,30 +35,28 @@
 
 namespace OCA\Files_Versions;
 
-use OC\Files\Filesystem;
-use OC\Files\Mount\MoveableMount;
-use OC\Files\View;
-use OCP\Util;
-
 class Hooks {
 
 	public static function connectHooks() {
 		// Listen to write signals
-		Util::connectHook('OC_Filesystem', 'write', Hooks::class, 'write_hook');
+		\OCP\Util::connectHook('OC_Filesystem', 'write', Hooks::class, 'write_hook');
 		// Listen to delete and rename signals
-		Util::connectHook('OC_Filesystem', 'post_delete', Hooks::class, 'remove_hook');
-		Util::connectHook('OC_Filesystem', 'delete', Hooks::class, 'pre_remove_hook');
-		Util::connectHook('OC_Filesystem', 'post_rename', Hooks::class, 'rename_hook');
-		Util::connectHook('OC_Filesystem', 'post_copy', Hooks::class, 'copy_hook');
-		Util::connectHook('OC_Filesystem', 'rename', Hooks::class, 'pre_renameOrCopy_hook');
-		Util::connectHook('OC_Filesystem', 'copy', Hooks::class, 'pre_renameOrCopy_hook');
+		\OCP\Util::connectHook('OC_Filesystem', 'post_delete', Hooks::class, 'remove_hook');
+		\OCP\Util::connectHook('OC_Filesystem', 'delete', Hooks::class, 'pre_remove_hook');
+		\OCP\Util::connectHook('OC_Filesystem', 'post_rename', Hooks::class, 'rename_hook');
+		\OCP\Util::connectHook('OC_Filesystem', 'post_copy', Hooks::class, 'copy_hook');
+		\OCP\Util::connectHook('OC_Filesystem', 'rename', Hooks::class, 'pre_renameOrCopy_hook');
+		\OCP\Util::connectHook('OC_Filesystem', 'copy', Hooks::class, 'pre_renameOrCopy_hook');
+
+		$eventDispatcher = \OC::$server->getEventDispatcher();
+		$eventDispatcher->addListener('OCA\Files::loadAdditionalScripts', [Hooks::class, 'onLoadFilesAppScripts']);
 	}
 
 	/**
 	 * listen to write event.
 	 */
 	public static function write_hook( $params ) {
-		$path = $params[Filesystem::signal_param_path];
+		$path = $params[\OC\Files\Filesystem::signal_param_path];
 		if($path !== '') {
 			Storage::store($path);
 		}
@@ -73,7 +71,7 @@ class Hooks {
 	 * cleanup the versions directory if the actual file gets deleted
 	 */
 	public static function remove_hook($params) {
-		$path = $params[Filesystem::signal_param_path];
+		$path = $params[\OC\Files\Filesystem::signal_param_path];
 		if($path !== '') {
 			Storage::delete($path);
 		}
@@ -84,7 +82,7 @@ class Hooks {
 	 * @param array $params
 	 */
 	public static function pre_remove_hook($params) {
-		$path = $params[Filesystem::signal_param_path];
+		$path = $params[\OC\Files\Filesystem::signal_param_path];
 			if($path !== '') {
 				Storage::markDeletedFile($path);
 			}
@@ -131,19 +129,26 @@ class Hooks {
 	public static function pre_renameOrCopy_hook($params) {
 		// if we rename a movable mount point, then the versions don't have
 		// to be renamed
-		$absOldPath = Filesystem::normalizePath('/' . \OCP\User::getUser() . '/files' . $params['oldpath']);
-		$manager = Filesystem::getMountManager();
+		$absOldPath = \OC\Files\Filesystem::normalizePath('/' . \OCP\User::getUser() . '/files' . $params['oldpath']);
+		$manager = \OC\Files\Filesystem::getMountManager();
 		$mount = $manager->find($absOldPath);
 		$internalPath = $mount->getInternalPath($absOldPath);
-		if ($internalPath === '' and $mount instanceof MoveableMount) {
+		if ($internalPath === '' and $mount instanceof \OC\Files\Mount\MoveableMount) {
 			return;
 		}
 
-		$view = new View(\OCP\User::getUser() . '/files');
+		$view = new \OC\Files\View(\OCP\User::getUser() . '/files');
 		if ($view->file_exists($params['newpath'])) {
 			Storage::store($params['newpath']);
 		} else {
 			Storage::setSourcePathAndUser($params['oldpath']);
 		}
+	}
+
+	/**
+	 * Load additional scripts when the files app is visible
+	 */
+	public static function onLoadFilesAppScripts() {
+		\OCP\Util::addScript('files_versions', 'files_versions');
 	}
 }

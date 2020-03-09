@@ -22,5 +22,4 @@
  *
  */
 
-\OC::$server->query(\OCA\Files_Versions\AppInfo\Application::class);
-
+\OCA\Files_Versions\Hooks::connectHooks();
