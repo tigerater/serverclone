@@ -24,8 +24,8 @@
 namespace OCA\Files\BackgroundJob;
 
 use OC\Files\Utils\Scanner;
-use OCP\EventDispatcher\IEventDispatcher;
 use OCP\IConfig;
+use OCP\IDBConnection;
 use OCP\ILogger;
 use OCP\IUser;
 use OCP\IUserManager;
@@ -41,31 +41,39 @@ class ScanFiles extends \OC\BackgroundJob\TimedJob {
 	private $config;
 	/** @var IUserManager */
 	private $userManager;
-	/** @var IEventDispatcher */
-	private $dispatcher;
+	/** @var IDBConnection */
+	private $dbConnection;
 	/** @var ILogger */
 	private $logger;
-
 	/** Amount of users that should get scanned per execution */
 	const USERS_PER_SESSION = 500;
 
 	/**
 	 * @param IConfig|null $config
 	 * @param IUserManager|null $userManager
-	 * @param IEventDispatcher|null $dispatcher
+	 * @param IDBConnection|null $dbConnection
 	 * @param ILogger|null $logger
 	 */
 	public function __construct(IConfig $config = null,
 								IUserManager $userManager = null,
-								IEventDispatcher $dispatcher = null,
+								IDBConnection $dbConnection = null,
 								ILogger $logger = null) {
 		// Run once per 10 minutes
 		$this->setInterval(60 * 10);
 
-		$this->config = $config ?? \OC::$server->getConfig();
-		$this->userManager = $userManager ?? \OC::$server->getUserManager();
-		$this->dispatcher = $dispatcher ?? \OC::$server->query(IEventDispatcher::class);
-		$this->logger = $logger ?? \OC::$server->getLogger();
+		if (is_null($userManager) || is_null($config)) {
+			$this->fixDIForJobs();
+		} else {
+			$this->config = $config;
+			$this->userManager = $userManager;
+			$this->logger = $logger;
+		}
+	}
+
+	protected function fixDIForJobs() {
+		$this->config = \OC::$server->getConfig();
+		$this->userManager = \OC::$server->getUserManager();
+		$this->logger = \OC::$server->getLogger();
 	}
 
 	/**
@@ -75,8 +83,7 @@ class ScanFiles extends \OC\BackgroundJob\TimedJob {
 		try {
 			$scanner = new Scanner(
 					$user->getUID(),
-					null,
-					$this->dispatcher,
+					$this->dbConnection,
 					$this->logger
 			);
 			$scanner->backgroundScan('');
@@ -94,7 +101,7 @@ class ScanFiles extends \OC\BackgroundJob\TimedJob {
 		if ($this->config->getSystemValueBool('files_no_background_scan', false)) {
 			return;
 		}
-
+		
 		$offset = $this->config->getAppValue('files', 'cronjob_scan_files', 0);
 		$users = $this->userManager->search('', self::USERS_PER_SESSION, $offset);
 		if (!count($users)) {

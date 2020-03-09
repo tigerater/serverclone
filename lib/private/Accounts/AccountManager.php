@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @copyright Copyright (c) 2016, ownCloud, Inc.
  * @copyright Copyright (c) 2016, Björn Schießle
@@ -34,12 +33,9 @@ use OCP\Accounts\IAccount;
 use OCP\Accounts\IAccountManager;
 use OCP\BackgroundJob\IJobList;
 use OCP\IDBConnection;
-use OCP\ILogger;
 use OCP\IUser;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
-use function json_decode;
-use function json_last_error;
 
 /**
  * Class AccountManager
@@ -63,9 +59,6 @@ class AccountManager implements IAccountManager {
 	/** @var IJobList */
 	private $jobList;
 
-	/** @var ILogger */
-	private $logger;
-
 	/**
 	 * AccountManager constructor.
 	 *
@@ -75,12 +68,10 @@ class AccountManager implements IAccountManager {
 	 */
 	public function __construct(IDBConnection $connection,
 								EventDispatcherInterface $eventDispatcher,
-								IJobList $jobList,
-								ILogger $logger) {
+								IJobList $jobList) {
 		$this->connection = $connection;
 		$this->eventDispatcher = $eventDispatcher;
 		$this->jobList = $jobList;
-		$this->logger = $logger;
 	}
 
 	/**
@@ -146,11 +137,6 @@ class AccountManager implements IAccountManager {
 		}
 
 		$userDataArray = json_decode($result[0]['data'], true);
-		$jsonError = json_last_error();
-		if ($userDataArray === null || $jsonError !== JSON_ERROR_NONE) {
-			$this->logger->critical("User data of $uid contained invalid JSON (error $jsonError), hence falling back to a default user record");
-			return $this->buildDefaultUserRecord($user);
-		}
 
 		$userDataArray = $this->addMissingDefaultValues($userDataArray);
 

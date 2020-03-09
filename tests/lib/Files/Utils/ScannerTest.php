@@ -12,7 +12,6 @@ use OC\Files\Filesystem;
 use OC\Files\Mount\MountPoint;
 use OC\Files\Storage\Temporary;
 use OCA\Files_Sharing\SharedStorage;
-use OCP\EventDispatcher\IEventDispatcher;
 use OCP\Files\Config\IMountProvider;
 use OCP\Files\Storage\IStorageFactory;
 use OCP\IUser;
@@ -72,7 +71,7 @@ class ScannerTest extends \Test\TestCase {
 		$storage->file_put_contents('foo.txt', 'qwerty');
 		$storage->file_put_contents('folder/bar.txt', 'qwerty');
 
-		$scanner = new TestScanner('', \OC::$server->getDatabaseConnection(), $this->createMock(IEventDispatcher::class), \OC::$server->getLogger());
+		$scanner = new TestScanner('', \OC::$server->getDatabaseConnection(), \OC::$server->getLogger());
 		$scanner->addMount($mount);
 
 		$scanner->scan('');
@@ -94,7 +93,7 @@ class ScannerTest extends \Test\TestCase {
 		$storage->file_put_contents('foo.txt', 'qwerty');
 		$storage->file_put_contents('folder/bar.txt', 'qwerty');
 
-		$scanner = new TestScanner('', \OC::$server->getDatabaseConnection(), $this->createMock(IEventDispatcher::class), \OC::$server->getLogger());
+		$scanner = new TestScanner('', \OC::$server->getDatabaseConnection(), \OC::$server->getLogger());
 		$scanner->addMount($mount);
 
 		$scanner->scan('');
@@ -132,7 +131,7 @@ class ScannerTest extends \Test\TestCase {
 		$storage->file_put_contents('foo.txt', 'qwerty');
 		$storage->file_put_contents('folder/bar.txt', 'qwerty');
 
-		$scanner = new \OC\Files\Utils\Scanner($uid, \OC::$server->getDatabaseConnection(), \OC::$server->query(IEventDispatcher::class), \OC::$server->getLogger());
+		$scanner = new \OC\Files\Utils\Scanner($uid, \OC::$server->getDatabaseConnection(), \OC::$server->getLogger());
 
 		$this->assertFalse($cache->inCache('folder/bar.txt'));
 		$scanner->scan('/' . $uid . '/files/foo');
@@ -164,7 +163,7 @@ class ScannerTest extends \Test\TestCase {
 		$this->expectException(\InvalidArgumentException::class);
 		$this->expectExceptionMessage('Invalid path to scan');
 
-		$scanner = new TestScanner('', \OC::$server->getDatabaseConnection(), $this->createMock(IEventDispatcher::class), \OC::$server->getLogger());
+		$scanner = new TestScanner('', \OC::$server->getDatabaseConnection(), \OC::$server->getLogger());
 		$scanner->scan($invalidPath);
 	}
 
@@ -178,7 +177,7 @@ class ScannerTest extends \Test\TestCase {
 		$storage->file_put_contents('folder/bar.txt', 'qwerty');
 		$storage->touch('folder/bar.txt', time() - 200);
 
-		$scanner = new TestScanner('', \OC::$server->getDatabaseConnection(), $this->createMock(IEventDispatcher::class), \OC::$server->getLogger());
+		$scanner = new TestScanner('', \OC::$server->getDatabaseConnection(), \OC::$server->getLogger());
 		$scanner->addMount($mount);
 
 		$scanner->scan('');
@@ -205,7 +204,7 @@ class ScannerTest extends \Test\TestCase {
 		$sharedStorage->expects($this->never())
 			->method('getScanner');
 
-		$scanner = new TestScanner('', \OC::$server->getDatabaseConnection(), $this->createMock(IEventDispatcher::class), \OC::$server->getLogger());
+		$scanner = new TestScanner('', \OC::$server->getDatabaseConnection(), \OC::$server->getLogger());
 		$scanner->addMount($sharedMount);
 		$scanner->scan('');
 
@@ -224,7 +223,7 @@ class ScannerTest extends \Test\TestCase {
 		$storage->file_put_contents('folder/bar.txt', 'qwerty');
 		$storage->file_put_contents('folder/subfolder/foobar.txt', 'qwerty');
 
-		$scanner = new TestScanner('', \OC::$server->getDatabaseConnection(), $this->createMock(IEventDispatcher::class), \OC::$server->getLogger());
+		$scanner = new TestScanner('', \OC::$server->getDatabaseConnection(), \OC::$server->getLogger());
 		$scanner->addMount($mount);
 
 		$scanner->scan('', $recusive = false);
