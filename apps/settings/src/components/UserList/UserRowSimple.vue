@@ -15,16 +15,12 @@
 		<div class="name">
 			{{ user.id }}
 			<div class="displayName subtitle">
-				<div v-tooltip="user.displayname.length > 20 ? user.displayname : ''" class="cellText">
-					{{ user.displayname }}
-				</div>
+				{{ user.displayname }}
 			</div>
 		</div>
 		<div />
 		<div class="mailAddress">
-			<div v-tooltip="user.email !== null && user.email.length > 20 ? user.email : ''" class="cellText">
-				{{ user.email }}
-			</div>
+			{{ user.email }}
 		</div>
 		<div class="groups">
 			{{ userGroupsLabels }}
@@ -159,9 +155,5 @@ export default {
 </script>
 
 <style scoped>
-	.cellText {
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-	}
+
 </style>
