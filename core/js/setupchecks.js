@@ -40,7 +40,6 @@
 						'<d:propfind xmlns:d="DAV:">' +
 						'<d:prop><d:resourcetype/></d:prop>' +
 						'</d:propfind>',
-				contentType: 'application/xml; charset=utf-8',
 				complete: afterCall,
 				allowAuthErrors: true
 			});
