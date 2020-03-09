@@ -264,7 +264,7 @@ OCA.Sharing.App = {
 		const fileActions = new OCA.Files.FileActions()
 		fileActions.registerAction({
 			name: 'Restore',
-			displayName: t('files_sharing', 'Restore'),
+			displayName: '',
 			altText: t('files_sharing', 'Restore share'),
 			mime: 'all',
 			permissions: OC.PERMISSION_ALL,
