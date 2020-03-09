@@ -25,7 +25,6 @@ namespace OCP\DirectEditing;
 
 
 use OCP\Files\File;
-use OCP\Files\NotFoundException;
 
 /**
  * @since 18.0.0
@@ -66,7 +65,6 @@ interface IToken {
 	 *
 	 * @since 18.0.0
 	 * @return File
-	 * @throws NotFoundException
 	 */
 	public function getFile(): File;
 

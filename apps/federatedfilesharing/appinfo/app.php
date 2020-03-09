@@ -23,6 +23,22 @@
  *
  */
 
+use OCA\FederatedFileSharing\Notifier;
 use OCA\FederatedFileSharing\AppInfo\Application;
 
-\OC::$server->query(Application::class);
+$app = \OC::$server->query(Application::class);
+$eventDispatcher = \OC::$server->getEventDispatcher();
+
+$manager = \OC::$server->getNotificationManager();
+$manager->registerNotifierService(Notifier::class);
+
+$federatedShareProvider = $app->getFederatedShareProvider();
+
+$eventDispatcher->addListener(
+	'OCA\Files::loadAdditionalScripts',
+	function() use ($federatedShareProvider) {
+		if ($federatedShareProvider->isIncomingServer2serverShareEnabled()) {
+			\OCP\Util::addScript('federatedfilesharing', 'external');
+		}
+	}
+);
