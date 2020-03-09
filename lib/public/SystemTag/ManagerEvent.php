@@ -24,7 +24,7 @@ declare(strict_types=1);
 
 namespace OCP\SystemTag;
 
-use OCP\EventDispatcher\Event;
+use Symfony\Component\EventDispatcher\Event;
 
 /**
  * Class ManagerEvent
