@@ -116,7 +116,18 @@ class ManagerTest extends TestCase {
 
 		$this->manager->registerSection('personal', \OCA\WorkflowEngine\Settings\Section::class);
 
+		$this->url->expects($this->exactly(3))
+			->method('imagePath')
+			->willReturnMap([
+				['core', 'actions/user.svg', '1'],
+				['settings', 'password.svg', '2'],
+				['core', 'clients/phone.svg', '3'],
+			]);
+
 		$this->assertEquals([
+			0 => [new Section('personal-info', 'Personal info', 0, '1')],
+			5 => [new Section('security', 'Security', 0, '2')],
+			15 => [new Section('sync-clients', 'Mobile & desktop', 0, '3')],
 			55 => [\OC::$server->query(\OCA\WorkflowEngine\Settings\Section::class)],
 		], $this->manager->getPersonalSections());
 	}
@@ -164,7 +175,19 @@ class ManagerTest extends TestCase {
 			->method('t')
 			->will($this->returnArgument(0));
 
-		$this->assertEquals([], $this->manager->getPersonalSections());
+		$this->url->expects($this->exactly(3))
+			->method('imagePath')
+			->willReturnMap([
+				['core', 'actions/user.svg', '1'],
+				['settings', 'password.svg', '2'],
+				['core', 'clients/phone.svg', '3'],
+			]);
+
+		$this->assertArraySubset([
+			0 => [new Section('personal-info', 'Personal info', 0, '1')],
+			5 => [new Section('security', 'Security', 0, '2')],
+			15 => [new Section('sync-clients', 'Mobile & desktop', 0, '3')],
+		], $this->manager->getPersonalSections());
 	}
 
 	public function testGetAdminSettings() {
@@ -253,7 +276,7 @@ class ManagerTest extends TestCase {
 		$this->manager->registerSection('personal', \OCA\WorkflowEngine\Settings\Section::class);
 		$this->manager->registerSection('admin', \OCA\WorkflowEngine\Settings\Section::class);
 
-		$this->url->expects($this->exactly(6))
+		$this->url->expects($this->exactly(9))
 			->method('imagePath')
 			->willReturnMap([
 				['core', 'actions/user.svg', '1'],
@@ -268,6 +291,9 @@ class ManagerTest extends TestCase {
 			]);
 
 		$this->assertEquals([
+			0 => [new Section('personal-info', 'Personal info', 0, '1')],
+			5 => [new Section('security', 'Security', 0, '2')],
+			15 => [new Section('sync-clients', 'Mobile & desktop', 0, '3')],
 			55 => [\OC::$server->query(\OCA\WorkflowEngine\Settings\Section::class)],
 		], $this->manager->getPersonalSections());
 
