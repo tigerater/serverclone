@@ -23,7 +23,7 @@
 
 namespace OCP\App;
 
-use OCP\EventDispatcher\Event;
+use Symfony\Component\EventDispatcher\Event;
 
 /**
  * Class ManagerEvent
