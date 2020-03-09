@@ -2,6 +2,7 @@
 /**
  * @copyright Copyright (c) 2019 Julius Härtl <jus@bitgrid.net>
  *
+ * @author Christoph Wurst <christoph@winzerhof-wurst.at>
  * @author Julius Härtl <jus@bitgrid.net>
  * @author Tobias Kaminsky <tobias@kaminsky.me>
  *
@@ -123,21 +124,15 @@ class Manager implements IManager {
 
 	public function create(string $path, string $editorId, string $creatorId, $templateId = null): string {
 		$userFolder = $this->rootFolder->getUserFolder($this->userId);
-		try {
-			$file = $userFolder->get($path);
-			throw new \RuntimeException('File already exists');
-		} catch (\OCP\Files\NotFoundException $e) {
-			$file = $userFolder->newFile($path);
-			$editor = $this->getEditor($editorId);
-			$creators = $editor->getCreators();
-			foreach ($creators as $creator) {
-				if ($creator->getId() === $creatorId) {
-					$creator->create($file, $creatorId, $templateId);
-					return $this->createToken($editorId, $file, $path);
-				}
+		$file = $userFolder->newFile($path);
+		$editor = $this->getEditor($editorId);
+		$creators = $editor->getCreators();
+		foreach ($creators as $creator) {
+			if ($creator->getId() === $creatorId) {
+				$creator->create($file, $creatorId, $templateId);
+				return $this->createToken($editorId, $file, $path);
 			}
 		}
-
 		throw new \RuntimeException('No creator found');
 	}
 
