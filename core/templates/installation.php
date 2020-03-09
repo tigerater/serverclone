@@ -15,10 +15,10 @@ script('core', [
 		<?php foreach($_['errors'] as $err): ?>
 		<p>
 			<?php if(is_array($err)):?>
-				<?php p($err['error']); ?>
-				<span class='hint'><?php p($err['hint']); ?></span>
+				<?php print_unescaped($err['error']); ?>
+				<span class='hint'><?php print_unescaped($err['hint']); ?></span>
 			<?php else: ?>
-				<?php p($err); ?>
+				<?php print_unescaped($err); ?>
 			<?php endif; ?>
 		</p>
 		<?php endforeach; ?>
