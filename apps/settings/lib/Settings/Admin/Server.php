@@ -29,19 +29,16 @@ namespace OCA\Settings\Settings\Admin;
 
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IConfig;
-use OCP\IDBConnection;
 use OCP\Settings\ISettings;
 
 class Server implements ISettings {
-
-	/** @var IDBConnection */
-	private $connection;
 	/** @var IConfig */
 	private $config;
 
-	public function __construct(IDBConnection $connection,
-								IConfig $config) {
-		$this->connection = $connection;
+	/**
+	 * @param IConfig $config
+	 */
+	public function __construct(IConfig $config) {
 		$this->config = $config;
 	}
 
@@ -49,25 +46,10 @@ class Server implements ISettings {
 	 * @return TemplateResponse
 	 */
 	public function getForm() {
-		$query = $this->connection->getQueryBuilder();
-		$query->select('last_checked')
-			->from('jobs')
-			->orderBy('last_checked', 'ASC')
-			->setMaxResults(1);
-
-		$result = $query->execute();
-		if ($row = $result->fetch()) {
-			$maxAge = (int) $row['last_checked'];
-		} else {
-			$maxAge = time();
-		}
-		$result->closeCursor();
-
 		$parameters = [
 			// Background jobs
 			'backgroundjobs_mode' => $this->config->getAppValue('core', 'backgroundjobs_mode', 'ajax'),
 			'lastcron'            => $this->config->getAppValue('core', 'lastcron', false),
-			'cronMaxAge'          => $maxAge,
 			'cronErrors'		  => $this->config->getAppValue('core', 'cronErrors'),
 			'cli_based_cron_possible' => function_exists('posix_getpwuid'),
 			'cli_based_cron_user' => function_exists('posix_getpwuid') ? posix_getpwuid(fileowner(\OC::$configDir . 'config.php'))['name'] : '',
