@@ -45,7 +45,7 @@ class Licenses
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
 EOD;
@@ -67,7 +67,7 @@ EOD;
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License, version 3,
- * along with this program. If not, see <http://www.gnu.org/licenses/>
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
 EOD;
@@ -161,12 +161,8 @@ With help from many libraries and frameworks including:
 			$license = str_replace('@COPYRIGHT@', $copyrightNotices, $license);
 		}
 
-		[$source, $isStrict] = $this->eatOldLicense($source);
-		if ($isStrict) {
-			$source = "<?php" . PHP_EOL . PHP_EOL . 'declare(strict_types=1);' . PHP_EOL . PHP_EOL . $license . PHP_EOL . $source;
-		} else {
-			$source = "<?php" . PHP_EOL . $license . PHP_EOL . $source;
-		}
+		$source = $this->eatOldLicense($source);
+		$source = "<?php" . PHP_EOL . $license . PHP_EOL . $source;
 		file_put_contents($path,$source);
 		echo "License updated: $path" . PHP_EOL;
 	}
@@ -188,18 +184,18 @@ With help from many libraries and frameworks including:
 		return false;
 	}
 
-	private function isOwnCloudLicensed($source) {
-		$lines = explode(PHP_EOL, $source);
-		while(!empty($lines)) {
-			$line = $lines[0];
-			array_shift($lines);
-			if (strpos($line, 'ownCloud, Inc') !== false || strpos($line, 'ownCloud GmbH') !== false) {
-				return true;
+        private function isOwnCloudLicensed($source) {
+			$lines = explode(PHP_EOL, $source);
+			while(!empty($lines)) {
+				$line = $lines[0];
+				array_shift($lines);
+				if (strpos($line, 'ownCloud, Inc') !== false || strpos($line, 'ownCloud GmbH') !== false) {
+					return true;
+				}
 			}
-		}
 
-		return false;
-	}
+			return false;
+        }
 
 	/**
 	 * @param string $source
@@ -207,25 +203,9 @@ With help from many libraries and frameworks including:
 	 */
 	private function eatOldLicense($source) {
 		$lines = explode(PHP_EOL, $source);
-		$isStrict = false;
 		while(!empty($lines)) {
 			$line = $lines[0];
-			if (trim($line) === '<?php') {
-				array_shift($lines);
-				continue;
-			}
-			if (strpos($line, '<?php declare(strict_types') !== false) {
-				$isStrict = true;
-				array_shift($lines);
-				continue;
-			}
-			if (strpos($line, 'declare (strict_types') !== false) {
-				$isStrict = true;
-				array_shift($lines);
-				continue;
-			}
-			if (strpos($line, 'declare(strict_types') !== false) {
-				$isStrict = true;
+			if (strpos($line, '<?php') !== false) {
 				array_shift($lines);
 				continue;
 			}
@@ -248,7 +228,7 @@ With help from many libraries and frameworks including:
 			break;
 		}
 
-		return [implode(PHP_EOL, $lines), $isStrict];
+		return implode(PHP_EOL, $lines);
 	}
 
 	private function getCopyrightNotices($path, $file) {
@@ -384,9 +364,7 @@ if (isset($argv[1])) {
 	$licenses->exec($argv[1], isset($argv[2]) ? $argv[1] : false);
 } else {
 	$licenses->exec([
-		'../apps/accessibility',
 		'../apps/admin_audit',
-		'../apps/cloud_federation_api',
 		'../apps/comments',
 		'../apps/dav',
 		'../apps/encryption',
@@ -397,21 +375,17 @@ if (isset($argv[1])) {
 		'../apps/files_sharing',
 		'../apps/files_trashbin',
 		'../apps/files_versions',
-		'../apps/lookup_server_connector',
-		'../apps/oauth2',
 		'../apps/provisioning_api',
-		'../apps/settings',
-		'../apps/sharebymail',
 		'../apps/systemtags',
 		'../apps/testing',
 		'../apps/theming',
-		'../apps/twofactor_backupcodes',
 		'../apps/updatenotification',
 		'../apps/user_ldap',
 		'../build/integration/features/bootstrap',
 		'../core',
 		'../lib',
 		'../ocs',
+		'../settings',
 		'../console.php',
 		'../cron.php',
 		'../index.php',
