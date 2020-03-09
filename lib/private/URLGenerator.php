@@ -94,9 +94,8 @@ class URLGenerator implements IURLGenerator {
 	public function linkToOCSRouteAbsolute(string $routeName, array $arguments = []): string {
 		$route = \OC::$server->getRouter()->generate('ocs.'.$routeName, $arguments, false);
 
-		$indexPhpPos = strpos($route, '/index.php/');
-		if ($indexPhpPos !== false) {
-			$route = substr($route, $indexPhpPos + 10);
+		if (strpos($route, '/index.php') === 0) {
+			$route = substr($route, 10);
 		}
 
 		$route = substr($route, 7);
