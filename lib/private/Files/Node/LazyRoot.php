@@ -394,7 +394,7 @@ class LazyRoot implements IRootFolder {
 	/**
 	 * @inheritDoc
 	 */
-	public function newFile($path, $content = null) {
+	public function newFile($path) {
 		return $this->__call(__FUNCTION__, func_get_args());
 	}
 

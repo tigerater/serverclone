@@ -58,7 +58,6 @@ OC.L10N.register(
     "Delete" : "Ezabatu",
     "Active" : "Aktiboa",
     "Save" : "Gorde",
-    "Browse the app store" : "Arakatu aplikazio biltegia",
     "Show less" : "Erakutsi gutxiago",
     "Show more" : "Erakutsi gehiago",
     "matches" : "bat dator",
