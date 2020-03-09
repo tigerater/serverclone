@@ -75,6 +75,7 @@
 				<AppNavigationCaption v-if="groupList.length > 0" :title="t('settings', 'Groups')" />
 				<AppNavigationItem
 					v-for="group in groupList"
+					:id="group.id"
 					:key="group.id"
 					:exact="true"
 					:title="group.title"
@@ -489,7 +490,7 @@ export default {
 		 */
 		formatGroupMenu(group) {
 			const item = {}
-			item.id = group.id
+			item.id = group.id.replace(' ', '_')
 			item.title = group.name
 			item.usercount = group.usercount
 
