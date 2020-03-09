@@ -127,6 +127,13 @@ class Application extends App {
 			);
 		});
 
+		$container->registerService('OCSShareAPIMiddleware', function (SimpleContainer $c) use ($server) {
+			return new OCSShareAPIMiddleware(
+				$server->getShareManager(),
+				$server->getL10N($c->query('AppName'))
+			);
+		});
+
 		$container->registerService(ShareInfoMiddleware::class, function () use ($server) {
 			return new ShareInfoMiddleware(
 				$server->getShareManager()
@@ -135,7 +142,7 @@ class Application extends App {
 
 		// Execute middlewares
 		$container->registerMiddleWare('SharingCheckMiddleware');
-		$container->registerMiddleWare(OCSShareAPIMiddleware::class);
+		$container->registerMiddleWare('OCSShareAPIMiddleware');
 		$container->registerMiddleWare(ShareInfoMiddleware::class);
 
 		$container->registerService('MountProvider', function (IContainer $c) {

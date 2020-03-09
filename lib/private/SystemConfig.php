@@ -64,24 +64,13 @@ class SystemConfig {
 		],
 		'objectstore' => [
 			'arguments' => [
-				// Legacy Swift (https://github.com/nextcloud/server/pull/17696#discussion_r341302207)
+				'password' => true,
 				'options' => [
 					'credentials' => [
 						'key' => true,
 						'secret' => true,
 					]
-				],
-				// S3
-				'key' => true,
-				'secret' => true,
-				// Swift v2
-				'username' => true,
-				'password' => true,
-				// Swift v3
-				'user' => [
-					'name' => true,
-					'password' => true,
-				],
+				]
 			],
 		],
 	];

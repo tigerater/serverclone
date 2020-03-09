@@ -19,9 +19,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { loadState } from '@nextcloud/initial-state'
-import queryString from 'query-string'
 import Vue from 'vue'
+import queryString from 'query-string'
 
 // eslint-disable-next-line no-unused-vars
 import OC from './OC/index' // TODO: Not needed but L10n breaks if removed
@@ -43,7 +42,7 @@ Vue.mixin(Nextcloud)
 
 const fromStateOr = (key, orValue) => {
 	try {
-		return loadState('core', key)
+		return OCP.InitialState.loadState('core', key)
 	} catch (e) {
 		return orValue
 	}
@@ -62,7 +61,6 @@ new View({
 		resetPasswordLink: fromStateOr('loginResetPasswordLink', ''),
 		autoCompleteAllowed: fromStateOr('loginAutocomplete', true),
 		resetPasswordTarget: fromStateOr('resetPasswordTarget', ''),
-		resetPasswordUser: fromStateOr('resetPasswordUser', ''),
-		directLogin: query.direct === '1'
+		resetPasswordUser: fromStateOr('resetPasswordUser', '')
 	}
 }).$mount('#login')

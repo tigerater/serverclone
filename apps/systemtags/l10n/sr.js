@@ -2,7 +2,6 @@ OC.L10N.register(
     "systemtags",
     {
     "Tags" : "Ознаке",
-    "Tag name is empty" : "Име ознаке је празно",
     "Update" : "Ажурирај",
     "Create" : "Направи",
     "Select tag…" : "Одабери ознаку…",
