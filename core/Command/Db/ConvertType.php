@@ -383,9 +383,6 @@ class ConvertType extends Command implements CompletionAwareInterface {
 			case Type::TEXT:
 				$this->columnTypes[$tableName][$columnName] = IQueryBuilder::PARAM_LOB;
 				break;
-			case Type::BOOLEAN:
-				$this->columnTypes[$tableName][$columnName] = IQueryBuilder::PARAM_BOOL;
-				break;
 			default:
 				$this->columnTypes[$tableName][$columnName] = false;
 		}
