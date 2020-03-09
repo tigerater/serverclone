@@ -257,10 +257,10 @@
 				</ActionLink>
 
 				<ActionButton v-if="share.canDelete"
-					icon="icon-close"
+					icon="icon-delete"
 					:disabled="saving"
 					@click.prevent="onDelete">
-					{{ t('files_sharing', 'Unshare') }}
+					{{ t('files_sharing', 'Delete share') }}
 				</ActionButton>
 				<ActionButton v-if="!isEmailShareType && canReshare"
 					class="new-share-link"
