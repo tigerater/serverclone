@@ -121,7 +121,7 @@
 			</template>
 
 			<ActionButton v-if="share.canDelete"
-				icon="icon-close"
+				icon="icon-delete"
 				:disabled="saving"
 				@click.prevent="onDelete">
 				{{ t('files_sharing', 'Unshare') }}
