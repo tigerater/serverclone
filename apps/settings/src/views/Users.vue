@@ -75,7 +75,6 @@
 				<AppNavigationCaption v-if="groupList.length > 0" :title="t('settings', 'Groups')" />
 				<AppNavigationItem
 					v-for="group in groupList"
-					:id="group.id"
 					:key="group.id"
 					:exact="true"
 					:title="group.title"
@@ -135,6 +134,14 @@
 						class="checkbox">
 					<label for="showStoragePath">{{ t('settings', 'Show storage path') }}</label>
 				</div>
+				<div>
+					<input id="sendWelcomeMail"
+						v-model="sendWelcomeMail"
+						:disabled="loadingSendMail"
+						type="checkbox"
+						class="checkbox">
+					<label for="sendWelcomeMail">{{ t('settings', 'Send email to new user') }}</label>
+				</div>
 			</AppNavigationSettings>
 		</AppNavigation>
 		<AppContent>
@@ -156,7 +163,9 @@ import AppNavigationCounter from '@nextcloud/vue/dist/Components/AppNavigationCo
 import AppNavigationItem from '@nextcloud/vue/dist/Components/AppNavigationItem'
 import AppNavigationNew from '@nextcloud/vue/dist/Components/AppNavigationNew'
 import AppNavigationSettings from '@nextcloud/vue/dist/Components/AppNavigationSettings'
+import axios from '@nextcloud/axios'
 import Content from '@nextcloud/vue/dist/Components/Content'
+import { generateUrl } from '@nextcloud/router'
 import Multiselect from '@nextcloud/vue/dist/Components/Multiselect'
 import Vue from 'vue'
 import VueLocalStorage from 'vue-localstorage'
@@ -194,6 +203,7 @@ export default {
 			selectedQuota: false,
 			externalActions: [],
 			loadingAddGroup: false,
+			loadingSendMail: false,
 			showConfig: {
 				showStoragePath: false,
 				showUserBackend: false,
@@ -274,6 +284,26 @@ export default {
 				this.selectedQuota = quota
 			},
 
+		},
+
+		sendWelcomeMail: {
+			get() {
+				return this.settings.newUserSendEmail
+			},
+			async set(value) {
+				try {
+					this.loadingSendMail = true
+					this.$store.commit('setServerData', {
+						...this.settings,
+						newUserSendEmail: value,
+					})
+					await axios.post(generateUrl(`/settings/users/preferences/newUser.sendEmail`), { value: value ? 'yes' : 'no' })
+				} catch (e) {
+					console.error('could not update newUser.sendEmail preference: ' + e.message, e)
+				} finally {
+					this.loadingSendMail = false
+				}
+			},
 		},
 
 		groupList() {
@@ -459,7 +489,7 @@ export default {
 		 */
 		formatGroupMenu(group) {
 			const item = {}
-			item.id = group.id.replace(' ', '_')
+			item.id = group.id
 			item.title = group.name
 			item.usercount = group.usercount
 
