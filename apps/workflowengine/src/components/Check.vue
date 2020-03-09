@@ -51,20 +51,20 @@ export default {
 	components: {
 		ActionButton,
 		Actions,
-		Multiselect
+		Multiselect,
 	},
 	directives: {
-		ClickOutside
+		ClickOutside,
 	},
 	props: {
 		check: {
 			type: Object,
-			required: true
+			required: true,
 		},
 		rule: {
 			type: Object,
-			required: true
-		}
+			required: true,
+		},
 	},
 	data() {
 		return {
@@ -72,7 +72,7 @@ export default {
 			currentOption: null,
 			currentOperator: null,
 			options: [],
-			valid: true
+			valid: true,
 		}
 	},
 	computed: {
@@ -81,7 +81,11 @@ export default {
 		},
 		operators() {
 			if (!this.currentOption) { return [] }
-			return this.checks[this.currentOption.class].operators
+			const operators = this.checks[this.currentOption.class].operators
+			if (typeof operators === 'function') {
+				return operators(this.check)
+			}
+			return operators
 		},
 		currentComponent() {
 			if (!this.currentOption) { return [] }
@@ -92,12 +96,12 @@ export default {
 				return this.currentOption.placeholder(this.check)
 			}
 			return ''
-		}
+		},
 	},
 	watch: {
 		'check.operator': function() {
 			this.validate()
-		}
+		},
 	},
 	mounted() {
 		this.options = Object.values(this.checks)
@@ -118,7 +122,8 @@ export default {
 			return this.valid
 		},
 		updateCheck() {
-			if (this.check.class !== this.currentOption.class) {
+			const matchingOperator = this.operators.findIndex((operator) => this.check.operator === operator.operator)
+			if (this.check.class !== this.currentOption.class || matchingOperator === -1) {
 				this.currentOperator = this.operators[0]
 			}
 			this.check.class = this.currentOption.class
@@ -127,8 +132,8 @@ export default {
 			this.check.invalid = !this.validate()
 
 			this.$emit('update', this.check)
-		}
-	}
+		},
+	},
 }
 </script>
 
