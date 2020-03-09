@@ -390,7 +390,6 @@ class AppManagerTest extends TestCase {
 			'test1',
 			'test3',
 			'twofactor_backupcodes',
-			'viewer',
 			'workflowengine',
 		];
 		$this->assertEquals($apps, $this->manager->getInstalledApps());
@@ -419,7 +418,6 @@ class AppManagerTest extends TestCase {
 			'test1',
 			'test3',
 			'twofactor_backupcodes',
-			'viewer',
 			'workflowengine',
 		];
 		$this->assertEquals($enabled, $this->manager->getEnabledAppsForUser($user));
@@ -446,7 +444,6 @@ class AppManagerTest extends TestCase {
 			'testnoversion' => ['id' => 'testnoversion', 'requiremin' => '8.2.0'],
 			'settings' => ['id' => 'settings'],
 			'twofactor_backupcodes' => ['id' => 'twofactor_backupcodes'],
-			'viewer' => ['id' => 'viewer'],
 			'workflowengine' => ['id' => 'workflowengine'],
 			'oauth2' => ['id' => 'oauth2'],
 		];
@@ -497,7 +494,6 @@ class AppManagerTest extends TestCase {
 			'twofactor_backupcodes' => ['id' => 'twofactor_backupcodes'],
 			'workflowengine' => ['id' => 'workflowengine'],
 			'oauth2' => ['id' => 'oauth2'],
-			'viewer' => ['id' => 'viewer'],
 		];
 
 		$manager->expects($this->any())
@@ -541,7 +537,6 @@ class AppManagerTest extends TestCase {
 			'test1',
 			'test3',
 			'twofactor_backupcodes',
-			'viewer',
 			'workflowengine',
 		];
 		$this->assertEquals($enabled, $this->manager->getEnabledAppsForGroup($group));
