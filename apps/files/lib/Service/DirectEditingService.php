@@ -61,7 +61,6 @@ class DirectEditingService {
 		 */
 		foreach ($this->directEditingManager->getEditors() as $id => $editor) {
 			$capabilities['editors'][$id] = [
-				'id' => $editor->getId(),
 				'name' => $editor->getName(),
 				'mimetypes' => $editor->getMimetypes(),
 				'optionalMimetypes' => $editor->getMimetypesOptional(),
