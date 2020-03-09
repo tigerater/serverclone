@@ -11,7 +11,6 @@ OC.L10N.register(
     "No shared links" : "Sem hiperligações partilhadas",
     "Files and folders you share by link will show up here" : "Os ficheiros e as pastas que partilha com esta hiperligação, serão mostrados aqui",
     "Shares" : "Partilhas",
-    "Restore" : "Restaurar",
     "Move or copy" : "Mover ou copiar",
     "Download" : "Transferir",
     "Delete" : "Apagar",
