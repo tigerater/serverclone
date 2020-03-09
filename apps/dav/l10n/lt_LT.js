@@ -47,8 +47,6 @@ OC.L10N.register(
     "Date:" : "Data:",
     "Where:" : "Kur:",
     "Description:" : "Aprašas:",
-    "Untitled event" : "Įvykis be pavadinimo",
-    "%s (%s ago)" : "%s (prieš %s)",
     "Calendar: %s" : "Kalendorius: %s",
     "Date: %s" : "Data: %s",
     "Description: %s" : "Aprašas: %s",
