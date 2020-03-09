@@ -13,7 +13,7 @@ use OCP\ILogger;
 class JobTest extends \Test\TestCase {
 	private $run = false;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		$this->run = false;
 	}

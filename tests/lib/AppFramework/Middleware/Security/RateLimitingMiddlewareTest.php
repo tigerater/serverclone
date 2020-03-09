@@ -45,7 +45,7 @@ class RateLimitingMiddlewareTest extends TestCase {
 	/** @var RateLimitingMiddleware */
 	private $rateLimitingMiddleware;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->request = $this->createMock(IRequest::class);

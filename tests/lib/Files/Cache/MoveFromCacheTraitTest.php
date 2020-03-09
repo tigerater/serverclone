@@ -20,7 +20,7 @@ class FallBackCrossCacheMoveCache extends \OC\Files\Cache\Cache {
  * @group DB
  */
 class MoveFromCacheTraitTest extends CacheTest {
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->storage = new \OC\Files\Storage\Temporary(array());

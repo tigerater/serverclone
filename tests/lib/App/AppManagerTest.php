@@ -97,7 +97,7 @@ class AppManagerTest extends TestCase {
 	/** @var IAppManager */
 	protected $manager;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->userSession = $this->createMock(IUserSession::class);

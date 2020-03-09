@@ -89,7 +89,7 @@ gQIDAQAB
 	/** @var Signer */
 	private $signer;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->key = new Key($this->public, $this->private);

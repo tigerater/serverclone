@@ -11,10 +11,6 @@ namespace Test\Files\Mount;
 use OC\Files\Storage\StorageFactory;
 use OCP\Files\Storage;
 
-class DummyStorage {
-
-}
-
 class MountPointTest extends \Test\TestCase {
 
 	public function testGetStorage() {
@@ -30,7 +26,7 @@ class MountPointTest extends \Test\TestCase {
 
 		$mountPoint = new \OC\Files\Mount\MountPoint(
 			// just use this because a real class is needed
-			'\Test\Files\Mount\DummyStorage',
+			'\Test\Files\Mount\MountPointTest',
 			'/mountpoint',
 			null,
 			$loader
@@ -57,7 +53,7 @@ class MountPointTest extends \Test\TestCase {
 
 		$mountPoint = new \OC\Files\Mount\MountPoint(
 			// just use this because a real class is needed
-			'\Test\Files\Mount\DummyStorage',
+			'\Test\Files\Mount\MountPointTest',
 			'/mountpoint',
 			null,
 			$loader

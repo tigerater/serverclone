@@ -51,7 +51,7 @@ class ImageManagerTest extends TestCase {
 	/** @var ILogger|\PHPUnit_Framework_MockObject_MockObject */
 	private $logger;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		$this->config = $this->createMock(IConfig::class);
 		$this->appData = $this->createMock(IAppData::class);

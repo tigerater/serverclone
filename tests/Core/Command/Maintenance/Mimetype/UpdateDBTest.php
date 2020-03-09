@@ -44,7 +44,7 @@ class UpdateDBTest extends TestCase {
 	/** @var \Symfony\Component\Console\Command\Command */
 	protected $command;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->detector = $this->getMockBuilder(Detection::class)

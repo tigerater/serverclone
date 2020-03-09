@@ -46,7 +46,7 @@ class EnablePluginTest extends TestCase {
 
 	protected $response;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->server = $this->createMock(\Sabre\DAV\Server::class);

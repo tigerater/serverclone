@@ -45,7 +45,7 @@ class EntityCollectionTest extends \Test\TestCase {
 	/** @var IUserSession|\PHPUnit_Framework_MockObject_MockObject */
 	protected $userSession;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->commentsManager = $this->getMockBuilder(ICommentsManager::class)

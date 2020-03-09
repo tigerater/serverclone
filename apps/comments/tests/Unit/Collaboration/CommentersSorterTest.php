@@ -36,7 +36,7 @@ class CommentersSorterTest extends TestCase {
 	/** @var  CommentersSorter */
 	protected $sorter;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->commentsManager = $this->createMock(ICommentsManager::class);

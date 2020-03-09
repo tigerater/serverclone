@@ -83,7 +83,7 @@ class ThemingControllerTest extends TestCase {
 	/** @var IURLGenerator */
 	private $urlGenerator;
 
-	public function setUp(): void {
+	public function setUp() {
 		$this->request = $this->createMock(IRequest::class);
 		$this->config = $this->createMock(IConfig::class);
 		$this->themingDefaults = $this->createMock(ThemingDefaults::class);
@@ -118,7 +118,7 @@ class ThemingControllerTest extends TestCase {
 			$this->imageManager
 		);
 
-		parent::setUp();
+		return parent::setUp();
 	}
 
 	public function dataUpdateStylesheetSuccess() {

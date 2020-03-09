@@ -39,7 +39,7 @@ class CreateSessionTokenCommandTest extends ALoginCommandTest {
 	/** @var Session|MockObject */
 	private $userSession;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->config = $this->createMock(IConfig::class);

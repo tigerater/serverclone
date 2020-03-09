@@ -47,7 +47,7 @@ class RemoteWipeNotificationListenerTests extends TestCase {
 	/** @var IEventListener */
 	private $listener;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->notificationManager = $this->createMock(INotificationManager::class);

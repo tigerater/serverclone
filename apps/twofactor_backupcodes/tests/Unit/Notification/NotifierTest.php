@@ -43,7 +43,7 @@ class NotifierTest extends TestCase {
 	/** @var IL10N|MockObject */
 	protected $l;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->l = $this->createMock(IL10N::class);

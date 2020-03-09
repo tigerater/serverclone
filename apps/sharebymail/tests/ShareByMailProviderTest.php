@@ -97,7 +97,7 @@ class ShareByMailProviderTest extends TestCase {
 	/** @var  CapabilitiesManager | \PHPUnit_Framework_MockObject_MockObject */
 	private $capabilitiesManager;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->shareManager = \OC::$server->getShareManager();
@@ -174,10 +174,10 @@ class ShareByMailProviderTest extends TestCase {
 
 	}
 
-	public function tearDown(): void {
+	public function tearDown() {
 		$this->connection->getQueryBuilder()->delete('share')->execute();
 
-		parent::tearDown();
+		return parent::tearDown();
 	}
 
 	public function testCreate() {
@@ -503,7 +503,7 @@ class ShareByMailProviderTest extends TestCase {
 	 * @param string newSendPasswordByTalk
 	 * @param bool sendMail
 	 */
-	public function testUpdateSendPassword($plainTextPassword, string $originalPassword, string $newPassword, $originalSendPasswordByTalk, $newSendPasswordByTalk, bool $sendMail) {
+	public function testUpdateSendPassword($plainTextPassword, string $originalPassword, string $newPassword, string $originalSendPasswordByTalk, string $newSendPasswordByTalk, bool $sendMail) {
 		$node = $this->getMockBuilder(File::class)->getMock();
 		$node->expects($this->any())->method('getName')->willReturn('filename');
 

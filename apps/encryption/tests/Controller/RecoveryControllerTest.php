@@ -152,7 +152,7 @@ class RecoveryControllerTest extends TestCase {
 
 	}
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->requestMock = $this->getMockBuilder(IRequest::class)

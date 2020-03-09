@@ -47,7 +47,7 @@ class ProviderManagerTest extends TestCase {
 	/** @var ProviderManager */
 	private $providerManager;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->providerLoader = $this->createMock(ProviderLoader::class);

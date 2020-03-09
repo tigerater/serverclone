@@ -424,26 +424,12 @@ class Local extends \OC\Files\Storage\Common {
 	public function getETag($path) {
 		if ($this->is_file($path)) {
 			$stat = $this->stat($path);
-
-			if ($stat === false) {
-				return md5('');
-			}
-
-			$toHash = '';
-			if (isset($stat['mtime'])) {
-				$toHash .= $stat['mtime'];
-			}
-			if (isset($stat['ino'])) {
-				$toHash .= $stat['ino'];
-			}
-			if (isset($stat['dev'])) {
-				$toHash .= $stat['dev'];
-			}
-			if (isset($stat['size'])) {
-				$toHash .= $stat['size'];
-			}
-
-			return md5($toHash);
+			return md5(
+				$stat['mtime'] .
+				$stat['ino'] .
+				$stat['dev'] .
+				$stat['size']
+			);
 		} else {
 			return parent::getETag($path);
 		}

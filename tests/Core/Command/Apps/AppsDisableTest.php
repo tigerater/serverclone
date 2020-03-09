@@ -36,7 +36,7 @@ class AppsDisableTest extends TestCase {
 	/** @var CommandTester */
 	private $commandTester;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$command = new Disable(

@@ -61,7 +61,7 @@ class SimpleContainerTest extends \Test\TestCase {
 
     private $container;
 
-    public function setUp(): void {
+    public function setUp() {
         $this->container = new SimpleContainer();
     }
 

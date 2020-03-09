@@ -45,7 +45,7 @@ class CustomPropertiesBackendTest extends TestCase {
 	/** @var CustomPropertiesBackend | \PHPUnit_Framework_MockObject_MockObject */
 	private $backend;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->tree = $this->createMock(Tree::class);

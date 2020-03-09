@@ -62,7 +62,7 @@ class ShareesAPIControllerTest extends TestCase {
 	/** @var  ISearch|\PHPUnit_Framework_MockObject_MockObject */
 	protected $collaboratorSearch;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->uid = 'test123';

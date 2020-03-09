@@ -41,7 +41,7 @@ class SubAdminTest extends \Test\TestCase {
 	/** @var \OCP\IGroup[] */
 	private $groups;
 	
-	public function setUp(): void {
+	public function setup() {
 		$this->users = [];
 		$this->groups = [];
 
@@ -83,7 +83,7 @@ class SubAdminTest extends \Test\TestCase {
 			->execute();
 	}
 
-	public function tearDown(): void {
+	public function tearDown() {
 		foreach($this->users as $user) {
 			$user->delete();
 		}

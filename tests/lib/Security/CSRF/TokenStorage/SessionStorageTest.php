@@ -29,7 +29,7 @@ class SessionStorageTest extends \Test\TestCase {
 	/** @var \OC\Security\CSRF\TokenStorage\SessionStorage */
 	private $sessionStorage;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->session = $this->getMockBuilder(ISession::class)
 			->disableOriginalConstructor()->getMock();

@@ -38,7 +38,7 @@ class DeleteOrphanedItemsJobTest extends \Test\TestCase {
 	/** @var \OCP\IDBConnection */
 	protected $connection;
 
-	protected function setUp(): void {
+	protected function setup() {
 		parent::setUp();
 		$this->connection = \OC::$server->getDatabaseConnection();
 	}

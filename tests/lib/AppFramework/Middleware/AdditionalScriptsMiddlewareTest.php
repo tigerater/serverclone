@@ -47,7 +47,7 @@ class AdditionalScriptsMiddlewareTest extends \Test\TestCase {
 	/** @var AdditionalScriptsMiddleware */
 	private $middleWare;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->dispatcher = $this->createMock(EventDispatcherInterface::class);

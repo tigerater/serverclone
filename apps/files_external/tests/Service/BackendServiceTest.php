@@ -37,7 +37,7 @@ class BackendServiceTest extends \Test\TestCase {
 	/** @var \OCP\IConfig|\PHPUnit_Framework_MockObject_MockObject */
 	protected $config;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		$this->config = $this->createMock(IConfig::class);
 	}
 

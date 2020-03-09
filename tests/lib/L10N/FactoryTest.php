@@ -36,7 +36,7 @@ class FactoryTest extends TestCase {
 	/** @var string */
 	protected $serverRoot;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->config = $this->getMockBuilder(IConfig::class)

@@ -40,7 +40,7 @@ class AdminTest extends TestCase {
 	/** @var ClientMapper|MockObject */
 	private $clientMapper;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->initialStateService = $this->createMock(IInitialStateService::class);

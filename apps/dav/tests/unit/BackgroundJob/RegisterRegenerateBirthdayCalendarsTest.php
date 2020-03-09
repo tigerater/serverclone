@@ -49,7 +49,7 @@ class RegisterRegenerateBirthdayCalendarsTest extends TestCase {
 	/** @var RegisterRegenerateBirthdayCalendars */
 	private $backgroundJob;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->time = $this->createMock(ITimeFactory::class);

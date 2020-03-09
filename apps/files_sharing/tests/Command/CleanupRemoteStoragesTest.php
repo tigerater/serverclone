@@ -57,7 +57,7 @@ class CleanupRemoteStoragesTest extends TestCase {
 		['notExistingId' => 'shared::c34568c143cdac7d2f06e0800b5280f9', 'share_token' => 'f2c69dad1dc0649f26976fd210fc62e7', 'remote' => 'https://hostname.tld/owncloud7', 'user' => 'user7'],
 	];
 
-	protected function setUp(): void {
+	protected function setup() {
 		parent::setUp();
 
 		$this->connection = \OC::$server->getDatabaseConnection();
@@ -110,7 +110,7 @@ class CleanupRemoteStoragesTest extends TestCase {
 		$this->command = new CleanupRemoteStorages($this->connection);
 	}
 
-	public function tearDown(): void {
+	public function tearDown() {
 		$storageQuery = \OC::$server->getDatabaseConnection()->getQueryBuilder();
 		$storageQuery->delete('storages')
 			->where($storageQuery->expr()->eq('id', $storageQuery->createParameter('id')));
@@ -133,7 +133,7 @@ class CleanupRemoteStoragesTest extends TestCase {
 			}
 		}
 
-		parent::tearDown();
+		return parent::tearDown();
 	}
 
 	private function doesStorageExist($numericId) {

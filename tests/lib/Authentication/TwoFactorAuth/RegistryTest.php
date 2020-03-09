@@ -45,7 +45,7 @@ class RegistryTest extends TestCase {
 	/** @var Registry */
 	private $registry;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->dao = $this->createMock(ProviderUserAssignmentDao::class);

@@ -30,7 +30,7 @@ namespace Test\Preview;
  */
 class BitmapTest extends Provider {
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$fileName = 'testimage.eps';

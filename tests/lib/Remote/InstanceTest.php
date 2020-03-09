@@ -34,7 +34,7 @@ class InstanceTest extends TestCase {
 	/** @var ICache */
 	private $cache;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->cache = new ArrayCache();

@@ -31,17 +31,17 @@ abstract class PropagationTestCase extends TestCase {
 	protected $fileIds = []; // [$user=>[$path=>$id]]
 	protected $fileEtags = []; // [$id=>$etag]
 
-	public static function setUpBeforeClass(): void {
+	public static function setUpBeforeClass() {
 		parent::setUpBeforeClass();
 		\OCA\Files_Sharing\Helper::registerHooks();
 	}
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		$this->setUpShares();
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		\OC_Hook::clear('OC_Filesystem', 'post_write');
 		\OC_Hook::clear('OC_Filesystem', 'post_delete');
 		\OC_Hook::clear('OC_Filesystem', 'post_rename');

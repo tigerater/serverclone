@@ -33,7 +33,7 @@ class DefaultTokenCleanupJobTest extends TestCase {
 	private $job;
 	private $tokenProvider;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->tokenProvider = $this->getMockBuilder(Manager::class)

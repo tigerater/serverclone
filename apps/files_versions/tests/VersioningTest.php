@@ -56,7 +56,7 @@ class VersioningTest extends \Test\TestCase {
 	 */
 	private $rootView;
 
-	public static function setUpBeforeClass(): void {
+	public static function setUpBeforeClass() {
 		parent::setUpBeforeClass();
 
 		$application = new \OCA\Files_Sharing\AppInfo\Application();
@@ -67,7 +67,7 @@ class VersioningTest extends \Test\TestCase {
 		self::loginHelper(self::TEST_VERSIONS_USER, true);
 	}
 
-	public static function tearDownAfterClass(): void {
+	public static function tearDownAfterClass() {
 		// cleanup test user
 		$user = \OC::$server->getUserManager()->get(self::TEST_VERSIONS_USER);
 		if ($user !== null) { $user->delete(); }
@@ -77,7 +77,7 @@ class VersioningTest extends \Test\TestCase {
 		parent::tearDownAfterClass();
 	}
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$config = \OC::$server->getConfig();
@@ -105,7 +105,7 @@ class VersioningTest extends \Test\TestCase {
 		}
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		$this->restoreService('AllConfig');
 
 		if ($this->rootView) {

@@ -34,7 +34,7 @@ class JSSettingsHelperTest extends TestCase {
 	/** @var  JSSettingsHelper */
 	protected $helper;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->c = $this->createMock(IServerContainer::class);

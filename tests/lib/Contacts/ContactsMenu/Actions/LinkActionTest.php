@@ -31,7 +31,7 @@ class LinkActionTest extends TestCase {
 
 	private $action;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->action = new LinkAction();

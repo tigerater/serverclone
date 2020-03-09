@@ -24,7 +24,7 @@ namespace Test;
 
 class TemplateFunctionsTest extends \Test\TestCase {
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$loader = new \OC\Autoloader([\OC::$SERVERROOT . '/lib']);

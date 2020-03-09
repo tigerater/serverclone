@@ -40,7 +40,7 @@ class CleanupTest extends TestCase {
 	/** @var CommandTester */
 	private $cmd;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->registry = $this->createMock(IRegistry::class);

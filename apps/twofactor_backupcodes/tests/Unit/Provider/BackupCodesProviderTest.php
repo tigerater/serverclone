@@ -52,7 +52,7 @@ class BackupCodesProviderTest extends TestCase {
 	/** @var BackupCodesProvider */
 	private $provider;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->appName = "twofactor_backupcodes";

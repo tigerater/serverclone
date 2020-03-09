@@ -30,7 +30,7 @@ namespace Test\Preview;
  */
 class ImageTest extends Provider {
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$fileName = 'testimage.jpg';

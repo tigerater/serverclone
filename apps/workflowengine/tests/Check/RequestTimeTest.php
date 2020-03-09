@@ -43,7 +43,7 @@ class RequestTimeTest extends \Test\TestCase {
 		return $l;
 	}
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->timeFactory = $this->getMockBuilder('OCP\AppFramework\Utility\ITimeFactory')

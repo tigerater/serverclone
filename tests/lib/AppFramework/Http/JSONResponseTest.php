@@ -36,7 +36,7 @@ class JSONResponseTest extends \Test\TestCase {
 	 */
 	private $json;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		$this->json = new JSONResponse();
 	}

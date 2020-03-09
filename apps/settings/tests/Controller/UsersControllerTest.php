@@ -74,7 +74,7 @@ class UsersControllerTest extends \Test\TestCase {
 	/** @var  IEncryptionModule  | \PHPUnit_Framework_MockObject_MockObject */
 	private $encryptionModule;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->userManager = $this->createMock(IUserManager::class);

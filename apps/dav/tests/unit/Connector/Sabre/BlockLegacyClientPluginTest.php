@@ -42,7 +42,7 @@ class BlockLegacyClientPluginTest extends TestCase {
 	/** @var BlockLegacyClientPlugin */
 	private $blockLegacyClientVersionPlugin;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->config = $this->getMockBuilder(IConfig::class)

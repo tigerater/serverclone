@@ -55,7 +55,7 @@ class CapabilitiesTest extends TestCase  {
 	/** @var Capabilities */
 	protected $capabilities;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->theming = $this->createMock(ThemingDefaults::class);

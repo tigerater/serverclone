@@ -85,7 +85,7 @@ class FilesReportPluginTest extends \Test\TestCase {
 	/** @var IAppManager|\PHPUnit_Framework_MockObject_MockObject * */
 	private $appManager;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->tree = $this->getMockBuilder(Tree::class)
 			->disableOriginalConstructor()

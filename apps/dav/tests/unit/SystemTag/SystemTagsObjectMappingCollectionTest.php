@@ -49,7 +49,7 @@ class SystemTagsObjectMappingCollectionTest extends \Test\TestCase {
 	 */
 	private $user;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->tagManager = $this->getMockBuilder(ISystemTagManager::class)

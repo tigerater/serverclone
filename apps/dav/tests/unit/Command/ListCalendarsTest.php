@@ -46,7 +46,7 @@ class ListCalendarsTest extends TestCase {
 
 	const USERNAME = 'username';
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->userManager = $this->createMock(IUserManager::class);

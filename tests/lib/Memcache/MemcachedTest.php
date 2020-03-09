@@ -10,7 +10,7 @@
 namespace Test\Memcache;
 
 class MemcachedTest extends Cache {
-	static public function setUpBeforeClass(): void {
+	static public function setUpBeforeClass() {
 		parent::setUpBeforeClass();
 
 		if (!\OC\Memcache\Memcached::isAvailable()) {
@@ -22,7 +22,7 @@ class MemcachedTest extends Cache {
 		}
 	}
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		$this->instance = new \OC\Memcache\Memcached($this->getUniqueID());
 	}

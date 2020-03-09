@@ -59,7 +59,7 @@ class NotificationsTest extends TestCase {
 	/** @var IURLGenerator|\PHPUnit_Framework_MockObject_MockObject */
 	protected $urlGenerator;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->commentsManager = $this->createMock(ICommentsManager::class);

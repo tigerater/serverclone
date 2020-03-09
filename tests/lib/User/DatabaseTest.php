@@ -47,7 +47,7 @@ class DatabaseTest extends Backend {
 		return $user;
 	}
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->eventDispatcher = $this->createMock(IEventDispatcher::class);
@@ -55,7 +55,7 @@ class DatabaseTest extends Backend {
 		$this->backend=new \OC\User\Database($this->eventDispatcher);
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		if(!isset($this->users)) {
 			return;
 		}

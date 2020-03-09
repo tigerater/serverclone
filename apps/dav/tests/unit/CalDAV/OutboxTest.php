@@ -34,7 +34,7 @@ class OutboxTest extends TestCase {
 	/** @var Outbox */
 	private $outbox;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->config = $this->createMock(IConfig::class);

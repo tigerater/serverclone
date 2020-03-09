@@ -25,7 +25,7 @@ class PathVerificationTest extends \Test\TestCase {
 	 */
 	private $view;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		$this->view = new View();
 	}

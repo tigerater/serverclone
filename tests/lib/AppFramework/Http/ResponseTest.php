@@ -35,7 +35,7 @@ class ResponseTest extends \Test\TestCase {
 	 */
 	private $childResponse;
 
-	protected function setUp(): void {
+	protected function setUp(){
 		parent::setUp();
 		$this->childResponse = new Response();
 	}

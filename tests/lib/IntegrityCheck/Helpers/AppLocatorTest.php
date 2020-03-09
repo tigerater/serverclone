@@ -28,7 +28,7 @@ class AppLocatorTest extends TestCase {
 	/** @var AppLocator */
 	private $locator;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->locator = new AppLocator();
 	}

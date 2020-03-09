@@ -49,7 +49,7 @@ class GroupPrincipalTest extends \Test\TestCase {
 	/** @var GroupPrincipalBackend */
 	private $connector;
 
-	public function setUp(): void {
+	public function setUp() {
 		$this->groupManager = $this->createMock(IGroupManager::class);
 		$this->userSession = $this->createMock(IUserSession::class);
 		$this->shareManager = $this->createMock(IManager::class);

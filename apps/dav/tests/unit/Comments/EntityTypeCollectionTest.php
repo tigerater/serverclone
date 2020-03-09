@@ -46,7 +46,7 @@ class EntityTypeCollectionTest extends \Test\TestCase {
 
 	protected $childMap = [];
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->commentsManager = $this->getMockBuilder(ICommentsManager::class)

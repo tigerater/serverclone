@@ -62,7 +62,7 @@ class GroupsControllerTest extends \Test\TestCase {
 	protected $api;
 
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->request = $this->createMock(IRequest::class);

@@ -48,7 +48,7 @@ use Test\TestCase;
 
 class IMipPluginTest extends TestCase {
 
-        public function setUp(): void {
+        public function setUp() {
 		$this->mailMessage = $this->createMock(IMessage::class);
 		$this->mailMessage->method('setFrom')->willReturn($this->mailMessage);
 		$this->mailMessage->method('setReplyTo')->willReturn($this->mailMessage);

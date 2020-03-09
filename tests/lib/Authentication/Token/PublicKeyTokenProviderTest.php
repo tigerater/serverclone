@@ -54,7 +54,7 @@ class PublicKeyTokenProviderTest extends TestCase {
 	/** @var int */
 	private $time;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->mapper = $this->createMock(PublicKeyTokenMapper::class);

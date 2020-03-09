@@ -31,7 +31,7 @@ class CertificateManagerTest extends \Test\TestCase {
 	/** @var ISecureRandom */
 	private $random;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->username = $this->getUniqueID('', 20);
@@ -62,7 +62,7 @@ class CertificateManagerTest extends \Test\TestCase {
 		);
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		$user = \OC::$server->getUserManager()->get($this->username);
 		if ($user !== null) {
 			$user->delete();

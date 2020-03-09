@@ -123,7 +123,7 @@ abstract class Cache extends \Test\Cache\TestCache {
 	}
 
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		if ($this->instance) {
 			$this->instance->clear();
 		}

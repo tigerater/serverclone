@@ -51,7 +51,7 @@ class RemoteWipeTest extends TestCase {
 	/** @var RemoteWipe */
 	private $remoteWipe;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->tokenProvider = $this->createMock(IProvider::class);

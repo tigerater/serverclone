@@ -32,7 +32,7 @@ class UtilTest extends TestCase {
 	/** @var  \OC\Encryption\Util */
 	private $util;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->view = $this->getMockBuilder(View::class)
 			->disableOriginalConstructor()

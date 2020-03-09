@@ -45,7 +45,7 @@ class BearerAuthTest extends TestCase {
 	/** @var BearerAuth */
 	private $bearerAuth;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->userSession = $this->createMock(\OC\User\Session::class);

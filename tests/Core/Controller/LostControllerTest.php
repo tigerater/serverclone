@@ -84,7 +84,7 @@ class LostControllerTest extends \Test\TestCase {
 	/** @var IInitialStateService|\PHPUnit_Framework_MockObject_MockObject */
 	private $initialStateService;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->existingUser = $this->createMock(IUser::class);

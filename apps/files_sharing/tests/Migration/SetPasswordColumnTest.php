@@ -47,7 +47,7 @@ class SetPasswordColumnTest extends TestCase {
 
 	private $table = 'share';
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->connection = \OC::$server->getDatabaseConnection();
@@ -57,7 +57,7 @@ class SetPasswordColumnTest extends TestCase {
 		$this->cleanDB();
 	}
 
-	public function tearDown(): void {
+	public function tearDown() {
 		parent::tearDown();
 		$this->cleanDB();
 	}

@@ -44,7 +44,7 @@ class ConnectionTest extends \Test\TestCase {
 	/** @var  Connection */
 	protected $connection;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->ldap       = $this->createMock(ILDAPWrapper::class);

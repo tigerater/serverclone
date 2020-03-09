@@ -33,7 +33,7 @@ class ScannerTest extends \Test\TestCase {
 	 */
 	private $cache;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->storage = new \OC\Files\Storage\Temporary(array());
@@ -41,7 +41,7 @@ class ScannerTest extends \Test\TestCase {
 		$this->cache = new \OC\Files\Cache\Cache($this->storage);
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		if ($this->cache) {
 			$this->cache->clear();
 		}

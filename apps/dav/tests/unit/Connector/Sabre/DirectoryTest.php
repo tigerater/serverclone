@@ -75,7 +75,7 @@ class DirectoryTest extends \Test\TestCase {
 	/** @var \OC\Files\FileInfo | \PHPUnit_Framework_MockObject_MockObject */
 	private $info;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->view = $this->createMock('OC\Files\View');

@@ -34,7 +34,7 @@ class DataResponseTest extends \Test\TestCase {
 	 */
 	private $response;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		$this->response = new DataResponse();
 	}

@@ -44,7 +44,7 @@ class RequestRemoteAddressTest extends \Test\TestCase {
 		return $l;
 	}
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->request = $this->getMockBuilder(IRequest::class)

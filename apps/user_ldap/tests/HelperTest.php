@@ -36,7 +36,7 @@ class HelperTest extends \Test\TestCase {
 	/** @var Helper */
 	private $helper;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->config = $this->createMock(IConfig::class);

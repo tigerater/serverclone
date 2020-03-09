@@ -35,7 +35,7 @@ class SubadminMiddlewareTest extends \Test\TestCase {
 	/** @var IL10N */
 	private $l10n;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		$this->reflector = $this->getMockBuilder(ControllerMethodReflector::class)
 			->disableOriginalConstructor()->getMock();

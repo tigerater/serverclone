@@ -28,7 +28,7 @@ class CloudIdManagerTest extends TestCase {
 	/** @var CloudIdManager */
 	private $cloudIdManager;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		$this->cloudIdManager = new CloudIdManager();
 	}

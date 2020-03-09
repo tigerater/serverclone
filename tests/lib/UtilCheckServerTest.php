@@ -36,7 +36,7 @@ class UtilCheckServerTest extends \Test\TestCase {
 		return $config;
 	}
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->datadir = \OC::$server->getTempManager()->getTemporaryFolder();
@@ -45,7 +45,7 @@ class UtilCheckServerTest extends \Test\TestCase {
 		\OC::$server->getSession()->set('checkServer_succeeded', false);
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		// clean up
 		@unlink($this->datadir . '/.ocdata');
 		parent::tearDown();

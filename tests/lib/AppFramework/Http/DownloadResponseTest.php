@@ -38,7 +38,7 @@ class DownloadResponseTest extends \Test\TestCase {
 	 */
 	protected $response;
 
-	protected function setUp(): void {
+	protected function setUp(){
 		parent::setUp();
 		$this->response = new ChildDownloadResponse('file', 'content');
 	}

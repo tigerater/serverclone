@@ -77,7 +77,7 @@ class SecurityMiddlewareTest extends \Test\TestCase {
 	/** @var IL10N|\PHPUnit_Framework_MockObject_MockObject */
 	private $l10n;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->controller = $this->createMock(Controller::class);

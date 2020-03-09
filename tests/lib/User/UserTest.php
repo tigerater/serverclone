@@ -33,7 +33,7 @@ class UserTest extends TestCase {
 	/** @var EventDispatcherInterface|MockObject */
 	protected $dispatcher;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->dispatcher = $this->createMock(EventDispatcherInterface::class);
 	}

@@ -40,7 +40,7 @@ class Amazons3Test extends \Test\Files\Storage\Storage {
 
 	private $config;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->config = include('files_external/tests/config.amazons3.php');
@@ -50,7 +50,7 @@ class Amazons3Test extends \Test\Files\Storage\Storage {
 		$this->instance = new AmazonS3($this->config);
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		if ($this->instance) {
 			$this->instance->rmdir('');
 		}

@@ -47,7 +47,7 @@ class CommentsNodeTest extends \Test\TestCase {
 	protected $logger;
 	protected $userSession;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->commentsManager = $this->getMockBuilder(ICommentsManager::class)

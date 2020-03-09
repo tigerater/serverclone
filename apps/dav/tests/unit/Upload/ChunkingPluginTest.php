@@ -51,7 +51,7 @@ class ChunkingPluginTest extends TestCase {
 	/** @var ResponseInterface | \PHPUnit_Framework_MockObject_MockObject */
 	private $response;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->server = $this->getMockBuilder('\Sabre\DAV\Server')

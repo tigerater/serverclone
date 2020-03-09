@@ -64,7 +64,7 @@ class SystemTagObjectMapperTest extends TestCase {
 	 */
 	private $tag3;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->connection = \OC::$server->getDatabaseConnection();
@@ -108,7 +108,7 @@ class SystemTagObjectMapperTest extends TestCase {
 		$this->tagMapper->assignTags('3', 'anothertype', $this->tag1->getId());
 	}
 
-	public function tearDown(): void {
+	public function tearDown() {
 		$this->pruneTagsTables();
 		parent::tearDown();
 	}

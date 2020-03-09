@@ -27,7 +27,7 @@ class CapabilitiesTest extends TestCase {
 	/** @var Capabilities */
 	private $capabilities;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->capabilities = new Capabilities();
 	}

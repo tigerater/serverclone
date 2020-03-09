@@ -52,7 +52,7 @@ class BirthdayServiceTest extends TestCase {
 	/** @var IL10N | \PHPUnit_Framework_MockObject_MockObject */
 	private $l10n;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->calDav = $this->createMock(CalDavBackend::class);

@@ -89,7 +89,7 @@ CREATED:20151214T091032Z
 END:VEVENT
 END:VCALENDAR';
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->logger = $this->createMock(ILogger::class);

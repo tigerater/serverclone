@@ -36,7 +36,7 @@ class ManagerTest extends TestCase {
 	/** @var IServerContainer */
 	private $server;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->server = $this->createMock(IServerContainer::class);

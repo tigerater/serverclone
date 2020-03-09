@@ -46,7 +46,7 @@ class DefaultTokenMapperTest extends TestCase {
 	private $dbConnection;
 	private $time;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->dbConnection = OC::$server->getDatabaseConnection();

@@ -56,7 +56,7 @@ class CacheTest extends TestCase {
 	/** @var  ICloudIdManager */
 	private $cloudIdManager;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->cloudIdManager = new CloudIdManager();
@@ -83,7 +83,7 @@ class CacheTest extends TestCase {
 		);
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		if ($this->cache) {
 			$this->cache->clear();
 		}

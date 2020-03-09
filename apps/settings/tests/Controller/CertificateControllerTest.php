@@ -48,7 +48,7 @@ class CertificateControllerTest extends \Test\TestCase {
 	/** @var  ICertificateManager */
 	private $systemCertificateManager;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->request = $this->getMockBuilder(IRequest::class)->getMock();

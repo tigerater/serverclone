@@ -28,7 +28,7 @@ class FileAccessHelperTest extends TestCase {
 	/** @var FileAccessHelper */
 	private $fileAccessHelper;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->fileAccessHelper = new FileAccessHelper();
 	}

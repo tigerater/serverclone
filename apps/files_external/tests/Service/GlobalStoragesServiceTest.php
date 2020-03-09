@@ -33,12 +33,12 @@ use OCA\Files_External\Service\GlobalStoragesService;
  * @group DB
  */
 class GlobalStoragesServiceTest extends StoragesServiceTest {
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->service = new GlobalStoragesService($this->backendService, $this->dbConfig, $this->mountCache);
 	}
 
-	public function tearDown(): void {
+	public function tearDown() {
 		@unlink($this->dataDir . '/mount.json');
 		parent::tearDown();
 	}

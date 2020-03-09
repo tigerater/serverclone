@@ -38,7 +38,7 @@ class SyncFederationAddressbooksTest extends \Test\TestCase {
 	/** @var  \PHPUnit_Framework_MockObject_MockObject | DiscoveryService */
 	private $discoveryService;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->discoveryService = $this->getMockBuilder(DiscoveryService::class)

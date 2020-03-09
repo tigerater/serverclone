@@ -76,7 +76,7 @@ class UserTest extends \Test\TestCase {
 	/** @var User */
 	protected $user;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->connection = $this->createMock(Connection::class);

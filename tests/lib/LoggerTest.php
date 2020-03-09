@@ -26,7 +26,7 @@ class LoggerTest extends TestCase implements IWriter {
 	/** @var array */
 	private $logs = [];
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->logs = [];

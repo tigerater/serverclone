@@ -36,7 +36,7 @@ class BundleFetcherTest extends TestCase {
 	/** @var BundleFetcher */
 	private $bundleFetcher;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->l10n = $this->createMock(IL10N::class);

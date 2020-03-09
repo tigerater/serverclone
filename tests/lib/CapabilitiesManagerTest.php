@@ -35,7 +35,7 @@ class CapabilitiesManagerTest extends TestCase {
 	/** @var ILogger */
 	private $logger;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->logger = $this->getMockBuilder(ILogger::class)->getMock();
 		$this->manager = new CapabilitiesManager($this->logger);

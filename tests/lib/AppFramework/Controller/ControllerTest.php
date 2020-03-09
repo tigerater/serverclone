@@ -62,7 +62,7 @@ class ControllerTest extends \Test\TestCase {
 	private $controller;
 	private $app;
 
-	protected function setUp(): void {
+	protected function setUp(){
 		parent::setUp();
 
 		$request = new Request(

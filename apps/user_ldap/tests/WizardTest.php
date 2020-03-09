@@ -32,7 +32,6 @@ use OCA\User_LDAP\Access;
 use OCA\User_LDAP\Configuration;
 use OCA\User_LDAP\ILDAPWrapper;
 use OCA\User_LDAP\Wizard;
-use PHPUnit\Framework\MockObject\MockObject;
 use Test\TestCase;
 
 /**
@@ -43,7 +42,7 @@ use Test\TestCase;
  * @package OCA\User_LDAP\Tests
  */
 class WizardTest extends TestCase {
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		//we need to make sure the consts are defined, otherwise tests will fail
 		//on systems without php5_ldap
@@ -81,7 +80,7 @@ class WizardTest extends TestCase {
 		return array(new Wizard($conf, $lw, $access), $conf, $lw, $access);
 	}
 
-	private function prepareLdapWrapperForConnections(MockObject &$ldap) {
+	private function prepareLdapWrapperForConnections(\PHPUnit_Framework_MockObject_MockObject &$ldap) {
 		$ldap->expects($this->once())
 			->method('connect')
 			//dummy value, usually invalid

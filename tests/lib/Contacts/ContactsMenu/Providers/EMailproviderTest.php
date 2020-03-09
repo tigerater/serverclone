@@ -43,7 +43,7 @@ class EMailproviderTest extends TestCase {
 	/** @var EMailProvider */
 	private $provider;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->actionFactory = $this->createMock(IActionFactory::class);

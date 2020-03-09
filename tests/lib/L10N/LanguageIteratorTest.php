@@ -36,7 +36,7 @@ class LanguageIteratorTest extends TestCase {
 	/** @var LanguageIterator */
 	protected $iterator;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->user = $this->createMock(IUser::class);

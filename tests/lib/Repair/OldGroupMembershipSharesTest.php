@@ -30,7 +30,7 @@ class OldGroupMembershipSharesTest extends \Test\TestCase {
 	/** @var \OCP\IGroupManager|\PHPUnit_Framework_MockObject_MockObject */
 	protected $groupManager;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		/** \OCP\IGroupManager|\PHPUnit_Framework_MockObject_MockObject */
@@ -42,7 +42,7 @@ class OldGroupMembershipSharesTest extends \Test\TestCase {
 		$this->deleteAllShares();
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		$this->deleteAllShares();
 
 		parent::tearDown();

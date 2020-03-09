@@ -26,12 +26,12 @@ class ConnectionTest extends \Test\TestCase {
 	 */
 	private $connection;
 
-	public static function setUpBeforeClass(): void {
+	public static function setUpBeforeClass() {
 		self::dropTestTable();
 		parent::setUpBeforeClass();
 	}
 
-	public static function tearDownAfterClass(): void {
+	public static function tearDownAfterClass() {
 		self::dropTestTable();
 		parent::tearDownAfterClass();
 	}
@@ -42,12 +42,12 @@ class ConnectionTest extends \Test\TestCase {
 		}
 	}
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->connection = \OC::$server->getDatabaseConnection();
 	}
 
-	public function tearDown(): void {
+	public function tearDown() {
 		parent::tearDown();
 		$this->connection->dropTable('table');
 	}

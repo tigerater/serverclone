@@ -41,7 +41,7 @@ class EnforceTest extends TestCase {
 	/** @var CommandTester */
 	private $command;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->mandatoryTwoFactor = $this->createMock(MandatoryTwoFactor::class);

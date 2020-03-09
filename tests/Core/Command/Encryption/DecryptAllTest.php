@@ -54,7 +54,7 @@ class DecryptAllTest extends TestCase {
 	/** @var \PHPUnit_Framework_MockObject_MockObject | \OC\Encryption\DecryptAll */
 	protected $decryptAll;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->config = $this->getMockBuilder(IConfig::class)

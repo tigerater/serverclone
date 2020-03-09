@@ -64,7 +64,7 @@ abstract class AbstractPrincipalBackendTest extends TestCase {
 	/** @var string */
 	protected $expectedCUType;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->userSession = $this->createMock(IUserSession::class);
@@ -73,7 +73,7 @@ abstract class AbstractPrincipalBackendTest extends TestCase {
 		$this->proxyMapper = $this->createMock(ProxyMapper::class);
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		$query = self::$realDatabase->getQueryBuilder();
 
 		$query->delete('calendar_resources')->execute();

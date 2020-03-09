@@ -24,7 +24,7 @@ class CacheJailTest extends CacheTest {
 	 */
 	protected $sourceCache;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->storage->mkdir('foo');
 		$this->sourceCache = $this->cache;

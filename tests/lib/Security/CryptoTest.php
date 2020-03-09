@@ -24,7 +24,7 @@ class CryptoTest extends \Test\TestCase {
 	/** @var Crypto */
 	protected $crypto;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		$this->crypto = new Crypto(\OC::$server->getConfig(), \OC::$server->getSecureRandom());
 	}

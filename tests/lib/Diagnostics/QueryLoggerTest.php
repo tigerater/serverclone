@@ -29,7 +29,7 @@ class QueryLoggerTest extends TestCase {
 	/** @var \OC\Diagnostics\QueryLogger */
 	private $logger;
 	
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->logger = new QueryLogger();

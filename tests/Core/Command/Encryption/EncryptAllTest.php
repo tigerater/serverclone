@@ -58,7 +58,7 @@ class EncryptAllTest extends TestCase {
 	/** @var  EncryptAll */
 	protected $command;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->config = $this->getMockBuilder(IConfig::class)

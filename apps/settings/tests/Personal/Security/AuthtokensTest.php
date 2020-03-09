@@ -52,7 +52,7 @@ class AuthtokensTest extends TestCase {
 	/** @var Security\Authtokens */
 	private $section;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->authTokenProvider = $this->createMock(IAuthTokenProvider::class);

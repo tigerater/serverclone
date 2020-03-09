@@ -348,13 +348,13 @@ class UtilTest extends \Test\TestCase {
 		$this->assertNotEmpty($errors);
 	}
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		\OC_Util::$scripts = [];
 		\OC_Util::$styles = [];
 	}
-	protected function tearDown(): void {
+	protected function tearDown() {
 		parent::tearDown();
 
 		\OC_Util::$scripts = [];

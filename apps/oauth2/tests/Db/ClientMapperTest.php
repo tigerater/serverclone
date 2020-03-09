@@ -32,7 +32,7 @@ class ClientMapperTest extends TestCase {
 	/** @var ClientMapper */
 	private $clientMapper;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->clientMapper = new ClientMapper(\OC::$server->getDatabaseConnection());
 	}

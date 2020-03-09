@@ -777,7 +777,7 @@ class CacheTest extends \Test\TestCase {
 		$this->cache->remove("sub");
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		if ($this->cache) {
 			$this->cache->clear();
 		}
@@ -785,7 +785,7 @@ class CacheTest extends \Test\TestCase {
 		parent::tearDown();
 	}
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->storage = new \OC\Files\Storage\Temporary(array());

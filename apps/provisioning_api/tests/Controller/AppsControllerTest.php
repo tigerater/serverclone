@@ -48,7 +48,7 @@ class AppsControllerTest extends \OCA\Provisioning_API\Tests\TestCase {
 	/** @var IUserSession */
 	private $userSession;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->appManager = \OC::$server->getAppManager();

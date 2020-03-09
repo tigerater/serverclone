@@ -93,7 +93,7 @@ class ShareControllerTest extends \Test\TestCase {
 	/** @var IL10N */
 	private $l10n;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		$this->appName = 'files_sharing';
 
@@ -142,7 +142,7 @@ class ShareControllerTest extends \Test\TestCase {
 		$this->loginAsUser($this->user);
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		\OC_Util::tearDownFS();
 		\OC_User::setUserId('');
 		Filesystem::tearDown();

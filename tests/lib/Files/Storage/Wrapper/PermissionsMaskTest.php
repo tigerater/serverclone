@@ -22,13 +22,13 @@ class PermissionsMaskTest extends \Test\Files\Storage\Storage {
 	 */
 	private $sourceStorage;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->sourceStorage = new \OC\Files\Storage\Temporary(array());
 		$this->instance = $this->getMaskedStorage(Constants::PERMISSION_ALL);
 	}
 
-	public function tearDown(): void {
+	public function tearDown() {
 		$this->sourceStorage->cleanUp();
 		parent::tearDown();
 	}

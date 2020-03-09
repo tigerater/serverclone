@@ -36,7 +36,7 @@ class RepairSqliteAutoincrementTest extends \Test\TestCase {
 	 */
 	private $config;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->connection = \OC::$server->getDatabaseConnection();
@@ -52,7 +52,7 @@ class RepairSqliteAutoincrementTest extends \Test\TestCase {
 		$this->repair = new \OC\Repair\SqliteAutoincrement($this->connection);
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		$this->connection->getSchemaManager()->dropTable($this->tableName);
 		parent::tearDown();
 	}

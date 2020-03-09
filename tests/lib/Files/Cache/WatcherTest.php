@@ -22,13 +22,13 @@ class WatcherTest extends \Test\TestCase {
 	 */
 	private $storages = array();
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->loginAsUser();
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		foreach ($this->storages as $storage) {
 			$cache = $storage->getCache();
 			$ids = $cache->getAll();

@@ -34,7 +34,7 @@ class SettingsTest extends TestCase  {
 	/** @var  SettingsManager | \PHPUnit_Framework_MockObject_MockObject */
 	private $settingsManager;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->settingsManager = $this->getMockBuilder(SettingsManager::class)

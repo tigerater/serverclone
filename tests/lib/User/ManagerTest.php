@@ -30,7 +30,7 @@ class ManagerTest extends TestCase {
 	/** @var EventDispatcherInterface */
 	private $dispatcher;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->config = $this->createMock(IConfig::class);

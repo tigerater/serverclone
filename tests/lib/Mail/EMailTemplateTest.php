@@ -39,7 +39,7 @@ class EMailTemplateTest extends TestCase {
 	/** @var EMailTemplate */
 	private $emailTemplate;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->defaults = $this->createMock(Defaults::class);

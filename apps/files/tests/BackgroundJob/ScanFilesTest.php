@@ -42,7 +42,7 @@ class ScanFilesTest extends TestCase {
 	/** @var ScanFiles */
 	private $scanFiles;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->config = $this->createMock(IConfig::class);

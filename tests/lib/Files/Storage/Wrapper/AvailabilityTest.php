@@ -35,7 +35,7 @@ class AvailabilityTest extends \Test\TestCase {
 	/** @var Availability  */
 	protected $wrapper;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->storageCache = $this->createMock(StorageCache::class);

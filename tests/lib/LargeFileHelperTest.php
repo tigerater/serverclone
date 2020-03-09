@@ -11,7 +11,7 @@ namespace Test;
 class LargeFileHelperTest extends TestCase {
 	protected $helper;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		$this->helper = new \OC\LargeFileHelper;
 	}

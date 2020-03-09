@@ -40,7 +40,7 @@ class InstallerTest extends TestCase {
 	/** @var IConfig|\PHPUnit_Framework_MockObject_MockObject */
 	private $config;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->appFetcher = $this->createMock(AppFetcher::class);
@@ -72,7 +72,7 @@ class InstallerTest extends TestCase {
 		);
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		$installer = new Installer(
 			\OC::$server->getAppFetcher(),
 			\OC::$server->getHTTPClientService(),

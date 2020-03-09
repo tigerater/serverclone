@@ -43,7 +43,7 @@ class ProviderLoaderTest extends TestCase {
 	/** @var ProviderLoader */
 	private $loader;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->appManager = $this->createMock(IAppManager::class);

@@ -201,7 +201,7 @@ class SessionTest extends TestCase {
 	/**
 	 *
 	 */
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		$this->sessionMock = $this->createMock(ISession::class);
 
@@ -221,7 +221,7 @@ class SessionTest extends TestCase {
 		$this->instance = new Session($this->sessionMock);
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		self::$tempStorage = [];
 		parent::tearDown();
 	}

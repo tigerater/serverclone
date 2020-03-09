@@ -42,7 +42,7 @@ class LegacyHooksTest extends TestCase {
 	/** @var Manager */
 	private $manager;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->eventDispatcher = new EventDispatcher();

@@ -76,7 +76,7 @@ class User_LDAPTest extends TestCase {
 	/** @var Manager|\PHPUnit_Framework_MockObject_MockObject */
 	protected $userManager;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		\OC_User::clearBackends();

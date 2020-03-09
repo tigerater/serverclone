@@ -50,7 +50,7 @@ class ManagerTest extends TestCase  {
 	/** @var ILogger|MockObject */
 	private $logger;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		/** @var Factory|\PHPUnit_Framework_MockObject_MockObject $factory */

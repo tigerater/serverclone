@@ -39,7 +39,7 @@ class OwncloudTest extends \Test\Files\Storage\Storage {
 
 	private $config;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$id = $this->getUniqueID();
@@ -52,7 +52,7 @@ class OwncloudTest extends \Test\Files\Storage\Storage {
 		$this->instance->mkdir('/');
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		if ($this->instance) {
 			$this->instance->rmdir('/');
 		}

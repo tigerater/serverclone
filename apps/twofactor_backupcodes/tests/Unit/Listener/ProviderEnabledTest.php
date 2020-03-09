@@ -44,7 +44,7 @@ class ProviderEnabledTest extends TestCase {
 	/** @var ProviderEnabled */
 	private $listener;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->registy = $this->createMock(IRegistry::class);

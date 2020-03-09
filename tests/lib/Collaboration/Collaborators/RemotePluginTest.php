@@ -57,7 +57,7 @@ class RemotePluginTest extends TestCase {
 	/** @var  SearchResult */
 	protected $searchResult;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->userManager = $this->createMock(IUserManager::class);

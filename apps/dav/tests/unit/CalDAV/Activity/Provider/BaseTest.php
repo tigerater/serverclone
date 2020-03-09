@@ -43,7 +43,7 @@ class BaseTest extends TestCase {
 	/** @var IProvider|Base|\PHPUnit_Framework_MockObject_MockObject */
 	protected $provider;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		$this->userManager = $this->createMock(IUserManager::class);
 		$this->groupManager = $this->createMock(IGroupManager::class);

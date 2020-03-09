@@ -49,7 +49,7 @@ class DbHandlerTest extends TestCase {
 	/** @var string  */
 	private $dbTable = 'trusted_servers';
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->connection = \OC::$server->getDatabaseConnection();
@@ -65,7 +65,7 @@ class DbHandlerTest extends TestCase {
 		$this->assertEmpty($result, 'we need to start with a empty trusted_servers table');
 	}
 
-	public function tearDown(): void {
+	public function tearDown() {
 		parent::tearDown();
 		$query = $this->connection->getQueryBuilder()->delete($this->dbTable);
 		$query->execute();

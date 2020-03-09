@@ -30,7 +30,7 @@ namespace Test\Preview;
  */
 class TXTTest extends Provider {
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$fileName = 'lorem-big.txt';

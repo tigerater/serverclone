@@ -47,7 +47,7 @@ class UUIDFixInsertTest extends TestCase {
 	/** @var  UUIDFixInsert */
 	protected $job;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->jobList = $this->createMock(IJobList::class);

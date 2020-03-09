@@ -42,7 +42,7 @@ class OCSMiddlewareTest extends \Test\TestCase {
 	 */
 	private $request;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->request = $this->getMockBuilder(IRequest::class)

@@ -40,7 +40,7 @@ class WipeControllerTest extends TestCase {
 	/** @var WipeController */
 	private $controller;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->remoteWipe = $this->createMock(RemoteWipe::class);

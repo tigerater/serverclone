@@ -85,7 +85,7 @@ class SystemTagPluginTest extends \Test\TestCase {
 	 */
 	private $plugin;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->tree = $this->getMockBuilder(Tree::class)
 			->disableOriginalConstructor()

@@ -72,7 +72,7 @@ class FileSearchBackendTest extends TestCase {
 	/** @var Directory|\PHPUnit_Framework_MockObject_MockObject */
 	private $davFolder;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->user = $this->createMock(IUser::class);

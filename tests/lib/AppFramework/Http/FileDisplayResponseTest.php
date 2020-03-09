@@ -34,7 +34,7 @@ class FileDisplayResponseTest extends \Test\TestCase {
 	/** @var FileDisplayResponse */
 	private $response;
 
-	public function setUp(): void {
+	public function setup() {
 		$this->file = $this->getMockBuilder('OCP\Files\File')
 			->getMock();
 

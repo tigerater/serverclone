@@ -45,12 +45,12 @@ class DatabaseTest extends Backend {
 		return $name;
 	}
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		$this->backend = new \OC\Group\Database();
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		foreach ($this->groups as $group) {
 			$this->backend->deleteGroup($group);
 		}

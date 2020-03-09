@@ -85,7 +85,7 @@ class FederatedShareProviderTest extends \Test\TestCase {
 	/** @var \PHPUnit_Framework_MockObject_MockObject|ICloudFederationProviderManager */
 	private $cloudFederationProviderManager;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->connection = \OC::$server->getDatabaseConnection();
@@ -131,10 +131,10 @@ class FederatedShareProviderTest extends \Test\TestCase {
 		$this->shareManager = \OC::$server->getShareManager();
 	}
 
-	public function tearDown(): void {
+	public function tearDown() {
 		$this->connection->getQueryBuilder()->delete('share')->execute();
 
-		parent::tearDown();
+		return parent::tearDown();
 	}
 
 	public function testCreate() {

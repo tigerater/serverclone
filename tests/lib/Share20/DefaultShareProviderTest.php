@@ -73,7 +73,7 @@ class DefaultShareProviderTest extends \Test\TestCase {
 	/** @var \PHPUnit_Framework_MockObject_MockObject|IURLGenerator */
 	protected $urlGenerator;
 
-	public function setUp(): void {
+	public function setUp() {
 		$this->dbConn = \OC::$server->getDatabaseConnection();
 		$this->userManager = $this->createMock(IUserManager::class);
 		$this->groupManager = $this->createMock(IGroupManager::class);
@@ -100,7 +100,7 @@ class DefaultShareProviderTest extends \Test\TestCase {
 		);
 	}
 
-	public function tearDown(): void {
+	public function tearDown() {
 		$this->dbConn->getQueryBuilder()->delete('share')->execute();
 		$this->dbConn->getQueryBuilder()->delete('filecache')->execute();
 		$this->dbConn->getQueryBuilder()->delete('storages')->execute();

@@ -59,7 +59,7 @@ class AppFetcherTest extends TestCase  {
 EOD;
 
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		/** @var Factory|PHPUnit_Framework_MockObject_MockObject $factory */

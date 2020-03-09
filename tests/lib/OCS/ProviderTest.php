@@ -31,7 +31,7 @@ class ProviderTest extends \Test\TestCase {
 	/** @var Provider */
 	private $ocsProvider;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->request = $this->getMockBuilder('\\OCP\\IRequest')->getMock();

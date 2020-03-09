@@ -121,7 +121,7 @@ class CardDavBackendTest extends TestCase {
 						'N:TestNoUID;;;;'.PHP_EOL.
 						'END:VCARD';
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->userManager = $this->createMock(IUserManager::class);
@@ -159,7 +159,7 @@ class CardDavBackendTest extends TestCase {
 		$this->tearDown();
 	}
 
-	public function tearDown(): void {
+	public function tearDown() {
 		parent::tearDown();
 
 		if (is_null($this->backend)) {

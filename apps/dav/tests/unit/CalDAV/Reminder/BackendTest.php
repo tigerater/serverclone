@@ -42,7 +42,7 @@ class BackendTest extends TestCase {
 	/** @var ITimeFactory|\PHPUnit\Framework\MockObject\MockObject */
 	private $timeFactory;
 
-	public function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$query = self::$realDatabase->getQueryBuilder();
@@ -56,7 +56,7 @@ class BackendTest extends TestCase {
 		$this->createRemindersTestSet();
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		$query = self::$realDatabase->getQueryBuilder();
 		$query->delete('calendar_reminders')->execute();
 		$query->delete('calendarobjects')->execute();
