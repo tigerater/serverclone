@@ -2,7 +2,6 @@ OC.L10N.register(
     "systemtags",
     {
     "Tags" : "Štítky",
-    "Tag name is empty" : "Název štítku je prázdný",
     "Update" : "Aktualizovat",
     "Create" : "Vytvořit",
     "Select tag…" : "Zvolit štítek…",
@@ -61,7 +60,7 @@ OC.L10N.register(
     "Delete" : "Smazat",
     "Reset" : "Obnovit",
     "No files in here" : "Žádné soubory",
-    "No entries found in this folder" : "V této složce nebylo nic nalezeno",
+    "No entries found in this folder" : "V tomto adresáři nebylo nic nalezeno",
     "Size" : "Velikost",
     "Modified" : "Upraveno"
 },

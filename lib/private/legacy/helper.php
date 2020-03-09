@@ -586,13 +586,8 @@ class OC_Helper {
 			$relative = 0;
 		}
 
-		return [
-			'free' => $free,
-			'used' => $used,
-			'total' => $total,
-			'relative' => $relative,
-			'quota' => $quota
-		];
+		return array('free' => $free, 'used' => $used, 'total' => $total, 'relative' => $relative);
+
 	}
 
 	/**
