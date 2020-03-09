@@ -24,7 +24,6 @@ $expectedFiles = [
 	'..',
 	'.codecov.yml',
 	'.drone.yml',
-	'.editorconfig',
 	'.eslintrc.js',
 	'.git',
 	'.gitattributes',
