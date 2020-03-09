@@ -1,5 +1,4 @@
-<?php declare(strict_types=1);
-
+<?php
 /**
  * @copyright Copyright (c) 2018 Roeland Jago Douma <roeland@famdouma.nl>
  *
@@ -24,7 +23,6 @@
 
 namespace Test\Authentication\Token;
 
-use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use OC\Authentication\Exceptions\InvalidTokenException;
 use OC\Authentication\Exceptions\PasswordlessTokenException;
 use OC\Authentication\Token\DefaultToken;
@@ -33,15 +31,21 @@ use OC\Authentication\Token\ExpiredTokenException;
 use OC\Authentication\Token\IToken;
 use OC\Authentication\Token\Manager;
 use OC\Authentication\Token\PublicKeyToken;
+use OC\Authentication\Token\PublicKeyTokenMapper;
 use OC\Authentication\Token\PublicKeyTokenProvider;
-use PHPUnit\Framework\MockObject\MockObject;
+use OCP\AppFramework\Db\DoesNotExistException;
+use OCP\AppFramework\Utility\ITimeFactory;
+use OCP\IConfig;
+use OCP\ILogger;
+use OCP\IUser;
+use OCP\Security\ICrypto;
 use Test\TestCase;
 
 class ManagerTest extends TestCase {
 
-	/** @var PublicKeyTokenProvider|MockObject */
+	/** @var PublicKeyTokenProvider|\PHPUnit_Framework_MockObject_MockObject */
 	private $publicKeyTokenProvider;
-	/** @var DefaultTokenProvider|MockObject */
+	/** @var DefaultTokenProvider|\PHPUnit_Framework_MockObject_MockObject */
 	private $defaultTokenProvider;
 	/** @var Manager */
 	private $manager;
@@ -74,44 +78,6 @@ class ManagerTest extends TestCase {
 				IToken::TEMPORARY_TOKEN,
 				IToken::REMEMBER
 			)->willReturn($token);
-
-		$actual = $this->manager->generateToken(
-			'token',
-			'uid',
-			'loginName',
-			'password',
-			'name',
-			IToken::TEMPORARY_TOKEN,
-			IToken::REMEMBER
-		);
-
-		$this->assertSame($token, $actual);
-	}
-
-	public function testGenerateConflictingToken() {
-		/** @var MockObject|UniqueConstraintViolationException $exception */
-		$exception = $this->createMock(UniqueConstraintViolationException::class);
-		$this->defaultTokenProvider->expects($this->never())
-			->method('generateToken');
-
-		$token = new PublicKeyToken();
-		$token->setUid('uid');
-
-		$this->publicKeyTokenProvider->expects($this->once())
-			->method('generateToken')
-			->with(
-				'token',
-				'uid',
-				'loginName',
-				'password',
-				'name',
-				IToken::TEMPORARY_TOKEN,
-				IToken::REMEMBER
-			)->willThrowException($exception);
-		$this->publicKeyTokenProvider->expects($this->once())
-			->method('getToken')
-			->with('token')
-			->willReturn($token);
 
 		$actual = $this->manager->generateToken(
 			'token',

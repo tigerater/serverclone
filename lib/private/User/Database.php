@@ -58,9 +58,7 @@ declare(strict_types=1);
 namespace OC\User;
 
 use OC\Cache\CappedMemoryCache;
-use OCP\EventDispatcher\IEventDispatcher;
 use OCP\IDBConnection;
-use OCP\Security\Events\ValidatePasswordPolicyEvent;
 use OCP\User\Backend\ABackend;
 use OCP\User\Backend\ICheckPasswordBackend;
 use OCP\User\Backend\ICountUsersBackend;
@@ -70,6 +68,7 @@ use OCP\User\Backend\IGetHomeBackend;
 use OCP\User\Backend\IGetRealUIDBackend;
 use OCP\User\Backend\ISetDisplayNameBackend;
 use OCP\User\Backend\ISetPasswordBackend;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 
 /**
@@ -87,7 +86,7 @@ class Database extends ABackend
 	/** @var CappedMemoryCache */
 	private $cache;
 
-	/** @var IEventDispatcher */
+	/** @var EventDispatcherInterface */
 	private $eventDispatcher;
 
 	/** @var IDBConnection */
@@ -99,13 +98,13 @@ class Database extends ABackend
 	/**
 	 * \OC\User\Database constructor.
 	 *
-	 * @param IEventDispatcher $eventDispatcher
+	 * @param EventDispatcherInterface $eventDispatcher
 	 * @param string $table
 	 */
 	public function __construct($eventDispatcher = null, $table = 'users') {
 		$this->cache = new CappedMemoryCache();
 		$this->table = $table;
-		$this->eventDispatcher = $eventDispatcher ? $eventDispatcher : \OC::$server->query(IEventDispatcher::class);
+		$this->eventDispatcher = $eventDispatcher ? $eventDispatcher : \OC::$server->getEventDispatcher();
 	}
 
 	/**
@@ -131,7 +130,8 @@ class Database extends ABackend
 		$this->fixDI();
 
 		if (!$this->userExists($uid)) {
-			$this->eventDispatcher->dispatchTyped(new ValidatePasswordPolicyEvent($password));
+			$event = new GenericEvent($password);
+			$this->eventDispatcher->dispatch('OCP\PasswordPolicy::validate', $event);
 
 			$qb = $this->dbConn->getQueryBuilder();
 			$qb->insert($this->table)
@@ -199,7 +199,8 @@ class Database extends ABackend
 		$this->fixDI();
 
 		if ($this->userExists($uid)) {
-			$this->eventDispatcher->dispatchTyped(new ValidatePasswordPolicyEvent($password));
+			$event = new GenericEvent($password);
+			$this->eventDispatcher->dispatch('OCP\PasswordPolicy::validate', $event);
 
 			$hasher = \OC::$server->getHasher();
 			$hashedPassword = $hasher->hash($password);
