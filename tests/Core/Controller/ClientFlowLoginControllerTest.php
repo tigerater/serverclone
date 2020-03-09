@@ -398,16 +398,7 @@ class ClientFlowLoginControllerTest extends TestCase {
 		$this->assertEquals($expected, $this->clientFlowLoginController->generateAppPassword('MyStateToken'));
 	}
 
-	/**
-	 * @param string $redirectUri
-	 * @param string $redirectUrl
-	 *
-	 * @testWith
-	 * ["https://example.com/redirect.php", "https://example.com/redirect.php?state=MyOauthState&code=MyAccessCode"]
-	 * ["https://example.com/redirect.php?hello=world", "https://example.com/redirect.php?hello=world&state=MyOauthState&code=MyAccessCode"]
-	 *
-	 */
-	public function testGeneratePasswordWithPasswordForOauthClient($redirectUri, $redirectUrl) {		
+	public function testGeneratePasswordWithPasswordForOauthClient() {
 		$this->session
 			->expects($this->at(0))
 			->method('get')
@@ -480,7 +471,7 @@ class ClientFlowLoginControllerTest extends TestCase {
 			->willReturn($token);
 		$client = new Client();
 		$client->setName('My OAuth client');
-		$client->setRedirectUri($redirectUri);
+		$client->setRedirectUri('https://example.com/redirect.php');
 		$this->clientMapper
 			->expects($this->once())
 			->method('getByIdentifier')
@@ -490,7 +481,7 @@ class ClientFlowLoginControllerTest extends TestCase {
 		$this->eventDispatcher->expects($this->once())
 			->method('dispatch');
 
-		$expected = new Http\RedirectResponse($redirectUrl);
+		$expected = new Http\RedirectResponse('https://example.com/redirect.php?state=MyOauthState&code=MyAccessCode');
 		$this->assertEquals($expected, $this->clientFlowLoginController->generateAppPassword('MyStateToken', 'MyClientIdentifier'));
 	}
 
