@@ -182,7 +182,6 @@ OC.L10N.register(
     "Shared with you" : "Споделено со тебе",
     "Shared by link" : "Споделено со линк",
     "Deleted shares" : "Избришани споделувања",
-    "Pending shares" : "Споделувања на чекање",
     "Text file" : "Текстуална датотека",
     "New text file.txt" : "Нова текстуална датотека file.txt",
     "%s of %s used" : "искорестени %s од %s ",
