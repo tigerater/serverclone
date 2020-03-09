@@ -250,7 +250,7 @@ export default class Share {
 	 * @memberof Share
 	 */
 	set note(note) {
-		this.#share.note = note
+		this.#share.note = note.trim()
 	}
 
 	/**
@@ -303,29 +303,7 @@ export default class Share {
 	 * @memberof Share
 	 */
 	set password(password) {
-		this.#share.password = password
-	}
-
-	/**
-	 * Password protection by Talk of the share
-	 *
-	 * @returns {Boolean}
-	 * @readonly
-	 * @memberof Share
-	 */
-	get sendPasswordByTalk() {
-		return this.#share.send_password_by_talk
-	}
-
-	/**
-	 * Password protection by Talk of the share
-	 *
-	 * @param {Boolean} sendPasswordByTalk whether to send the password by Talk
-	 *        or not
-	 * @memberof Share
-	 */
-	set sendPasswordByTalk(sendPasswordByTalk) {
-		this.#share.send_password_by_talk = sendPasswordByTalk
+		this.#share.password = password.trim()
 	}
 
 	// SHARED ITEM DATA ---------------------------------------------

@@ -29,10 +29,8 @@ namespace OCA\Files_Sharing\Listener;
 use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventListener;
 use OCP\IConfig;
-use OCP\IGroupManager;
-use OCP\Share\Events\ShareCreatedEvent;
+use OCP\Share\Events\SharedEvent;
 use OCP\Share\IManager;
-use OCP\Share\IShare;
 
 class UserShareAcceptanceListener implements IEventListener {
 
@@ -40,42 +38,23 @@ class UserShareAcceptanceListener implements IEventListener {
 	private $config;
 	/** @var IManager */
 	private $shareManager;
-	/** @var IGroupManager */
-	private $groupManager;
+	/** @var string */
+	private $userId;
 
-	public function __construct(IConfig $config, IManager $shareManager, IGroupManager $groupManager) {
+	public function __construct(IConfig $config, IManager $shareManager, string $userId) {
 		$this->config = $config;
 		$this->shareManager = $shareManager;
-		$this->groupManager = $groupManager;
+		$this->userId = $userId;
 	}
 
 	public function handle(Event $event): void {
-		if (!($event instanceof ShareCreatedEvent)) {
+		if (!($event instanceof SharedEvent)) {
 			return;
 		}
 
-		$share = $event->getShare();
-
-		if ($share->getShareType() === IShare::TYPE_USER) {
-			$this->handleAutoAccept($share, $share->getSharedWith());
-		} else if ($share->getShareType() === IShare::TYPE_GROUP) {
-			$group = $this->groupManager->get($share->getSharedWith());
-
-			if ($group === null) {
-				return;
-			}
-
-			$users = $group->getUsers();
-			foreach ($users as $user) {
-				$this->handleAutoAccept($share, $user->getUID());
-			}
-		}
-
-	}
-
-	private function handleAutoAccept(IShare $share, string $userId) {
-		if ($this->config->getUserValue($userId, 'files_sharing','default_accept','no') === 'yes') {
-			$this->shareManager->acceptShare($share, $userId);
+		if ($this->config->getUserValue($this->userId, 'files_sharing','default_accept','no') === 'yes') {
+			$share = $event->getShare();
+			$this->shareManager->acceptShare($share, $this->userId);
 		}
 	}
 

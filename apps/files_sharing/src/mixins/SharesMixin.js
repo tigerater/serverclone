@@ -88,12 +88,12 @@ export default {
 		 */
 		hasNote: {
 			get: function() {
-				return this.share.note !== ''
+				return !!this.share.note
 			},
 			set: function(enabled) {
 				this.share.note = enabled
-					? null // enabled but user did not changed the content yet
-					: '' // empty = no note = disabled
+					? t('files_sharing', 'Enter a note for the share recipient')
+					: ''
 			},
 		},
 
@@ -117,10 +117,10 @@ export default {
 			// fallback to default in case of unavailable data
 			return {
 				days: window.dayNamesShort
-					? window.dayNamesShort // provided by nextcloud
+					? window.dayNamesShort			// provided by nextcloud
 					: ['Sun.', 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.'],
 				months: window.monthNamesShort
-					? window.monthNamesShort // provided by nextcloud
+					? window.monthNamesShort		// provided by nextcloud
 					: ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May.', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.'],
 				placeholder: {
 					date: 'Select Date', // TODO: Translate
@@ -180,27 +180,6 @@ export default {
 		onExpirationDisable() {
 			this.share.expireDate = ''
 			this.queueUpdate('expireDate')
-		},
-
-		/**
-		 * Note changed, let's save it to a different key
-		 * @param {String} note the share note
-		 */
-		onNoteChange(note) {
-			this.$set(this.share, 'newNote', note.trim())
-		},
-
-		/**
-		 * When the note change, we trim, save and dispatch
-		 *
-		 * @param {string} note the note
-		 */
-		onNoteSubmit() {
-			if (this.share.newNote) {
-				this.share.note = this.share.newNote
-				this.$delete(this.share, 'newNote')
-				this.queueUpdate('note')
-			}
 		},
 
 		/**

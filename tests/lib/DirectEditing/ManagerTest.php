@@ -12,7 +12,6 @@ use OCP\DirectEditing\IEditor;
 use OCP\DirectEditing\IToken;
 use OCP\Files\Folder;
 use OCP\Files\IRootFolder;
-use OCP\Files\NotFoundException;
 use OCP\IDBConnection;
 use OCP\IL10N;
 use OCP\IUserSession;
@@ -152,10 +151,6 @@ class ManagerTest extends TestCase {
 		$this->random->expects($this->once())
 			->method('generate')
 			->willReturn($expectedToken);
-		$this->userFolder
-			->method('nodeExists')
-			->with('/File.txt')
-			->willReturn(false);
 		$this->userFolder->expects($this->once())
 			->method('newFile')
 			->willReturn($file);
@@ -172,10 +167,6 @@ class ManagerTest extends TestCase {
 		$this->random->expects($this->once())
 			->method('generate')
 			->willReturn($expectedToken);
-		$this->userFolder
-			->method('nodeExists')
-			->with('/File.txt')
-			->willReturn(false);
 		$this->userFolder->expects($this->once())
 			->method('newFile')
 			->willReturn($file);
@@ -184,16 +175,6 @@ class ManagerTest extends TestCase {
 		$secondResult = $this->manager->edit($expectedToken);
 		$this->assertInstanceOf(DataResponse::class, $firstResult);
 		$this->assertInstanceOf(NotFoundResponse::class, $secondResult);
-	}
-
-	public function testCreateFileAlreadyExists() {
-		$this->expectException(\RuntimeException::class);
-		$this->userFolder
-			->method('nodeExists')
-			->with('/File.txt')
-			->willReturn(true);
-
-		$this->manager->create('/File.txt', 'testeditor', 'createEmpty');
 	}
 
 }
