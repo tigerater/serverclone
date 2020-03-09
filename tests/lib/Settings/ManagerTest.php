@@ -102,16 +102,15 @@ class ManagerTest extends TestCase {
 	}
 
 	public function testGetAdminSettings() {
-		$section = $this->createMock(ISettings::class);
-		$section->method('getPriority')
+		$section = $this->createMock(Sharing::class);
+		$section->expects($this->once())
+			->method('getPriority')
 			->willReturn(13);
-		$section->method('getSection')
-			->willReturn('sharing');
-		$this->container->method('query')
-			->with('myAdminClass')
+		$this->container->expects($this->once())
+			->method('query')
+			->with(Sharing::class)
 			->willReturn($section);
 
-		$this->manager->registerSetting('admin', 'myAdminClass');
 		$settings = $this->manager->getAdminSettings('sharing');
 
 		$this->assertEquals([
@@ -120,16 +119,12 @@ class ManagerTest extends TestCase {
 	}
 
 	public function testGetAdminSettingsAsSubAdmin() {
-		$section = $this->createMock(ISettings::class);
-		$section->method('getPriority')
-			->willReturn(13);
-		$section->method('getSection')
-			->willReturn('sharing');
-		$this->container->method('query')
-			->with('myAdminClass')
+		$section = $this->createMock(Sharing::class);
+		$this->container->expects($this->once())
+			->method('query')
+			->with(Sharing::class)
 			->willReturn($section);
 
-		$this->manager->registerSetting('admin', 'myAdminClass');
 		$settings = $this->manager->getAdminSettings('sharing', true);
 
 		$this->assertEquals([], $settings);
@@ -137,16 +132,14 @@ class ManagerTest extends TestCase {
 
 	public function testGetSubAdminSettingsAsSubAdmin() {
 		$section = $this->createMock(ISubAdminSettings::class);
-		$section->method('getPriority')
+		$section->expects($this->once())
+			->method('getPriority')
 			->willReturn(13);
-		$section->method('getSection')
-			->willReturn('sharing');
 		$this->container->expects($this->once())
 			->method('query')
-			->with('mySubAdminClass')
+			->with(Sharing::class)
 			->willReturn($section);
 
-		$this->manager->registerSetting('admin', 'mySubAdminClass');
 		$settings = $this->manager->getAdminSettings('sharing', true);
 
 		$this->assertEquals([
