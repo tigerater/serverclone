@@ -52,11 +52,10 @@ class GeneratorHelper {
 	}
 
 	/**
-	 * @param IProviderV2 $provider
+	 * @param IProvider $provider
 	 * @param File $file
 	 * @param int $maxWidth
 	 * @param int $maxHeight
-	 *
 	 * @return bool|IImage
 	 */
 	public function getThumbnail(IProviderV2 $provider, File $file, $maxWidth, $maxHeight) {
