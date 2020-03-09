@@ -49,7 +49,6 @@ use OC\Authentication\Token\DefaultTokenCleanupJob;
 use OC\Authentication\Token\DefaultTokenProvider;
 use OC\Log\Rotate;
 use OC\Preview\BackgroundCleanupJob;
-use OCP\AppFramework\Utility\ITimeFactory;
 use OCP\Defaults;
 use OCP\IGroup;
 use OCP\IL10N;
@@ -421,9 +420,6 @@ class Setup {
 			$userSession->setTokenProvider($defaultTokenProvider);
 			$userSession->login($username, $password);
 			$userSession->createSessionToken($request, $userSession->getUser()->getUID(), $username, $password);
-
-			$session = $userSession->getSession();
-			$session->set('last-password-confirm', \OC::$server->query(ITimeFactory::class)->getTime());
 
 			// Set email for admin
 			if (!empty($options['adminemail'])) {
