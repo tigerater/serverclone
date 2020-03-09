@@ -23,9 +23,11 @@
  *
  */
 
+
 namespace OCP\AppFramework\Http;
 
 use OCP\AppFramework\Http;
+
 
 /**
  * Redirects to a different URL

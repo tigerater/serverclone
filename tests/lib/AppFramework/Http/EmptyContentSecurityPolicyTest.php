@@ -6,6 +6,7 @@
  * See the COPYING-README file.
  */
 
+
 namespace Test\AppFramework\Http;
 
 use OCP\AppFramework\Http;
@@ -21,7 +22,7 @@ class EmptyContentSecurityPolicyTest extends \Test\TestCase {
 	/** @var EmptyContentSecurityPolicy */
 	private $contentSecurityPolicy;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->contentSecurityPolicy = new EmptyContentSecurityPolicy();
 	}

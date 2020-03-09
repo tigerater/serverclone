@@ -21,7 +21,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace OCA\User_LDAP\Tests;
 
 
@@ -36,7 +35,7 @@ class HelperTest extends \Test\TestCase {
 	/** @var Helper */
 	private $helper;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->config = $this->createMock(IConfig::class);

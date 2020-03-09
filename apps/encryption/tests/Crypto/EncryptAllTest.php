@@ -24,6 +24,7 @@
  *
  */
 
+
 namespace OCA\Encryption\Tests\Crypto;
 
 
@@ -90,7 +91,7 @@ class EncryptAllTest extends TestCase {
 	/** @var  EncryptAll */
 	protected $encryptAll;
 
-	protected function setUp(): void {
+	function setUp() {
 		parent::setUp();
 		$this->setupUser = $this->getMockBuilder(Setup::class)
 			->disableOriginalConstructor()->getMock();

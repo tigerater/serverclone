@@ -29,3 +29,4 @@ namespace OCP\Capabilities;
  * @since 13.0.0
  */
 interface IPublicCapability extends ICapability {}
+

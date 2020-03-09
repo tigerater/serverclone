@@ -12,7 +12,7 @@ use OC;
 use OCP\IConfig;
 
 class ImageTest extends \Test\TestCase {
-	public static function tearDownAfterClass(): void {
+	public static function tearDownAfterClass() {
 		@unlink(OC::$SERVERROOT.'/tests/data/testimage2.png');
 		@unlink(OC::$SERVERROOT.'/tests/data/testimage2.jpg');
 

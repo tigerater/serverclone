@@ -25,6 +25,7 @@
  *
  */
 
+
 namespace OCA\Federation\Tests;
 
 
@@ -76,7 +77,7 @@ class TrustedServersTest extends TestCase {
 	/** @var \PHPUnit_Framework_MockObject_MockObject|ITimeFactory */
 	private $timeFactory;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->dbHandler = $this->getMockBuilder(DbHandler::class)
@@ -352,11 +353,10 @@ class TrustedServersTest extends TestCase {
 
 	/**
 	 * @dataProvider dataTestCheckOwnCloudVersionTooLow
+	 * @expectedException \OC\HintException
+	 * @expectedExceptionMessage Remote server version is too low. 9.0 is required.
 	 */
 	public function testCheckOwnCloudVersionTooLow($status) {
-		$this->expectException(\OC\HintException::class);
-		$this->expectExceptionMessage('Remote server version is too low. 9.0 is required.');
-
 		$this->invokePrivate($this->trustedServers, 'checkOwnCloudVersion', [$status]);
 	}
 

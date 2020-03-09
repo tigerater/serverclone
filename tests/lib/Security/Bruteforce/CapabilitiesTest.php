@@ -18,7 +18,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace Test\Security\Bruteforce;
 
 use OC\Security\Bruteforce\Capabilities;
@@ -36,7 +35,7 @@ class CapabilitiesTest extends TestCase {
 	/** @var Throttler|\PHPUnit_Framework_MockObject_MockObject */
 	private $throttler;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->request = $this->createMock(IRequest::class);

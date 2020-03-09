@@ -31,7 +31,7 @@ class CronBusTest extends AsyncBusTest {
 	private $jobList;
 
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->jobList = new DummyJobList();

@@ -21,9 +21,11 @@
  *
  */
 
+
 namespace Test\AppFramework\Http;
 
 use OC\AppFramework\Http;
+
 
 class HttpTest extends \Test\TestCase {
 
@@ -34,7 +36,7 @@ class HttpTest extends \Test\TestCase {
 	 */
 	private $http;
 
-	protected function setUp(): void {
+	protected function setUp(){
 		parent::setUp();
 
 		$this->server = array();

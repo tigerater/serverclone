@@ -20,11 +20,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace OCA\DAV\AppInfo;
 
-use OC\ServerContainer;
 use OCP\App\IAppManager;
+use OC\ServerContainer;
 use OCP\AppFramework\QueryException;
 
 /**

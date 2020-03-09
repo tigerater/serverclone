@@ -10,10 +10,10 @@ namespace Test\Files\Config;
 
 use OC\DB\QueryBuilder\Literal;
 use OC\Files\Mount\MountPoint;
-use OC\Files\Storage\Storage;
 use OC\Log;
 use OC\User\Manager;
 use OCP\Files\Config\ICachedMountInfo;
+use OC\Files\Storage\Storage;
 use OCP\IConfig;
 use OCP\IDBConnection;
 use OCP\IUserManager;
@@ -42,7 +42,7 @@ class UserMountCacheTest extends TestCase {
 
 	private $fileIds = [];
 
-	protected function setUp(): void {
+	public function setUp() {
 		$this->fileIds = [];
 		$this->connection = \OC::$server->getDatabaseConnection();
 		$this->userManager = new Manager($this->createMock(IConfig::class), $this->createMock(EventDispatcherInterface::class));
@@ -54,7 +54,7 @@ class UserMountCacheTest extends TestCase {
 		$this->cache = new \OC\Files\Config\UserMountCache($this->connection, $this->userManager, $this->createMock(Log::class));
 	}
 
-	protected function tearDown(): void {
+	public function tearDown() {
 		$builder = $this->connection->getQueryBuilder();
 
 		$builder->delete('mounts')->execute();

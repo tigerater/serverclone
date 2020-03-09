@@ -20,7 +20,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace Test\File\SimpleFS;
 
 use OC\Files\SimpleFS\SimpleFile;
@@ -36,7 +35,7 @@ class SimpleFileTest extends \Test\TestCase  {
 	/** @var SimpleFile */
 	private $simpleFile;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->file = $this->createMock(File::class);

@@ -27,6 +27,7 @@ declare(strict_types=1);
  *
  */
 
+
 namespace OCP\FullTextSearch;
 
 
@@ -35,6 +36,7 @@ use OCP\FullTextSearch\Model\ISearchResult;
 use OCP\FullTextSearch\Service\IIndexService;
 use OCP\FullTextSearch\Service\IProviderService;
 use OCP\FullTextSearch\Service\ISearchService;
+
 
 /**
  * Interface IFullTextSearchManager
@@ -191,3 +193,4 @@ interface IFullTextSearchManager {
 
 
 }
+

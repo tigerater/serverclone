@@ -48,7 +48,6 @@ Feature: webdav-related
 		  | shareType | 0 |
 		  | permissions | 1 |
 		  | shareWith | user0 |
-		And user "user0" accepts last share
 		And As an "user0"
 		And User "user0" moves file "/textfile0.txt" to "/testshare/textfile0.txt"
 		And the HTTP status code should be "403"
@@ -67,7 +66,6 @@ Feature: webdav-related
 		  | shareType | 0 |
 		  | permissions | 1 |
 		  | shareWith | user0 |
-		And user "user0" accepts last share
 		And User "user1" copies file "/welcome.txt" to "/testshare/overwritethis.txt"
 		And As an "user0"
 		When User "user0" moves file "/textfile0.txt" to "/testshare/overwritethis.txt"
@@ -104,7 +102,6 @@ Feature: webdav-related
 		  | shareType | 0 |
 		  | permissions | 1 |
 		  | shareWith | user0 |
-		And user "user0" accepts last share
 		And As an "user0"
 		When User "user0" copies file "/textfile0.txt" to "/testshare/textfile0.txt"
 		Then the HTTP status code should be "403"
@@ -123,7 +120,6 @@ Feature: webdav-related
 		  | shareType | 0 |
 		  | permissions | 1 |
 		  | shareWith | user0 |
-		And user "user0" accepts last share
 		And User "user1" copies file "/welcome.txt" to "/testshare/overwritethis.txt"
 		And As an "user0"
 		When User "user0" copies file "/textfile0.txt" to "/testshare/overwritethis.txt"
@@ -176,7 +172,6 @@ Feature: webdav-related
 		  | shareType | 0 |
 		  | permissions | 31 |
 		  | shareWith | user0 |
-		And user "user0" accepts last share
 		Then as "user0" gets properties of folder "/testquota" with
 		  |{DAV:}quota-available-bytes|
 		And the single response should contain a property "{DAV:}quota-available-bytes" with value "10485421"
@@ -195,7 +190,6 @@ Feature: webdav-related
 		  | shareType | 0 |
 		  | permissions | 31 |
 		  | shareWith | user0 |
-		And user "user0" accepts last share
 		And As an "user0"
 		When User "user0" uploads file "data/textfile.txt" to "/testquota/asdf.txt"
 		Then the HTTP status code should be "201"
@@ -218,7 +212,6 @@ Feature: webdav-related
 		And user "user1" has a quota of "1 KB"
 		And user "user0" adds a file of 93 bytes to "/user0.txt"
 		And file "user0.txt" of user "user0" is shared with user "user1"
-		And user "user1" accepts last share
 		When as "user1" gets properties of folder "/" with
 		  |{DAV:}quota-available-bytes|
 		Then the single response should contain a property "{DAV:}quota-available-bytes" with value "685"
@@ -432,7 +425,6 @@ Feature: webdav-related
 			| shareType | 0 |
 			| permissions | 31 |
 			| shareWith | user0 |
-		And user "user0" accepts last share
 		And User "user0" uploads file with content "copytest" to "/copytest.txt"
 		When User "user0" copies file "/copytest.txt" to "/testcopypermissionsAllowed/copytest.txt"
 		Then the HTTP status code should be "201"
@@ -448,7 +440,6 @@ Feature: webdav-related
 			| shareType | 0 |
 			| permissions | 1 |
 			| shareWith | user0 |
-		And user "user0" accepts last share
 		And User "user0" uploads file with content "copytest" to "/copytest.txt"
 		When User "user0" copies file "/copytest.txt" to "/testcopypermissionsNotAllowed/copytest.txt"
 		Then the HTTP status code should be "403"
@@ -467,7 +458,6 @@ Feature: webdav-related
 			| shareType   | 0          |
 			| permissions | 23         |
 			| shareWith   | user0      |
-		And user "user0" accepts last share
 		And As an "user0"
 		And User "user0" uploads file "data/textfile.txt" to "/testfolder/asdf.txt"
 		And As an "user1"

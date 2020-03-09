@@ -20,7 +20,7 @@ class LargeFileHelperGetFileSizeTest extends TestCase {
 	/** @var \OC\LargeFileHelper */
 	protected $helper;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		$this->helper = new \OC\LargeFileHelper();
 	}
@@ -37,7 +37,7 @@ class LargeFileHelperGetFileSizeTest extends TestCase {
 	/**
 	 * @dataProvider dataFileNameProvider
 	 */
-	public function XtestGetFileSizeViaCurl($filename, $fileSize) {
+	public function testGetFileSizeViaCurl($filename, $fileSize) {
 		if (!extension_loaded('curl')) {
 			$this->markTestSkipped(
 				'The PHP curl extension is required for this test.'

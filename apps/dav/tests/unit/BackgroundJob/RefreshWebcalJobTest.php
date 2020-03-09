@@ -32,9 +32,9 @@ use OCP\Http\Client\IClientService;
 use OCP\Http\Client\IResponse;
 use OCP\IConfig;
 use OCP\ILogger;
-use Sabre\VObject;
-
 use Test\TestCase;
+
+use Sabre\VObject;
 
 class RefreshWebcalJobTest extends TestCase {
 
@@ -56,7 +56,7 @@ class RefreshWebcalJobTest extends TestCase {
 	/** @var IJobList | \PHPUnit_Framework_MockObject_MockObject */
 	private $jobList;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->caldavBackend = $this->createMock(CalDavBackend::class);

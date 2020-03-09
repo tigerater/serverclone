@@ -25,8 +25,8 @@ namespace OCA\Accessibility\AppInfo;
 
 use OCP\AppFramework\App;
 use OCP\IConfig;
-use OCP\IURLGenerator;
 use OCP\IUserSession;
+use OCP\IURLGenerator;
 
 class Application extends App {
 

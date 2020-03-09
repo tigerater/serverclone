@@ -20,7 +20,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace Test\Core\Controller;
 
 use OC\Core\Controller\UserController;
@@ -38,7 +37,7 @@ class UserControllerTest extends TestCase {
 	/** @var UserController */
 	private $controller;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->userManager = $this->createMock(IUserManager::class);

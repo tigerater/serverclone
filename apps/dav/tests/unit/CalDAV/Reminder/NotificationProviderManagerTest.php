@@ -22,7 +22,6 @@ declare(strict_types=1);
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace OCA\DAV\Tests\unit\CalDAV\Reminder;
 
 use OCA\DAV\CalDAV\Reminder\NotificationProvider\EmailProvider;
@@ -41,7 +40,7 @@ class NotificationProviderManagerTest extends TestCase {
 	/**
 	 * @throws \OCP\AppFramework\QueryException
 	 */
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->providerManager = new NotificationProviderManager();
@@ -49,24 +48,22 @@ class NotificationProviderManagerTest extends TestCase {
 	}
 
 	/**
+	 * @expectedException OCA\DAV\CalDAV\Reminder\NotificationTypeDoesNotExistException
+	 * @expectedExceptionMessage Type NOT EXISTENT is not an accepted type of notification
 	 * @throws ProviderNotAvailableException
 	 * @throws NotificationTypeDoesNotExistException
 	 */
 	public function testGetProviderForUnknownType(): void{
-		$this->expectException(\OCA\DAV\CalDAV\Reminder\NotificationTypeDoesNotExistException::class);
-		$this->expectExceptionMessage('Type NOT EXISTENT is not an accepted type of notification');
-
 		$this->providerManager->getProvider('NOT EXISTENT');
 	}
 
 	/**
+	 * @expectedException OCA\DAV\CalDAV\Reminder\NotificationProvider\ProviderNotAvailableException
+	 * @expectedExceptionMessage No notification provider for type AUDIO available
 	 * @throws NotificationTypeDoesNotExistException
 	 * @throws ProviderNotAvailableException
 	 */
 	public function testGetProviderForUnRegisteredType(): void{
-		$this->expectException(\OCA\DAV\CalDAV\Reminder\NotificationProvider\ProviderNotAvailableException::class);
-		$this->expectExceptionMessage('No notification provider for type AUDIO available');
-
 		$this->providerManager->getProvider('AUDIO');
 	}
 
@@ -82,12 +79,11 @@ class NotificationProviderManagerTest extends TestCase {
 	}
 
 	/**
+	 * @expectedExceptionMessage Invalid notification provider registered
+	 * @expectedException \InvalidArgumentException
 	 * @throws \OCP\AppFramework\QueryException
 	 */
 	public function testRegisterBadProvider(): void{
-		$this->expectException(\InvalidArgumentException::class);
-		$this->expectExceptionMessage('Invalid notification provider registered');
-
 		$this->providerManager->registerProvider(Capabilities::class);
 	}
 

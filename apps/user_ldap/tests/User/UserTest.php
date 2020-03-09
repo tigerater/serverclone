@@ -76,7 +76,7 @@ class UserTest extends \Test\TestCase {
 	/** @var User */
 	protected $user;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->connection = $this->createMock(Connection::class);
@@ -499,7 +499,7 @@ class UserTest extends \Test\TestCase {
 	}
 
 	//the testUpdateAvatar series also implicitely tests getAvatarImage
-	public function XtestUpdateAvatarJpegPhotoProvided() {
+	public function testUpdateAvatarJpegPhotoProvided() {
 		$this->access->expects($this->once())
 			->method('readAttribute')
 			->with($this->equalTo($this->dn),
@@ -602,7 +602,7 @@ class UserTest extends \Test\TestCase {
 		$this->assertTrue($this->user->updateAvatar());
 	}
 
-	public function XtestUpdateAvatarThumbnailPhotoProvided() {
+	public function testUpdateAvatarThumbnailPhotoProvided() {
 		$this->access->expects($this->any())
 			->method('readAttribute')
 			->willReturnCallback(function($dn, $attr) {
@@ -720,7 +720,7 @@ class UserTest extends \Test\TestCase {
 		$this->user->updateAvatar();
 	}
 
-	public function XtestUpdateAvatarUnsupportedThumbnailPhotoProvided() {
+	public function testUpdateAvatarUnsupportedThumbnailPhotoProvided() {
 		$this->access->expects($this->any())
 			->method('readAttribute')
 			->willReturnCallback(function($dn, $attr) {
@@ -1063,7 +1063,7 @@ class UserTest extends \Test\TestCase {
 			$userMock->expects($this->once())
 				->method($method);
 		}
-		\OC_Hook::clear();//disconnect irrelevant hooks
+		\OC_Hook::clear();//disconnect irrelevant hooks 
 		$userMock->processAttributes($record);
 		/** @noinspection PhpUnhandledExceptionInspection */
 		\OC_Hook::emit('OC_User', 'post_login', ['uid' => $this->uid]);
@@ -1114,10 +1114,10 @@ class UserTest extends \Test\TestCase {
 		$this->assertFalse($this->user->getHomePath());
 	}
 
-
+	/**
+	 * @expectedException \Exception
+	 */
 	public function testGetHomePathConfiguredNotAvailableNotAllowed() {
-		$this->expectException(\Exception::class);
-
 		$this->connection->expects($this->any())
 			->method('__get')
 			->with($this->equalTo('homeFolderNamingRule'))

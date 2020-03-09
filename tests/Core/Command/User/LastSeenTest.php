@@ -40,7 +40,7 @@ class LastSeenTest extends TestCase {
 	/** @var \Symfony\Component\Console\Command\Command */
 	protected $command;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$userManager = $this->userManager = $this->getMockBuilder(IUserManager::class)

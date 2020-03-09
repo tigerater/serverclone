@@ -21,14 +21,16 @@
  *
  */
 
+
 namespace Test\AppFramework\Controller;
 
 use OC\AppFramework\Http\Request;
 use OCP\AppFramework\Controller;
-use OCP\AppFramework\Http\DataResponse;
-use OCP\AppFramework\Http\JSONResponse;
 use OCP\AppFramework\Http\TemplateResponse;
+use OCP\AppFramework\Http\JSONResponse;
+use OCP\AppFramework\Http\DataResponse;
 use OCP\IConfig;
+
 
 class ChildController extends Controller {
 
@@ -62,7 +64,7 @@ class ControllerTest extends \Test\TestCase {
 	private $controller;
 	private $app;
 
-	protected function setUp(): void {
+	protected function setUp(){
 		parent::setUp();
 
 		$request = new Request(
@@ -94,10 +96,10 @@ class ControllerTest extends \Test\TestCase {
 		$this->controller = new ChildController($this->app, $request);
 	}
 
-	
+	/**
+	 * @expectedException \DomainException
+	 */
 	public function testFormatResonseInvalidFormat() {
-		$this->expectException(\DomainException::class);
-
 		$this->controller->buildResponse(null, 'test');
 	}
 

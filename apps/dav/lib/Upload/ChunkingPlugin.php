@@ -19,6 +19,7 @@
  *
  */
 
+
 namespace OCA\DAV\Upload;
 
 use Sabre\DAV\Exception\BadRequest;

@@ -20,7 +20,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace Test\AppFramework\DependencyInjection;
 
 use OC\AppFramework\DependencyInjection\DIContainer;
@@ -56,7 +55,7 @@ class DIIntergrationTests extends TestCase {
 	/** @var ServerContainer */
 	private $server;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->server = new ServerContainer();

@@ -56,7 +56,7 @@ abstract class ALoginCommandTest extends TestCase {
 	/** @var ALoginCommand */
 	protected $cmd;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->request = $this->createMock(IRequest::class);

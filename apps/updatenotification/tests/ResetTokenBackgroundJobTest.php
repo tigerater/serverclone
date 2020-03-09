@@ -37,7 +37,7 @@ class ResetTokenBackgroundJobTest extends TestCase {
 	/** @var ResetTokenBackgroundJob */
 	private $resetTokenBackgroundJob;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->config = $this->createMock(IConfig::class);
 		$this->timeFactory = $this->createMock(ITimeFactory::class);

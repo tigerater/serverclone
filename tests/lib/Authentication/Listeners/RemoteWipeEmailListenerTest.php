@@ -60,7 +60,7 @@ class RemoteWipeEmailListenerTest extends TestCase {
 	/** @var IEventListener */
 	private $listener;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->mailer = $this->createMock(IMailer::class);

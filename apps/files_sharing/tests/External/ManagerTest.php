@@ -35,7 +35,6 @@ use OCA\Files_Sharing\Tests\TestCase;
 use OCP\Federation\ICloudFederationFactory;
 use OCP\Federation\ICloudFederationProviderManager;
 use OCP\Http\Client\IClientService;
-use OCP\Http\Client\IResponse;
 use OCP\IGroupManager;
 use OCP\IUserManager;
 use Test\Traits\UserTrait;
@@ -79,7 +78,7 @@ class ManagerTest extends TestCase {
 	private $user;
 	private $testMountProvider;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->uid = $this->getUniqueID('user');
@@ -173,15 +172,8 @@ class ManagerTest extends TestCase {
 		$this->clientService->expects($this->at(0))
 			->method('newClient')
 			->willReturn($client);
-		$response = $this->createMock(IResponse::class);
-		$response->method('getBody')
-			->willReturn(json_encode([
-				'ocs' => [
-					'meta' => [
-						'statuscode' => 200,
-					]
-				]
-			]));
+		$response = $this->getMockBuilder('OCP\Http\Client\IResponse')
+			->disableOriginalConstructor()->getMock();
 		$client->expects($this->once())
 			->method('post')
 			->with($this->stringStartsWith('http://localhost/ocs/v2.php/cloud/shares/' . $openShares[0]['remote_id']), $this->anything())
@@ -223,15 +215,8 @@ class ManagerTest extends TestCase {
 		$this->clientService->expects($this->at(0))
 			->method('newClient')
 			->willReturn($client);
-		$response = $this->createMock(IResponse::class);
-		$response->method('getBody')
-			->willReturn(json_encode([
-				'ocs' => [
-					'meta' => [
-						'statuscode' => 200,
-					]
-				]
-			]));
+		$response = $this->getMockBuilder('OCP\Http\Client\IResponse')
+			->disableOriginalConstructor()->getMock();
 		$client->expects($this->once())
 			->method('post')
 			->with($this->stringStartsWith('http://localhost/ocs/v2.php/cloud/shares/' . $openShares[1]['remote_id'] . '/decline'), $this->anything())
@@ -270,15 +255,8 @@ class ManagerTest extends TestCase {
 		$this->clientService->expects($this->at(1))
 			->method('newClient')
 			->willReturn($client2);
-		$response = $this->createMock(IResponse::class);
-		$response->method('getBody')
-			->willReturn(json_encode([
-				'ocs' => [
-					'meta' => [
-						'statuscode' => 200,
-					]
-				]
-			]));
+		$response = $this->getMockBuilder('OCP\Http\Client\IResponse')
+			->disableOriginalConstructor()->getMock();
 		$client1->expects($this->once())
 			->method('post')
 			->with($this->stringStartsWith('http://localhost/ocs/v2.php/cloud/shares/' . $openShares[0]['remote_id'] . '/decline'), $this->anything())

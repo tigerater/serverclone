@@ -31,7 +31,7 @@ class FeaturePolicyTest extends \Test\TestCase {
 	/** @var EmptyFeaturePolicy */
 	private $policy;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->policy = new FeaturePolicy();
 	}

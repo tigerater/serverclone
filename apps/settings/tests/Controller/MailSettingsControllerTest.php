@@ -14,7 +14,6 @@
 namespace OCA\Settings\Tests\Controller;
 
 use OC\Mail\Message;
-use OC\User\User;
 use OCA\Settings\Controller\MailSettingsController;
 use OCP\AppFramework\Http;
 use OCP\IConfig;
@@ -23,6 +22,7 @@ use OCP\IRequest;
 use OCP\IUserSession;
 use OCP\Mail\IEMailTemplate;
 use OCP\Mail\IMailer;
+use OC\User\User;
 
 /**
  * @package Tests\Settings\Controller
@@ -41,7 +41,7 @@ class MailSettingsControllerTest extends \Test\TestCase {
 	/** @var MailSettingsController */
 	private $mailController;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->l = $this->createMock(IL10N::class);
@@ -172,7 +172,7 @@ class MailSettingsControllerTest extends \Test\TestCase {
 			->method('createEMailTemplate')
 			->willReturn($emailTemplate);
 		$response = $this->mailController->sendTestMail();
-		$this->assertSame(Http::STATUS_OK, $response->getStatus());
+		$this->assertSame(Http::STATUS_OK, $response->getStatus(), $response->getData());
 	}
 
 }

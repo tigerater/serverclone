@@ -60,7 +60,7 @@ class GroupPluginTest extends TestCase {
 	/** @var  IUser|\PHPUnit_Framework_MockObject_MockObject */
 	protected $user;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->config = $this->createMock(IConfig::class);

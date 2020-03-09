@@ -36,7 +36,7 @@ class ClearLostPasswordTokensCommandTest extends ALoginCommandTest {
 	/** @var IConfig|MockObject */
 	private $config;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->config = $this->createMock(IConfig::class);

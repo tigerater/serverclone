@@ -58,7 +58,7 @@ class ClientFlowLoginV2ControllerTest extends TestCase {
 	/** @var ClientFlowLoginV2Controller */
 	private $controller;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->request = $this->createMock(IRequest::class);
@@ -318,3 +318,4 @@ class ClientFlowLoginV2ControllerTest extends TestCase {
 		$this->assertTrue($clearedState);
 	}
 }
+

@@ -26,15 +26,16 @@ declare(strict_types=1);
  *
  */
 
+
 namespace OC\AppFramework;
 
-use OC\AppFramework\DependencyInjection\DIContainer;
 use OC\AppFramework\Http\Dispatcher;
+use OC\AppFramework\DependencyInjection\DIContainer;
 use OC\HintException;
 use OCP\AppFramework\Http;
+use OCP\AppFramework\QueryException;
 use OCP\AppFramework\Http\ICallbackResponse;
 use OCP\AppFramework\Http\IOutput;
-use OCP\AppFramework\QueryException;
 use OCP\IRequest;
 
 /**

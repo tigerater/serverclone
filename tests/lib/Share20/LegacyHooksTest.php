@@ -20,7 +20,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace Test\Share20;
 
 use OC\Share20\LegacyHooks;
@@ -42,7 +41,7 @@ class LegacyHooksTest extends TestCase {
 	/** @var Manager */
 	private $manager;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->eventDispatcher = new EventDispatcher();

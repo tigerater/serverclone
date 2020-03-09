@@ -22,13 +22,14 @@
  *
  */
 
+
 namespace OCA\Files_Versions\Tests\Command;
 
 
-use OC\User\Manager;
 use OCA\Files_Versions\Command\CleanUp;
-use OCP\Files\IRootFolder;
 use Test\TestCase;
+use OC\User\Manager;
+use OCP\Files\IRootFolder;
 
 /**
  * Class CleanupTest
@@ -48,7 +49,7 @@ class CleanupTest extends TestCase {
 	/** @var \PHPUnit_Framework_MockObject_MockObject | IRootFolder */
 	protected $rootFolder;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->rootFolder = $this->getMockBuilder('OCP\Files\IRootFolder')

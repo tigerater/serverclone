@@ -54,11 +54,6 @@ return [
 			'verb' => 'GET',
 		],
 		[
-			'name' => 'ShareAPI#getInheritedShares',
-			'url'  => '/api/v1/shares/inherited',
-			'verb' => 'GET',
-		],
-		[
 			'name' => 'ShareAPI#createShare',
 			'url'  => '/api/v1/shares',
 			'verb' => 'POST',
@@ -77,11 +72,6 @@ return [
 			'name' => 'ShareAPI#deleteShare',
 			'url'  => '/api/v1/shares/{id}',
 			'verb' => 'DELETE',
-		],
-		[
-			'name' => 'ShareAPI#acceptShare',
-			'url'  => '/api/v1/shares/pending/{id}',
-			'verb' => 'POST',
 		],
 		/*
 		 * Deleted Shares

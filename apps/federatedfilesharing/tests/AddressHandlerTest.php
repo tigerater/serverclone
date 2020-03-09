@@ -24,6 +24,7 @@
  *
  */
 
+
 namespace OCA\FederatedFileSharing\Tests;
 
 
@@ -46,7 +47,7 @@ class AddressHandlerTest extends \Test\TestCase {
 	/** @var CloudIdManager */
 	private $cloudIdManager;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->urlGenerator = $this->getMockBuilder(IURLGenerator::class)
@@ -125,10 +126,9 @@ class AddressHandlerTest extends \Test\TestCase {
 	 * @dataProvider dataTestSplitUserRemoteError
 	 *
 	 * @param string $id
+	 * @expectedException \OC\HintException
 	 */
 	public function testSplitUserRemoteError($id) {
-		$this->expectException(\OC\HintException::class);
-
 		$this->addressHandler->splitUserRemote($id);
 	}
 

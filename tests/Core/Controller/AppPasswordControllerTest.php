@@ -64,7 +64,7 @@ class AppPasswordControllerTest extends TestCase {
 	/** @var AppPasswordController */
 	private $controller;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->session = $this->createMock(ISession::class);

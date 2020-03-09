@@ -50,7 +50,7 @@ class AdminTest extends TestCase {
 	/** @var IL10N */
 	private $l10n;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->config = $this->createMock(IConfig::class);
 		$this->l10n = $this->createMock(IL10N::class);

@@ -35,7 +35,7 @@ class UidLoginCommandTest extends ALoginCommandTest {
 	/** @var Manager|MockObject */
 	private $userManager;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->userManager = $this->createMock(Manager::class);

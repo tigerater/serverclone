@@ -20,7 +20,6 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace Tests\Core\Controller;
 
 use OC\Core\Controller\NavigationController;
@@ -45,7 +44,7 @@ class NavigationControllerTest extends TestCase {
 	/** @var NavigationController */
 	private $controller;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->request = $this->createMock(IRequest::class);

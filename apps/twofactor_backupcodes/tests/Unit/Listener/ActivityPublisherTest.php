@@ -46,7 +46,7 @@ class ActivityPublisherTest extends TestCase {
 	/** @var ActivityPublisher */
 	private $listener;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->activityManager = $this->createMock(IManager::class);

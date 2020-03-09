@@ -119,6 +119,8 @@ import ActionInput from 'nextcloud-vue/dist/Components/ActionInput'
 import ActionTextEditable from 'nextcloud-vue/dist/Components/ActionTextEditable'
 import Tooltip from 'nextcloud-vue/dist/Directives/Tooltip'
 
+// eslint-disable-next-line no-unused-vars
+import Share from '../models/Share'
 import SharesMixin from '../mixins/SharesMixin'
 
 export default {
@@ -211,28 +213,6 @@ export default {
 			set: function(checked) {
 				this.updatePermissions(this.canEdit, checked)
 			}
-		},
-
-		/**
-		 * Does the current share have an expiration date
-		 * @returns {boolean}
-		 */
-		hasExpirationDate: {
-			get: function() {
-				return this.config.isDefaultInternalExpireDateEnforced || !!this.share.expireDate
-			},
-			set: function(enabled) {
-				this.share.expireDate = enabled
-					? this.config.defaultInternalExpirationDateString !== ''
-						? this.config.defaultInternalExpirationDateString
-						: moment().format('YYYY-MM-DD')
-					: ''
-			}
-		},
-
-		dateMaxEnforced() {
-			return this.config.isDefaultInternalExpireDateEnforced
-				&& moment().add(1 + this.config.defaultInternalExpireDate, 'days')
 		}
 
 	},

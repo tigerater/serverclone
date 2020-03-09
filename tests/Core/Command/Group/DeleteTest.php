@@ -20,7 +20,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace Test\Core\Command\Group;
 
 use OC\Core\Command\Group\Delete;
@@ -44,7 +43,7 @@ class DeleteTest extends TestCase {
 	/** @var OutputInterface|\PHPUnit_Framework_MockObject_MockObject */
 	private $output;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->groupManager = $this->createMock(IGroupManager::class);

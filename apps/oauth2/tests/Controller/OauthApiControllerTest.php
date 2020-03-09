@@ -21,8 +21,8 @@
 
 namespace OCA\OAuth2\Tests\Controller;
 
-use OC\Authentication\Exceptions\ExpiredTokenException;
 use OC\Authentication\Exceptions\InvalidTokenException;
+use OC\Authentication\Exceptions\ExpiredTokenException;
 use OC\Authentication\Token\DefaultToken;
 use OC\Authentication\Token\IProvider as TokenProvider;
 use OC\Security\Bruteforce\Throttler;
@@ -61,7 +61,7 @@ class OauthApiControllerTest extends TestCase {
 	/** @var OauthApiController */
 	private $oauthApiController;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->request = $this->createMock(IRequest::class);

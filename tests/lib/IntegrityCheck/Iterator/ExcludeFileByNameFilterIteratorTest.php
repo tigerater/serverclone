@@ -21,14 +21,14 @@
 
 namespace Test\IntegrityCheck\Iterator;
 
-use OC\IntegrityCheck\Iterator\ExcludeFileByNameFilterIterator;
+use \OC\IntegrityCheck\Iterator\ExcludeFileByNameFilterIterator;
 use Test\TestCase;
 
 class ExcludeFileByNameFilterIteratorTest extends TestCase {
 	/** @var ExcludeFileByNameFilterIterator|\PHPUnit\Framework\MockObject\MockObject */
 	protected $filter;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->filter = $this->getMockBuilder(ExcludeFileByNameFilterIterator::class)
 			->disableOriginalConstructor()

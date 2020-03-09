@@ -29,7 +29,7 @@ use Test\TestCase;
 class LockdownManagerTest extends TestCase {
 	private $sessionCallback;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->sessionCallback = function() {

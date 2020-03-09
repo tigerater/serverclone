@@ -50,7 +50,7 @@ class NotifierTest extends TestCase {
 	/** @var IGroupManager|\PHPUnit_Framework_MockObject_MockObject */
 	protected $groupManager;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->urlGenerator = $this->createMock(IURLGenerator::class);

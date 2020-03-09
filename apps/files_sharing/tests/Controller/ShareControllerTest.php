@@ -48,12 +48,12 @@ use OCP\IL10N;
 use OCP\ILogger;
 use OCP\IPreview;
 use OCP\IRequest;
-use OCP\ISession;
-use OCP\IURLGenerator;
 use OCP\IUser;
+use OCP\Share\Exceptions\ShareNotFound;
+use OCP\ISession;
 use OCP\IUserManager;
 use OCP\Security\ISecureRandom;
-use OCP\Share\Exceptions\ShareNotFound;
+use OCP\IURLGenerator;
 use OCP\Share\IShare;
 use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -93,7 +93,7 @@ class ShareControllerTest extends \Test\TestCase {
 	/** @var IL10N */
 	private $l10n;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		$this->appName = 'files_sharing';
 
@@ -142,7 +142,7 @@ class ShareControllerTest extends \Test\TestCase {
 		$this->loginAsUser($this->user);
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		\OC_Util::tearDownFS();
 		\OC_User::setUserId('');
 		Filesystem::tearDown();
@@ -532,10 +532,10 @@ class ShareControllerTest extends \Test\TestCase {
 		self::assertEquals($expectedResponse, $response);
 	}
 
-	
+	/**
+	 * @expectedException \OCP\Files\NotFoundException
+	 */
 	public function testShowShareInvalid() {
-		$this->expectException(\OCP\Files\NotFoundException::class);
-
 		$this->shareController->setToken('token');
 
 		$owner = $this->getMockBuilder(IUser::class)->getMock();

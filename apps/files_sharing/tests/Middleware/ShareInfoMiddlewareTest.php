@@ -21,7 +21,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace OCA\Files_Sharing\Tests\Middleware;
 
 use OCA\Files_Sharing\Controller\ShareInfoController;
@@ -41,7 +40,7 @@ class ShareInfoMiddlewareTest extends TestCase {
 	/** @var ShareInfoMiddleware */
 	private $middleware;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->shareManager = $this->createMock(ShareManager::class);

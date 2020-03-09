@@ -20,7 +20,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace OCA\Files_Trashbin\Tests\Controller;
 
 use OCA\Files_Trashbin\Controller\PreviewController;
@@ -65,7 +64,7 @@ class PreviewControllerTest extends TestCase {
 	/** @var IUserSession|\PHPUnit_Framework_MockObject_MockObject */
 	private $userSession;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->rootFolder = $this->createMock(IRootFolder::class);

@@ -34,7 +34,7 @@ class CompleteLoginCommandTest extends ALoginCommandTest {
 	/** @var Session|MockObject */
 	private $session;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->session = $this->createMock(Session::class);

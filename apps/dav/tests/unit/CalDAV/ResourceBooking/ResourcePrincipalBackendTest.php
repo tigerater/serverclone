@@ -19,13 +19,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace OCA\DAV\Tests\unit\CalDAV\ResourceBooking;
 
 use OCA\DAV\CalDAV\ResourceBooking\ResourcePrincipalBackend;
 
 Class ResourcePrincipalBackendTest extends AbstractPrincipalBackendTest {
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->principalBackend = new ResourcePrincipalBackend(self::$realDatabase,

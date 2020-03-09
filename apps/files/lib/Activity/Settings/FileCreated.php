@@ -97,3 +97,4 @@ class FileCreated implements ISetting {
 		return false;
 	}
 }
+

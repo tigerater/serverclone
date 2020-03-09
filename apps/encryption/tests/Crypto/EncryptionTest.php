@@ -29,7 +29,6 @@ namespace OCA\Encryption\Tests\Crypto;
 use OCA\Encryption\Crypto\Crypt;
 use OCA\Encryption\Crypto\DecryptAll;
 use OCA\Encryption\Crypto\EncryptAll;
-use OCA\Encryption\Crypto\Encryption;
 use OCA\Encryption\Exceptions\PublicKeyMissingException;
 use OCA\Encryption\KeyManager;
 use OCA\Encryption\Session;
@@ -40,6 +39,7 @@ use OCP\ILogger;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Test\TestCase;
+use OCA\Encryption\Crypto\Encryption;
 
 class EncryptionTest extends TestCase {
 
@@ -73,7 +73,7 @@ class EncryptionTest extends TestCase {
 	/** @var \OCP\Files\Storage|\PHPUnit_Framework_MockObject_MockObject */
 	private $storageMock;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->storageMock = $this->getMockBuilder(Storage::class)
@@ -131,10 +131,9 @@ class EncryptionTest extends TestCase {
 	/**
 	 * test if public key from owner is missing
 	 *
+	 * @expectedException \OCA\Encryption\Exceptions\PublicKeyMissingException
 	 */
 	public function testEndUser2() {
-		$this->expectException(\OCA\Encryption\Exceptions\PublicKeyMissingException::class);
-
 		$this->instance->begin('/foo/bar', 'user2', 'r', array(), array('users' => array('user1', 'user2', 'user3')));
 		$this->endTest();
 	}
@@ -432,11 +431,11 @@ class EncryptionTest extends TestCase {
 		);
 	}
 
-	
+	/**
+	 * @expectedException \OC\Encryption\Exceptions\DecryptionFailedException
+	 * @expectedExceptionMessage Can not decrypt this file, probably this is a shared file. Please ask the file owner to reshare the file with you.
+	 */
 	public function testDecrypt() {
-		$this->expectException(\OC\Encryption\Exceptions\DecryptionFailedException::class);
-		$this->expectExceptionMessage('Can not decrypt this file, probably this is a shared file. Please ask the file owner to reshare the file with you.');
-
 		$this->instance->decrypt('abc');
 	}
 

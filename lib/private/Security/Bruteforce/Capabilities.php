@@ -20,7 +20,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace OC\Security\Bruteforce;
 
 use OCP\Capabilities\IPublicCapability;

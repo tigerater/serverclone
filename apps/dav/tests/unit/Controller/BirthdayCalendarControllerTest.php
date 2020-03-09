@@ -57,7 +57,7 @@ class BirthdayCalendarControllerTest extends TestCase {
 	/** @var BirthdayCalendarController|\PHPUnit_Framework_MockObject_MockObject */
 	private $controller;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->config = $this->createMock(IConfig::class);

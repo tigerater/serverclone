@@ -24,6 +24,7 @@
  *
  */
 
+
 namespace OCA\FederatedFileSharing\Tests\Controller;
 
 use OC\Federation\CloudIdManager;
@@ -84,7 +85,7 @@ class MountPublicLinkControllerTest extends \Test\TestCase {
 	/** @var  ICloudIdManager */
 	private $cloudIdManager;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->request = $this->getMockBuilder(IRequest::class)->disableOriginalConstructor()->getMock();

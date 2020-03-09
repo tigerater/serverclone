@@ -14,7 +14,7 @@ abstract class TestCache extends \Test\TestCase {
 	 */
 	protected $instance;
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		if($this->instance) {
 			$this->instance->clear();
 		}

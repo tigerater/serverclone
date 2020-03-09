@@ -3,9 +3,8 @@ OC.L10N.register(
     {
     "OAuth 2.0" : "OAuth 2.0",
     "OAuth 2.0 clients" : "OAuth 2.0 klientai",
-    "OAuth 2.0 allows external services to request access to {instanceName}." : "OAuth 2.0 leidžia išorinėms tarnyboms užklausti prieigą prie {instanceName}.",
     "Name" : "Pavadinimas",
-    "Redirection URI" : "Peradresavimo URI",
+    "Redirection URI" : "Nukreipimo adresas",
     "Client Identifier" : "Kliento identifikatorius",
     "Secret" : "Paslaptis",
     "Add client" : "Pridėti klientą",

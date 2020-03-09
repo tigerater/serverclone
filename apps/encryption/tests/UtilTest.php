@@ -25,6 +25,7 @@
  *
  */
 
+
 namespace OCA\Encryption\Tests;
 
 
@@ -80,7 +81,7 @@ class UtilTest extends TestCase {
 		$this->assertTrue($this->instance->userHasFiles('admin'));
 	}
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		$this->mountMock = $this->createMock(IMountPoint::class);
 		$this->filesMock = $this->createMock(View::class);

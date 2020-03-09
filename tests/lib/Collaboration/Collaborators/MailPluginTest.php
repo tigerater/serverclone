@@ -59,7 +59,7 @@ class MailPluginTest extends TestCase {
 	/** @var  IUserSession|\PHPUnit_Framework_MockObject_MockObject */
 	protected $userSession;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->config = $this->createMock(IConfig::class);

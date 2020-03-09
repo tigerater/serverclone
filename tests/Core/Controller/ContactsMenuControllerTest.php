@@ -47,7 +47,7 @@ class ContactsMenuControllerTest extends TestCase {
 	/** @var ContactsMenuController */
 	private $controller;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->request = $this->createMock(IRequest::class);

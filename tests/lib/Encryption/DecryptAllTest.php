@@ -19,6 +19,7 @@
  *
  */
 
+
 namespace Test\Encryption;
 
 
@@ -67,7 +68,7 @@ class DecryptAllTest extends TestCase {
 	/** @var  DecryptAll */
 	protected $instance;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->userManager = $this->getMockBuilder(IUserManager::class)

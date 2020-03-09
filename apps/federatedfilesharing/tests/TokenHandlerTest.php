@@ -22,6 +22,7 @@
  *
  */
 
+
 namespace OCA\FederatedFileSharing\Tests;
 
 
@@ -39,7 +40,7 @@ class TokenHandlerTest extends \Test\TestCase {
 	/** @var int */
 	private $expectedTokenLength = 15;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->secureRandom = $this->getMockBuilder(ISecureRandom::class)->getMock();

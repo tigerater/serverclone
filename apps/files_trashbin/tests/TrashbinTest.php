@@ -28,7 +28,6 @@
  */
 
 use OCA\Files_Trashbin\Tests;
-use OCA\Files_Sharing\AppInfo\Application;
 
 /**
  * Class Test_Encryption
@@ -55,7 +54,7 @@ class TrashbinTest extends \Test\TestCase {
 	 */
 	private $rootView;
 
-	public static function setUpBeforeClass(): void {
+	public static function setUpBeforeClass() {
 		parent::setUpBeforeClass();
 
 		$appManager = \OC::$server->getAppManager();
@@ -68,9 +67,8 @@ class TrashbinTest extends \Test\TestCase {
 		// clear share hooks
 		\OC_Hook::clear('OCP\\Share');
 		\OC::registerShareHooks();
-
-		// init files sharing
-		new Application();
+		$application = \OC::$server->query(\OCA\Files_Sharing\AppInfo\Application::class);
+		$application->registerMountProviders();
 
 		//disable encryption
 		\OC::$server->getAppManager()->disableApp('encryption');
@@ -91,7 +89,7 @@ class TrashbinTest extends \Test\TestCase {
 	}
 
 
-	public static function tearDownAfterClass(): void {
+	public static function tearDownAfterClass() {
 		// cleanup test user
 		$user = \OC::$server->getUserManager()->get(self::TEST_TRASHBIN_USER1);
 		if ($user !== null) {
@@ -113,7 +111,7 @@ class TrashbinTest extends \Test\TestCase {
 		parent::tearDownAfterClass();
 	}
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		\OC::$server->getAppManager()->enableApp('files_trashbin');
@@ -136,7 +134,7 @@ class TrashbinTest extends \Test\TestCase {
 		self::loginHelper(self::TEST_TRASHBIN_USER1);
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		$this->restoreService('AllConfig');
 		// disable trashbin to be able to properly clean up
 		\OC::$server->getAppManager()->disableApp('files_trashbin');
@@ -229,8 +227,7 @@ class TrashbinTest extends \Test\TestCase {
 			->setSharedBy(self::TEST_TRASHBIN_USER1)
 			->setSharedWith(self::TEST_TRASHBIN_USER2)
 			->setPermissions(\OCP\Constants::PERMISSION_ALL);
-		$share = \OC::$server->getShareManager()->createShare($share);
-		\OC::$server->getShareManager()->acceptShare($share, self::TEST_TRASHBIN_USER2);
+		\OC::$server->getShareManager()->createShare($share);
 
 		// delete them so that they end up in the trash bin
 		\OC\Files\Filesystem::unlink($folder . 'user1-1.txt');

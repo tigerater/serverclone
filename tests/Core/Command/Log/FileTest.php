@@ -39,7 +39,7 @@ class FileTest extends TestCase {
 	/** @var \Symfony\Component\Console\Command\Command */
 	protected $command;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$config = $this->config = $this->getMockBuilder(IConfig::class)

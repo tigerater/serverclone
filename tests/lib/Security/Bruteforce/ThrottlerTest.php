@@ -18,7 +18,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace Test\Security\Bruteforce;
 
 use OC\AppFramework\Utility\TimeFactory;
@@ -44,7 +43,7 @@ class ThrottlerTest extends TestCase {
 	/** @var IConfig|\PHPUnit_Framework_MockObject_MockObject */
 	private $config;
 
-	protected function setUp(): void {
+	public function setUp() {
 		$this->dbConnection = $this->createMock(IDBConnection::class);
 		$this->logger = $this->createMock(ILogger::class);
 		$this->config = $this->createMock(IConfig::class);

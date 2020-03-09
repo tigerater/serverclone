@@ -10,7 +10,7 @@
 namespace Test\Memcache;
 
 class APCuTest extends Cache {
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		if(!\OC\Memcache\APCu::isAvailable()) {

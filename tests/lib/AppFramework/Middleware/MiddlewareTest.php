@@ -21,11 +21,12 @@
  *
  */
 
+
 namespace Test\AppFramework\Middleware;
 
 use OC\AppFramework\Http\Request;
-use OCP\AppFramework\Http\Response;
 use OCP\AppFramework\Middleware;
+use OCP\AppFramework\Http\Response;
 use OCP\IConfig;
 
 class ChildMiddleware extends Middleware {};
@@ -43,7 +44,7 @@ class MiddlewareTest extends \Test\TestCase {
 	/** @var Response */
 	private $response;
 
-	protected function setUp(): void {
+	protected function setUp(){
 		parent::setUp();
 
 		$this->middleware = new ChildMiddleware();

@@ -33,8 +33,8 @@ use OCP\IConfig;
 use OCP\ILogger;
 use OCP\IUser;
 use OCP\IUserManager;
-use OCP\Share\IManager;
 use OCP\Share\IShare;
+use OCP\Share\IManager;
 
 /**
  * @group DB
@@ -59,7 +59,7 @@ class MountProviderTest extends \Test\TestCase {
 	/** @var ILogger | \PHPUnit_Framework_MockObject_MockObject */
 	private $logger;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->config = $this->getMockBuilder(IConfig::class)->getMock();
@@ -381,3 +381,4 @@ class MountProviderTest extends \Test\TestCase {
 		}
 	}
 }
+

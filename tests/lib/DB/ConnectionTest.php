@@ -26,12 +26,12 @@ class ConnectionTest extends \Test\TestCase {
 	 */
 	private $connection;
 
-	public static function setUpBeforeClass(): void {
+	public static function setUpBeforeClass() {
 		self::dropTestTable();
 		parent::setUpBeforeClass();
 	}
 
-	public static function tearDownAfterClass(): void {
+	public static function tearDownAfterClass() {
 		self::dropTestTable();
 		parent::tearDownAfterClass();
 	}
@@ -42,12 +42,12 @@ class ConnectionTest extends \Test\TestCase {
 		}
 	}
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->connection = \OC::$server->getDatabaseConnection();
 	}
 
-	protected function tearDown(): void {
+	public function tearDown() {
 		parent::tearDown();
 		$this->connection->dropTable('table');
 	}
@@ -157,10 +157,10 @@ class ConnectionTest extends \Test\TestCase {
 		$this->assertEquals('bar', $this->getTextValueByIntergerField(1));
 	}
 
-	
+	/**
+	 * @expectedException \OCP\PreConditionNotMetException
+	 */
 	public function testSetValuesOverWritePreconditionFailed() {
-		$this->expectException(\OCP\PreConditionNotMetException::class);
-
 		$this->makeTestTable();
 		$this->connection->setValues('table', [
 			'integerfield' => 1
@@ -335,10 +335,10 @@ class ConnectionTest extends \Test\TestCase {
 		$this->assertEquals(0, $result);
 	}
 
-	
+	/**
+	 * @expectedException \Doctrine\DBAL\Exception\UniqueConstraintViolationException
+	 */
 	public function testUniqueConstraintViolating() {
-		$this->expectException(\Doctrine\DBAL\Exception\UniqueConstraintViolationException::class);
-
 		$this->makeTestTable();
 
 		$testQuery = 'INSERT INTO `*PREFIX*table` (`integerfield`, `textfield`) VALUES(?, ?)';

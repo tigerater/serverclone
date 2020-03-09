@@ -33,7 +33,7 @@ class ScannerTest extends TestCase {
 	/** @var \OC\Files\Cache\Cache|\PHPUnit_Framework_MockObject_MockObject */
 	protected $cache;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->storage = $this->getMockBuilder('\OCA\Files_Sharing\External\Storage')

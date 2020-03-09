@@ -28,6 +28,7 @@ use OCP\IUserManager;
 use Symfony\Component\Console\Tester\CommandTester;
 use Test\TestCase;
 
+
 /**
  * Class ListCalendarsTest
  *
@@ -46,7 +47,7 @@ class ListCalendarsTest extends TestCase {
 
 	const USERNAME = 'username';
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->userManager = $this->createMock(IUserManager::class);
@@ -58,11 +59,11 @@ class ListCalendarsTest extends TestCase {
 		);
 	}
 
-	
+	/**
+	 * @expectedException InvalidArgumentException
+	 */
 	public function testWithBadUser()
 	{
-		$this->expectException(\InvalidArgumentException::class);
-
 		$this->userManager->expects($this->once())
 			->method('userExists')
 			->with(self::USERNAME)

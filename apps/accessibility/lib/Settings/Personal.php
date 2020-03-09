@@ -27,12 +27,10 @@ namespace OCA\Accessibility\Settings;
 use OCA\Accessibility\AccessibilityProvider;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IConfig;
-use OCP\IInitialStateService;
 use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\IUserSession;
 use OCP\Settings\ISettings;
-use OCP\Util;
 
 class Personal implements ISettings {
 
@@ -54,9 +52,6 @@ class Personal implements ISettings {
 	/** @var AccessibilityProvider */
 	private $accessibilityProvider;
 
-	/** @var IInitialStateService */
-	private $initialStateService;
-
 	/**
 	 * Settings constructor.
 	 *
@@ -72,15 +67,13 @@ class Personal implements ISettings {
 								IUserSession $userSession,
 								IL10N $l,
 								IURLGenerator $urlGenerator,
-								AccessibilityProvider $accessibilityProvider,
-								IInitialStateService $initialStateService) {
+								AccessibilityProvider $accessibilityProvider) {
 		$this->appName               = $appName;
 		$this->config                = $config;
 		$this->userSession           = $userSession;
 		$this->l                     = $l;
 		$this->urlGenerator          = $urlGenerator;
 		$this->accessibilityProvider = $accessibilityProvider;
-		$this->initialStateService   = $initialStateService;
 	}
 
 	/**
@@ -88,25 +81,19 @@ class Personal implements ISettings {
 	 * @since 9.1
 	 */
 	public function getForm() {
-		Util::addScript('accessibility', 'accessibility');
-		Util::addStyle('accessibility', 'style');
 
-		$availableConfig = [
+		$serverData = [
 			'themes' => $this->accessibilityProvider->getThemes(),
 			'fonts'  => $this->accessibilityProvider->getFonts(),
-			'highcontrast' => $this->accessibilityProvider->getHighContrast()
+			'highcontrast' => $this->accessibilityProvider->getHighContrast(),
+			'selected' => [
+				'highcontrast' => $this->config->getUserValue($this->userSession->getUser()->getUID(), $this->appName, 'highcontrast', false),
+				'theme'  => $this->config->getUserValue($this->userSession->getUser()->getUID(), $this->appName, 'theme', false),
+				'font'   => $this->config->getUserValue($this->userSession->getUser()->getUID(), $this->appName, 'font', false)
+			]
 		];
 
-		$userConfig = [
-			'highcontrast' => $this->config->getUserValue($this->userSession->getUser()->getUID(), $this->appName, 'highcontrast', false),
-			'theme'  => $this->config->getUserValue($this->userSession->getUser()->getUID(), $this->appName, 'theme', false),
-			'font'   => $this->config->getUserValue($this->userSession->getUser()->getUID(), $this->appName, 'font', false)
-		];
-
-		$this->initialStateService->provideInitialState($this->appName, 'available-config', $availableConfig);
-		$this->initialStateService->provideInitialState($this->appName, 'user-config', $userConfig);
-
-		return new TemplateResponse($this->appName, 'settings-personal');
+		return new TemplateResponse($this->appName, 'settings-personal', ['serverData' => $serverData]);
 	}
 
 	/**

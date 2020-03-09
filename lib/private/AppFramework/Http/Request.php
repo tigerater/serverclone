@@ -853,10 +853,6 @@ class Request implements \ArrayAccess, \Countable, IRequest {
 	 * @return string Server host
 	 */
 	public function getInsecureServerHost(): string {
-		if ($this->fromTrustedProxy() && $this->getOverwriteHost() !== null) {
-			return $this->getOverwriteHost();
-		}
-
 		$host = 'localhost';
 		if ($this->fromTrustedProxy() && isset($this->server['HTTP_X_FORWARDED_HOST'])) {
 			if (strpos($this->server['HTTP_X_FORWARDED_HOST'], ',') !== false) {
@@ -872,7 +868,6 @@ class Request implements \ArrayAccess, \Countable, IRequest {
 				$host = $this->server['SERVER_NAME'];
 			}
 		}
-
 		return $host;
 	}
 

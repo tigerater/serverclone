@@ -20,16 +20,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace OCA\Files_External\Lib\Auth\PublicKey;
 
-use OCA\Files_External\Lib\Auth\AuthMechanism;
-use OCA\Files_External\Lib\DefinitionParameter;
-use OCA\Files_External\Lib\StorageConfig;
-use OCP\IConfig;
-use OCP\IL10N;
+use \OCP\IL10N;
+use \OCA\Files_External\Lib\DefinitionParameter;
+use \OCA\Files_External\Lib\Auth\AuthMechanism;
+use \OCA\Files_External\Lib\StorageConfig;
+use \OCP\IConfig;
 use OCP\IUser;
-use phpseclib\Crypt\RSA as RSACrypt;
+use \phpseclib\Crypt\RSA as RSACrypt;
 
 /**
  * RSA public key authentication

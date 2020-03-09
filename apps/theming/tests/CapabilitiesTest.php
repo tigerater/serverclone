@@ -55,7 +55,7 @@ class CapabilitiesTest extends TestCase  {
 	/** @var Capabilities */
 	protected $capabilities;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->theming = $this->createMock(ThemingDefaults::class);
@@ -78,8 +78,6 @@ class CapabilitiesTest extends TestCase  {
 				'background' => 'http://absolute/background',
 				'background-plain' => false,
 				'background-default' => false,
-				'logoheader' => 'http://absolute/logo',
-				'favicon' => 'http://absolute/logo',
 			]],
 			['name1', 'url2', 'slogan3', '#01e4a0', '#ffffff', 'logo5', 'background6', 'http://localhost/', false, [
 				'name' => 'name1',
@@ -92,8 +90,6 @@ class CapabilitiesTest extends TestCase  {
 				'background' => 'http://localhost/background6',
 				'background-plain' => false,
 				'background-default' => true,
-				'logoheader' => 'http://localhost/logo5',
-				'favicon' => 'http://localhost/logo5',
 			]],
 			['name1', 'url2', 'slogan3', '#000000', '#ffffff', 'logo5', 'backgroundColor', 'http://localhost/', true, [
 				'name' => 'name1',
@@ -106,8 +102,6 @@ class CapabilitiesTest extends TestCase  {
 				'background' => '#000000',
 				'background-plain' => true,
 				'background-default' => false,
-				'logoheader' => 'http://localhost/logo5',
-				'favicon' => 'http://localhost/logo5',
 			]],
 			['name1', 'url2', 'slogan3', '#000000', '#ffffff', 'logo5', 'backgroundColor', 'http://localhost/', false, [
 				'name' => 'name1',
@@ -120,8 +114,6 @@ class CapabilitiesTest extends TestCase  {
 				'background' => '#000000',
 				'background-plain' => true,
 				'background-default' => true,
-				'logoheader' => 'http://localhost/logo5',
-				'favicon' => 'http://localhost/logo5',
 			]],
 		];
 	}
@@ -155,7 +147,7 @@ class CapabilitiesTest extends TestCase  {
 		$this->theming->expects($this->atLeast(1))
 			->method('getColorPrimary')
 			->willReturn($color);
-		$this->theming->expects($this->exactly(3))
+		$this->theming->expects($this->once())
 			->method('getLogo')
 			->willReturn($logo);
 		$this->theming->expects($this->once())
@@ -176,13 +168,13 @@ class CapabilitiesTest extends TestCase  {
 			$this->theming->expects($this->once())
 				->method('getBackground')
 				->willReturn($background);
-			$this->url->expects($this->exactly(4))
+			$this->url->expects($this->exactly(2))
 				->method('getAbsoluteURL')
 				->willReturnCallback(function($url) use($baseUrl) {
 					return $baseUrl . $url;
 				});
 		} else {
-			$this->url->expects($this->exactly(3))
+			$this->url->expects($this->once())
 				->method('getAbsoluteURL')
 				->willReturnCallback(function($url) use($baseUrl) {
 					return $baseUrl . $url;

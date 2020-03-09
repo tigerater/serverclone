@@ -24,9 +24,9 @@
 
 namespace OC\Tagging;
 
-use OCP\AppFramework\Db\DoesNotExistException;
-use OCP\AppFramework\Db\Mapper;
-use OCP\IDBConnection;
+use \OCP\AppFramework\Db\Mapper,
+    \OCP\AppFramework\Db\DoesNotExistException,
+    \OCP\IDBConnection;
 
 /**
  * Mapper for Tag entity
@@ -76,3 +76,4 @@ class TagMapper extends Mapper {
 		return true;
 	}
 }
+

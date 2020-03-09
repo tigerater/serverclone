@@ -55,7 +55,7 @@ class ExpireSharesJobTest extends \Test\TestCase {
 	 */
 	private $user2;
 
-	protected function setUp(): void {
+	protected function setup() {
 		parent::setUp();
 
 		$this->connection = \OC::$server->getDatabaseConnection();
@@ -74,7 +74,7 @@ class ExpireSharesJobTest extends \Test\TestCase {
 		$this->job = new ExpireSharesJob();
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		$this->connection->executeUpdate('DELETE FROM `*PREFIX*share`');
 
 		$userManager = \OC::$server->getUserManager();
@@ -216,3 +216,4 @@ class ExpireSharesJobTest extends \Test\TestCase {
 	}
 
 }
+

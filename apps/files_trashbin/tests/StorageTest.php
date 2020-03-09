@@ -30,8 +30,8 @@
 
 namespace OCA\Files_Trashbin\Tests;
 
-use OC\Files\Filesystem;
 use OC\Files\Storage\Temporary;
+use OC\Files\Filesystem;
 use OCA\Files_Trashbin\Events\MoveToTrashEvent;
 use OCA\Files_Trashbin\Storage;
 use OCA\Files_Trashbin\Trash\ITrashManager;
@@ -66,7 +66,7 @@ class StorageTest extends \Test\TestCase {
 	 */
 	private $userView;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		\OC_Hook::clear();
@@ -88,7 +88,7 @@ class StorageTest extends \Test\TestCase {
 		$this->userView->file_put_contents('folder/inside.txt', 'bar');
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		\OC\Files\Filesystem::getLoader()->removeStorageWrapper('oc_trashbin');
 		$this->logout();
 		$user = \OC::$server->getUserManager()->get($this->user);
@@ -282,8 +282,7 @@ class StorageTest extends \Test\TestCase {
 			->setSharedBy($this->user)
 			->setSharedWith($recipientUser)
 			->setPermissions(\OCP\Constants::PERMISSION_ALL);
-		$share = \OC::$server->getShareManager()->createShare($share);
-		\OC::$server->getShareManager()->acceptShare($share, $recipientUser);
+		\OC::$server->getShareManager()->createShare($share);
 
 		$this->loginAsUser($recipientUser);
 
@@ -336,8 +335,7 @@ class StorageTest extends \Test\TestCase {
 			->setSharedBy($this->user)
 			->setSharedWith($recipientUser)
 			->setPermissions(\OCP\Constants::PERMISSION_ALL);
-		$share = \OC::$server->getShareManager()->createShare($share);
-		\OC::$server->getShareManager()->acceptShare($share, $recipientUser);
+		\OC::$server->getShareManager()->createShare($share);
 
 		$this->loginAsUser($recipientUser);
 

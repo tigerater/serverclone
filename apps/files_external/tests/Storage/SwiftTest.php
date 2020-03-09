@@ -28,7 +28,7 @@
 namespace OCA\Files_External\Tests\Storage;
 
 use GuzzleHttp\Exception\ClientException;
-use OCA\Files_External\Lib\Storage\Swift;
+use \OCA\Files_External\Lib\Storage\Swift;
 
 /**
  * Class SwiftTest
@@ -46,7 +46,7 @@ class SwiftTest extends \Test\Files\Storage\Storage {
 	 */
 	protected $instance;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->config = include('files_external/tests/config.swift.php');
@@ -56,7 +56,7 @@ class SwiftTest extends \Test\Files\Storage\Storage {
 		$this->instance = new Swift($this->config);
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		if ($this->instance) {
 			try {
 				$container = $this->instance->getContainer();

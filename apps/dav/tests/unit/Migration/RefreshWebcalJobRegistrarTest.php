@@ -41,7 +41,7 @@ class RefreshWebcalJobRegistrarTest extends TestCase {
 	/** @var RefreshWebcalJobRegistrar */
 	private $migration;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->db = $this->createMock(IDBConnection::class);

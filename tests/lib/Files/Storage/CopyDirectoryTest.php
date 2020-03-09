@@ -45,8 +45,9 @@ class CopyDirectoryStorage extends StorageNoRecursiveCopy {
  */
 class CopyDirectoryTest extends Storage {
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		$this->instance = new CopyDirectoryStorage([]);
 	}
 }
+

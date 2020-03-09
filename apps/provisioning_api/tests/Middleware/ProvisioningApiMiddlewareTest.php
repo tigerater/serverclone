@@ -20,7 +20,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace OCA\Provisioning_API\Tests\Middleware;
 
 use OCA\Provisioning_API\Middleware\Exceptions\NotSubAdminException;
@@ -35,7 +34,7 @@ class ProvisioningApiMiddlewareTest extends TestCase {
 	/** @var IControllerMethodReflector|\PHPUnit_Framework_MockObject_MockObject */
 	private $reflector;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->reflector = $this->createMock(IControllerMethodReflector::class);

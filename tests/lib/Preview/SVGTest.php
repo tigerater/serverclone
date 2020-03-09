@@ -30,7 +30,7 @@ namespace Test\Preview;
  */
 class SVGTest extends Provider {
 
-	protected function setUp(): void {
+	public function setUp() {
 		$checkImagick = new \Imagick();
 		if (count($checkImagick->queryFormats('SVG')) === 1) {
 			parent::setUp();

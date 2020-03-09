@@ -23,11 +23,12 @@
  *
  */
 
+
 namespace Test\AppFramework\DependencyInjection;
 
 
 use OC\AppFramework\DependencyInjection\DIContainer;
-use OC\AppFramework\Http\Request;
+use \OC\AppFramework\Http\Request;
 use OC\AppFramework\Middleware\Security\SecurityMiddleware;
 use OCP\AppFramework\QueryException;
 use OCP\IConfig;
@@ -41,7 +42,7 @@ class DIContainerTest extends \Test\TestCase {
 	/** @var DIContainer|\PHPUnit_Framework_MockObject_MockObject */
 	private $container;
 
-	protected function setUp(): void {
+	protected function setUp(){
 		parent::setUp();
 		$this->container = $this->getMockBuilder(DIContainer::class)
 			->setMethods(['isAdminUser'])

@@ -15,11 +15,11 @@ class LegacyHelperTest extends \Test\TestCase {
 	/** @var string */
 	private $originalWebRoot;
 
-	protected function setUp(): void {
+	public function setUp() {
 		$this->originalWebRoot = \OC::$WEBROOT;
 	}
 
-	protected function tearDown(): void {
+	public function tearDown() {
 		// Reset webRoot
 		\OC::$WEBROOT = $this->originalWebRoot;
 	}

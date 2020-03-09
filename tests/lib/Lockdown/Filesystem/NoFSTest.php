@@ -34,16 +34,16 @@ use Test\Traits\UserTrait;
 class NoFSTest extends \Test\TestCase {
 	use UserTrait;
 
-	protected function tearDown(): void {
+	public function tearDown() {
 		$token = new DefaultToken();
 		$token->setScope([
 			'filesystem' => true
 		]);
 		\OC::$server->getLockdownManager()->setToken($token);
-		parent::tearDown();
+		return parent::tearDown();
 	}
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$token = new DefaultToken();
 		$token->setScope([

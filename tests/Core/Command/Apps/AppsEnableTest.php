@@ -36,7 +36,7 @@ class AppsEnableTest extends TestCase {
 	/** @var CommandTester */
 	private $commandTester;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$command = new Enable(

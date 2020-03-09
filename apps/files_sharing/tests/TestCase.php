@@ -34,7 +34,6 @@ namespace OCA\Files_Sharing\Tests;
 use OC\Files\Cache\Scanner;
 use OC\Files\Filesystem;
 use OCA\Files_Sharing\AppInfo\Application;
-use OCP\Share\IShare;
 use Test\Traits\MountProviderTrait;
 
 /**
@@ -68,10 +67,11 @@ abstract class TestCase extends \Test\TestCase {
 	/** @var \OCP\Files\IRootFolder */
 	protected $rootFolder;
 
-	public static function setUpBeforeClass(): void {
+	public static function setUpBeforeClass() {
 		parent::setUpBeforeClass();
 
-		new Application();
+		$application = new Application();
+		$application->registerMountProviders();
 		
 		// reset backend
 		\OC_User::clearBackends();
@@ -106,7 +106,7 @@ abstract class TestCase extends \Test\TestCase {
 		\OC::$server->getGroupManager()->addBackend($groupBackend);
 	}
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		//login as user1
@@ -119,7 +119,7 @@ abstract class TestCase extends \Test\TestCase {
 		$this->rootFolder = \OC::$server->getRootFolder();
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		$qb = \OC::$server->getDatabaseConnection()->getQueryBuilder();
 		$qb->delete('share');
 		$qb->execute();
@@ -127,7 +127,7 @@ abstract class TestCase extends \Test\TestCase {
 		parent::tearDown();
 	}
 
-	public static function tearDownAfterClass(): void {
+	public static function tearDownAfterClass() {
 		// cleanup users
 		$user = \OC::$server->getUserManager()->get(self::TEST_FILES_SHARING_API_USER1);
 		if ($user !== null) { $user->delete(); }
@@ -240,8 +240,6 @@ abstract class TestCase extends \Test\TestCase {
 			->setNode($node)
 			->setPermissions($permissions);
 		$share = $this->shareManager->createShare($share);
-		$share->setStatus(IShare::STATUS_ACCEPTED);
-		$share = $this->shareManager->updateShare($share);
 
 		return $share;
 	}

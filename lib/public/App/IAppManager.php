@@ -28,8 +28,8 @@
 
 namespace OCP\App;
 
-use OCP\IGroup;
 use OCP\IUser;
+use OCP\IGroup;
 
 /**
  * Interface IAppManager

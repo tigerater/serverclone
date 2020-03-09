@@ -18,7 +18,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace Test\Command\Integrity;
 
 use OC\Core\Command\Integrity\SignApp;
@@ -39,7 +38,7 @@ class SignAppTest extends TestCase {
 	/** @var IURLGenerator|\PHPUnit_Framework_MockObject_MockObject */
 	private $urlGenerator;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->checker = $this->createMock(Checker::class);
 		$this->fileAccessHelper = $this->createMock(FileAccessHelper::class);
@@ -232,12 +231,12 @@ class SignAppTest extends TestCase {
 			->expects($this->at(0))
 			->method('file_get_contents')
 			->with('privateKey')
-			->willReturn(file_get_contents(\OC::$SERVERROOT . '/tests/data/integritycheck/core.key'));
+			->will($this->returnValue(\OC::$SERVERROOT . '/tests/data/integritycheck/core.key'));
 		$this->fileAccessHelper
 			->expects($this->at(1))
 			->method('file_get_contents')
 			->with('certificate')
-			->willReturn(file_get_contents(\OC::$SERVERROOT . '/tests/data/integritycheck/core.crt'));
+			->will($this->returnValue(\OC::$SERVERROOT . '/tests/data/integritycheck/core.crt'));
 
 		$this->checker
 			->expects($this->once())
@@ -276,12 +275,12 @@ class SignAppTest extends TestCase {
 			->expects($this->at(0))
 			->method('file_get_contents')
 			->with('privateKey')
-			->willReturn(file_get_contents(\OC::$SERVERROOT . '/tests/data/integritycheck/core.key'));
+			->will($this->returnValue(\OC::$SERVERROOT . '/tests/data/integritycheck/core.key'));
 		$this->fileAccessHelper
 			->expects($this->at(1))
 			->method('file_get_contents')
 			->with('certificate')
-			->willReturn(file_get_contents(\OC::$SERVERROOT . '/tests/data/integritycheck/core.crt'));
+			->will($this->returnValue(\OC::$SERVERROOT . '/tests/data/integritycheck/core.crt'));
 
 		$this->checker
 			->expects($this->once())

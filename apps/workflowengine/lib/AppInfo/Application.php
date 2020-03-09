@@ -21,11 +21,11 @@
 
 namespace OCA\WorkflowEngine\AppInfo;
 
-use OCA\WorkflowEngine\Controller\RequestTime;
 use OCA\WorkflowEngine\Manager;
 use OCP\AppFramework\QueryException;
 use OCP\EventDispatcher\Event;
 use OCP\Template;
+use OCA\WorkflowEngine\Controller\RequestTime;
 use OCP\WorkflowEngine\IEntity;
 use OCP\WorkflowEngine\IEntityCompat;
 use OCP\WorkflowEngine\IOperation;
@@ -97,9 +97,6 @@ class Application extends \OCP\AppFramework\App {
 								$entity = $this->getContainer()->query($entityClass);
 								/** @var IOperation $operation */
 								$operation = $this->getContainer()->query($operationClass);
-
-								$ruleMatcher->setEntity($entity);
-								$ruleMatcher->setOperation($operation);
 
 								if ($event instanceof Event) {
 									$entity->prepareRuleMatcher($ruleMatcher, $eventName, $event);

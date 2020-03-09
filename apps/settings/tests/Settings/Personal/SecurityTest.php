@@ -25,10 +25,10 @@ declare(strict_types=1);
 namespace OCA\Settings\Tests\Settings\Personal;
 
 use OC\Authentication\TwoFactorAuth\ProviderLoader;
+use OCP\IInitialStateService;
 use OCA\Settings\Personal\Security;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IConfig;
-use OCP\IInitialStateService;
 use OCP\IUser;
 use OCP\IUserManager;
 use OCP\IUserSession;
@@ -58,7 +58,7 @@ class SecurityTest extends TestCase {
 	/** @var Security */
 	private $section;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->initialStateService = $this->createMock(IInitialStateService::class);

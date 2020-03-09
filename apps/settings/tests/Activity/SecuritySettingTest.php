@@ -33,7 +33,7 @@ class SecuritySettingTest extends TestCase {
 	/** @var SecuritySetting */
 	private $setting;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->l10n = $this->createMock(IL10N::class);

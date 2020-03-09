@@ -23,7 +23,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace OCA\DAV\Tests\unit\Connector\Sabre;
 
 /**
@@ -67,7 +66,7 @@ class CustomPropertiesBackendTest extends \Test\TestCase {
 	 */
 	private $user;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->server = new \Sabre\DAV\Server();
 		$this->tree = $this->getMockBuilder(Tree::class)
@@ -90,7 +89,7 @@ class CustomPropertiesBackendTest extends \Test\TestCase {
 		);
 	}
 
-	protected function tearDown(): void {
+	public function tearDown() {
 		$connection = \OC::$server->getDatabaseConnection();
 		$deleteStatement = $connection->prepare(
 			'DELETE FROM `*PREFIX*properties`' .

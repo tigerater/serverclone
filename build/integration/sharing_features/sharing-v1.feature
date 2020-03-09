@@ -7,7 +7,7 @@ Feature: sharing
     Given user "user0" exists
     And user "user1" exists
     And As an "user0"
-    When creating a share with
+    When sending "POST" to "/apps/files_sharing/api/v1/shares" with
       | path | welcome.txt |
       | shareWith | user1 |
       | shareType | 0 |
@@ -21,7 +21,7 @@ Feature: sharing
     And user "user1" exists
     And group "sharing-group" exists
     And As an "user0"
-    When creating a share with
+    When sending "POST" to "/apps/files_sharing/api/v1/shares" with
       | path | welcome.txt |
       | shareWith | sharing-group |
       | shareType | 1 |
@@ -35,9 +35,8 @@ Feature: sharing
     And group "sharing-group" exists
     And user "user1" belongs to group "sharing-group"
     And file "welcome.txt" of user "user0" is shared with group "sharing-group"
-    And user "user1" accepts last share
     And As an "user0"
-    Then creating a share with
+    Then sending "POST" to "/apps/files_sharing/api/v1/shares" with
       | path | welcome.txt |
       | shareWith | user1 |
       | shareType | 0 |
@@ -120,7 +119,7 @@ Feature: sharing
       | expireDate | +3 days |
     And the OCS status code should be "100"
     And the HTTP status code should be "200"
-    And Getting info of last share
+    And Getting info of last share 
     Then the OCS status code should be "100"
     And the HTTP status code should be "200"
     And Share fields of last share match with
@@ -149,11 +148,11 @@ Feature: sharing
     When creating a share with
       | path | FOLDER |
       | shareType | 3 |
-    And Updating last share with
+    And Updating last share with 
       | password | publicpw |
     And the OCS status code should be "100"
     And the HTTP status code should be "200"
-    And Getting info of last share
+    And Getting info of last share 
     Then the OCS status code should be "100"
     And the HTTP status code should be "200"
     And Share fields of last share match with
@@ -185,7 +184,7 @@ Feature: sharing
       | permissions | 7 |
     And the OCS status code should be "100"
     And the HTTP status code should be "200"
-    And Getting info of last share
+    And Getting info of last share 
     Then the OCS status code should be "100"
     And the HTTP status code should be "200"
     And Share fields of last share match with
@@ -249,7 +248,7 @@ Feature: sharing
       | publicUpload | true |
     And the OCS status code should be "100"
     And the HTTP status code should be "200"
-    And Getting info of last share
+    And Getting info of last share 
     Then the OCS status code should be "100"
     And the HTTP status code should be "200"
     And Share fields of last share match with
@@ -312,7 +311,6 @@ Feature: sharing
     And user "user2" exists
     And user "user3" exists
     And file "textfile0.txt" of user "user0" is shared with user "user1"
-    And user "user1" accepts last share
     And file "textfile0.txt" of user "user0" is shared with user "user2"
     And As an "user1"
     When sending "GET" to "/apps/files_sharing/api/v1/shares?path=textfile0 (2).txt&reshares=true"
@@ -321,85 +319,5 @@ Feature: sharing
     And User "user1" should not be included in the response
     And User "user2" should be included in the response
     And User "user3" should not be included in the response
-
-  Scenario: getting inherited shares of a file
-	Given user "user0" exists
-	And user "user1" exists
-	And user "user2" exists
-	And user "user3" exists
-    # will be shared with user1
-	And User "user0" created a folder "/first"
-	# will be shared with user1, user2
-    And User "user0" created a folder "/first/second"
-	# will be shared with user1, user3
-	And User "user0" uploads file "data/textfile.txt" to "/first/test1.txt"
-	# will be shared with user1, user2, user3
-	And User "user0" uploads file "data/textfile.txt" to "/first/second/test2.txt"
-	And As an "user0"
-	And creating a share with
-		  | path | /first |
-		  | shareType | 0 |
-		  | shareWith | user1 |
-		  | permissions | 16 |
-	And As an "user1"
-	And accepting last share
-#    And folder "first" of user "user0" is shared with user "user1"
-#	  And creating a share with
-#		  | path | /first/second |
-#		  | shareType | 0 |
-#		  | shareWith | user2 |
-#		  | permissions | 16 |
-	And folder "first/second" of user "user0" is shared with user "user2"
-#	  And As an "user1"
-#	  And creating a share with
-#		  | path | /first/test1.txt |
-#		  | shareType | 0 |
-#		  | shareWith | user3 |
-#		  | permissions | 8 |
-    And file "first/test1.txt" of user "user0" is shared with user "user3"
-#	  And As an "user2"
-#	  And creating a share with
-#		  | path | /second/test2.txt |
-#		  | shareType | 0 |
-#		  | shareWith | user3 |
-#		  | permissions | 8 |
-	And file "first/second/test2.txt" of user "user0" is shared with user "user3"
-    # get inherited shares from the owner PoV
-	And As an "user0"
-	When sending "GET" to "/apps/files_sharing/api/v1/shares/inherited?path=first/second/test2.txt"
-	Then the OCS status code should be "100"
-	And the HTTP status code should be "200"
-    And User "user0" should not be included in the response
-    And User "user1" should be included in the response
-    And User "user2" should be included in the response
-    And User "user3" should be included in the response
-    When sending "GET" to "/apps/files_sharing/api/v1/shares/inherited?path=first/test1.txt"
-    Then the OCS status code should be "100"
-    And the HTTP status code should be "200"
-    And User "user0" should not be included in the response
-    And User "user1" should be included in the response
-    And User "user2" should not be included in the response
-    And User "user3" should be included in the response
-    # get inherited shares from the a user with no shares rights
-    And As an "user2"
-    When sending "GET" to "/apps/files_sharing/api/v1/shares/inherited?path=first/test1.txt"
-    Then the OCS status code should be "404"
-    And the HTTP status code should be "200"
-    # get inherited shares from the PoV of a user with resharing rights (user1)
-    And As an "user1"
-    When sending "GET" to "/apps/files_sharing/api/v1/shares/inherited?path=first/second/test2.txt"
-    Then the OCS status code should be "100"
-    And the HTTP status code should be "200"
-    And User "user0" should not be included in the response
-    And User "user1" should not be included in the response
-    And User "user2" should be included in the response
-    And User "user3" should be included in the response
-    When sending "GET" to "/apps/files_sharing/api/v1/shares/inherited?path=first/test1.txt"
-    Then the OCS status code should be "100"
-    And the HTTP status code should be "200"
-    And User "user0" should not be included in the response
-    And User "user1" should not be included in the response
-    And User "user2" should not be included in the response
-    And User "user3" should be included in the response
 
 # See sharing-v1-part2.feature

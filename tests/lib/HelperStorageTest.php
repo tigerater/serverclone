@@ -22,11 +22,10 @@ class HelperStorageTest extends \Test\TestCase {
 	/** @var \OC\Files\Storage\Storage */
 	private $storage;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->user = $this->getUniqueID('user_');
-		\OC_User::useBackend('dummy');
 		\OC::$server->getUserManager()->createUser($this->user, $this->user);
 
 		$this->storage = \OC\Files\Filesystem::getStorage('/');
@@ -38,7 +37,7 @@ class HelperStorageTest extends \Test\TestCase {
 		$this->storageMock = null;
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		$this->user = null;
 
 		if ($this->storageMock) {

@@ -22,6 +22,7 @@
  *
  */
 
+
 namespace OCA\DAV\Tests\unit\CardDAV;
 
 
@@ -53,7 +54,7 @@ class ImageExportPluginTest extends TestCase {
 	/** @var PhotoCache|\PHPUnit_Framework_MockObject_MockObject */
 	private $cache;
 
-	protected function setUp(): void {
+	function setUp() {
 		parent::setUp();
 
 		$this->request = $this->createMock(RequestInterface::class);

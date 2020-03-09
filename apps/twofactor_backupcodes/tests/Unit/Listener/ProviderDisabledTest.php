@@ -22,6 +22,7 @@ declare(strict_types=1);
  *
  */
 
+
 namespace OCA\TwoFactorBackupCodes\Tests\Unit\Listener;
 
 use OCA\TwoFactorBackupCodes\BackgroundJob\RememberBackupCodesJob;
@@ -44,7 +45,7 @@ class ProviderDisabledTest extends TestCase {
 	/** @var ProviderDisabled */
 	private $listener;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->registy = $this->createMock(IRegistry::class);

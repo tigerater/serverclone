@@ -23,7 +23,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace OCA\Files_External\Tests\Service;
 
 use OCA\Files_External\Lib\StorageConfig;
@@ -60,7 +59,7 @@ class UserGlobalStoragesServiceTest extends GlobalStoragesServiceTest {
 	const GROUP_ID = 'test_group';
 	const GROUP_ID2 = 'test_group2';
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->globalStoragesService = $this->service;
@@ -158,10 +157,10 @@ class UserGlobalStoragesServiceTest extends GlobalStoragesServiceTest {
 
 	}
 
-
+	/**
+	 * @expectedException \DomainException
+	 */
 	public function testAddStorage($storageParams = null) {
-		$this->expectException(\DomainException::class);
-
 		$backend = $this->backendService->getBackend('identifier:\OCA\Files_External\Lib\Backend\SMB');
 		$authMechanism = $this->backendService->getAuthMechanism('identifier:\Auth\Mechanism');
 
@@ -174,10 +173,10 @@ class UserGlobalStoragesServiceTest extends GlobalStoragesServiceTest {
 		$this->service->addStorage($storage);
 	}
 
-
+	/**
+	 * @expectedException \DomainException
+	 */
 	public function testUpdateStorage($storageParams = null) {
-		$this->expectException(\DomainException::class);
-
 		$backend = $this->backendService->getBackend('identifier:\OCA\Files_External\Lib\Backend\SMB');
 		$authMechanism = $this->backendService->getAuthMechanism('identifier:\Auth\Mechanism');
 
@@ -194,19 +193,18 @@ class UserGlobalStoragesServiceTest extends GlobalStoragesServiceTest {
 		$this->service->updateStorage($retrievedStorage);
 	}
 
-
+	/**
+	 * @expectedException \DomainException
+	 */
 	public function testNonExistingStorage() {
-		$this->expectException(\DomainException::class);
-
-		$this->ActualNonExistingStorageTest();
+		parent::testNonExistingStorage();
 	}
 
 	/**
+	 * @expectedException \DomainException
 	 * @dataProvider deleteStorageDataProvider
 	 */
 	public function testDeleteStorage($backendOptions, $rustyStorageId, $expectedCountAfterDeletion) {
-		$this->expectException(\DomainException::class);
-
 		$backend = $this->backendService->getBackend('identifier:\OCA\Files_External\Lib\Backend\SMB');
 		$authMechanism = $this->backendService->getAuthMechanism('identifier:\Auth\Mechanism');
 
@@ -222,11 +220,11 @@ class UserGlobalStoragesServiceTest extends GlobalStoragesServiceTest {
 		$this->service->removeStorage($id);
 	}
 
-
+	/**
+	 * @expectedException \DomainException
+	 */
 	public function testDeleteUnexistingStorage() {
-		$this->expectException(\DomainException::class);
-
-	    $this->actualDeletedUnexistingStorageTest();
+		parent::testDeleteUnexistingStorage();
 	}
 
 	public function getUniqueStoragesProvider() {

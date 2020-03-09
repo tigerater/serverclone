@@ -22,6 +22,7 @@
  *
  */
 
+
 namespace OCA\Encryption\Tests\Command;
 
 
@@ -53,7 +54,7 @@ class TestEnableMasterKey extends TestCase {
 	/** @var  \Symfony\Component\Console\Input\InputInterface | \PHPUnit_Framework_MockObject_MockObject */
 	protected $input;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->util = $this->getMockBuilder(Util::class)

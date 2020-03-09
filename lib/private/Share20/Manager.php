@@ -55,18 +55,17 @@ use OCP\IUser;
 use OCP\IUserManager;
 use OCP\L10N\IFactory;
 use OCP\Mail\IMailer;
-use OCP\Security\Events\ValidatePasswordPolicyEvent;
 use OCP\Security\IHasher;
 use OCP\Security\ISecureRandom;
-use OCP\Share;
 use OCP\Share\Exceptions\GenericShareException;
 use OCP\Share\Exceptions\ShareNotFound;
 use OCP\Share\IManager;
 use OCP\Share\IProviderFactory;
 use OCP\Share\IShare;
-use OCP\Share\IShareProvider;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
+use OCP\Share\IShareProvider;
+use OCP\Share;
 
 /**
  * This class is the communication hub for all sharing related operations.
@@ -192,7 +191,8 @@ class Manager implements IManager {
 
 		// Let others verify the password
 		try {
-			$this->eventDispatcher->dispatch(new ValidatePasswordPolicyEvent($password));
+			$event = new GenericEvent($password);
+			$this->eventDispatcher->dispatch('OCP\PasswordPolicy::validate', $event);
 		} catch (HintException $e) {
 			throw new \Exception($e->getHint());
 		}
@@ -349,77 +349,6 @@ class Manager implements IManager {
 				throw new GenericShareException($message_t);
 			}
 		}
-	}
-
-	/**
-	 * Validate if the expiration date fits the system settings
-	 *
-	 * @param \OCP\Share\IShare $share The share to validate the expiration date of
-	 * @return \OCP\Share\IShare The modified share object
-	 * @throws GenericShareException
-	 * @throws \InvalidArgumentException
-	 * @throws \Exception
-	 */
-	protected function validateExpirationDateInternal(\OCP\Share\IShare $share) {
-		$expirationDate = $share->getExpirationDate();
-
-		if ($expirationDate !== null) {
-			//Make sure the expiration date is a date
-			$expirationDate->setTime(0, 0, 0);
-
-			$date = new \DateTime();
-			$date->setTime(0, 0, 0);
-			if ($date >= $expirationDate) {
-				$message = $this->l->t('Expiration date is in the past');
-				throw new GenericShareException($message, $message, 404);
-			}
-		}
-
-		// If expiredate is empty set a default one if there is a default
-		$fullId = null;
-		try {
-			$fullId = $share->getFullId();
-		} catch (\UnexpectedValueException $e) {
-			// This is a new share
-		}
-
-		if ($fullId === null && $expirationDate === null && $this->shareApiInternalDefaultExpireDate()) {
-			$expirationDate = new \DateTime();
-			$expirationDate->setTime(0,0,0);
-			$expirationDate->add(new \DateInterval('P'.$this->shareApiInternalDefaultExpireDays().'D'));
-		}
-
-		// If we enforce the expiration date check that is does not exceed
-		if ($this->shareApiInternalDefaultExpireDateEnforced()) {
-			if ($expirationDate === null) {
-				throw new \InvalidArgumentException('Expiration date is enforced');
-			}
-
-			$date = new \DateTime();
-			$date->setTime(0, 0, 0);
-			$date->add(new \DateInterval('P' . $this->shareApiInternalDefaultExpireDays() . 'D'));
-			if ($date < $expirationDate) {
-				$message = $this->l->t('Can’t set expiration date more than %s days in the future', [$this->shareApiInternalDefaultExpireDays()]);
-				throw new GenericShareException($message, $message, 404);
-			}
-		}
-
-		$accepted = true;
-		$message = '';
-		\OCP\Util::emitHook('\OC\Share', 'verifyExpirationDate', [
-			'expirationDate' => &$expirationDate,
-			'accepted' => &$accepted,
-			'message' => &$message,
-			'passwordSet' => $share->getPassword() !== null,
-		]);
-
-		if (!$accepted) {
-			throw new \Exception($message);
-		}
-
-		$share->setExpirationDate($expirationDate);
-
-		return $share;
 	}
 
 	/**
@@ -707,16 +636,8 @@ class Manager implements IManager {
 		//Verify share type
 		if ($share->getShareType() === \OCP\Share::SHARE_TYPE_USER) {
 			$this->userCreateChecks($share);
-
-			//Verify the expiration date
-			$share = $this->validateExpirationDateInternal($share);
-
 		} else if ($share->getShareType() === \OCP\Share::SHARE_TYPE_GROUP) {
 			$this->groupCreateChecks($share);
-
-			//Verify the expiration date
-			$share = $this->validateExpirationDateInternal($share);
-
 		} else if ($share->getShareType() === \OCP\Share::SHARE_TYPE_LINK) {
 			$this->linkCreateChecks($share);
 			$this->setLinkParent($share);
@@ -732,7 +653,7 @@ class Manager implements IManager {
 			);
 
 			//Verify the expiration date
-			$share = $this->validateExpirationDate($share);
+			$this->validateExpirationDate($share);
 
 			//Verify the password
 			$this->verifyPassword($share->getPassword());
@@ -929,20 +850,8 @@ class Manager implements IManager {
 
 		if ($share->getShareType() === \OCP\Share::SHARE_TYPE_USER) {
 			$this->userCreateChecks($share);
-
-			if ($share->getExpirationDate() != $originalShare->getExpirationDate()) {
-				//Verify the expiration date
-				$this->validateExpirationDate($share);
-				$expirationDateUpdated = true;
-			}
 		} else if ($share->getShareType() === \OCP\Share::SHARE_TYPE_GROUP) {
 			$this->groupCreateChecks($share);
-
-			if ($share->getExpirationDate() != $originalShare->getExpirationDate()) {
-				//Verify the expiration date
-				$this->validateExpirationDate($share);
-				$expirationDateUpdated = true;
-			}
 		} else if ($share->getShareType() === \OCP\Share::SHARE_TYPE_LINK) {
 			$this->linkCreateChecks($share);
 
@@ -1015,30 +924,6 @@ class Manager implements IManager {
 				'path' => $userFolder->getRelativePath($share->getNode()->getPath()),
 			));
 		}
-
-		return $share;
-	}
-
-	/**
-	 * Accept a share.
-	 *
-	 * @param IShare $share
-	 * @param string $recipientId
-	 * @return IShare The share object
-	 * @throws \InvalidArgumentException
-	 * @since 9.0.0
-	 */
-	public function acceptShare(IShare $share, string $recipientId): IShare {
-		[$providerId, ] = $this->splitFullId($share->getFullId());
-		$provider = $this->factory->getProvider($providerId);
-
-		if (!method_exists($provider, 'acceptShare')) {
-			// TODO FIX ME
-			throw new \InvalidArgumentException('Share provider does not support accepting');
-		}
-		$provider->acceptShare($share, $recipientId);
-		$event = new GenericEvent($share);
-		$this->eventDispatcher->dispatch('OCP\Share::postAcceptShare', $event);
 
 		return $share;
 	}
@@ -1666,7 +1551,7 @@ class Manager implements IManager {
 	}
 
 	/**
-	 * Is default link expire date enabled
+	 * Is default expire date enabled
 	 *
 	 * @return bool
 	 */
@@ -1675,7 +1560,7 @@ class Manager implements IManager {
 	}
 
 	/**
-	 * Is default link expire date enforced
+	 * Is default expire date enforced
 	 *`
 	 * @return bool
 	 */
@@ -1684,41 +1569,13 @@ class Manager implements IManager {
 			$this->config->getAppValue('core', 'shareapi_enforce_expire_date', 'no') === 'yes';
 	}
 
-
 	/**
-	 * Number of default link expire days
+	 * Number of default expire days
+	 *shareApiLinkAllowPublicUpload
 	 * @return int
 	 */
 	public function shareApiLinkDefaultExpireDays() {
 		return (int)$this->config->getAppValue('core', 'shareapi_expire_after_n_days', '7');
-	}
-
-	/**
-	 * Is default internal expire date enabled
-	 *
-	 * @return bool
-	 */
-	public function shareApiInternalDefaultExpireDate(): bool {
-		return $this->config->getAppValue('core', 'shareapi_default_internal_expire_date', 'no') === 'yes';
-	}
-
-	/**
-	 * Is default expire date enforced
-	 *`
-	 * @return bool
-	 */
-	public function shareApiInternalDefaultExpireDateEnforced(): bool {
-		return $this->shareApiInternalDefaultExpireDate() &&
-			$this->config->getAppValue('core', 'shareapi_enforce_internal_expire_date', 'no') === 'yes';
-	}
-
-
-	/**
-	 * Number of default expire days
-	 * @return int
-	 */
-	public function shareApiInternalDefaultExpireDays(): int {
-		return (int)$this->config->getAppValue('core', 'shareapi_internal_expire_after_n_days', '7');
 	}
 
 	/**

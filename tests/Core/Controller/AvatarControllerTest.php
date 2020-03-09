@@ -34,13 +34,13 @@ namespace Tests\Core\Controller;
 use OC\AppFramework\Utility\TimeFactory;
 use OC\Core\Controller\AvatarController;
 use OCP\AppFramework\Http;
+use OCP\ICache;
 use OCP\Files\File;
 use OCP\Files\IRootFolder;
 use OCP\Files\NotFoundException;
 use OCP\Files\NotPermittedException;
 use OCP\IAvatar;
 use OCP\IAvatarManager;
-use OCP\ICache;
 use OCP\IL10N;
 use OCP\ILogger;
 use OCP\IRequest;
@@ -79,7 +79,7 @@ class AvatarControllerTest extends \Test\TestCase {
 	/** @var TimeFactory|\PHPUnit_Framework_MockObject_MockObject */
 	private $timeFactory;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->avatarManager = $this->getMockBuilder('OCP\IAvatarManager')->getMock();
@@ -121,7 +121,7 @@ class AvatarControllerTest extends \Test\TestCase {
 		$this->avatarFile->method('getEtag')->willReturn('my etag');
 	}
 
-	protected function tearDown(): void {
+	public function tearDown() {
 		parent::tearDown();
 	}
 
@@ -332,7 +332,7 @@ class AvatarControllerTest extends \Test\TestCase {
 		$this->cache->method('get')->willReturn(file_get_contents(\OC::$SERVERROOT.'/tests/data/testimage.gif'));
 
 		//Create request return
-		$reqRet = ['error' => [0], 'tmp_name' => [$fileName], 'size' => [filesize(\OC::$SERVERROOT.'/tests/data/testimage.gif')]];
+		$reqRet = ['error' => [0], 'tmp_name' => [$fileName], 'size' => filesize(\OC::$SERVERROOT.'/tests/data/testimage.gif')];
 		$this->request->method('getUploadedFile')->willReturn($reqRet);
 
 		$response = $this->avatarController->postAvatar(null);

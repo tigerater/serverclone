@@ -9,6 +9,7 @@
  * @copyright Thomas Müller 2014
  */
 
+
 namespace Test\AppFramework\Middleware;
 
 use OC\AppFramework\Http\Request;
@@ -18,6 +19,7 @@ use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\Response;
 use OCP\IConfig;
 
+
 class SessionMiddlewareTest extends \Test\TestCase {
 
 	/** @var ControllerMethodReflector */
@@ -26,7 +28,7 @@ class SessionMiddlewareTest extends \Test\TestCase {
 	/** @var Controller */
 	private $controller;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->reflector = new ControllerMethodReflector();

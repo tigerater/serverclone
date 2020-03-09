@@ -37,7 +37,6 @@ require_once __DIR__ . '/../appinfo/app.php';
 
 use OC\Files\Storage\Temporary;
 use OCP\IConfig;
-use OCP\Share\IShare;
 
 /**
  * Class Test_Files_versions
@@ -56,17 +55,18 @@ class VersioningTest extends \Test\TestCase {
 	 */
 	private $rootView;
 
-	public static function setUpBeforeClass(): void {
+	public static function setUpBeforeClass() {
 		parent::setUpBeforeClass();
 
 		$application = new \OCA\Files_Sharing\AppInfo\Application();
+		$application->registerMountProviders();
 
 		// create test user
 		self::loginHelper(self::TEST_VERSIONS_USER2, true);
 		self::loginHelper(self::TEST_VERSIONS_USER, true);
 	}
 
-	public static function tearDownAfterClass(): void {
+	public static function tearDownAfterClass() {
 		// cleanup test user
 		$user = \OC::$server->getUserManager()->get(self::TEST_VERSIONS_USER);
 		if ($user !== null) { $user->delete(); }
@@ -76,7 +76,7 @@ class VersioningTest extends \Test\TestCase {
 		parent::tearDownAfterClass();
 	}
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$config = \OC::$server->getConfig();
@@ -104,7 +104,7 @@ class VersioningTest extends \Test\TestCase {
 		}
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		$this->restoreService('AllConfig');
 
 		if ($this->rootView) {
@@ -325,7 +325,6 @@ class VersioningTest extends \Test\TestCase {
 			->setSharedWith(self::TEST_VERSIONS_USER2)
 			->setPermissions(\OCP\Constants::PERMISSION_ALL);
 		$share = \OC::$server->getShareManager()->createShare($share);
-		\OC::$server->getShareManager()->acceptShare($share, self::TEST_VERSIONS_USER2);
 
 		self::loginHelper(self::TEST_VERSIONS_USER2);
 
@@ -394,7 +393,6 @@ class VersioningTest extends \Test\TestCase {
 			->setSharedWith(self::TEST_VERSIONS_USER2)
 			->setPermissions(\OCP\Constants::PERMISSION_ALL);
 		$share = \OC::$server->getShareManager()->createShare($share);
-		\OC::$server->getShareManager()->acceptShare($share, self::TEST_VERSIONS_USER2);
 
 		self::loginHelper(self::TEST_VERSIONS_USER2);
 		$versionsFolder2 = '/' . self::TEST_VERSIONS_USER2 . '/files_versions';
@@ -444,7 +442,6 @@ class VersioningTest extends \Test\TestCase {
 			->setSharedWith(self::TEST_VERSIONS_USER2)
 			->setPermissions(\OCP\Constants::PERMISSION_ALL);
 		$share = \OC::$server->getShareManager()->createShare($share);
-		\OC::$server->getShareManager()->acceptShare($share, self::TEST_VERSIONS_USER2);
 
 		self::loginHelper(self::TEST_VERSIONS_USER2);
 		$versionsFolder2 = '/' . self::TEST_VERSIONS_USER2 . '/files_versions';
@@ -512,7 +509,6 @@ class VersioningTest extends \Test\TestCase {
 			->setSharedWith(self::TEST_VERSIONS_USER2)
 			->setPermissions(\OCP\Constants::PERMISSION_READ | \OCP\Constants::PERMISSION_UPDATE | \OCP\Constants::PERMISSION_SHARE);
 		$share = \OC::$server->getShareManager()->createShare($share);
-		\OC::$server->getShareManager()->acceptShare($share, self::TEST_VERSIONS_USER2);
 
 		self::loginHelper(self::TEST_VERSIONS_USER2);
 
@@ -619,10 +615,10 @@ class VersioningTest extends \Test\TestCase {
 		$this->assertFalse(\OCA\Files_Versions\Storage::expire('/void/unexist.txt', self::TEST_VERSIONS_USER));
 	}
 
-	
+	/**
+	 * @expectedException \OC\User\NoUserException
+	 */
 	public function testExpireNonexistingUser() {
-		$this->expectException(\OC\User\NoUserException::class);
-
 		$this->logout();
 		// needed to have a FS setup (the background job does this)
 		\OC_Util::setupFS(self::TEST_VERSIONS_USER);
@@ -657,7 +653,6 @@ class VersioningTest extends \Test\TestCase {
 			->setSharedWith(self::TEST_VERSIONS_USER2)
 			->setPermissions(\OCP\Constants::PERMISSION_READ);
 		$share = \OC::$server->getShareManager()->createShare($share);
-		\OC::$server->getShareManager()->acceptShare($share, self::TEST_VERSIONS_USER2);
 
 		$versions = $this->createAndCheckVersions(
 			\OC\Files\Filesystem::getView(),
@@ -828,7 +823,6 @@ class VersioningTest extends \Test\TestCase {
 			->setSharedWith(self::TEST_VERSIONS_USER2)
 			->setPermissions(\OCP\Constants::PERMISSION_ALL);
 		$share = \OC::$server->getShareManager()->createShare($share);
-		\OC::$server->getShareManager()->acceptShare($share, self::TEST_VERSIONS_USER2);
 
 		$this->loginAsUser(self::TEST_VERSIONS_USER2);
 

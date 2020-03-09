@@ -23,7 +23,7 @@
 namespace Test\User;
 
 class Dummy extends Backend {
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		$this->backend=new \Test\Util\User\Dummy();
 	}

@@ -22,13 +22,14 @@ declare(strict_types=1);
  *
  */
 
+
 namespace OC\Core\Migrations;
 
 use Closure;
 use Doctrine\DBAL\Types\Type;
 use OCP\DB\ISchemaWrapper;
-use OCP\Migration\IOutput;
 use OCP\Migration\SimpleMigrationStep;
+use OCP\Migration\IOutput;
 
 class Version17000Date20190514105811 extends SimpleMigrationStep {
 
@@ -43,7 +44,7 @@ class Version17000Date20190514105811 extends SimpleMigrationStep {
 		$schema = $schemaClosure();
 		if(!$schema->hasTable('filecache_extended')) {
 			$table = $schema->createTable('filecache_extended');
-			$table->addColumn('fileid', Type::BIGINT, [
+			$table->addColumn('fileid', Type::INTEGER, [
 				'notnull' => true,
 				'length' => 4,
 				'unsigned' => true,

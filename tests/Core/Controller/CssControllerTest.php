@@ -20,7 +20,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace Tests\Core\Controller;
 
 use OC\Core\Controller\CssController;
@@ -48,7 +47,7 @@ class CssControllerTest extends TestCase {
 	/** @var CssController */
 	private $controller;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		/** @var Factory|\PHPUnit_Framework_MockObject_MockObject $factory */

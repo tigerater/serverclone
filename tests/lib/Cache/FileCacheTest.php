@@ -52,7 +52,7 @@ class FileCacheTest extends TestCache {
 		//$this->skipUnless(OC_User::isLoggedIn());
 	}
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		//clear all proxies and hooks so we can do clean testing
@@ -87,7 +87,7 @@ class FileCacheTest extends TestCache {
 		$this->instance->set('hack', 'hack');
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		if ($this->instance) {
 			$this->instance->remove('hack', 'hack');
 		}

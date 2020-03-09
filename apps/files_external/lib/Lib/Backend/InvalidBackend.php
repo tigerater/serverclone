@@ -65,3 +65,4 @@ class InvalidBackend extends Backend {
 		$storage->setBackendOption('exception', new \Exception('Unknown storage backend "' . $this->invalidId . '"', StorageNotAvailableException::STATUS_ERROR));
 	}
 }
+

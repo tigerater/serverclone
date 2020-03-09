@@ -36,7 +36,7 @@ class InitialStateServiceTest extends TestCase {
 	/** @var InitialStateService */
 	private $service;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->service = new InitialStateService(

@@ -27,16 +27,18 @@ declare(strict_types=1);
  *
  */
 
+
 namespace OCP\FullTextSearch;
 
 
 use OCP\FullTextSearch\Model\IIndex;
-use OCP\FullTextSearch\Model\IIndexDocument;
 use OCP\FullTextSearch\Model\IIndexOptions;
+use OCP\FullTextSearch\Model\IIndexDocument;
 use OCP\FullTextSearch\Model\IRunner;
 use OCP\FullTextSearch\Model\ISearchRequest;
 use OCP\FullTextSearch\Model\ISearchResult;
 use OCP\FullTextSearch\Model\ISearchTemplate;
+
 
 /**
  * Interface IFullTextSearchProvider

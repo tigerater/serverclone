@@ -19,6 +19,7 @@
  *
  */
 
+
 namespace Tests\Core\Command\Encryption;
 
 
@@ -54,7 +55,7 @@ class DecryptAllTest extends TestCase {
 	/** @var \PHPUnit_Framework_MockObject_MockObject | \OC\Encryption\DecryptAll */
 	protected $decryptAll;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->config = $this->getMockBuilder(IConfig::class)
@@ -181,10 +182,10 @@ class DecryptAllTest extends TestCase {
 		];
 	}
 
-	
+	/**
+	 * @expectedException \Exception
+	 */
 	public function testExecuteFailure() {
-		$this->expectException(\Exception::class);
-
 		$instance = new DecryptAll(
 			$this->encryptionManager,
 			$this->appManager,

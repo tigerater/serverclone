@@ -19,6 +19,7 @@
  *
  */
 
+
 namespace OCA\ShareByMail\Settings;
 
 use OCP\AppFramework\Http\TemplateResponse;

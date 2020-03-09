@@ -55,7 +55,7 @@ class AdminTest extends TestCase {
 	/** @var IRegistry|\PHPUnit_Framework_MockObject_MockObject */
 	private $subscriptionRegistry;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->config = $this->createMock(IConfig::class);

@@ -41,7 +41,7 @@ class CleanupInvitationTokenJobTest extends TestCase {
 	/** @var \OCA\DAV\BackgroundJob\GenerateBirthdayCalendarBackgroundJob */
 	private $backgroundJob;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->dbConnection = $this->createMock(IDBConnection::class);

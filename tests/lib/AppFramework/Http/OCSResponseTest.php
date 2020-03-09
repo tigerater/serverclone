@@ -21,10 +21,12 @@
  *
  */
 
+
 namespace Test\AppFramework\Http;
 
 
 use OCP\AppFramework\Http\OCSResponse;
+
 
 class OCSResponseTest extends \Test\TestCase {
 

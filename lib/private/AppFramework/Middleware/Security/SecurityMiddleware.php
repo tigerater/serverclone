@@ -28,30 +28,36 @@ declare(strict_types=1);
  *
  */
 
+
 namespace OC\AppFramework\Middleware\Security;
 
 use OC\AppFramework\Middleware\Security\Exceptions\AppNotEnabledException;
 use OC\AppFramework\Middleware\Security\Exceptions\CrossSiteRequestForgeryException;
 use OC\AppFramework\Middleware\Security\Exceptions\NotAdminException;
 use OC\AppFramework\Middleware\Security\Exceptions\NotLoggedInException;
-use OC\AppFramework\Middleware\Security\Exceptions\SecurityException;
 use OC\AppFramework\Middleware\Security\Exceptions\StrictCookieMissingException;
 use OC\AppFramework\Utility\ControllerMethodReflector;
+use OC\Security\CSP\ContentSecurityPolicyManager;
+use OC\Security\CSP\ContentSecurityPolicyNonceManager;
+use OC\Security\CSRF\CsrfTokenManager;
 use OCP\App\AppPathNotFoundException;
 use OCP\App\IAppManager;
-use OCP\AppFramework\Controller;
-use OCP\AppFramework\Http\JSONResponse;
+use OCP\AppFramework\Http\ContentSecurityPolicy;
+use OCP\AppFramework\Http\EmptyContentSecurityPolicy;
 use OCP\AppFramework\Http\RedirectResponse;
-use OCP\AppFramework\Http\Response;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Middleware;
+use OCP\AppFramework\Http\Response;
+use OCP\AppFramework\Http\JSONResponse;
 use OCP\AppFramework\OCSController;
 use OCP\IL10N;
-use OCP\ILogger;
 use OCP\INavigationManager;
-use OCP\IRequest;
 use OCP\IURLGenerator;
+use OCP\IRequest;
+use OCP\ILogger;
+use OCP\AppFramework\Controller;
 use OCP\Util;
+use OC\AppFramework\Middleware\Security\Exceptions\SecurityException;
 
 /**
  * Used to do all the authentication and checking stuff for a controller method
@@ -115,18 +121,12 @@ class SecurityMiddleware extends Middleware {
 	 * @param Controller $controller the controller
 	 * @param string $methodName the name of the method
 	 * @throws SecurityException when a security check fails
-	 *
-	 * @suppress PhanUndeclaredClassConstant
 	 */
 	public function beforeController($controller, $methodName) {
 
 		// this will set the current navigation entry of the app, use this only
 		// for normal HTML requests and not for AJAX requests
 		$this->navigationManager->setActiveEntry($this->appName);
-
-		if ($controller === \OCA\Talk\Controller\PageController::class && $methodName === 'showCall') {
-			$this->navigationManager->setActiveEntry('spreed');
-		}
 
 		// security checks
 		$isPublicPage = $this->reflector->hasAnnotation('PublicPage');

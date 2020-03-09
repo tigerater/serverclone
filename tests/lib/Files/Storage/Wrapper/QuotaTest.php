@@ -27,7 +27,7 @@ class QuotaTest extends \Test\Files\Storage\Storage {
 	 */
 	private $tmpDir;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->tmpDir = \OC::$server->getTempManager()->getTemporaryFolder();
@@ -35,7 +35,7 @@ class QuotaTest extends \Test\Files\Storage\Storage {
 		$this->instance = new \OC\Files\Storage\Wrapper\Quota(array('storage' => $storage, 'quota' => 10000000));
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		\OC_Helper::rmdirr($this->tmpDir);
 		parent::tearDown();
 	}

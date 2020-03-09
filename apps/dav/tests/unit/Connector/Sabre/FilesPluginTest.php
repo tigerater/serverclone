@@ -26,7 +26,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace OCA\DAV\Tests\unit\Connector\Sabre;
 
 use OC\User\User;
@@ -34,7 +33,6 @@ use OCA\DAV\Connector\Sabre\Directory;
 use OCA\DAV\Connector\Sabre\File;
 use OCA\DAV\Connector\Sabre\FilesPlugin;
 use OCA\DAV\Connector\Sabre\Node;
-use OCP\Files\FileInfo;
 use OCP\Files\StorageNotAvailableException;
 use OCP\IConfig;
 use OCP\IPreview;
@@ -45,8 +43,8 @@ use Sabre\DAV\Server;
 use Sabre\DAV\Tree;
 use Sabre\HTTP\RequestInterface;
 use Sabre\HTTP\ResponseInterface;
-use Sabre\Xml\Service;
 use Test\TestCase;
+use OCP\Files\FileInfo;
 
 /**
  * Copyright (c) 2015 Vincent Petry <pvince81@owncloud.com>
@@ -97,7 +95,7 @@ class FilesPluginTest extends TestCase {
 	 */
 	private $previewManager;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->server = $this->getMockBuilder(Server::class)
 			->disableOriginalConstructor()
@@ -127,7 +125,6 @@ class FilesPluginTest extends TestCase {
 				->disableOriginalConstructor()
 				->getMock();
 		$this->server->httpResponse = $response;
-		$this->server->xml = new Service();
 
 		$this->plugin->initialize($this->server);
 	}
@@ -462,11 +459,10 @@ class FilesPluginTest extends TestCase {
 	 * FolderA is an incoming shared folder and there are no delete permissions.
 	 * Thus moving /FolderA/test.txt to /test.txt should fail already on that check
 	 *
+	 * @expectedException \Sabre\DAV\Exception\Forbidden
+	 * @expectedExceptionMessage FolderA/test.txt cannot be deleted
 	 */
 	public function testMoveSrcNotDeletable() {
-		$this->expectException(\Sabre\DAV\Exception\Forbidden::class);
-		$this->expectExceptionMessage('FolderA/test.txt cannot be deleted');
-
 		$fileInfoFolderATestTXT = $this->getMockBuilder(FileInfo::class)
 			->disableOriginalConstructor()
 			->getMock();
@@ -508,11 +504,11 @@ class FilesPluginTest extends TestCase {
 		$this->plugin->checkMove('FolderA/test.txt', 'test.txt');
 	}
 
-	
+	/**
+	 * @expectedException \Sabre\DAV\Exception\NotFound
+	 * @expectedExceptionMessage FolderA/test.txt does not exist
+	 */
 	public function testMoveSrcNotExist() {
-		$this->expectException(\Sabre\DAV\Exception\NotFound::class);
-		$this->expectExceptionMessage('FolderA/test.txt does not exist');
-
 		$node = $this->getMockBuilder(Node::class)
 			->disableOriginalConstructor()
 			->getMock();

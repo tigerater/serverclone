@@ -12,7 +12,6 @@ declare(strict_types=1);
  * @author Roeland Jago Douma <roeland@famdouma.nl>
  * @author Vincent Petry <pvince81@owncloud.com>
  * @author John Molakvoæ <skjnldsv@protonmail.com>
- * @author Maxence Lange <maxence@artificial-owl.com>
  *
  * @license AGPL-3.0
  *
@@ -32,8 +31,6 @@ declare(strict_types=1);
 
 namespace OCA\Files_Sharing\Controller;
 
-use OCA\Files_Sharing\Exceptions\SharingRightsException;
-use OCA\Files_Sharing\External\Storage;
 use OCA\Files\Helper;
 use OCP\App\IAppManager;
 use OCP\AppFramework\Http\DataResponse;
@@ -44,24 +41,24 @@ use OCP\AppFramework\OCS\OCSNotFoundException;
 use OCP\AppFramework\OCSController;
 use OCP\AppFramework\QueryException;
 use OCP\Constants;
-use OCP\Files\InvalidPathException;
-use OCP\Files\IRootFolder;
 use OCP\Files\Node;
 use OCP\Files\NotFoundException;
 use OCP\IConfig;
 use OCP\IGroupManager;
 use OCP\IL10N;
+use OCP\IUserManager;
 use OCP\IRequest;
 use OCP\IServerContainer;
 use OCP\IURLGenerator;
-use OCP\IUserManager;
-use OCP\Lock\ILockingProvider;
+use OCP\Files\IRootFolder;
 use OCP\Lock\LockedException;
 use OCP\Share;
-use OCP\Share\Exceptions\GenericShareException;
-use OCP\Share\Exceptions\ShareNotFound;
 use OCP\Share\IManager;
+use OCP\Share\Exceptions\ShareNotFound;
+use OCP\Share\Exceptions\GenericShareException;
+use OCP\Lock\ILockingProvider;
 use OCP\Share\IShare;
+use OCA\Files_Sharing\External\Storage;
 
 /**
  * Class Share20OCS
@@ -184,7 +181,7 @@ class ShareAPIController extends OCSController {
 					throw new NotFoundException();
 				}
 			} else {
-				$node = reset($nodes);
+				$node = $nodes[0];
 			}
 		}
 
@@ -386,7 +383,7 @@ class ShareAPIController extends OCSController {
 	 * @throws OCSException
 	 * @throws OCSForbiddenException
 	 * @throws OCSNotFoundException
-	 * @throws InvalidPathException
+	 * @throws \OCP\Files\InvalidPathException
 	 * @suppress PhanUndeclaredClassMethod
 	 */
 	public function createShare(
@@ -582,12 +579,11 @@ class ShareAPIController extends OCSController {
 	}
 
 	/**
-	 * @param null|Node $node
+	 * @param \OCP\Files\File|\OCP\Files\Folder $node
 	 * @param boolean $includeTags
-	 *
-	 * @return array
+	 * @return DataResponse
 	 */
-	private function getSharedWithMe($node, bool $includeTags): array {
+	private function getSharedWithMe($node = null, bool $includeTags): DataResponse {
 
 		$userShares = $this->shareManager->getSharedWith($this->currentUser, Share::SHARE_TYPE_USER, $node, -1, 0);
 		$groupShares = $this->shareManager->getSharedWith($this->currentUser, Share::SHARE_TYPE_GROUP, $node, -1, 0);
@@ -596,7 +592,7 @@ class ShareAPIController extends OCSController {
 
 		$shares = array_merge($userShares, $groupShares, $circleShares, $roomShares);
 
-		$shares = array_filter($shares, function(IShare $share) {
+		$shares = array_filter($shares, function (IShare $share) {
 			return $share->getShareOwner() !== $this->currentUser;
 		});
 
@@ -615,15 +611,13 @@ class ShareAPIController extends OCSController {
 			$formatted = Helper::populateTags($formatted, 'file_source', \OC::$server->getTagManager());
 		}
 
-		return $formatted;
+		return new DataResponse($formatted);
 	}
 
 	/**
-	 * @param \OCP\Files\Node $folder
-	 *
+	 * @param \OCP\Files\Folder $folder
 	 * @return array
 	 * @throws OCSBadRequestException
-	 * @throws NotFoundException
 	 */
 	private function getSharesInDir(Node $folder): array {
 		if (!($folder instanceof \OCP\Files\Folder)) {
@@ -640,37 +634,13 @@ class ShareAPIController extends OCSController {
 
 		// filter out duplicate shares
 		$known = [];
-
-
-		$formatted = $miniFormatted = [];
-		$resharingRight = false;
-		$known = [];
-		foreach ($shares as $share) {
-			if (in_array($share->getId(), $known) || $share->getSharedWith() === $this->currentUser) {
-				continue;
+		return array_filter($shares, function($share) use (&$known) {
+			if (in_array($share->getId(), $known)) {
+				return false;
 			}
-
-			try {
-				$format = $this->formatShare($share);
-
-				$known[] = $share->getId();
-				$formatted[] = $format;
-				if ($share->getSharedBy() === $this->currentUser) {
-					$miniFormatted[] = $format;
-				}
-				if (!$resharingRight && $this->shareProviderResharingRights($this->currentUser, $share, $folder)) {
-					$resharingRight = true;
-				}
-			} catch (\Exception $e) {
-				//Ignore this share
-			}
-		}
-
-		if (!$resharingRight) {
-			$formatted = $miniFormatted;
-		}
-
-		return $formatted;
+			$known[] = $share->getId();
+			return true;
+		});
 	}
 
 	/**
@@ -689,87 +659,64 @@ class ShareAPIController extends OCSController {
 	 * - Get shares for a specific path (?path=...)
 	 * - Get all shares in a folder (?subfiles=true&path=..)
 	 *
-	 * @param string $include_tags
-	 *
 	 * @return DataResponse
-	 * @throws NotFoundException
-	 * @throws OCSBadRequestException
 	 * @throws OCSNotFoundException
 	 */
 	public function getShares(
 		string $shared_with_me = 'false',
 		string $reshares = 'false',
 		string $subfiles = 'false',
-		string $path = '',
+		string $path = null,
 		string $include_tags = 'false'
 	): DataResponse {
 
-		$node = null;
-		if ($path !== '') {
+		if ($path !== null) {
 			$userFolder = $this->rootFolder->getUserFolder($this->currentUser);
 			try {
-				$node = $userFolder->get($path);
-				$this->lock($node);
-			} catch (NotFoundException $e) {
-				throw new OCSNotFoundException(
-					$this->l->t('Wrong path, file/folder doesn\'t exist')
-				);
+				$path = $userFolder->get($path);
+				$this->lock($path);
+			} catch (\OCP\Files\NotFoundException $e) {
+				throw new OCSNotFoundException($this->l->t('Wrong path, file/folder doesn\'t exist'));
 			} catch (LockedException $e) {
-				throw new OCSNotFoundException($this->l->t('Could not lock node'));
+				throw new OCSNotFoundException($this->l->t('Could not lock path'));
 			}
 		}
 
-		$shares = $this->getFormattedShares(
-			$this->currentUser,
-			$node,
-			($shared_with_me === 'true'),
-			($reshares === 'true'),
-			($subfiles === 'true'),
-			($include_tags === 'true')
-		);
+		$include_tags = $include_tags === 'true';
 
-		return new DataResponse($shares);
-	}
-
-
-	/**
-	 * @param string $viewer
-	 * @param Node $node
-	 * @param bool $sharedWithMe
-	 * @param bool $reShares
-	 * @param bool $subFiles
-	 * @param bool $includeTags
-	 *
-	 * @return array
-	 * @throws NotFoundException
-	 * @throws OCSBadRequestException
-	 */
-	private function getFormattedShares(
-		string $viewer, $node = null, bool $sharedWithMe = false, bool $reShares = false,
-		bool $subFiles = false, bool $includeTags = false
-	): array {
-
-		if ($sharedWithMe) {
-			return $this->getSharedWithMe($node, $includeTags);
+		if ($shared_with_me === 'true') {
+			$result = $this->getSharedWithMe($path, $include_tags);
+			return $result;
 		}
 
-		if ($subFiles) {
-			return $this->getSharesInDir($node);
+		if ($reshares === 'true') {
+			$reshares = true;
+		} else {
+			$reshares = false;
 		}
 
-		$shares = $this->getSharesFromNode($viewer, $node, $reShares);
+		if ($subfiles === 'true') {
+			$shares = $this->getSharesInDir($path);
+			$recipientNode = null;
+		} else {
+			// get all shares
+			$shares = $this->getAllShares($path, $reshares);
+			$recipientNode = $path;
+		}
 
-		$known = $formatted = $miniFormatted = [];
+		// process all shares
+		$formatted = $miniFormatted = [];
 		$resharingRight = false;
 		foreach ($shares as $share) {
-			if (in_array($share->getId(), $known) || $share->getSharedWith() === $this->currentUser) {
+			/** @var IShare $share */
+
+			// do not list the shares of the current user
+			if ($share->getSharedWith() === $this->currentUser) {
 				continue;
 			}
 
-			$known[] = $share->getId();
 			try {
-				/** @var IShare $share */
-				$format = $this->formatShare($share, $node);
+				$format = $this->formatShare($share, $recipientNode);
 				$formatted[] = $format;
 
 				// let's also build a list of shares created
@@ -781,10 +728,11 @@ class ShareAPIController extends OCSController {
 
 				// check if one of those share is shared with me
 				// and if I have resharing rights on it
-				if (!$resharingRight && $this->shareProviderResharingRights($this->currentUser, $share, $node)) {
+				if (!$resharingRight && $this->shareProviderResharingRights($this->currentUser, $share, $path)) {
 					$resharingRight = true;
 				}
-			} catch (InvalidPathException | NotFoundException $e) {
+			} catch (\Exception $e) {
+				//Ignore share
 			}
 		}
 
@@ -792,88 +740,12 @@ class ShareAPIController extends OCSController {
 			$formatted = $miniFormatted;
 		}
 
-		if ($includeTags) {
-			$formatted =
-				Helper::populateTags($formatted, 'file_source', \OC::$server->getTagManager());
+		if ($include_tags) {
+			$formatted = Helper::populateTags($formatted, 'file_source', \OC::$server->getTagManager());
 		}
 
-		return $formatted;
+		return new DataResponse($formatted);
 	}
-
-
-	/**
-	 * The getInheritedShares function.
-	 * returns all shares relative to a file, including parent folders shares rights.
-	 *
-	 * @NoAdminRequired
-	 *
-	 * @param string $path
-	 *
-	 * - Get shares by the current user
-	 * - Get shares by the current user and reshares (?reshares=true)
-	 * - Get shares with the current user (?shared_with_me=true)
-	 * - Get shares for a specific path (?path=...)
-	 * - Get all shares in a folder (?subfiles=true&path=..)
-	 *
-	 * @return DataResponse
-	 * @throws InvalidPathException
-	 * @throws NotFoundException
-	 * @throws OCSNotFoundException
-	 * @throws OCSBadRequestException
-	 * @throws SharingRightsException
-	 */
-	public function getInheritedShares(string $path): DataResponse {
-
-		// get Node from (string) path.
-		$userFolder = $this->rootFolder->getUserFolder($this->currentUser);
-		try {
-			$node = $userFolder->get($path);
-			$this->lock($node);
-		} catch (\OCP\Files\NotFoundException $e) {
-			throw new OCSNotFoundException($this->l->t('Wrong path, file/folder doesn\'t exist'));
-		} catch (LockedException $e) {
-			throw new OCSNotFoundException($this->l->t('Could not lock path'));
-		}
-
-		// current User has resharing rights ?
-		$this->confirmSharingRights($node);
-
-		// initiate real owner.
-		$owner = $node->getOwner()
-					  ->getUID();
-		if (!$this->userManager->userExists($owner)) {
-			return new DataResponse([]);
-		}
-
-		// get node based on the owner, fix owner in case of external storage
-		$userFolder = $this->rootFolder->getUserFolder($owner);
-		if ($node->getId() !== $userFolder->getId() && !$userFolder->isSubNode($node)) {
-			$owner = $node->getOwner()
-						  ->getUID();
-			$userFolder = $this->rootFolder->getUserFolder($owner);
-			$nodes = $userFolder->getById($node->getId());
-			$node = array_shift($nodes);
-		}
-		$basePath = $userFolder->getPath();
-
-		// generate node list for each parent folders
-		/** @var Node[] $nodes */
-		$nodes = [];
-		while ($node->getPath() !== $basePath) {
-			$nodes[] = $node;
-			$node = $node->getParent();
-		}
-
-		// for each nodes, retrieve shares.
-		$shares = [];
-		foreach ($nodes as $node) {
-			$getShares = $this->getFormattedShares($owner, $node, false, true);
-			$this->mergeFormattedShares($shares, $getShares);
-		}
-
-		return new DataResponse(array_values($shares));
-	}
-
 
 	/**
 	 * @NoAdminRequired
@@ -1075,38 +947,6 @@ class ShareAPIController extends OCSController {
 	}
 
 	/**
-	 * @NoAdminRequired
-	 *
-	 * @param string $id
-	 * @return DataResponse
-	 * @throws OCSNotFoundException
-	 * @throws OCSException
-	 * @throws OCSBadRequestException
-	 */
-	public function acceptShare(string $id): DataResponse {
-		try {
-			$share = $this->getShareById($id);
-		} catch (ShareNotFound $e) {
-			throw new OCSNotFoundException($this->l->t('Wrong share ID, share doesn\'t exist'));
-		}
-
-		if (!$this->canAccessShare($share)) {
-			throw new OCSNotFoundException($this->l->t('Wrong share ID, share doesn\'t exist'));
-		}
-
-		try {
-			$this->shareManager->acceptShare($share, $this->currentUser);
-		} catch (GenericShareException $e) {
-			$code = $e->getCode() === 0 ? 403 : $e->getCode();
-			throw new OCSException($e->getHint(), $code);
-		} catch (\Exception $e) {
-			throw new OCSBadRequestException($e->getMessage(), $e);
-		}
-
-		return new DataResponse();
-	}
-
-	/**
 	 * Does the user have read permission on the share
 	 *
 	 * @param \OCP\Share\IShare $share the share to check
@@ -1238,8 +1078,8 @@ class ShareAPIController extends OCSController {
 	 * @suppress PhanUndeclaredClassMethod
 	 */
 	protected function canDeleteShareFromSelf(\OCP\Share\IShare $share): bool {
-		if ($share->getShareType() !== IShare::TYPE_GROUP &&
-			$share->getShareType() !== IShare::TYPE_ROOM
+		if ($share->getShareType() !== Share::SHARE_TYPE_GROUP &&
+			$share->getShareType() !== Share::SHARE_TYPE_ROOM
 		) {
 			return false;
 		}
@@ -1390,90 +1230,6 @@ class ShareAPIController extends OCSController {
 
 
 	/**
-	 * @param string $viewer
-	 * @param Node $node
-	 * @param bool $reShares
-	 *
-	 * @return IShare[]
-	 */
-	private function getSharesFromNode(string $viewer, $node, bool $reShares): array {
-
-		$providers = [
-			Share::SHARE_TYPE_USER,
-			Share::SHARE_TYPE_GROUP,
-			Share::SHARE_TYPE_LINK,
-			Share::SHARE_TYPE_EMAIL,
-			Share::SHARE_TYPE_EMAIL,
-			Share::SHARE_TYPE_CIRCLE,
-			Share::SHARE_TYPE_ROOM
-		];
-
-		// Should we assume that the (currentUser) viewer is the owner of the node !?
-		$shares = [];
-		foreach ($providers as $provider) {
-			if (!$this->shareManager->shareProviderExists($provider)) {
-				continue;
-			}
-
-			$providerShares =
-				$this->shareManager->getSharesBy($viewer, $provider, $node, $reShares, -1, 0);
-			$shares = array_merge($shares, $providerShares);
-		}
-
-		if ($this->shareManager->outgoingServer2ServerSharesAllowed()) {
-			$federatedShares = $this->shareManager->getSharesBy(
-				$this->currentUser, Share::SHARE_TYPE_REMOTE, $node, $reShares, -1, 0
-			);
-			$shares = array_merge($shares, $federatedShares);
-		}
-
-		if ($this->shareManager->outgoingServer2ServerGroupSharesAllowed()) {
-			$federatedShares = $this->shareManager->getSharesBy(
-				$this->currentUser, Share::SHARE_TYPE_REMOTE_GROUP, $node, $reShares, -1, 0
-			);
-			$shares = array_merge($shares, $federatedShares);
-		}
-
-		return $shares;
-	}
-
-
-	/**
-	 * @param Node $node
-	 *
-	 * @throws SharingRightsException
-	 */
-	private function confirmSharingRights(Node $node): void {
-		if (!$this->hasResharingRights($this->currentUser, $node)) {
-			throw new SharingRightsException('no sharing rights on this item');
-		}
-	}
-
-
-	/**
-	 * @param string $viewer
-	 * @param Node $node
-	 *
-	 * @return bool
-	 */
-	private function hasResharingRights($viewer, $node): bool {
-		foreach ([$node, $node->getParent()] as $node) {
-			$shares = $this->getSharesFromNode($viewer, $node, true);
-			foreach ($shares as $share) {
-				try {
-					if ($this->shareProviderResharingRights($viewer, $share, $node)) {
-						return true;
-					}
-				} catch (InvalidPathException | NotFoundException $e) {
-				}
-			}
-		}
-
-		return false;
-	}
-
-
-	/**
 	 * Returns if we can find resharing rights in an IShare object for a specific user.
 	 *
 	 * @suppress PhanUndeclaredClassMethod
@@ -1481,18 +1237,18 @@ class ShareAPIController extends OCSController {
 	 * @param string $userId
 	 * @param IShare $share
 	 * @param Node $node
-	 *
 	 * @return bool
 	 * @throws NotFoundException
-	 * @throws InvalidPathException
+	 * @throws \OCP\Files\InvalidPathException
 	 */
 	private function shareProviderResharingRights(string $userId, IShare $share, $node): bool {
+
 		if ($share->getShareOwner() === $userId) {
 			return true;
 		}
 
 		// we check that current user have parent resharing rights on the current file
-		if ($node !== null && ($node->getPermissions() & Constants::PERMISSION_SHARE) !== 0) {
+		if ($node !== null && ($node->getPermissions() & \OCP\Constants::PERMISSION_SHARE) !== 0) {
 			return true;
 		}
 
@@ -1567,23 +1323,6 @@ class ShareAPIController extends OCSController {
 		}
 
 		return array_merge($userShares, $groupShares, $linkShares, $mailShares, $circleShares, $roomShares, $federatedShares, $federatedGroupShares);
-	}
-
-
-	/**
-	 * merging already formatted shares.
-	 * We'll make an associative array to easily detect duplicate Ids.
-	 * Keys _needs_ to be removed after all shares are retrieved and merged.
-	 *
-	 * @param array $shares
-	 * @param array $newShares
-	 */
-	private function mergeFormattedShares(array &$shares, array $newShares) {
-		foreach ($newShares as $newShare) {
-			if (!array_key_exists($newShare['id'], $shares)) {
-				$shares[$newShare['id']] = $newShare;
-			}
-		}
 	}
 
 }

@@ -47,7 +47,7 @@ class ScannerTest extends \Test\TestCase {
 	 */
 	private $userBackend;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->userBackend = new \Test\Util\User\Dummy();
@@ -55,7 +55,7 @@ class ScannerTest extends \Test\TestCase {
 		$this->loginAsUser();
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		$this->logout();
 		\OC::$server->getUserManager()->removeBackend($this->userBackend);
 		parent::tearDown();
@@ -157,12 +157,11 @@ class ScannerTest extends \Test\TestCase {
 
 	/**
 	 * @dataProvider invalidPathProvider
+	 * @expectedException \InvalidArgumentException
+	 * @expectedExceptionMessage Invalid path to scan
 	 * @param string $invalidPath
 	 */
 	public function testInvalidPathScanning($invalidPath) {
-		$this->expectException(\InvalidArgumentException::class);
-		$this->expectExceptionMessage('Invalid path to scan');
-
 		$scanner = new TestScanner('', \OC::$server->getDatabaseConnection(), \OC::$server->getLogger());
 		$scanner->scan($invalidPath);
 	}

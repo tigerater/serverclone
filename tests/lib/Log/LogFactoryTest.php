@@ -48,7 +48,7 @@ class LogFactoryTest extends TestCase {
 	/** @var SystemConfig|\PHPUnit_Framework_MockObject_MockObject */
 	protected $systemConfig;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->c = $this->createMock(IServerContainer::class);

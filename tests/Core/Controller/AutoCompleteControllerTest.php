@@ -41,7 +41,7 @@ class AutoCompleteControllerTest extends TestCase {
 	/** @var  AutoCompleteController */
 	protected $controller;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		/** @var IRequest $request */

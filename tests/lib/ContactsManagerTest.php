@@ -9,7 +9,7 @@ class ContactsManagerTest extends \Test\TestCase {
 	/** @var \OC\ContactsManager */
 	private $cm;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		$this->cm = new \OC\ContactsManager();
 	}

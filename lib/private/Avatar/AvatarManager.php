@@ -34,8 +34,8 @@ use OCP\Files\NotFoundException;
 use OCP\IAvatar;
 use OCP\IAvatarManager;
 use OCP\IConfig;
-use OCP\IL10N;
 use OCP\ILogger;
+use OCP\IL10N;
 
 /**
  * This class implements methods to access Avatar functionality

@@ -21,13 +21,14 @@
  *
  */
 
+
 namespace Test\AppFramework\Db;
 
 use OCP\AppFramework\Db\DoesNotExistException;
-use OCP\AppFramework\Db\Entity;
-use OCP\AppFramework\Db\Mapper;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
-use OCP\IDBConnection;
+use \OCP\IDBConnection;
+use \OCP\AppFramework\Db\Entity;
+use \OCP\AppFramework\Db\Mapper;
 
 /**
  * @method integer getId()
@@ -60,7 +61,7 @@ class MapperTest extends MapperTestUtility {
 	 */
 	private $mapper;
 
-	protected function setUp(): void {
+	protected function setUp(){
 		parent::setUp();
 		$this->mapper = new ExampleMapper($this->db);
 	}

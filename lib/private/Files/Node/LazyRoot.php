@@ -20,7 +20,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace OC\Files\Node;
 
 use OCP\Files\IRootFolder;
@@ -479,20 +478,6 @@ class LazyRoot implements IRootFolder {
 	 * @inheritDoc
 	 */
 	public function getRecent($limit, $offset = 0) {
-		return $this->__call(__FUNCTION__, func_get_args());
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function getCreationTime(): int {
-		return $this->__call(__FUNCTION__, func_get_args());
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function getUploadTime(): int {
 		return $this->__call(__FUNCTION__, func_get_args());
 	}
 }

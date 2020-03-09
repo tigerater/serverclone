@@ -8,8 +8,8 @@
 
 namespace Test\Http\Client;
 
-use GuzzleHttp\Psr7\Response as GuzzleResponse;
 use function GuzzleHttp\Psr7\stream_for;
+use GuzzleHttp\Psr7\Response as GuzzleResponse;
 use OC\Http\Client\Response;
 
 /**
@@ -19,7 +19,7 @@ class ResponseTest extends \Test\TestCase {
 	/** @var GuzzleResponse */
 	private $guzzleResponse;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->guzzleResponse = new GuzzleResponse(1337);
 	}

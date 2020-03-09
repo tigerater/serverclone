@@ -20,7 +20,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace Test\Template;
 
 use function foo\func;
@@ -52,7 +51,7 @@ class JSCombinerTest extends \Test\TestCase {
 	/** @var ICacheFactory|\PHPUnit_Framework_MockObject_MockObject */
 	protected $cacheFactory;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->appData = $this->createMock(IAppData::class);

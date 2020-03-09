@@ -27,7 +27,6 @@
 
 namespace OCA\DAV\Tests\unit\Connector\Sabre;
 
-use OC\Files\Filesystem;
 use OC\Files\Storage\Local;
 use OC\Files\Storage\Temporary;
 use OC\Files\Storage\Wrapper\PermissionsMask;
@@ -37,8 +36,9 @@ use OCP\Constants;
 use OCP\Files\ForbiddenException;
 use OCP\Files\Storage;
 use OCP\IConfig;
-use OCP\Lock\ILockingProvider;
 use Test\HookHelper;
+use OC\Files\Filesystem;
+use OCP\Lock\ILockingProvider;
 use Test\TestCase;
 use Test\Traits\MountProviderTrait;
 use Test\Traits\UserTrait;
@@ -62,7 +62,7 @@ class FileTest extends TestCase {
 	/** @var IConfig | \PHPUnit_Framework_MockObject_MockObject */
 	protected $config;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		unset($_SERVER['HTTP_OC_CHUNKED']);
 		unset($_SERVER['CONTENT_LENGTH']);
@@ -78,7 +78,7 @@ class FileTest extends TestCase {
 		$this->config = $this->getMockBuilder('\OCP\IConfig')->getMock();
 	}
 
-	protected function tearDown(): void {
+	public function tearDown() {
 		$userManager = \OC::$server->getUserManager();
 		$userManager->get($this->user)->delete();
 		unset($_SERVER['HTTP_OC_CHUNKED']);
@@ -194,7 +194,7 @@ class FileTest extends TestCase {
 		} else {
 			$storage->expects($this->once())
 				->method('writeStream')
-				->will($this->returnValue(0));
+				->will($this->returnValue(false));
 		}
 
 		$view->expects($this->any())
@@ -815,10 +815,9 @@ class FileTest extends TestCase {
 	/**
 	 * Test setting name with setName() with invalid chars
 	 *
+	 * @expectedException \OCA\DAV\Connector\Sabre\Exception\InvalidPath
 	 */
 	public function testSetNameInvalidChars() {
-		$this->expectException(\OCA\DAV\Connector\Sabre\Exception\InvalidPath::class);
-
 		// setup
 		$view = $this->getMockBuilder(View::class)
 			->setMethods(['getRelativePath'])
@@ -835,7 +834,8 @@ class FileTest extends TestCase {
 		$file->setName('/super*star.txt');
 	}
 
-	
+	/**
+	 */
 	public function testUploadAbort() {
 		// setup
 		$view = $this->getMockBuilder(View::class)
@@ -879,7 +879,9 @@ class FileTest extends TestCase {
 		$this->assertEmpty($this->listPartFiles($view, ''), 'No stray part files');
 	}
 
-	
+	/**
+	 *
+	 */
 	public function testDeleteWhenAllowed() {
 		// setup
 		$view = $this->getMockBuilder(View::class)
@@ -899,10 +901,10 @@ class FileTest extends TestCase {
 		$file->delete();
 	}
 
-	
+	/**
+	 * @expectedException \Sabre\DAV\Exception\Forbidden
+	 */
 	public function testDeleteThrowsWhenDeletionNotAllowed() {
-		$this->expectException(\Sabre\DAV\Exception\Forbidden::class);
-
 		// setup
 		$view = $this->getMockBuilder(View::class)
 			->getMock();
@@ -917,10 +919,10 @@ class FileTest extends TestCase {
 		$file->delete();
 	}
 
-	
+	/**
+	 * @expectedException \Sabre\DAV\Exception\Forbidden
+	 */
 	public function testDeleteThrowsWhenDeletionFailed() {
-		$this->expectException(\Sabre\DAV\Exception\Forbidden::class);
-
 		// setup
 		$view = $this->getMockBuilder(View::class)
 			->getMock();
@@ -940,10 +942,10 @@ class FileTest extends TestCase {
 		$file->delete();
 	}
 
-	
+	/**
+	 * @expectedException \OCA\DAV\Connector\Sabre\Exception\Forbidden
+	 */
 	public function testDeleteThrowsWhenDeletionThrows() {
-		$this->expectException(\OCA\DAV\Connector\Sabre\Exception\Forbidden::class);
-
 		// setup
 		$view = $this->getMockBuilder(View::class)
 			->getMock();
@@ -1110,10 +1112,10 @@ class FileTest extends TestCase {
 		];
 	}
 
-	
+	/**
+	 * @expectedException \Sabre\DAV\Exception\ServiceUnavailable
+	 */
 	public function testGetFopenFails() {
-		$this->expectException(\Sabre\DAV\Exception\ServiceUnavailable::class);
-
 		$view = $this->getMockBuilder(View::class)
 			->setMethods(['fopen'])
 			->getMock();
@@ -1130,10 +1132,10 @@ class FileTest extends TestCase {
 		$file->get();
 	}
 
-	
+	/**
+	 * @expectedException \OCA\DAV\Connector\Sabre\Exception\Forbidden
+	 */
 	public function testGetFopenThrows() {
-		$this->expectException(\OCA\DAV\Connector\Sabre\Exception\Forbidden::class);
-
 		$view = $this->getMockBuilder(View::class)
 			->setMethods(['fopen'])
 			->getMock();
@@ -1150,10 +1152,10 @@ class FileTest extends TestCase {
 		$file->get();
 	}
 
-	
+	/**
+	 * @expectedException \Sabre\DAV\Exception\NotFound
+	 */
 	public function testGetThrowsIfNoPermission() {
-		$this->expectException(\Sabre\DAV\Exception\NotFound::class);
-
 		$view = $this->getMockBuilder(View::class)
 			->setMethods(['fopen'])
 			->getMock();
@@ -1198,26 +1200,5 @@ class FileTest extends TestCase {
 		$view->unlockFile('root/file.txt', ILockingProvider::LOCK_SHARED);
 
 		$this->assertEquals('new content', $view->file_get_contents('root/file.txt'));
-	}
-
-	public function testPutLockExpired() {
-		$view = new \OC\Files\View('/' . $this->user . '/files/');
-
-		$path = 'test-locking.txt';
-		$info = new \OC\Files\FileInfo(
-			'/' . $this->user . '/files/' . $path,
-			$this->getMockStorage(),
-			null,
-			['permissions' => \OCP\Constants::PERMISSION_ALL],
-			null
-		);
-
-		$file = new \OCA\DAV\Connector\Sabre\File($view, $info);
-
-		// don't lock before the PUT to simulate an expired shared lock
-		$this->assertNotEmpty($file->put($this->getStream('test data')));
-
-		// afterMethod unlocks
-		$view->unlockFile($path, ILockingProvider::LOCK_SHARED);
 	}
 }

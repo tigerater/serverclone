@@ -51,3 +51,4 @@ class FailDeleteObjectStore implements IObjectStore {
 		return $this->objectStore->objectExists($urn);
 	}
 }
+

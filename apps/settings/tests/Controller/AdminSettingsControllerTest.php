@@ -20,11 +20,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace OCA\Settings\Tests\Controller;
 
-use OCA\Settings\Controller\AdminSettingsController;
 use OCA\Settings\Personal\ServerDevNotice;
+use OCA\Settings\Controller\AdminSettingsController;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\Group\ISubAdmin;
 use OCP\IGroupManager;
@@ -62,7 +61,7 @@ class AdminSettingsControllerTest extends TestCase {
 	/** @var string */
 	private $adminUid = 'lololo';
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->request = $this->createMock(IRequest::class);
@@ -87,7 +86,7 @@ class AdminSettingsControllerTest extends TestCase {
 		\OC::$server->getGroupManager()->createGroup('admin')->addUser($user);
 	}
 
-	protected function tearDown(): void {
+	public function tearDown() {
 		\OC::$server->getUserManager()->get($this->adminUid)->delete();
 
 		parent::tearDown();

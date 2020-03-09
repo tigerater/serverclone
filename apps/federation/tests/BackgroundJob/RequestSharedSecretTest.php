@@ -23,6 +23,7 @@
  *
  */
 
+
 namespace OCA\Federation\Tests\BackgroundJob;
 
 
@@ -73,7 +74,7 @@ class RequestSharedSecretTest extends TestCase {
 	/** @var  RequestSharedSecret */
 	private $requestSharedSecret;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->httpClientService = $this->createMock(IClientService::class);

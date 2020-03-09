@@ -40,7 +40,7 @@ class EventReminderJobTest extends TestCase {
 	/** @var EventReminderJob|\PHPUnit\Framework\MockObject\MockObject */
 	private $backgroundJob;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->reminderService = $this->createMock(ReminderService::class);

@@ -20,7 +20,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace Test\Preview;
 
 use OC\Preview\Generator;
@@ -58,7 +57,7 @@ class GeneratorTest extends \Test\TestCase {
 	/** @var Generator */
 	private $generator;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->config = $this->createMock(IConfig::class);

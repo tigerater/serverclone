@@ -94,7 +94,7 @@ class ExceptionOnLostConnection {
 	 *
 	 * @throws \Exception
 	 */
-	public function setUp(): void {
+	public function setUp() {
 		require_once __DIR__  . '/../../../../lib/base.php';
 		\OC_App::loadApps(['user_ldap']);
 
@@ -195,3 +195,4 @@ class ExceptionOnLostConnection {
 
 $test = new ExceptionOnLostConnection('http://localhost:8474', 'ldap', 'dc=owncloud,dc=bzoc');
 $test->run();
+

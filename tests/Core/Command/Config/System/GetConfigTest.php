@@ -40,7 +40,7 @@ class GetConfigTest extends TestCase {
 	/** @var \Symfony\Component\Console\Command\Command */
 	protected $command;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$systemConfig = $this->systemConfig = $this->getMockBuilder(SystemConfig::class)

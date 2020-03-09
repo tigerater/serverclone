@@ -21,7 +21,7 @@ class GroupTest extends \Test\TestCase {
 	/** @var EventDispatcherInterface|MockObject */
 	protected $dispatcher;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->dispatcher = $this->createMock(EventDispatcherInterface::class);
 	}

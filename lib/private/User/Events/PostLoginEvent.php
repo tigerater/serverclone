@@ -1,9 +1,9 @@
-<?php declare(strict_types=1);
-
+<?php
+declare(strict_types=1);
 /**
- * @copyright 2019 Christoph Wurst <christoph@winzerhof-wurst.at>
+ * @copyright Copyright (c) 2019, Roeland Jago Douma <roeland@famdouma.nl>
  *
- * @author 2019 Christoph Wurst <christoph@winzerhof-wurst.at>
+ * @author Roeland Jago Douma <roeland@famdouma.nl>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -19,33 +19,45 @@
  *
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-namespace OCP\Security\Events;
+namespace OC\User\Events;
 
 use OCP\EventDispatcher\Event;
+use OCP\IUser;
 
-/**
- * @since 18.0.0
- */
-class ValidatePasswordPolicyEvent extends Event {
+class PostLoginEvent extends Event {
 
+	/** @var IUser */
+	private $user;
 	/** @var string */
 	private $password;
+	/** @var bool */
+	private $isTokenLogin;
 
-	/**
-	 * @since 18.0.0
-	 */
-	public function __construct(string $password) {
+
+	public function __construct(IUser $user, string $password, bool $isTokenLogin) {
 		parent::__construct();
+
+		$this->user = $user;
 		$this->password = $password;
+		$this->isTokenLogin = $isTokenLogin;
 	}
 
-	/**
-	 * @since 18.0.0
-	 */
+	public function getUser(): IUser {
+		return $this->user;
+	}
+
+	public function hasPassword(): bool {
+		return $this->password !== '';
+	}
+
 	public function getPassword(): string {
 		return $this->password;
 	}
 
+	public function getIsTokenLogin(): bool {
+		return $this->isTokenLogin;
+	}
 }

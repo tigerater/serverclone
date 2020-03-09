@@ -39,7 +39,7 @@ class SearchResultTest extends TestCase {
 	/** @var  ISearch */
 	protected $search;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->container = $this->createMock(IContainer::class);

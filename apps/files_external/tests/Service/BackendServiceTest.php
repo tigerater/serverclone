@@ -21,7 +21,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace OCA\Files_External\Tests\Service;
 
 use OCA\Files_External\Config\IConfigHandler;
@@ -37,7 +36,7 @@ class BackendServiceTest extends \Test\TestCase {
 	/** @var \OCP\IConfig|\PHPUnit_Framework_MockObject_MockObject */
 	protected $config;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		$this->config = $this->createMock(IConfig::class);
 	}
 
@@ -234,10 +233,9 @@ class BackendServiceTest extends \Test\TestCase {
 
 	/**
 	 * @dataProvider invalidConfigPlaceholderProvider
+	 * @expectedException \RuntimeException
 	 */
 	public function testRegisterConfigHandlerInvalid(array $placeholders) {
-		$this->expectException(\RuntimeException::class);
-
 		$service = new BackendService($this->config);
 		$mock = $this->createMock(IConfigHandler::class);
 		$cb = function () use ($mock) { return $mock; };
@@ -265,3 +263,4 @@ class BackendServiceTest extends \Test\TestCase {
 	}
 
 }
+

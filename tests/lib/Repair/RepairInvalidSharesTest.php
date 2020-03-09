@@ -31,7 +31,7 @@ class RepairInvalidSharesTest extends TestCase {
 	/** @var \OCP\IDBConnection */
 	private $connection;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$config = $this->getMockBuilder(IConfig::class)
@@ -49,7 +49,7 @@ class RepairInvalidSharesTest extends TestCase {
 		$this->repair = new RepairInvalidShares($config, $this->connection);
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		$this->deleteAllShares();
 
 		parent::tearDown();
@@ -202,3 +202,4 @@ class RepairInvalidSharesTest extends TestCase {
 		return $this->connection->lastInsertId('*PREFIX*share');
 	}
 }
+

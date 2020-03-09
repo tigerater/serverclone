@@ -20,7 +20,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace Tests\Core\Controller;
 
 use OC\Core\Controller\PreviewController;
@@ -49,7 +48,7 @@ class PreviewControllerTest extends \Test\TestCase {
 	/** @var PreviewController|\PHPUnit_Framework_MockObject_MockObject */
 	private $controller;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->rootFolder = $this->createMock(IRootFolder::class);

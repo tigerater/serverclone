@@ -22,7 +22,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace OCA\DAV\Tests\unit\Connector\Sabre;
 
 use OCA\DAV\Connector\Sabre\CopyEtagHeaderPlugin;
@@ -45,7 +44,7 @@ class CopyEtagHeaderPluginTest extends TestCase {
 	/** @var Server */
 	private $server;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->server = new \Sabre\DAV\Server();
 		$this->plugin = new CopyEtagHeaderPlugin();

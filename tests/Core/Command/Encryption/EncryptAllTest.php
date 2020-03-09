@@ -19,6 +19,7 @@
  *
  */
 
+
 namespace Tests\Core\Command\Encryption;
 
 
@@ -58,7 +59,7 @@ class EncryptAllTest extends TestCase {
 	/** @var  EncryptAll */
 	protected $command;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->config = $this->getMockBuilder(IConfig::class)
@@ -128,10 +129,10 @@ class EncryptAllTest extends TestCase {
 		];
 	}
 
-	
+	/**
+	 * @expectedException \Exception
+	 */
 	public function testExecuteException() {
-		$this->expectException(\Exception::class);
-
 		$command = new EncryptAll($this->encryptionManager, $this->appManager, $this->config, $this->questionHelper);
 		$this->encryptionManager->expects($this->once())->method('isEnabled')->willReturn(false);
 		$this->encryptionManager->expects($this->never())->method('getEncryptionModule');

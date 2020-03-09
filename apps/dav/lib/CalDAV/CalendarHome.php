@@ -22,7 +22,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace OCA\DAV\CalDAV;
 
 use Sabre\CalDAV\Backend\BackendInterface;
@@ -31,8 +30,8 @@ use Sabre\CalDAV\Backend\SchedulingSupport;
 use Sabre\CalDAV\Backend\SubscriptionSupport;
 use Sabre\CalDAV\Schedule\Inbox;
 use Sabre\CalDAV\Subscriptions\Subscription;
-use Sabre\DAV\Exception\MethodNotAllowed;
 use Sabre\DAV\Exception\NotFound;
+use Sabre\DAV\Exception\MethodNotAllowed;
 use Sabre\DAV\MkCol;
 
 class CalendarHome extends \Sabre\CalDAV\CalendarHome {
@@ -154,7 +153,9 @@ class CalendarHome extends \Sabre\CalDAV\CalendarHome {
 		return $this->caldavBackend->calendarSearch($principalUri, $filters, $limit, $offset);
 	}
 
-	
+	/**
+	 *
+	 */
 	public function enableCachedSubscriptionsForThisRequest() {
 		$this->returnCachedSubscriptions = true;
 	}

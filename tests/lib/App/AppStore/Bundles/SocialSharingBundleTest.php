@@ -24,7 +24,7 @@ namespace Test\App\AppStore\Bundles;
 use OC\App\AppStore\Bundles\SocialSharingBundle;
 
 class SocialSharingBundleTest extends BundleBase {
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->bundle = new SocialSharingBundle($this->l10n);
 		$this->bundleIdentifier = 'SocialSharingBundle';

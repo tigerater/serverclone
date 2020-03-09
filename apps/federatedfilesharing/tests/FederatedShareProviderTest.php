@@ -25,7 +25,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace OCA\FederatedFileSharing\Tests;
 
 
@@ -85,7 +84,7 @@ class FederatedShareProviderTest extends \Test\TestCase {
 	/** @var \PHPUnit_Framework_MockObject_MockObject|ICloudFederationProviderManager */
 	private $cloudFederationProviderManager;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->connection = \OC::$server->getDatabaseConnection();
@@ -131,10 +130,10 @@ class FederatedShareProviderTest extends \Test\TestCase {
 		$this->shareManager = \OC::$server->getShareManager();
 	}
 
-	protected function tearDown(): void {
+	public function tearDown() {
 		$this->connection->getQueryBuilder()->delete('share')->execute();
 
-		parent::tearDown();
+		return parent::tearDown();
 	}
 
 	public function testCreate() {

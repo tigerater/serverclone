@@ -21,6 +21,7 @@
  *
  */
 
+
 namespace OCA\Federation\Tests\Controller;
 
 
@@ -45,7 +46,7 @@ class SettingsControllerTest extends TestCase {
 	/** @var \PHPUnit_Framework_MockObject_MockObject | \OCA\Federation\TrustedServers */
 	private $trustedServers;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->request = $this->getMockBuilder(IRequest::class)->getMock();
@@ -84,13 +85,12 @@ class SettingsControllerTest extends TestCase {
 
 	/**
 	 * @dataProvider checkServerFails
+	 * @expectedException \OC\HintException
 	 *
 	 * @param bool $isTrustedServer
 	 * @param bool $isOwnCloud
 	 */
 	public function testAddServerFail($isTrustedServer, $isOwnCloud) {
-		$this->expectException(\OC\HintException::class);
-
 		$this->trustedServers
 			->expects($this->any())
 			->method('isTrustedServer')
@@ -133,13 +133,12 @@ class SettingsControllerTest extends TestCase {
 
 	/**
 	 * @dataProvider checkServerFails
+	 * @expectedException \OC\HintException
 	 *
 	 * @param bool $isTrustedServer
 	 * @param bool $isOwnCloud
 	 */
 	public function testCheckServerFail($isTrustedServer, $isOwnCloud) {
-		$this->expectException(\OC\HintException::class);
-
 		$this->trustedServers
 			->expects($this->any())
 			->method('isTrustedServer')

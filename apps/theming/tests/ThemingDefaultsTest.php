@@ -27,14 +27,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace OCA\Theming\Tests;
 
 use OCA\Theming\ImageManager;
 use OCA\Theming\ThemingDefaults;
-use OCA\Theming\Util;
 use OCP\App\IAppManager;
 use OCP\Files\IAppData;
+use OCA\Theming\Util;
 use OCP\Files\NotFoundException;
 use OCP\Files\SimpleFS\ISimpleFile;
 use OCP\Files\SimpleFS\ISimpleFolder;
@@ -72,7 +71,7 @@ class ThemingDefaultsTest extends TestCase {
 	/** @var INavigationManager|\PHPUnit_Framework_MockObject_MockObject */
 	private $navigationManager;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->config = $this->createMock(IConfig::class);
 		$this->l10n = $this->createMock(IL10N::class);
@@ -681,8 +680,8 @@ class ThemingDefaultsTest extends TestCase {
 			'color-primary-element' => '#aaaaaa',
 			'theming-logoheader-mime' => '\'jpeg\'',
 			'theming-favicon-mime' => '\'jpeg\'',
-			'image-logoheader' => "url('custom-logoheader?v=0')",
-			'image-favicon' => "url('custom-favicon?v=0')",
+			'image-logoheader' => '\'custom-logoheader?v=0\'',
+			'image-favicon' => '\'custom-favicon?v=0\'',
 			'has-legal-links' => 'false'
 		];
 		$this->assertEquals($expected, $this->template->getScssVariables());

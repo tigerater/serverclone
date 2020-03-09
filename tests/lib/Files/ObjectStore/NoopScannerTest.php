@@ -9,7 +9,6 @@
  * later.
  * See the COPYING-README file.
  */
-
 namespace Test\Files\ObjectStore;
 
 class NoopScannerTest extends \Test\TestCase {
@@ -19,7 +18,7 @@ class NoopScannerTest extends \Test\TestCase {
 	/** @var \OC\Files\ObjectStore\NoopScanner $scanner */
 	private $scanner;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->storage = new \OC\Files\Storage\Temporary(array());

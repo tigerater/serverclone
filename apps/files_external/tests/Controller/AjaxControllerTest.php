@@ -21,7 +21,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace OCA\Files_External\Tests\Controller;
 
 use OCA\Files_External\Controller\AjaxController;
@@ -48,7 +47,7 @@ class AjaxControllerTest extends TestCase {
 	/** @var AjaxController */
 	private $ajaxController;
 
-	protected function setUp(): void {
+	public function setUp() {
 		$this->request = $this->createMock(IRequest::class);
 		$this->rsa = $this->getMockBuilder('\\OCA\\Files_External\\Lib\\Auth\\PublicKey\\RSA')
 			->disableOriginalConstructor()

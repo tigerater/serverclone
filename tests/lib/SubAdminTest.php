@@ -18,7 +18,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace Test;
 
 /**
@@ -41,7 +40,7 @@ class SubAdminTest extends \Test\TestCase {
 	/** @var \OCP\IGroup[] */
 	private $groups;
 	
-	protected function setUp(): void {
+	public function setup() {
 		$this->users = [];
 		$this->groups = [];
 
@@ -83,7 +82,7 @@ class SubAdminTest extends \Test\TestCase {
 			->execute();
 	}
 
-	protected function tearDown(): void {
+	public function tearDown() {
 		foreach($this->users as $user) {
 			$user->delete();
 		}

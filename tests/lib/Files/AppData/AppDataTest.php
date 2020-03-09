@@ -20,7 +20,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace Test\Files\AppData;
 
 use OC\Files\AppData\AppData;
@@ -42,7 +41,7 @@ class AppDataTest extends \Test\TestCase {
 	/** @var IAppData */
 	private $appData;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->rootFolder = $this->createMock(IRootFolder::class);

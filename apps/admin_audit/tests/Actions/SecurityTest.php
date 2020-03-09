@@ -39,7 +39,7 @@ class SecurityTest extends TestCase {
 	/** @var IUser|\PHPUnit_Framework_MockObject_MockObject */
 	private $user;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->logger = $this->createMock(ILogger::class);

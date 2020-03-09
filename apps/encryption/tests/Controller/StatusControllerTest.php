@@ -24,6 +24,7 @@
  *
  */
 
+
 namespace OCA\Encryption\Tests\Controller;
 
 
@@ -51,7 +52,7 @@ class StatusControllerTest extends TestCase {
 	/** @var StatusController */
 	protected $controller;
 
-	protected function setUp(): void {
+	protected function setUp() {
 
 		parent::setUp();
 

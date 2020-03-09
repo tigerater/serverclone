@@ -28,7 +28,7 @@
 
 namespace OCA\Files_External\Tests\Storage;
 
-use OCA\Files_External\Lib\Storage\FTP;
+use \OCA\Files_External\Lib\Storage\FTP;
 
 /**
  * Class FtpTest
@@ -40,7 +40,7 @@ use OCA\Files_External\Lib\Storage\FTP;
 class FtpTest extends \Test\Files\Storage\Storage {
 	private $config;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$id = $this->getUniqueID();
@@ -53,7 +53,7 @@ class FtpTest extends \Test\Files\Storage\Storage {
 		$this->instance->mkdir('/');
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		if ($this->instance) {
 			\OCP\Files::rmdirr($this->instance->constructUrl(''));
 		}

@@ -22,7 +22,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace OCA\DAV\Tests\unit\Upload;
 
 use OCA\DAV\Connector\Sabre\Directory;
@@ -73,18 +72,18 @@ class FutureFileTest extends \Test\TestCase {
 		$f->delete();
 	}
 
-	
+	/**
+	 * @expectedException Sabre\DAV\Exception\Forbidden
+	 */
 	public function testPut() {
-		$this->expectException(\Sabre\DAV\Exception\Forbidden::class);
-
 		$f = $this->mockFutureFile();
 		$f->put('');
 	}
 
-	
+	/**
+	 * @expectedException Sabre\DAV\Exception\Forbidden
+	 */
 	public function testSetName() {
-		$this->expectException(\Sabre\DAV\Exception\Forbidden::class);
-
 		$f = $this->mockFutureFile();
 		$f->setName('');
 	}
@@ -113,3 +112,4 @@ class FutureFileTest extends \Test\TestCase {
 		return new \OCA\DAV\Upload\FutureFile($d, 'foo.txt');
 	}
 }
+

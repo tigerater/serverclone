@@ -24,14 +24,15 @@
  *
  */
 
+
 namespace OCA\Federation\Tests\BackgroundJob;
 
 
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Ring\Exception\RingException;
 use OCA\Federation\BackgroundJob\GetSharedSecret;
-use OCA\Federation\TrustedServers;
 use OCA\Files_Sharing\Tests\TestCase;
+use OCA\Federation\TrustedServers;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Utility\ITimeFactory;
 use OCP\BackgroundJob\IJobList;
@@ -81,7 +82,7 @@ class GetSharedSecretTest extends TestCase {
 	/** @var GetSharedSecret */
 	private $getSharedSecret;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->httpClientService = $this->createMock(IClientService::class);

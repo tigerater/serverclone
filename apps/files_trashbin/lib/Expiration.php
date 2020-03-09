@@ -23,8 +23,8 @@
 
 namespace OCA\Files_Trashbin;
 
-use OCP\AppFramework\Utility\ITimeFactory;
-use OCP\IConfig;
+use \OCP\IConfig;
+use \OCP\AppFramework\Utility\ITimeFactory;
 
 class Expiration {
 

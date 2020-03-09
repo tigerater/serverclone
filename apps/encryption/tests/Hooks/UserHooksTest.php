@@ -25,6 +25,8 @@
  *
  */
 
+
+
 namespace OCA\Encryption\Tests\Hooks;
 
 
@@ -212,7 +214,7 @@ class UserHooksTest extends TestCase {
 		];
 	}
 
-	public function XtestSetPassphrase() {
+	public function testSetPassphrase() {
 		$this->sessionMock->expects($this->once())
 			->method('getPrivateKey')
 			->willReturn(true);
@@ -301,7 +303,7 @@ class UserHooksTest extends TestCase {
 		$this->invokePrivate($this->instance, 'passwordResetUsers', [[]]);
 	}
 
-	public function XtestSetPasswordNoUser() {
+	public function testSetPasswordNoUser() {
 
 		$userSessionMock = $this->getMockBuilder(IUserSession::class)
 			->disableOriginalConstructor()
@@ -333,7 +335,7 @@ class UserHooksTest extends TestCase {
 		$this->assertNull($userHooks->setPassphrase($this->params));
 	}
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		$this->loggerMock = $this->createMock(ILogger::class);
 		$this->keyManagerMock = $this->getMockBuilder(KeyManager::class)

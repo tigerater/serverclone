@@ -121,7 +121,7 @@ class CardDavBackendTest extends TestCase {
 						'N:TestNoUID;;;;'.PHP_EOL.
 						'END:VCARD';
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->userManager = $this->createMock(IUserManager::class);
@@ -159,7 +159,7 @@ class CardDavBackendTest extends TestCase {
 		$this->tearDown();
 	}
 
-	protected function tearDown(): void {
+	public function tearDown() {
 		parent::tearDown();
 
 		if (is_null($this->backend)) {
@@ -631,10 +631,10 @@ class CardDavBackendTest extends TestCase {
 			$this->invokePrivate($this->backend, 'getCardId', [1, 'uri']));
 	}
 
-	
+	/**
+	 * @expectedException InvalidArgumentException
+	 */
 	public function testGetCardIdFailed() {
-		$this->expectException(\InvalidArgumentException::class);
-
 		$this->invokePrivate($this->backend, 'getCardId', [1, 'uri']);
 	}
 
@@ -784,10 +784,10 @@ class CardDavBackendTest extends TestCase {
 		$this->assertSame('uri', $this->backend->getCardUri($id));
 	}
 
-	
+	/**
+	 * @expectedException InvalidArgumentException
+	 */
 	public function testGetCardUriFailed() {
-		$this->expectException(\InvalidArgumentException::class);
-
 		$this->backend->getCardUri(1);
 	}
 

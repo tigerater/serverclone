@@ -24,7 +24,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace OCA\DAV\Tests\unit\Connector\Sabre;
 use OC\Files\View;
 use OCA\DAV\Connector\Sabre\Directory;
@@ -85,11 +84,10 @@ class QuotaPluginTest extends TestCase {
 	}
 
 	/**
+	 * @expectedException \Sabre\DAV\Exception\InsufficientStorage
 	 * @dataProvider quotaExceededProvider
 	 */
 	public function testCheckExceededQuota($quota, $headers) {
-		$this->expectException(\Sabre\DAV\Exception\InsufficientStorage::class);
-
 		$this->init($quota);
 		$this->plugin->expects($this->never())
 			->method('getFileChunking');
@@ -210,10 +208,9 @@ class QuotaPluginTest extends TestCase {
 
 	/**
 	 * @dataProvider quotaChunkedFailProvider
+	 * @expectedException \Sabre\DAV\Exception\InsufficientStorage
 	 */
 	public function testCheckQuotaChunkedFail($quota, $chunkTotalSize, $headers) {
-		$this->expectException(\Sabre\DAV\Exception\InsufficientStorage::class);
-
 		$this->init($quota, 'sub/test.txt');
 
 		$mockChunking = $this->getMockBuilder(\OC_FileChunking::class)
