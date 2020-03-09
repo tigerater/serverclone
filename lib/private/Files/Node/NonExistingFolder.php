@@ -139,7 +139,7 @@ class NonExistingFolder extends Folder {
 		throw new NotFoundException();
 	}
 
-	public function newFile($path, $content = null) {
+	public function newFile($path) {
 		throw new NotFoundException();
 	}
 
