@@ -63,11 +63,6 @@ class EventDispatcher implements IEventDispatcher {
 		$this->dispatcher->addListener($eventName, $listener, $priority);
 	}
 
-	public function removeListener(string $eventName,
-								   callable $listener): void {
-		$this->dispatcher->removeListener($eventName, $listener);
-	}
-
 	public function addServiceListener(string $eventName,
 									   string $className,
 									   int $priority = 0): void {
