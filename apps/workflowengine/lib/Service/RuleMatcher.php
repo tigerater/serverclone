@@ -24,7 +24,6 @@ declare(strict_types=1);
 
 namespace OCA\WorkflowEngine\Service;
 
-use OCA\WorkflowEngine\Helper\LogContext;
 use OCA\WorkflowEngine\Helper\ScopeContext;
 use OCA\WorkflowEngine\Manager;
 use OCP\AppFramework\QueryException;
@@ -59,21 +58,17 @@ class RuleMatcher implements IRuleMatcher {
 	protected $operation;
 	/** @var IEntity */
 	protected $entity;
-	/** @var Logger */
-	protected $logger;
 
 	public function __construct(
 		IUserSession $session,
 		IServerContainer $container,
 		IL10N $l,
-		Manager $manager,
-		Logger $logger
+		Manager $manager
 	) {
 		$this->session = $session;
 		$this->manager = $manager;
 		$this->container = $container;
 		$this->l = $l;
-		$this->logger = $logger;
 	}
 
 	public function setFileInfo(IStorage $storage, string $path, bool $isDir = false): void {
@@ -121,13 +116,6 @@ class RuleMatcher implements IRuleMatcher {
 			$scopes[] = new ScopeContext(IManager::SCOPE_USER, $user->getUID());
 		}
 
-		$ctx = new LogContext();
-		$ctx
-			->setScopes($scopes)
-			->setEntity($this->entity)
-			->setOperation($this->operation);
-		$this->logger->logFlowRequests($ctx);
-
 		$operations = [];
 		foreach ($scopes as $scope) {
 			$operations = array_merge($operations, $this->manager->getOperations($class, $scope));
@@ -141,12 +129,6 @@ class RuleMatcher implements IRuleMatcher {
 					continue;
 				}
 				if ($this->entity->isLegitimatedForUserId($scopeCandidate->getScopeId())) {
-					$ctx = new LogContext();
-					$ctx
-						->setScopes($scopeCandidate)
-						->setEntity($this->entity)
-						->setOperation($this->operation);
-					$this->logger->logScopeExpansion($ctx);
 					$operations = array_merge($operations, $this->manager->getOperations($class, $scopeCandidate));
 				}
 			}
@@ -164,34 +146,10 @@ class RuleMatcher implements IRuleMatcher {
 				}
 			}
 
-			$ctx = new LogContext();
-			$ctx
-				->setEntity($this->entity)
-				->setOperation($this->operation)
-				->setConfiguration($operation);
-			$this->logger->logPassedCheck($ctx);
-
 			if ($returnFirstMatchingOperationOnly) {
-				$ctx = new LogContext();
-				$ctx
-					->setEntity($this->entity)
-					->setOperation($this->operation)
-					->setConfiguration($operation);
-				$this->logger->logRunSingle($ctx);
 				return $operation;
 			}
 			$matches[] = $operation;
-		}
-
-		$ctx = new LogContext();
-		$ctx
-			->setEntity($this->entity)
-			->setOperation($this->operation);
-		if(!empty($matches)) {
-			$ctx->setConfiguration($matches);
-			$this->logger->logRunAll($ctx);
-		} else {
-			$this->logger->logRunNone($ctx);
 		}
 
 		return $matches;
@@ -224,11 +182,5 @@ class RuleMatcher implements IRuleMatcher {
 			throw new \UnexpectedValueException($this->l->t('Check %s is invalid or does not exist', $check['class']));
 		}
 		return $checkInstance->executeCheck($check['operator'], $check['value']);
-	}
-
-	protected function logCandidate() {
-		$logContext = new LogContext();
-		$logContext
-			->setOperation();
 	}
 }
