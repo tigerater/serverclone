@@ -28,7 +28,6 @@
 namespace OC\Core\Controller;
 
 use OC\AppFramework\Utility\TimeFactory;
-use OCP\Accounts\IAccountManager;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataDisplayResponse;
@@ -77,9 +76,19 @@ class AvatarController extends Controller {
 
 	/** @var TimeFactory */
 	protected $timeFactory;
-	/** @var IAccountManager */
-	private $accountManager;
 
+	/**
+	 * @param string $appName
+	 * @param IRequest $request
+	 * @param IAvatarManager $avatarManager
+	 * @param ICache $cache
+	 * @param IL10N $l10n
+	 * @param IUserManager $userManager
+	 * @param IRootFolder $rootFolder
+	 * @param ILogger $logger
+	 * @param string $userId
+	 * @param TimeFactory $timeFactory
+	 */
 	public function __construct($appName,
 								IRequest $request,
 								IAvatarManager $avatarManager,
@@ -89,8 +98,7 @@ class AvatarController extends Controller {
 								IRootFolder $rootFolder,
 								ILogger $logger,
 								$userId,
-								TimeFactory $timeFactory,
-								IAccountManager $accountManager) {
+								TimeFactory $timeFactory) {
 		parent::__construct($appName, $request);
 
 		$this->avatarManager = $avatarManager;
@@ -101,7 +109,6 @@ class AvatarController extends Controller {
 		$this->logger = $logger;
 		$this->userId = $userId;
 		$this->timeFactory = $timeFactory;
-		$this->accountManager = $accountManager;
 	}
 
 
@@ -123,19 +130,6 @@ class AvatarController extends Controller {
 			$size = 64;
 		}
 
-		$user = $this->userManager->get($userId);
-		if ($user === null) {
-			return new JSONResponse([], Http::STATUS_NOT_FOUND);
-		}
-
-		$account = $this->accountManager->getAccount($user);
-		$scope = $account->getProperty(IAccountManager::PROPERTY_AVATAR)->getScope();
-
-		if ($scope !== IAccountManager::VISIBILITY_PUBLIC && $this->userId === null) {
-			// Public avatar access is not allowed
-			return new JSONResponse([], Http::STATUS_NOT_FOUND);
-		}
-
 		try {
 			$avatar = $this->avatarManager->getAvatar($userId);
 			$avatarFile = $avatar->getFile($size);
@@ -145,7 +139,9 @@ class AvatarController extends Controller {
 				['Content-Type' => $avatarFile->getMimeType()]
 			);
 		} catch (\Exception $e) {
-			return new JSONResponse([], Http::STATUS_NOT_FOUND);
+			$resp = new Http\Response();
+			$resp->setStatus(Http::STATUS_NOT_FOUND);
+			return $resp;
 		}
 
 		// Cache for 30 minutes
