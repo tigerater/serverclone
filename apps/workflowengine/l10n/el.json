@@ -125,9 +125,10 @@
     "End" : "Λήξη",
     "Select timezone…" : "Επιλογή ζώνης ώρας...",
     "Sync clients" : "Συγχρονίστε χρήστες",
-    "Tag management" : "Διαχείριση ετικετών",
+    "Workflow" : "Ροή εργασίας",
     "Files workflow engine" : "Μηχανή αρχείων ροής εργασιών",
     "Open documentation" : "Άνοιγμα τεκμηρίωσης",
-    "Loading…" : "Φορτώνει..."
+    "Loading…" : "Φορτώνει...",
+    "Tag management" : "Διαχείριση ετικετών"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
