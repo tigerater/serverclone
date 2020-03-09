@@ -123,9 +123,8 @@
 
 							const appliedTags = collection.map(modelToSelection)
 							self._inputView.setData(appliedTags)
-							if (appliedTags.length > 0) {
-								self.show()
-							}
+
+							self.show()
 						},
 					})
 				}
@@ -151,10 +150,6 @@
 
 			hide: function() {
 				this.$el.addClass('hidden')
-			},
-
-			toggle: function() {
-				this.$el.toggleClass('hidden')
 			},
 
 			openDropdown: function() {
