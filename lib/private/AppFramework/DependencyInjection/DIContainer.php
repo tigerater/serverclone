@@ -279,12 +279,11 @@ class DIContainer extends SimpleContainer implements IAppContainer {
 			);
 
 			foreach($this->middleWares as $middleWare) {
-				$dispatcher->registerMiddleware($c[$middleWare]);
+				$dispatcher->registerMiddleware($c->query($middleWare));
 			}
 
 			$dispatcher->registerMiddleware(
 				new SessionMiddleware(
-					$c->query(IRequest::class),
 					$c->query(IControllerMethodReflector::class),
 					$c->query(ISession::class)
 				)

@@ -79,7 +79,6 @@ OC.L10N.register(
     "A file or folder was shared from <strong>another server</strong>" : "Skjali eða möppu hefur verið deilt <strong>frá öðrum þjóni</strong>",
     "A file or folder has been <strong>shared</strong>" : "Skjali eða  möppu hefur verið <strong>deilt</strong>",
     "Wrong share ID, share doesn't exist" : "Rangt auðkenni sameignar, sameign er ekki til",
-    "could not delete share" : "tókst ekki að eyða sameign",
     "Could not delete share" : "Tókst ekki að eyða sameign",
     "Please specify a file or folder path" : "Tiltaktu skrá eða slóð á möppu",
     "Wrong path, file/folder doesn't exist" : "Röng slóð, skrá/mappa er ekki til",
@@ -133,6 +132,6 @@ OC.L10N.register(
     "Uploading files…" : "Sendi inn skrár…",
     "Uploaded files:" : "Innsendar skrár:",
     "By uploading files, you agree to the %1$sterms of service%2$s." : "Með því að senda inn skrár, samþykkir þú %1$sþjónustuskilmálana%2$s.",
-    "Sharing %s failed because the back end does not allow shares from type %s" : "Deiling %s mistókst, því bakvinnslukerfið leyfir ekki sameignir af gerðinni %s"
+    "could not delete share" : "tókst ekki að eyða sameign"
 },
 "nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);");

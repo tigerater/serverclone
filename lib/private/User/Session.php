@@ -315,6 +315,29 @@ class Session implements IUserSession, Emitter {
 	}
 
 	/**
+	 * @return mixed
+	 */
+	public function getImpersonatingUserID(): ?string {
+
+		return $this->session->get('oldUserId');
+
+	}
+
+	public function setImpersonatingUserID(bool $useCurrentUser = true): void {
+		if ($useCurrentUser === false) {
+			$this->session->remove('oldUserId');
+			return;
+		}
+
+		$currentUser = $this->getUser();
+
+		if ($currentUser === null) {
+			throw new \OC\User\NoUserException();
+		}
+		$this->session->set('oldUserId', $currentUser->getUID());
+
+	}
+	/**
 	 * set the token id
 	 *
 	 * @param int|null $token that was used to log in
@@ -838,7 +861,7 @@ class Session implements IUserSession, Emitter {
 
 		try {
 			$sessionId = $this->session->getId();
-			$this->tokenProvider->renewSessionToken($oldSessionId, $sessionId);
+			$token = $this->tokenProvider->renewSessionToken($oldSessionId, $sessionId);
 		} catch (SessionNotAvailableException $ex) {
 			return false;
 		} catch (InvalidTokenException $ex) {
@@ -847,7 +870,6 @@ class Session implements IUserSession, Emitter {
 		}
 
 		$this->setMagicInCookie($user->getUID(), $newToken);
-		$token = $this->tokenProvider->getToken($sessionId);
 
 		//login
 		$this->setUser($user);

@@ -58,6 +58,12 @@
 		 */
 		$fileList: null,
 
+		$header: null,
+		headers: [],
+
+		$footer: null,
+		footers: [],
+
 		/**
 		 * @type OCA.Files.BreadCrumb
 		 */
@@ -262,6 +268,8 @@
 			this.$container = options.scrollContainer || $(window);
 			this.$table = $el.find('table:first');
 			this.$fileList = $el.find('#fileList');
+			this.$header = $el.find('#filelist-header');
+			this.$footer = $el.find('#filelist-footer');
 
 			if (!_.isUndefined(this._filesConfig)) {
 				this._filesConfig.on('change:showhidden', function() {
@@ -408,6 +416,46 @@
 
 
 			OC.Plugins.attach('OCA.Files.FileList', this);
+
+			this.initHeadersAndFooters()
+		},
+
+		initHeadersAndFooters: function() {
+			this.headers.sort(function(a, b) {
+				return a.order - b.order;
+			})
+			this.footers.sort(function(a, b) {
+				return a.order - b.order;
+			})
+			var uniqueIds = [];
+			var self = this;
+			this.headers.forEach(function(header) {
+				if (header.id) {
+					if (uniqueIds.indexOf(header.id) !== -1) {
+						return
+					}
+					uniqueIds.push(header.id)
+				}
+				self.$header.append(header.el)
+
+				setTimeout(function() {
+					header.render(self)
+				}, 0)
+			})
+
+			uniqueIds = [];
+			this.footers.forEach(function(footer) {
+				if (footer.id) {
+					if (uniqueIds.indexOf(footer.id) !== -1) {
+						return
+					}
+					uniqueIds.push(footer.id)
+				}
+				self.$footer.append(footer.el)
+				setTimeout(function() {
+					footer.render(self)
+				}, 0)
+			})
 		},
 
 		/**
@@ -670,8 +718,13 @@
 			this.$showGridView.next('#view-toggle')
 				.removeClass('icon-toggle-filelist icon-toggle-pictures')
 				.addClass(show ? 'icon-toggle-filelist' : 'icon-toggle-pictures')
-				
+
 			$('.list-container').toggleClass('view-grid', show);
+			if (show) {
+				// If switching into grid view from list view, too few files might be displayed
+				// Try rendering the next page
+				this._onScroll();
+			}
 		},
 
 		/**
@@ -823,7 +876,7 @@
 				this.updateSelectionSummary();
 			} else {
 				// clicked directly on the name
-				if (!this._detailsView || $(event.target).is('.nametext, .name') || $(event.target).closest('.nametext').length) {
+				if (!this._detailsView || $(event.target).is('.nametext, .name, .thumbnail') || $(event.target).closest('.nametext').length) {
 					var filename = $tr.attr('data-file');
 					var renaming = $tr.data('renaming');
 					if (!renaming) {
@@ -834,8 +887,6 @@
 						var action = this.fileActions.getDefault(mime,type, permissions);
 						if (action) {
 							event.preventDefault();
-							// also set on global object for legacy apps
-							window.FileActions.currentFile = this.fileActions.currentFile;
 							action(filename, {
 								$file: $tr,
 								fileList: this,
@@ -860,8 +911,6 @@
 					var permissions = this.fileActions.getCurrentPermissions();
 					var action = this.fileActions.get(mime, type, permissions)['Details'];
 					if (action) {
-						// also set on global object for legacy apps
-						window.FileActions.currentFile = this.fileActions.currentFile;
 						action(filename, {
 							$file: $tr,
 							fileList: this,
@@ -1017,7 +1066,7 @@
 				if (type === OC.dialogs.FILEPICKER_TYPE_MOVE) {
 					self.move(files, targetPath, disableLoadingState);
 				}
-				self.dirInfo.dirLastCopiedTo = targetPath; 
+				self.dirInfo.dirLastCopiedTo = targetPath;
 			}, false, "httpd/unix-directory", true, actions, dialogDir);
 			event.preventDefault();
 		},
@@ -2738,7 +2787,7 @@
 		 *
 		 * @since 8.2
 		 */
-		createFile: function(name) {
+		createFile: function(name, options) {
 			var self = this;
 			var deferred = $.Deferred();
 			var promise = deferred.promise();
@@ -2762,7 +2811,8 @@
 				)
 				.done(function() {
 					// TODO: error handling / conflicts
-					self.addAndFetchFileInfo(targetPath, '', {scrollTo: true}).then(function(status, data) {
+					options = _.extend({scrollTo: true}, options || {});
+					self.addAndFetchFileInfo(targetPath, '', options).then(function(status, data) {
 						deferred.resolve(status, data);
 					}, function() {
 						OC.Notification.show(t('files', 'Could not create file "{file}"',
@@ -3267,7 +3317,7 @@
 
 		/**
 		 * Are all files selected?
-		 * 
+		 *
 		 * @returns {Boolean} all files are selected
 		 */
 		isAllSelected: function() {
@@ -3640,6 +3690,18 @@
 			}
 
 			return null;
+		},
+
+		registerHeader: function(header) {
+			this.headers.push(
+				_.defaults(header, { order: 0 })
+			);
+		},
+
+		registerFooter: function(footer) {
+			this.footers.push(
+				_.defaults(footer, { order: 0 })
+			);
 		}
 	};
 

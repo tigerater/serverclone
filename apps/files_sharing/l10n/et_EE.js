@@ -63,7 +63,6 @@ OC.L10N.register(
     "A file or folder was shared from <strong>another server</strong>" : "Fail või kaust jagati <strong>teisest serverist</strong>",
     "A file or folder has been <strong>shared</strong>" : "Fail või kataloog on <strong>jagatud</strong>",
     "Wrong share ID, share doesn't exist" : "Vale jagamise ID, sellist jagamist ei eksisteeri",
-    "could not delete share" : "ei saanud jagamist eemaldada",
     "Could not delete share" : "Ei saanud jagamist eemaldada",
     "Please specify a file or folder path" : "Palun määra faili või kausta rada",
     "Wrong path, file/folder doesn't exist" : "Vale rada, faili/kausta ei leitud",
@@ -104,6 +103,6 @@ OC.L10N.register(
     "Select or drop files" : "Vali või lohista failid",
     "Uploading files…" : "Failide üleslaadimine…",
     "Uploaded files:" : "Üleslaetud failid:",
-    "Sharing %s failed because the back end does not allow shares from type %s" : "%s jagamine ebaõnnestus sest server ei luba %s tüüpi jagamisi"
+    "could not delete share" : "ei saanud jagamist eemaldada"
 },
 "nplurals=2; plural=(n != 1);");
