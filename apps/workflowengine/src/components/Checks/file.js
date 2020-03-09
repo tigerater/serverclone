@@ -65,7 +65,7 @@ const FileChecks = [
 			{ operator: 'greater', name: t('workflowengine', 'greater') }
 		],
 		placeholder: (check) => '5 MB',
-		validate: (check) => check.value ? check.value.match(/^[0-9]+[ ]?[kmgt]?b$/i) !== null : false
+		validate: (check) => check.value.match(/^[0-9]+[ ]?[kmgt]?b$/i) !== null
 	},
 
 	{

@@ -25,6 +25,5 @@ return [
 	],
 	'ocs-resources' => [
 		'global_workflows' => ['url' => '/api/v1/workflows/global'],
-		'user_workflows' => ['url' => '/api/v1/workflows/user'],
 	],
 ];

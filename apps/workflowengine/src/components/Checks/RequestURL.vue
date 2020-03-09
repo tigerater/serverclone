@@ -137,8 +137,3 @@ export default {
 	}
 }
 </script>
-<style scoped>
-	.multiselect, input[type='text'] {
-		width: 100%;
-	}
-</style>

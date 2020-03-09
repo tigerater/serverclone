@@ -56,8 +56,10 @@ export default {
 			required: true
 		},
 		value: {
-			type: [String, Array],
-			default: null
+			type: Array,
+			default() {
+				return []
+			}
 		},
 		disabled: {
 			type: Boolean,
@@ -65,7 +67,7 @@ export default {
 		},
 		multiple: {
 			type: Boolean,
-			default: false
+			default: true
 		}
 	},
 	data() {
