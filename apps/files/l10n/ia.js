@@ -125,6 +125,13 @@ OC.L10N.register(
     "Shared with you" : "Compartite con te",
     "Shared by link" : "Compartite per ligamine",
     "Text file" : "File de texto",
-    "New text file.txt" : "Nove texto file.txt"
+    "New text file.txt" : "Nove texto file.txt",
+    "File handling" : "Gestion de file",
+    "Maximum upload size" : "Maxime dimension de incarga",
+    "max. possible: " : "maxime possibile:",
+    "Save" : "Salveguardar",
+    "With PHP-FPM it might take 5 minutes for changes to be applied." : "Con PHP-FPM possibilemente il requirera 5 minutas pro modificationes esser applicate.",
+    "Missing permissions to edit from here." : "Il manca permissiones pro modificar desde ci.",
+    "Cancel upload" : "Cancellar incarga"
 },
 "nplurals=2; plural=(n != 1);");

@@ -25,7 +25,7 @@ OC.L10N.register(
     "Are you sure you want to delete this external storage?" : "Ali ste prepričani, da želite izbrisati to  zunanjo shrambo?",
     "Delete storage?" : "Ali ste prepričani, da želite izbrisati shrambo?",
     "Saved" : "Shranjeno",
-    "Saving …" : "Shranjevanje...",
+    "Saving..." : "Poteka shranjevanje ...",
     "Save" : "Shrani",
     "Empty response from the server" : "S strežnika je prejet odziv brez vsebine.",
     "Couldn't get the list of external mount points: {type}" : "Ni mogoče pridobiti seznama zunanjih priklopnih točk: {type}",
@@ -82,7 +82,6 @@ OC.L10N.register(
     "Region" : "Območje",
     "Enable SSL" : "Omogoči SSL",
     "Enable Path Style" : "Omogoči slog poti",
-    "Legacy (v2) authentication" : "Opuščena (v2) overitev",
     "WebDAV" : "WebDAV",
     "URL" : "Naslov URL",
     "Remote subfolder" : "Oddaljena podrejena mapa",
@@ -105,7 +104,7 @@ OC.L10N.register(
     "OpenStack Object Storage" : "Shramba predmeta OpenStack",
     "Service name" : "Ime storitve",
     "Request timeout (seconds)" : "Zahtevan časovni zamik (sekunde)",
-    "External storage support" : "Podpora zunanji dhrambi",
+    "External storage support" : "Podpora zunanjim hrambam",
     "Name" : "Ime",
     "Storage type" : "Vrsta shrambe",
     "Scope" : "Obseg",
@@ -117,7 +116,6 @@ OC.L10N.register(
     "Available for" : "Na voljo za",
     "Add storage" : "Dodaj shrambo",
     "Advanced settings" : "Napredne nastavitve",
-    "Allow users to mount external storage" : "Dovoli uporabnikom priklapljanje zunanje shrambe",
-    "Saving..." : "Poteka shranjevanje ..."
+    "Allow users to mount external storage" : "Dovoli uporabnikom priklapljanje zunanje shrambe"
 },
 "nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);");

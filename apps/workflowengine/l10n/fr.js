@@ -68,7 +68,6 @@ OC.L10N.register(
     "Desktop client" : "Client de bureau",
     "Thunderbird & Outlook addons" : "Modules complémentaires Thunderbird & Outlook",
     "Custom user agent" : "Agent utilisateur personnalisé",
-    "At least one event must be selected" : "Au moins un événement doit être sélectionné",
     "Add new flow" : "Ajouter un nouveau flux",
     "When" : "Quand",
     "and" : "et",
@@ -78,7 +77,6 @@ OC.L10N.register(
     "Active" : "Actif",
     "Save" : "Enregistrer",
     "Available flows" : "Flux disponibles",
-    "For details on how to write your own flow, check out the development documentation." : "Pour savoir comment rédiger votre propre flux, consultez la documentation sur le développement.",
     "More flows" : "Plus de flux",
     "Browse the app store" : "Parcourir l'App Store",
     "Show less" : "Afficher moins",
@@ -127,9 +125,10 @@ OC.L10N.register(
     "End" : "Fin",
     "Select timezone…" : "Sélectionner le fuseau horaire...",
     "Sync clients" : "Clients de synchronisation",
-    "Tag management" : "Gestion des étiquettes",
+    "Workflow" : "Flux d'activités",
     "Files workflow engine" : "Moteur de Workflow de fichiers",
     "Open documentation" : "Voir la documentation",
-    "Loading…" : "Chargement..."
+    "Loading…" : "Chargement...",
+    "Tag management" : "Gestion des étiquettes"
 },
 "nplurals=2; plural=(n > 1);");

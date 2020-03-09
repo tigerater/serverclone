@@ -27,7 +27,7 @@
  *
  */
 
-namespace OCA\Settings\Settings\Admin;
+namespace OCA\Settings\Admin;
 
 use OC\Share\Share;
 use OCP\AppFramework\Http\TemplateResponse;
@@ -52,9 +52,9 @@ class Sharing implements ISettings {
 	/**
 	 * @param IConfig $config
 	 */
-	public function __construct(IConfig $config, IL10N $l, IManager $shareManager) {
+	public function __construct(IConfig $config, IFactory $l, IManager $shareManager) {
 		$this->config = $config;
-		$this->l = $l;
+		$this->l = $l->get('lib');
 		$this->shareManager = $shareManager;
 	}
 

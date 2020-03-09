@@ -73,7 +73,6 @@ $expectedFiles = [
 	'remote.php',
 	'resources',
 	'robots.txt',
-	'SECURITY.md',
 	'status.php',
 	'tests',
 	'themes',

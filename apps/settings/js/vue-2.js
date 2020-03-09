@@ -540,8 +540,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _nextcloud_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @nextcloud/vue */ "./node_modules/@nextcloud/vue/dist/ncvuecomponents.js");
-/* harmony import */ var _nextcloud_vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_nextcloud_vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var nextcloud_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! nextcloud-vue */ "./node_modules/nextcloud-vue/dist/ncvuecomponents.js");
+/* harmony import */ var nextcloud_vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(nextcloud_vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var marked__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! marked */ "./node_modules/marked/lib/marked.js");
 /* harmony import */ var marked__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(marked__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var dompurify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! dompurify */ "./node_modules/dompurify/dist/purify.js");
@@ -748,7 +748,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'AppDetails',
   components: {
-    Multiselect: _nextcloud_vue__WEBPACK_IMPORTED_MODULE_0__["Multiselect"],
+    Multiselect: nextcloud_vue__WEBPACK_IMPORTED_MODULE_0__["Multiselect"],
     AppScore: _AppList_AppScore__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   mixins: [_AppManagement__WEBPACK_IMPORTED_MODULE_4__["default"], _PrefixMixin__WEBPACK_IMPORTED_MODULE_5__["default"], _SvgFilterMixin__WEBPACK_IMPORTED_MODULE_6__["default"]],
@@ -1043,12 +1043,6 @@ __webpack_require__.r(__webpack_exports__);
         return apps.filter(function (app) {
           return app.update;
         });
-      }
-
-      if (this.category === 'featured') {
-        return apps.filter(function (app) {
-          return app.level === 200;
-        });
       } // filter app store categories
 
 
@@ -1066,7 +1060,7 @@ __webpack_require__.r(__webpack_exports__);
     bundleApps: function bundleApps() {
       return function (bundle) {
         return this.$store.getters.getAllApps.filter(function (app) {
-          return app.bundleIds !== undefined && app.bundleIds.includes(bundle);
+          return app.bundleId === bundle;
         });
       };
     },
@@ -1091,7 +1085,7 @@ __webpack_require__.r(__webpack_exports__);
       return !this.useListView && !this.useBundleView;
     },
     useListView: function useListView() {
-      return this.category === 'installed' || this.category === 'enabled' || this.category === 'disabled' || this.category === 'updates' || this.category === 'featured';
+      return this.category === 'installed' || this.category === 'enabled' || this.category === 'disabled' || this.category === 'updates';
     },
     useBundleView: function useBundleView() {
       return this.category === 'app-bundles';
@@ -1729,81 +1723,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _nextcloud_vue_dist_Components_AppContent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @nextcloud/vue/dist/Components/AppContent */ "./node_modules/@nextcloud/vue/dist/Components/AppContent.js");
-/* harmony import */ var _nextcloud_vue_dist_Components_AppContent__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_nextcloud_vue_dist_Components_AppContent__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _nextcloud_vue_dist_Components_AppNavigation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @nextcloud/vue/dist/Components/AppNavigation */ "./node_modules/@nextcloud/vue/dist/Components/AppNavigation.js");
-/* harmony import */ var _nextcloud_vue_dist_Components_AppNavigation__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_nextcloud_vue_dist_Components_AppNavigation__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _nextcloud_vue_dist_Components_AppNavigationCounter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @nextcloud/vue/dist/Components/AppNavigationCounter */ "./node_modules/@nextcloud/vue/dist/Components/AppNavigationCounter.js");
-/* harmony import */ var _nextcloud_vue_dist_Components_AppNavigationCounter__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_nextcloud_vue_dist_Components_AppNavigationCounter__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _nextcloud_vue_dist_Components_AppNavigationItem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @nextcloud/vue/dist/Components/AppNavigationItem */ "./node_modules/@nextcloud/vue/dist/Components/AppNavigationItem.js");
-/* harmony import */ var _nextcloud_vue_dist_Components_AppNavigationItem__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_nextcloud_vue_dist_Components_AppNavigationItem__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _nextcloud_vue_dist_Components_AppNavigationSpacer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @nextcloud/vue/dist/Components/AppNavigationSpacer */ "./node_modules/@nextcloud/vue/dist/Components/AppNavigationSpacer.js");
-/* harmony import */ var _nextcloud_vue_dist_Components_AppNavigationSpacer__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_nextcloud_vue_dist_Components_AppNavigationSpacer__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _nextcloud_vue_dist_Components_AppSidebar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @nextcloud/vue/dist/Components/AppSidebar */ "./node_modules/@nextcloud/vue/dist/Components/AppSidebar.js");
-/* harmony import */ var _nextcloud_vue_dist_Components_AppSidebar__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_nextcloud_vue_dist_Components_AppSidebar__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _nextcloud_vue_dist_Components_Content__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @nextcloud/vue/dist/Components/Content */ "./node_modules/@nextcloud/vue/dist/Components/Content.js");
-/* harmony import */ var _nextcloud_vue_dist_Components_Content__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_nextcloud_vue_dist_Components_Content__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.runtime.esm.js");
-/* harmony import */ var vue_localstorage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-localstorage */ "./node_modules/vue-localstorage/dist/vue-local-storage.js");
-/* harmony import */ var vue_localstorage__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(vue_localstorage__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _components_AppList__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/AppList */ "./apps/settings/src/components/AppList.vue");
-/* harmony import */ var _components_AppDetails__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/AppDetails */ "./apps/settings/src/components/AppDetails.vue");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var nextcloud_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! nextcloud-vue */ "./node_modules/nextcloud-vue/dist/ncvuecomponents.js");
+/* harmony import */ var nextcloud_vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(nextcloud_vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_AppList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/AppList */ "./apps/settings/src/components/AppList.vue");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.runtime.esm.js");
+/* harmony import */ var vue_localstorage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-localstorage */ "./node_modules/vue-localstorage/dist/vue-local-storage.js");
+/* harmony import */ var vue_localstorage__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_localstorage__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_AppDetails__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/AppDetails */ "./apps/settings/src/components/AppDetails.vue");
 //
 //
 //
@@ -1850,25 +1776,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
-
-
-vue__WEBPACK_IMPORTED_MODULE_7__["default"].use(vue_localstorage__WEBPACK_IMPORTED_MODULE_8___default.a);
+vue__WEBPACK_IMPORTED_MODULE_2__["default"].use(vue_localstorage__WEBPACK_IMPORTED_MODULE_3___default.a);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Apps',
   components: {
-    AppContent: _nextcloud_vue_dist_Components_AppContent__WEBPACK_IMPORTED_MODULE_0___default.a,
-    AppDetails: _components_AppDetails__WEBPACK_IMPORTED_MODULE_10__["default"],
-    AppList: _components_AppList__WEBPACK_IMPORTED_MODULE_9__["default"],
-    AppNavigation: _nextcloud_vue_dist_Components_AppNavigation__WEBPACK_IMPORTED_MODULE_1___default.a,
-    AppNavigationCounter: _nextcloud_vue_dist_Components_AppNavigationCounter__WEBPACK_IMPORTED_MODULE_2___default.a,
-    AppNavigationItem: _nextcloud_vue_dist_Components_AppNavigationItem__WEBPACK_IMPORTED_MODULE_3___default.a,
-    AppNavigationSpacer: _nextcloud_vue_dist_Components_AppNavigationSpacer__WEBPACK_IMPORTED_MODULE_4___default.a,
-    AppSidebar: _nextcloud_vue_dist_Components_AppSidebar__WEBPACK_IMPORTED_MODULE_5___default.a,
-    Content: _nextcloud_vue_dist_Components_Content__WEBPACK_IMPORTED_MODULE_6___default.a
+    AppContent: nextcloud_vue__WEBPACK_IMPORTED_MODULE_0__["AppContent"],
+    AppNavigation: nextcloud_vue__WEBPACK_IMPORTED_MODULE_0__["AppNavigation"],
+    AppNavigationItem: nextcloud_vue__WEBPACK_IMPORTED_MODULE_0__["AppNavigationItem"],
+    AppSidebar: nextcloud_vue__WEBPACK_IMPORTED_MODULE_0__["AppSidebar"],
+    Content: nextcloud_vue__WEBPACK_IMPORTED_MODULE_0__["Content"],
+    AppDetails: _components_AppDetails__WEBPACK_IMPORTED_MODULE_4__["default"],
+    AppList: _components_AppList__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   props: {
     category: {
@@ -1910,6 +1828,118 @@ vue__WEBPACK_IMPORTED_MODULE_7__["default"].use(vue_localstorage__WEBPACK_IMPORT
     },
     settings: function settings() {
       return this.$store.getters.getServerData;
+    },
+    // BUILD APP NAVIGATION MENU OBJECT
+    menu: function menu() {
+      var _this2 = this;
+
+      // Data provided php side
+      var categories = this.$store.getters.getCategories;
+      categories = Array.isArray(categories) ? categories : []; // Map groups
+
+      categories = categories.map(function (category) {
+        var item = {};
+        item.id = 'app-category-' + category.ident;
+        item.icon = 'icon-category-' + category.ident;
+        item.classes = []; // empty classes, active will be set later
+
+        item.router = {
+          // router link to
+          name: 'apps-category',
+          params: {
+            category: category.ident
+          }
+        };
+        item.text = category.displayName;
+        return item;
+      }); // Add everyone group
+
+      var defaultCategories = [{
+        id: 'app-category-your-apps',
+        classes: [],
+        router: {
+          name: 'apps'
+        },
+        icon: 'icon-category-installed',
+        text: t('settings', 'Your apps')
+      }, {
+        id: 'app-category-enabled',
+        classes: [],
+        icon: 'icon-category-enabled',
+        router: {
+          name: 'apps-category',
+          params: {
+            category: 'enabled'
+          }
+        },
+        text: t('settings', 'Active apps')
+      }, {
+        id: 'app-category-disabled',
+        classes: [],
+        icon: 'icon-category-disabled',
+        router: {
+          name: 'apps-category',
+          params: {
+            category: 'disabled'
+          }
+        },
+        text: t('settings', 'Disabled apps')
+      }];
+
+      if (!this.settings.appstoreEnabled) {
+        return defaultCategories;
+      }
+
+      if (this.$store.getters.getUpdateCount > 0) {
+        defaultCategories.push({
+          id: 'app-category-updates',
+          classes: [],
+          icon: 'icon-download',
+          router: {
+            name: 'apps-category',
+            params: {
+              category: 'updates'
+            }
+          },
+          text: t('settings', 'Updates'),
+          utils: {
+            counter: this.$store.getters.getUpdateCount
+          }
+        });
+      }
+
+      defaultCategories.push({
+        id: 'app-category-app-bundles',
+        classes: [],
+        icon: 'icon-category-app-bundles',
+        router: {
+          name: 'apps-category',
+          params: {
+            category: 'app-bundles'
+          }
+        },
+        text: t('settings', 'App bundles')
+      });
+      categories = defaultCategories.concat(categories); // Set current group as active
+
+      var activeGroup = categories.findIndex(function (group) {
+        return group.id === 'app-category-' + _this2.category;
+      });
+
+      if (activeGroup >= 0) {
+        categories[activeGroup].classes.push('active');
+      } else {
+        categories[0].classes.push('active');
+      }
+
+      categories.push({
+        id: 'app-developer-docs',
+        classes: [],
+        href: this.settings.developerDocumentation,
+        text: t('settings', 'Developer documentation') + ' ↗'
+      }); // Return
+
+      return categories;
     }
   },
   watch: {
@@ -3098,119 +3128,13 @@ var render = function() {
         _c(
           "ul",
           { attrs: { id: "appscategories" } },
-          [
-            _c("AppNavigationItem", {
-              attrs: {
-                id: "app-category-your-apps",
-                to: { name: "apps" },
-                exact: true,
-                icon: "icon-category-installed",
-                title: _vm.t("settings", "Your apps")
-              }
-            }),
-            _vm._v(" "),
-            _c("AppNavigationItem", {
-              attrs: {
-                id: "app-category-enabled",
-                to: { name: "apps-category", params: { category: "enabled" } },
-                icon: "icon-category-enabled",
-                title: _vm.t("settings", "Active apps")
-              }
-            }),
-            _vm._v(" "),
-            _c("AppNavigationItem", {
-              attrs: {
-                id: "app-category-disabled",
-                to: { name: "apps-category", params: { category: "disabled" } },
-                icon: "icon-category-disabled",
-                title: _vm.t("settings", "Disabled apps")
-              }
-            }),
-            _vm._v(" "),
-            _vm.updateCount > 0
-              ? _c(
-                  "AppNavigationItem",
-                  {
-                    attrs: {
-                      id: "app-category-updates",
-                      to: {
-                        name: "apps-category",
-                        params: { category: "updates" }
-                      },
-                      icon: "icon-download",
-                      title: _vm.t("settings", "Updates")
-                    }
-                  },
-                  [
-                    _c(
-                      "AppNavigationCounter",
-                      { attrs: { slot: "counter" }, slot: "counter" },
-                      [
-                        _vm._v(
-                          "\n\t\t\t\t\t" +
-                            _vm._s(_vm.updateCount) +
-                            "\n\t\t\t\t"
-                        )
-                      ]
-                    )
-                  ],
-                  1
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            _c("AppNavigationItem", {
-              attrs: {
-                id: "app-category-your-bundles",
-                to: {
-                  name: "apps-category",
-                  params: { category: "app-bundles" }
-                },
-                icon: "icon-category-app-bundles",
-                title: _vm.t("settings", "App bundles")
-              }
-            }),
-            _vm._v(" "),
-            _c("AppNavigationSpacer"),
-            _vm._v(" "),
-            _vm.settings.appstoreEnabled
-              ? [
-                  _c("AppNavigationItem", {
-                    attrs: {
-                      id: "app-category-featured",
-                      to: {
-                        name: "apps-category",
-                        params: { category: "featured" }
-                      },
-                      icon: "icon-favorite",
-                      title: _vm.t("settings", "Featured apps")
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm._l(_vm.categories, function(cat) {
-                    return _c("AppNavigationItem", {
-                      key: "icon-category-" + cat.ident,
-                      attrs: {
-                        icon: "icon-category-" + cat.ident,
-                        to: {
-                          name: "apps-category",
-                          params: { category: cat.ident }
-                        },
-                        title: cat.displayName
-                      }
-                    })
-                  })
-                ]
-              : _vm._e(),
-            _vm._v(" "),
-            _c("AppNavigationItem", {
-              attrs: {
-                id: "app-developer-docs",
-                href: "settings.developerDocumentation",
-                title: _vm.t("settings", "Developer documentation") + " ↗"
-              }
+          _vm._l(_vm.menu, function(item) {
+            return _c("AppNavigationItem", {
+              key: item.key,
+              attrs: { item: item }
             })
-          ],
-          2
+          }),
+          1
         )
       ]),
       _vm._v(" "),
@@ -3298,4 +3222,4 @@ if(false) {}
 /***/ })
 
 }]);
-//# sourceMappingURL=vue-2.js.map?v=71b1f9cb73b6f972a0fe
+//# sourceMappingURL=vue-2.js.map?v=662f771dd73ad67e77f2

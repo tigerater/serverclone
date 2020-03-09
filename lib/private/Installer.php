@@ -70,8 +70,6 @@ class Installer {
 	private $apps = null;
 	/** @var bool|null - for caching the result of the ready status */
 	private $isInstanceReadyForUpdates = null;
-	/** @var bool */
-	private $isCLI;
 
 	/**
 	 * @param AppFetcher $appFetcher
@@ -80,20 +78,16 @@ class Installer {
 	 * @param ILogger $logger
 	 * @param IConfig $config
 	 */
-	public function __construct(
-		AppFetcher $appFetcher,
-		IClientService $clientService,
-		ITempManager $tempManager,
-		ILogger $logger,
-		IConfig $config,
-		bool $isCLI
-	) {
+	public function __construct(AppFetcher $appFetcher,
+								IClientService $clientService,
+								ITempManager $tempManager,
+								ILogger $logger,
+								IConfig $config) {
 		$this->appFetcher = $appFetcher;
 		$this->clientService = $clientService;
 		$this->tempManager = $tempManager;
 		$this->logger = $logger;
 		$this->config = $config;
-		$this->isCLI = $isCLI;
 	}
 
 	/**
@@ -276,9 +270,8 @@ class Installer {
 
 				// Download the release
 				$tempFile = $this->tempManager->getTemporaryFile('.tar.gz');
-				$timeout = $this->isCLI ? 0 : 120;
 				$client = $this->clientService->newClient();
-				$client->get($app['releases'][0]['download'], ['save_to' => $tempFile, 'timeout' => $timeout]);
+				$client->get($app['releases'][0]['download'], ['save_to' => $tempFile, 'timeout' => 120]);
 
 				// Check if the signature actually matches the downloaded content
 				$certificate = openssl_get_publickey($app['certificate']);

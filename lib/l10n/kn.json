@@ -7,6 +7,7 @@
     "Settings" : "ಆಯ್ಕೆ",
     "Log out" : "ಈ ಆವೃತ್ತಿ ಇಂದ ನಿರ್ಗಮಿಸಿ",
     "Users" : "﻿ಬಳಕೆದಾರರು",
+    "Sharing" : "﻿ಹಂಚಿಕೆ",
     "Sunday" : "﻿ಭಾನುವಾರ",
     "Monday" : "﻿ಸೋಮವಾರ",
     "Tuesday" : "﻿ಮಂಗಳವಾರ",
@@ -31,7 +32,6 @@
     "Authentication error" : "ದೃಢೀಕರಣ ದೋಷ",
     "Create" : "ಸೃಷ್ಟಿಸಿ",
     "Delete" : "﻿ಅಳಿಸಿ",
-    "Share" : "﻿ಹಂಚಿಕೊಳ್ಳಿ",
-    "Sharing" : "﻿ಹಂಚಿಕೆ"
+    "Share" : "﻿ಹಂಚಿಕೊಳ್ಳಿ"
 },"pluralForm" :"nplurals=2; plural=(n > 1);"
 }

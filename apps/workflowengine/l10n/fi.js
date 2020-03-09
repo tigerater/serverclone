@@ -91,9 +91,10 @@ OC.L10N.register(
     "End" : "Loppu",
     "Select timezone…" : "Valitse aikavyöhyke...",
     "Sync clients" : "Synkronointisovellukset",
-    "Tag management" : "Tunnisteiden hallinta",
+    "Workflow" : "Työnkulku",
     "Files workflow engine" : "Tiedostojen työnkulkumoottori",
     "Open documentation" : "Avaa dokumentaatio",
-    "Loading…" : "Ladataan…"
+    "Loading…" : "Ladataan…",
+    "Tag management" : "Tunnisteiden hallinta"
 },
 "nplurals=2; plural=(n != 1);");

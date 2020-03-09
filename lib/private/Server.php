@@ -1272,8 +1272,7 @@ class Server extends ServerContainer implements IServerContainer {
 				$c->getHTTPClientService(),
 				$c->getTempManager(),
 				$c->getLogger(),
-				$c->getConfig(),
-				\OC::$CLI
+				$c->getConfig()
 			);
 		});
 

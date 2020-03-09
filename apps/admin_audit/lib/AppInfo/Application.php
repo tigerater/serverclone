@@ -134,7 +134,6 @@ class Application extends App {
 
 		Util::connectHook(Share::class, 'post_shared', $shareActions, 'shared');
 		Util::connectHook(Share::class, 'post_unshare', $shareActions, 'unshare');
-		Util::connectHook(Share::class, 'post_unshareFromSelf', $shareActions, 'unshare');
 		Util::connectHook(Share::class, 'post_update_permissions', $shareActions, 'updatePermissions');
 		Util::connectHook(Share::class, 'post_update_password', $shareActions, 'updatePassword');
 		Util::connectHook(Share::class, 'post_set_expiration_date', $shareActions, 'updateExpirationDate');

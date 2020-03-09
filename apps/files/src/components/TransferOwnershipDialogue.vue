@@ -34,26 +34,25 @@
 				<span class="error">{{ directoryPickerError }}</span>
 			</p>
 			<p class="new-owner-row">
-				<label for="targetUser">
+				<label>
 					<span>{{ t('files', 'New owner') }}</span>
+					<Multiselect
+						v-model="selectedUser"
+						:options="formatedUserSuggestions"
+						:multiple="false"
+						:searchable="true"
+						:placeholder="t('files', 'Search users')"
+						:preselect-first="true"
+						:preserve-search="true"
+						:loading="loadingUsers"
+						track-by="user"
+						label="displayName"
+						:internal-search="false"
+						:clear-on-select="false"
+						:user-select="true"
+						class="middle-align"
+						@search-change="findUserDebounced" />
 				</label>
-				<Multiselect
-					id="targetUser"
-					v-model="selectedUser"
-					:options="formatedUserSuggestions"
-					:multiple="false"
-					:searchable="true"
-					:placeholder="t('files', 'Search users')"
-					:preselect-first="true"
-					:preserve-search="true"
-					:loading="loadingUsers"
-					track-by="user"
-					label="displayName"
-					:internal-search="false"
-					:clear-on-select="false"
-					:user-select="true"
-					class="middle-align"
-					@search-change="findUserDebounced" />
 			</p>
 			<p>
 				<input type="submit"
@@ -96,9 +95,6 @@ export default {
 			loadingUsers: false,
 			selectedUser: null,
 			userSuggestions: {},
-			config: {
-				minSearchStringLength: parseInt(OC.config['sharing.minSearchStringLength'], 10) || 0,
-			},
 		}
 	},
 	computed: {
@@ -131,7 +127,6 @@ export default {
 	},
 	created() {
 		this.findUserDebounced = debounce(this.findUser, 300)
-		this.findUser('')
 	},
 	methods: {
 		start() {
@@ -156,7 +151,7 @@ export default {
 		async findUser(query) {
 			this.query = query.trim()
 
-			if (query.length < this.config.minSearchStringLength) {
+			if (query.length < 3) {
 				return
 			}
 
@@ -236,15 +231,16 @@ p {
 	label {
 		display: flex;
 		align-items: center;
+		flex-grow: 1;
 
 		span {
 			margin-right: 8px;
 		}
-	}
 
-	.multiselect {
-		flex-grow: 1;
-		max-width: 280px;
+		.multiselect {
+			flex-grow: 1;
+			max-width: 280px;
+		}
 	}
 }
 .transfer-select-row {

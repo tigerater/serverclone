@@ -34,8 +34,6 @@ OC.L10N.register(
     "Entity %s has no event %s" : "Objekt 1%s har ingen händelse 1%s",
     "Operation %s does not exist" : "Operationen %s existerar inte",
     "Operation %s is invalid" : "Operationen %s är ogiltig",
-    "At least one check needs to be provided" : "Minst en kontroll måste tillhandahållas",
-    "Invalid check provided" : "Ogiltig kontroll angavs",
     "Check %s does not exist" : "Kontroll av %s existerar inte",
     "Check %s is invalid" : "Kontroll av %s är ogiltig",
     "Check %s is not allowed with this entity" : "Kontroll %s tillåts inte med denna enhet",
@@ -67,7 +65,6 @@ OC.L10N.register(
     "Desktop client" : "Skrivbordsklient",
     "Thunderbird & Outlook addons" : "Thunderbird & Outlook - tillägg",
     "Custom user agent" : "Anpassad användaragent",
-    "At least one event must be selected" : "Minst en händelse måste väljas",
     "Add new flow" : "Lägg till nytt flöde",
     "When" : "När",
     "and" : "och",
@@ -126,9 +123,10 @@ OC.L10N.register(
     "End" : "Slutet",
     "Select timezone…" : "Välj tidszon...",
     "Sync clients" : "Synkroniseringsklienter",
-    "Tag management" : "Tagghantering",
+    "Workflow" : "Arbetsflöde",
     "Files workflow engine" : "Arbetsflödesmotor för Filer",
     "Open documentation" : "Öppna dokumentation",
-    "Loading…" : "Laddar..."
+    "Loading…" : "Laddar...",
+    "Tag management" : "Tagghantering"
 },
 "nplurals=2; plural=(n != 1);");

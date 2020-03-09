@@ -601,13 +601,11 @@ class Manager implements ICommentsManager {
 		$query = $qb->select('f.fileid')
 			->addSelect($qb->func()->count('c.id', 'num_ids'))
 			->from('filecache', 'f')
-			->leftJoin('f', 'comments', 'c', $qb->expr()->andX(
-				$qb->expr()->eq('f.fileid', $qb->expr()->castColumn('c.object_id', IQueryBuilder::PARAM_INT)),
-				$qb->expr()->eq('c.object_type', $qb->createNamedParameter('files'))
+			->leftJoin('f', 'comments', 'c', $qb->expr()->eq(
+				'f.fileid', $qb->expr()->castColumn('c.object_id', IQueryBuilder::PARAM_INT)
 			))
-			->leftJoin('c', 'comments_read_markers', 'm', $qb->expr()->andX(
-				$qb->expr()->eq('c.object_id', 'm.object_id'),
-				$qb->expr()->eq('m.object_type', $qb->createNamedParameter('files'))
+			->leftJoin('c', 'comments_read_markers', 'm', $qb->expr()->eq(
+				'c.object_id', 'm.object_id'
 			))
 			->where(
 				$qb->expr()->andX(

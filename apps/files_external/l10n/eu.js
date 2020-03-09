@@ -18,7 +18,7 @@ OC.L10N.register(
     "Admin defined" : "Administratzaileak definitua",
     "Delete storage?" : "Ezabatu biltegiratzea?",
     "Saved" : "Gordeta",
-    "Saving …" : "Gordetzen …",
+    "Saving..." : "Gordetzen...",
     "Save" : "Gorde",
     "external-storage" : "kanpo-biltegiratzea",
     "Username" : "Erabiltzaile izena",
@@ -85,7 +85,6 @@ OC.L10N.register(
     "Configuration" : "Konfigurazioa",
     "Available for" : "Hauentzat eskuragarri",
     "Add storage" : "Gehitu biltegiratzea",
-    "Advanced settings" : "Ezarpen aurreratuak",
-    "Saving..." : "Gordetzen..."
+    "Advanced settings" : "Ezarpen aurreratuak"
 },
 "nplurals=2; plural=(n != 1);");

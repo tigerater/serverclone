@@ -20,6 +20,7 @@ OC.L10N.register(
     "Once every direct access" : "A cata accesso directe",
     "Delete" : "Deler",
     "Saved" : "Salveguardate",
+    "Saving..." : "Salveguardante...",
     "Save" : "Salveguardar",
     "External mount error" : "Error del montage externe",
     "external-storage" : "immagazinage-externe",
@@ -76,7 +77,6 @@ OC.L10N.register(
     "Available for" : "Disponibile a",
     "Add storage" : "Adder immagazinage",
     "Advanced settings" : "Configurationes avantiate",
-    "Allow users to mount external storage" : "Permitter usatores montar immagazinage externe",
-    "Saving..." : "Salveguardante..."
+    "Allow users to mount external storage" : "Permitter usatores montar immagazinage externe"
 },
 "nplurals=2; plural=(n != 1);");
