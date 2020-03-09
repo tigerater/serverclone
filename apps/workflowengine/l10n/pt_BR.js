@@ -127,9 +127,10 @@ OC.L10N.register(
     "End" : "Fim",
     "Select timezone…" : "Selecionar fuso horário...",
     "Sync clients" : "Sincronizar clientes",
-    "Tag management" : "Gerenciamento de rótulos",
+    "Workflow" : "Fluxo de trabalho",
     "Files workflow engine" : "Sistema de fluxo de trabalho de arquivos",
     "Open documentation" : "Abrir documentação",
-    "Loading…" : "Carregando..."
+    "Loading…" : "Carregando...",
+    "Tag management" : "Gerenciamento de rótulos"
 },
 "nplurals=2; plural=(n > 1);");

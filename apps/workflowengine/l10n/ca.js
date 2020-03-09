@@ -107,9 +107,10 @@ OC.L10N.register(
     "End" : "Finalitza",
     "Select timezone…" : "Selecciona fus horari",
     "Sync clients" : "Sincronitza les aplicacions clients",
-    "Tag management" : "Gestió d'etiquetes",
+    "Workflow" : "Flux de treball",
     "Files workflow engine" : "Fitxers del motor de flux de treball",
     "Open documentation" : "Obre la documentació",
-    "Loading…" : "S'està carregant..."
+    "Loading…" : "S'està carregant...",
+    "Tag management" : "Gestió d'etiquetes"
 },
 "nplurals=2; plural=(n != 1);");

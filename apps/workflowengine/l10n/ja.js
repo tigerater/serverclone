@@ -78,9 +78,10 @@ OC.L10N.register(
     "End" : "終了",
     "Select timezone…" : "タイムゾーンを選択...",
     "Sync clients" : "同期クライアントタイプ",
-    "Tag management" : "タグ管理",
+    "Workflow" : "ワークフロー",
     "Files workflow engine" : "ファイルワークフローエンジン",
     "Open documentation" : "ドキュメントを開く",
-    "Loading…" : "読み込み中..."
+    "Loading…" : "読み込み中...",
+    "Tag management" : "タグ管理"
 },
 "nplurals=1; plural=0;");

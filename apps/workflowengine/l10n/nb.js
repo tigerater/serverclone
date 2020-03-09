@@ -76,9 +76,10 @@ OC.L10N.register(
     "End" : "Slutt",
     "Select timezone…" : "Velg tidssone…",
     "Sync clients" : "Synkroniseringsklienter",
-    "Tag management" : "Merkelapphåndtering",
+    "Workflow" : "Arbeidsflyt",
     "Files workflow engine" : "Arbeidsflytmotor for filer",
     "Open documentation" : "Åpne dokumentasjonen",
-    "Loading…" : "Laster…"
+    "Loading…" : "Laster…",
+    "Tag management" : "Merkelapphåndtering"
 },
 "nplurals=2; plural=(n != 1);");

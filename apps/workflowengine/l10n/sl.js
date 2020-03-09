@@ -20,7 +20,6 @@ OC.L10N.register(
     "Check %s is invalid" : "Preverba %s ni veljavna.",
     "Check #%s does not exist" : "Preverba #%s ne obstaja.",
     "Check %s is invalid or does not exist" : "Preverba %s ne obstaja.",
-    "Flow" : "Flow",
     "Images" : "Slike",
     "No results" : "Ni zadetkov",
     "%s (invisible)" : "%s (nevidno)",
@@ -34,7 +33,6 @@ OC.L10N.register(
     "Thunderbird & Outlook addons" : "Razširitve za Thunderbird in Outlook",
     "Cancel" : "Prekliči",
     "Delete" : "Izbriši",
-    "Active" : "Dejavno",
     "Save" : "Shrani",
     "matches" : "se sklada z",
     "does not match" : "se ne sklada z",
@@ -78,9 +76,10 @@ OC.L10N.register(
     "End" : "Konec",
     "Select timezone…" : "Časovni pas ...",
     "Sync clients" : "Odjemalci za usklajevanje",
-    "Tag management" : "Upravljanje oznak",
+    "Workflow" : "Delovni tok",
     "Files workflow engine" : "Delovni tok datotek",
     "Open documentation" : "Odpri dokumentacijo",
-    "Loading…" : "Poteka nalaganje ..."
+    "Loading…" : "Poteka nalaganje ...",
+    "Tag management" : "Upravljanje oznak"
 },
 "nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);");

@@ -2949,8 +2949,8 @@
 					deferred.resolve(status, data);
 				})
 				.fail(function(status) {
-					OCP.Toast.error(
-						t('files', 'Could not fetch file details "{file}"', { file: fileName })
+					OC.Notification.show(t('files', 'Could not create file "{file}"',
+						{file: name}), {type: 'error'}
 					);
 					deferred.reject(status);
 				});
@@ -3796,6 +3796,9 @@ $(document).ready(function() {
 		if (OCA.Files.FileList.lastAction) {
 			OCA.Files.FileList.lastAction();
 		}
+	});
+	$(window).on('unload', function () {
+		$(window).trigger('beforeunload');
 	});
 
 });

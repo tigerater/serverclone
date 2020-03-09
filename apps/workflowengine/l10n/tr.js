@@ -127,9 +127,10 @@ OC.L10N.register(
     "End" : "Bitiş",
     "Select timezone…" : "Saat dilimini seçin …",
     "Sync clients" : "İstemciler eşitlensin",
-    "Tag management" : "Etiket yönetimi",
+    "Workflow" : "İş akışı",
     "Files workflow engine" : "Dosya iş akışı motoru",
     "Open documentation" : "Belgeleri aç",
-    "Loading…" : "Yükleniyor …"
+    "Loading…" : "Yükleniyor …",
+    "Tag management" : "Etiket yönetimi"
 },
 "nplurals=2; plural=(n > 1);");

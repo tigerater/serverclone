@@ -80,8 +80,8 @@ OC.L10N.register(
     "Start" : "Hasiera",
     "End" : "Amaiera",
     "Sync clients" : "Sinkronizatu bezeroak",
-    "Tag management" : "Etiketen kudeaketa",
     "Open documentation" : "Ireki dokumentazioa",
-    "Loading…" : "Kargatzen…"
+    "Loading…" : "Kargatzen…",
+    "Tag management" : "Etiketen kudeaketa"
 },
 "nplurals=2; plural=(n != 1);");

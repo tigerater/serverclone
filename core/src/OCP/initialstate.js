@@ -1,7 +1,7 @@
 /*
- * @copyright 2018 Christoph Wurst <christoph@winzerhof-wurst.at>
+ * @copyright Copyright (c) 2019 Roeland Jago Douma <roeland@famdouma.nl>
  *
- * @author 2018 Christoph Wurst <christoph@winzerhof-wurst.at>
+ * @author Roeland Jago Douma <roeland@famdouma.nl>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -16,16 +16,14 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-const merge = require('webpack-merge');
-const common = require('./webpack.js');
-// webpack.config.js
-const nodeExternals = require('webpack-node-externals')
+/**
+ * @namespace OCP.InitialState
+ */
 
-module.exports = merge(common[0], {
-	mode: 'development',
-	devtool: 'inline-cheap-module-source-map',
-	externals: [nodeExternals()]
-})
+import { loadState as load } from '@nextcloud/initial-state'
+
+export const loadState = load
