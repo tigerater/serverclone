@@ -83,8 +83,7 @@ class Filter implements IFilter {
 	public function filterTypes(array $types) {
 		return array_intersect([
 			self::TYPE_SHARED,
-			self::TYPE_REMOTE_SHARE,
-			'file_downloaded',
+			self::TYPE_REMOTE_SHARE
 		], $types);
 	}
 
@@ -93,9 +92,6 @@ class Filter implements IFilter {
 	 * @since 11.0.0
 	 */
 	public function allowedApps() {
-		return [
-			'files_sharing',
-			'files_downloadactivity',
-		];
+		return ['files_sharing'];
 	}
 }

@@ -35,11 +35,4 @@ import { registerAppsSlideToggle } from './OC/apps'
 $(document).ready(function() {
 	initCore()
 	registerAppsSlideToggle()
-
-	// fallback to hashchange when no history support
-	if (window.history.pushState) {
-		window.onpopstate = _.bind(OC.Util.History._onPopState, OC.Util.History)
-	} else {
-		$(window).on('hashchange', _.bind(OC.Util.History._onPopState, OC.Util.History))
-	}
 })

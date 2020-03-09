@@ -1,10 +1,8 @@
 <?php
-
 /**
  * @copyright Copyright (c) 2016 Robin Appelman <robin@icewind.nl>
  *
  * @author Robin Appelman <robin@icewind.nl>
- * @author John Molakvoæ <skjnldsv@protonmail.com>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -26,7 +24,6 @@
 namespace OC\Core\Command\User;
 
 use OC\Core\Command\Base;
-use OCP\IGroupManager;
 use OCP\IUser;
 use OCP\IUserManager;
 use Symfony\Component\Console\Input\InputInterface;
@@ -34,21 +31,14 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class ListCommand extends Base {
-
 	/** @var IUserManager */
 	protected $userManager;
 
-	/** @var IGroupManager */
-	protected $groupManager;
-
 	/**
 	 * @param IUserManager $userManager
-	 * @param IGroupManager $groupManager
 	 */
-	public function __construct(IUserManager $userManager,
-								IGroupManager $groupManager) {
+	public function __construct(IUserManager $userManager) {
 		$this->userManager = $userManager;
-		$this->groupManager = $groupManager;
 		parent::__construct();
 	}
 
@@ -74,46 +64,23 @@ class ListCommand extends Base {
 				InputOption::VALUE_OPTIONAL,
 				'Output format (plain, json or json_pretty, default is plain)',
 				$this->defaultOutputFormat
-			)->addOption(
-				'info',
-				'i',
-				InputOption::VALUE_NONE,
-				'Show detailed info'
 			);
 	}
 
 	protected function execute(InputInterface $input, OutputInterface $output) {
-		$users = $this->userManager->search('', (int) $input->getOption('limit'), (int) $input->getOption('offset'));
-
-		$this->writeArrayInOutputFormat($input, $output, $this->formatUsers($users, (bool)$input->getOption('info')));
+		$users = $this->userManager->search('', (int)$input->getOption('limit'), (int)$input->getOption('offset'));
+		$this->writeArrayInOutputFormat($input, $output, $this->formatUsers($users));
 	}
 
 	/**
 	 * @param IUser[] $users
-	 * @param bool [$detailed=false]
 	 * @return array
 	 */
-	private function formatUsers(array $users, bool $detailed = false) {
+	private function formatUsers(array $users) {
 		$keys = array_map(function (IUser $user) {
 			return $user->getUID();
 		}, $users);
-	
-		$values = array_map(function (IUser $user) use ($detailed) {
-			if ($detailed) {
-				$groups = $this->groupManager->getUserGroupIds($user);
-				return [
-					'user_id' => $user->getUID(),
-					'display_name' => $user->getDisplayName(),
-					'email' => $user->getEMailAddress() ? $user->getEMailAddress() : '',
-					'cloud_id' => $user->getCloudId(),
-					'enabled' => $user->isEnabled(),
-					'groups' => $groups,
-					'quota' => $user->getQuota(),
-					'last_seen' => date(\DateTime::ATOM, $user->getLastLogin()), // ISO-8601
-					'user_directory' => $user->getHome(),
-					'backend' => $user->getBackendClassName()
-				];
-			}
+		$values = array_map(function (IUser $user) {
 			return $user->getDisplayName();
 		}, $users);
 		return array_combine($keys, $values);

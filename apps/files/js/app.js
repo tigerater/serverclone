@@ -67,12 +67,16 @@
 			var fileActions = new OCA.Files.FileActions();
 			// default actions
 			fileActions.registerDefaultActions();
+			// legacy actions
+			fileActions.merge(window.FileActions);
 			// regular actions
 			fileActions.merge(OCA.Files.fileActions);
 
 			this._onActionsUpdated = _.bind(this._onActionsUpdated, this);
 			OCA.Files.fileActions.on('setDefault.app-files', this._onActionsUpdated);
 			OCA.Files.fileActions.on('registerAction.app-files', this._onActionsUpdated);
+			window.FileActions.on('setDefault.app-files', this._onActionsUpdated);
+			window.FileActions.on('registerAction.app-files', this._onActionsUpdated);
 
 			this.files = OCA.Files.Files;
 
@@ -146,6 +150,8 @@
 			this.files = null;
 			OCA.Files.fileActions.off('setDefault.app-files', this._onActionsUpdated);
 			OCA.Files.fileActions.off('registerAction.app-files', this._onActionsUpdated);
+			window.FileActions.off('setDefault.app-files', this._onActionsUpdated);
+			window.FileActions.off('registerAction.app-files', this._onActionsUpdated);
 		},
 
 		_onActionsUpdated: function(ev) {

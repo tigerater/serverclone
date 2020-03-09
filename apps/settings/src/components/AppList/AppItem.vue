@@ -148,18 +148,14 @@ export default {
 
 	},
 	methods: {
-		async showAppDetails(event) {
+		showAppDetails(event) {
 			if (event.currentTarget.tagName === 'INPUT' || event.currentTarget.tagName === 'A') {
 				return
 			}
-			try {
-				await this.$router.push({
-					name: 'apps-details',
-					params: { category: this.category, id: this.app.id }
-				})
-			} catch (e) {
-				// we already view this app
-			}
+			this.$router.push({
+				name: 'apps-details',
+				params: { category: this.category, id: this.app.id }
+			})
 		},
 		prefix(prefix, content) {
 			return prefix + '_' + content
