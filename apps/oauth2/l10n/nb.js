@@ -9,7 +9,6 @@ OC.L10N.register(
     "Client Identifier" : "Klient-identifikator",
     "Secret" : "Hemmelighet",
     "Add client" : "Legg til klient",
-    "Add" : "Legg til",
-    "Delete" : "Slett"
+    "Add" : "Legg til"
 },
 "nplurals=2; plural=(n != 1);");

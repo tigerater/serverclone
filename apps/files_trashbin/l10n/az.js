@@ -12,7 +12,6 @@ OC.L10N.register(
     "No entries found in this folder" : "Bu qovluqda heç bir verilən tapılmadı",
     "Select all" : "Hamısıı seç",
     "Name" : "Ad",
-    "Actions" : "İşlər",
     "Deleted" : "Silinib",
     "Delete" : "Sil"
 },

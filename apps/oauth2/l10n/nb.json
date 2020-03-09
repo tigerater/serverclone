@@ -7,7 +7,6 @@
     "Client Identifier" : "Klient-identifikator",
     "Secret" : "Hemmelighet",
     "Add client" : "Legg til klient",
-    "Add" : "Legg til",
-    "Delete" : "Slett"
+    "Add" : "Legg til"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

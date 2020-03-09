@@ -12,7 +12,6 @@ OC.L10N.register(
     "No entries found in this folder" : "Nulle entratas trovate in iste dossier",
     "Select all" : "Selectionar toto",
     "Name" : "Nomine",
-    "Actions" : "Actiones",
     "Deleted" : "Delite",
     "Delete" : "Deler"
 },

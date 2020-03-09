@@ -4,7 +4,6 @@
  *
  * @author Johannes Ernst <jernst@indiecomputing.com>
  * @author Johannes Koenig <mail@jokoenig.de>
- * @author Julius Härtl <jus@bitgrid.net>
  * @author Lukas Reschke <lukas@statuscode.ch>
  * @author Morris Jobke <hey@morrisjobke.de>
  * @author Roeland Jago Douma <roeland@famdouma.nl>

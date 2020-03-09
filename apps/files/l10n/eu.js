@@ -138,7 +138,6 @@ OC.L10N.register(
     "Upload (max. %s)" : "Kargatu (%s gehienez)",
     "Accept" : "Onartu",
     "File Management" : "Fitxategi-kudeaketa",
-    "Change" : "Aldatu",
     "Invalid path selected" : "Bide baliogabea hautatuta",
     "Ownership transfer request sent" : "Jabetza transferentzia eskaera bidalita",
     "Error while loading the file data" : "Errorea fitxategiaren datuak kargatzerakoan",

@@ -137,11 +137,6 @@ abstract class FetcherBase extends TestCase {
 		$this->config
 			->expects($this->at(3))
 			->method('getSystemValue')
-			->with('appstoreurl', 'https://apps.nextcloud.com/api/v1')
-			->willReturn('https://apps.nextcloud.com/api/v1');
-		$this->config
-			->expects($this->at(4))
-			->method('getSystemValue')
 			->with(
 				$this->equalTo('version'),
 				$this->anything()
@@ -303,11 +298,6 @@ abstract class FetcherBase extends TestCase {
 		$this->config
 			->expects($this->at(3))
 			->method('getSystemValue')
-			->with('appstoreurl', 'https://apps.nextcloud.com/api/v1')
-			->willReturn('https://apps.nextcloud.com/api/v1');
-		$this->config
-			->expects($this->at(4))
-			->method('getSystemValue')
 			->with(
 				$this->equalTo('version'),
 				$this->anything()
@@ -391,11 +381,6 @@ abstract class FetcherBase extends TestCase {
 			->willReturn(true);
 		$this->config
 			->expects($this->at(3))
-			->method('getSystemValue')
-			->with('appstoreurl', 'https://apps.nextcloud.com/api/v1')
-			->willReturn('https://apps.nextcloud.com/api/v1');
-		$this->config
-			->expects($this->at(4))
 			->method('getSystemValue')
 			->with(
 				$this->equalTo('version'),

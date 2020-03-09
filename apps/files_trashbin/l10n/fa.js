@@ -12,7 +12,6 @@ OC.L10N.register(
     "No entries found in this folder" : "هیچ ورودی‌ای در این پوشه وجود ندارد",
     "Select all" : "انتخاب همه",
     "Name" : "نام",
-    "Actions" : "فعالیت ها",
     "Deleted" : "حذف شده",
     "Delete" : "حذف"
 },

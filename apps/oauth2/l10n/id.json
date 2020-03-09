@@ -6,6 +6,6 @@
     "Secret" : "Rahasia",
     "Add client" : "Tambah klien",
     "Add" : "Tambah",
-    "Delete" : "Hapus"
+    "OAuth 2.0 allows external services to request access to %s." : "OAuth 2.0 memungkinkan layanan eksternal untuk meminta akses ke %s."
 },"pluralForm" :"nplurals=1; plural=0;"
 }
