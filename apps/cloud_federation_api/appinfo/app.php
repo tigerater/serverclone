@@ -19,6 +19,4 @@
  *
  */
 
-use OCA\CloudFederationAPI\AppInfo\Application;
-
-\OC::$server->query(Application::class);
+$app = new \OCA\CloudFederationAPI\AppInfo\Application();

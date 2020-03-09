@@ -46,7 +46,12 @@ class Application extends App {
 		/*
 		 * Register expiration
 		 */
-		$container->registerAlias('Expiration', Expiration::class);
+		$container->registerService('Expiration', function($c) {
+			return  new Expiration(
+				$c->query('ServerContainer')->getConfig(),
+				$c->query(ITimeFactory::class)
+			);
+		});
 
 		/*
 		 * Register $principalBackend for the DAV collection

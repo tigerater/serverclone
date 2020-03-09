@@ -100,9 +100,8 @@ class ServerContainer extends SimpleContainer {
 			if (!isset($this->hasNoAppContainer[$namespace])) {
 				$applicationClassName = 'OCA\\' . $sensitiveNamespace . '\\AppInfo\\Application';
 				if (class_exists($applicationClassName)) {
-					$app = new $applicationClassName();
+					new $applicationClassName();
 					if (isset($this->appContainers[$namespace])) {
-						$this->appContainers[$namespace]->offsetSet($applicationClassName, $app);
 						return $this->appContainers[$namespace];
 					}
 				}

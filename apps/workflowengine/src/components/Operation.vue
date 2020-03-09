@@ -55,7 +55,6 @@ export default {
 	.actions__item_options {
 		width: 100%;
 		margin-top: 10px;
-		padding-left: 60px;
 	}
 	h3, small {
 		padding: 6px;
@@ -64,7 +63,7 @@ export default {
 	h3 {
 		margin: 0;
 		padding: 0;
-		font-weight: 600;
+		font-weight: 500;
 	}
 	small {
 		font-size: 10pt;
@@ -83,7 +82,6 @@ export default {
 		.actions__item__description {
 			padding-top: 5px;
 			text-align: left;
-			width: calc(100% - 105px);
 			small {
 				padding: 0;
 			}

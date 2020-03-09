@@ -19,9 +19,6 @@
  *
  */
 
-use \OCA\WorkflowEngine\AppInfo\Application;
-
-/** @var Application $application */
-$application = \OC::$server->query(Application::class);
+$application = new \OCA\WorkflowEngine\AppInfo\Application();
 $application->registerHooksAndListeners();
 $application->registerRuleListeners();

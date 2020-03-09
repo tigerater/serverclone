@@ -24,9 +24,12 @@ declare(strict_types=1);
 
 namespace OCA\WorkflowEngine\Service;
 
+use OCA\WorkflowEngine\AppInfo\Application;
+use OCA\WorkflowEngine\Entity\File;
 use OCA\WorkflowEngine\Helper\ScopeContext;
 use OCA\WorkflowEngine\Manager;
 use OCP\AppFramework\QueryException;
+use OCP\Files\Node;
 use OCP\Files\Storage\IStorage;
 use OCP\IL10N;
 use OCP\IServerContainer;
@@ -125,7 +128,7 @@ class RuleMatcher implements IRuleMatcher {
 				list($entity, $subject) = $entityInfo;
 				$checkInstance->setEntitySubject($entity, $subject);
 			}
-		} else if(!$checkInstance instanceof ICheck) {
+		} else {
 			// Check is invalid
 			throw new \UnexpectedValueException($this->l->t('Check %s is invalid or does not exist', $check['class']));
 		}

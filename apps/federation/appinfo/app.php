@@ -22,6 +22,5 @@
 
 namespace OCA\Federation\AppInfo;
 
-/** @var Application $app */
-$app = \OC::$server->query(Application::class);
+$app = new Application();
 $app->registerHooks();

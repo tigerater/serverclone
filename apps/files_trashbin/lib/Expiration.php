@@ -49,11 +49,7 @@ class Expiration {
 
 	public function __construct(IConfig $config,ITimeFactory $timeFactory){
 		$this->timeFactory = $timeFactory;
-		$this->setRetentionObligation($config->getSystemValue('trashbin_retention_obligation', 'auto'));
-	}
-
-	public function setRetentionObligation(string $obligation) {
-		$this->retentionObligation = $obligation;
+		$this->retentionObligation = $config->getSystemValue('trashbin_retention_obligation', 'auto');
 
 		if ($this->retentionObligation !== 'disabled') {
 			$this->parseRetentionObligation();

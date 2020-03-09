@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 /**
  * @copyright Copyright (c) 2016, ownCloud, Inc.
  *
@@ -22,37 +21,41 @@ declare(strict_types=1);
  *
  */
 
-return [
-	'routes' => [
-		[
-			'name' => 'Recovery#adminRecovery',
-			'url' => '/ajax/adminRecovery',
-			'verb' => 'POST'
-		],
-		[
-			'name' => 'Settings#updatePrivateKeyPassword',
-			'url' => '/ajax/updatePrivateKeyPassword',
-			'verb' => 'POST'
-		],
-		[
-			'name' => 'Settings#setEncryptHomeStorage',
-			'url' => '/ajax/setEncryptHomeStorage',
-			'verb' => 'POST'
-		],
-		[
-			'name' => 'Recovery#changeRecoveryPassword',
-			'url' => '/ajax/changeRecoveryPassword',
-			'verb' => 'POST'
-		],
-		[
-			'name' => 'Recovery#userSetRecovery',
-			'url' => '/ajax/userSetRecovery',
-			'verb' => 'POST'
-		],
-		[
-			'name' => 'Status#getStatus',
-			'url' => '/ajax/getStatus',
-			'verb' => 'GET'
-		],
+
+namespace OCA\Encryption\AppInfo;
+
+(new Application())->registerRoutes($this, array('routes' => array(
+
+	[
+		'name' => 'Recovery#adminRecovery',
+		'url' => '/ajax/adminRecovery',
+		'verb' => 'POST'
+	],
+	[
+		'name' => 'Settings#updatePrivateKeyPassword',
+		'url' => '/ajax/updatePrivateKeyPassword',
+		'verb' => 'POST'
+	],
+	[
+		'name' => 'Settings#setEncryptHomeStorage',
+		'url' => '/ajax/setEncryptHomeStorage',
+		'verb' => 'POST'
+	],
+	[
+		'name' => 'Recovery#changeRecoveryPassword',
+		'url' => '/ajax/changeRecoveryPassword',
+		'verb' => 'POST'
+	],
+	[
+		'name' => 'Recovery#userSetRecovery',
+		'url' => '/ajax/userSetRecovery',
+		'verb' => 'POST'
+	],
+	[
+		'name' => 'Status#getStatus',
+		'url' => '/ajax/getStatus',
+		'verb' => 'GET'
 	]
-];
+
+
+)));

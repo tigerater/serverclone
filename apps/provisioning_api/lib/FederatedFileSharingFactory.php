@@ -25,19 +25,9 @@ declare(strict_types=1);
 namespace OCA\Provisioning_API;
 
 use OCA\FederatedFileSharing\AppInfo\Application;
-use OCP\IServerContainer;
 
 class FederatedFileSharingFactory {
-
-	/** @var IServerContainer */
-	private $serverContainer;
-
-	public function __construct(IServerContainer $serverContainer) {
-		$this->serverContainer = $serverContainer;
-	}
-
 	public function get(): Application {
-		return $this->serverContainer->query(Application::class);
+		return new Application();
 	}
-
 }
