@@ -61,7 +61,7 @@
 			</span>
 			<?php if($template->getActionCount() > 1) { ?>
 			<div id="header-secondary-action">
-				<button id="header-actions-toggle" class="menutoggle icon-more-white"></button>
+				<span id="header-actions-toggle" class="menutoggle icon-more-white"></span>
 				<div id="header-actions-menu" class="popovermenu menu">
 					<ul>
 						<?php

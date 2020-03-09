@@ -23,7 +23,7 @@
 	OCA.SystemTags.FilesPlugin = {
 		ignoreLists: [
 			'trashbin',
-			'files.public',
+			'files.public'
 		],
 
 		attach: function(fileList) {
@@ -31,14 +31,14 @@
 				return
 			}
 
-			const systemTagsInfoView = new OCA.SystemTags.SystemTagsInfoView()
+			var systemTagsInfoView = new OCA.SystemTags.SystemTagsInfoView()
 			fileList.registerDetailView(systemTagsInfoView)
 
 			_.each(fileList.getRegisteredDetailViews(), function(detailView) {
 				if (detailView instanceof OCA.Files.MainFileInfoDetailView) {
-					const systemTagsInfoViewToggleView
+					var systemTagsInfoViewToggleView
 						= new OCA.SystemTags.SystemTagsInfoViewToggleView({
-							systemTagsInfoView: systemTagsInfoView,
+							systemTagsInfoView: systemTagsInfoView
 						})
 					systemTagsInfoViewToggleView.render()
 
@@ -54,7 +54,7 @@
 
 				}
 			})
-		},
+		}
 	}
 
 })()

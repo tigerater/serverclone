@@ -20,8 +20,8 @@
  *
  */
 
-const loadedScripts = {}
-const loadedStylesheets = {}
+let loadedScripts = {}
+let loadedStylesheets = {}
 /**
  * @namespace OCP
  * @class Loader
@@ -42,8 +42,8 @@ export default {
 		}
 		loadedScripts[key] = true
 		return new Promise(function(resolve, reject) {
-			const scriptPath = OC.filePath(app, 'js', file)
-			const script = document.createElement('script')
+			var scriptPath = OC.filePath(app, 'js', file)
+			var script = document.createElement('script')
 			script.src = scriptPath
 			script.setAttribute('nonce', btoa(OC.requestToken))
 			script.onload = () => resolve()
@@ -66,8 +66,8 @@ export default {
 		}
 		loadedStylesheets[key] = true
 		return new Promise(function(resolve, reject) {
-			const stylePath = OC.filePath(app, 'css', file)
-			const link = document.createElement('link')
+			var stylePath = OC.filePath(app, 'css', file)
+			var link = document.createElement('link')
 			link.href = stylePath
 			link.type = 'text/css'
 			link.rel = 'stylesheet'
@@ -75,5 +75,5 @@ export default {
 			link.onerror = () => reject(new Error(`Failed to load stylesheet from ${stylePath}`))
 			document.head.appendChild(link)
 		})
-	},
+	}
 }

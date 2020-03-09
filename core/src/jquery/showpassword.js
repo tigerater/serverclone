@@ -39,15 +39,15 @@ $.fn.extend({
 	showPassword: function(c) {
 
 		// Setup callback object
-		const callback = { 'fn': null, 'args': {} }
+		var callback = { 'fn': null, 'args': {} }
 		callback.fn = c
 
 		// Clones passwords and turn the clones into text inputs
-		const cloneElement = function(element) {
+		var cloneElement = function(element) {
 
-			const $element = $(element)
+			var $element = $(element)
 
-			const $clone = $('<input />')
+			var $clone = $('<input />')
 
 			// Name added for JQuery Validation compatibility
 			// Element name is required to avoid script warning.
@@ -58,7 +58,7 @@ $.fn.extend({
 				'size': $element.attr('size'),
 				'name': $element.attr('name') + '-clone',
 				'tabindex': $element.attr('tabindex'),
-				'autocomplete': 'off',
+				'autocomplete': 'off'
 			})
 
 			if ($element.attr('placeholder') !== undefined) {
@@ -70,12 +70,12 @@ $.fn.extend({
 		}
 
 		// Transfers values between two elements
-		const update = function(a, b) {
+		var update = function(a, b) {
 			b.val(a.val())
 		}
 
 		// Shows a or b depending on checkbox
-		const setState = function(checkbox, a, b) {
+		var setState = function(checkbox, a, b) {
 
 			if (checkbox.is(':checked')) {
 				update(a, b)
@@ -91,11 +91,11 @@ $.fn.extend({
 
 		return this.each(function() {
 
-			const $input = $(this)
-			const $checkbox = $($input.data('typetoggle'))
+			var $input = $(this)
+			var $checkbox = $($input.data('typetoggle'))
 
 			// Create clone
-			const $clone = cloneElement($input)
+			var $clone = cloneElement($input)
 			$clone.insertAfter($input)
 
 			// Set callback arguments
@@ -144,5 +144,5 @@ $.fn.extend({
 			}
 
 		})
-	},
+	}
 })

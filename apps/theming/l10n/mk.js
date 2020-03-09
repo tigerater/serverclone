@@ -34,7 +34,7 @@ OC.L10N.register(
     "Theming makes it possible to easily customize the look and feel of your instance and supported clients. This will be visible for all users." : "Темата овозможува можно полесно прилагодување на изгледот и чувството на вашите истанци и поддржани клиенти. Ова ќе биде видливо за сите корисници.",
     "Name" : "Име",
     "Reset to default" : "Ресетирај на стандардно",
-    "Web link" : "Веб страна",
+    "Web link" : "Њеб страна",
     "https://…" : "https://…",
     "Slogan" : "Слоган",
     "Color" : "Боја",

@@ -12,7 +12,6 @@ OC.L10N.register(
     "No entries found in this folder" : "Nun s'alcontraron entraes nesti carpeta",
     "Select all" : "Esbillar too",
     "Name" : "Nome",
-    "Actions" : "Aiciones",
     "Deleted" : "Desanicióse",
     "Delete" : "Desaniciar"
 },

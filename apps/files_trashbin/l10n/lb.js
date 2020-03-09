@@ -12,7 +12,6 @@ OC.L10N.register(
     "No entries found in this folder" : "Keng Elementer an dësem Dossier fonnt",
     "Select all" : "All auswielen",
     "Name" : "Numm",
-    "Actions" : "Aktiounen",
     "Deleted" : "Geläscht",
     "Delete" : "Läschen"
 },

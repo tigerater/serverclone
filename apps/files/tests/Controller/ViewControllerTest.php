@@ -288,13 +288,6 @@ class ViewControllerTest extends TestCase {
 						'order' => 19,
 						'name' => \OC::$server->getL10N('files_sharing')->t('Deleted shares'),
 					],
-					[
-						'id' => 'pendingshares',
-						'appname' => 'files_sharing',
-						'script' => 'list.php',
-						'order' => 19,
-						'name' => \OC::$server->getL10N('files_sharing')->t('Pending shares'),
-					],
 				],
 				'active' => false,
 				'icon' => '',
@@ -354,10 +347,6 @@ class ViewControllerTest extends TestCase {
 					'deletedshares' => [
 						'id' => 'deletedshares',
 						'content' => null,
-					],
-					'pendingshares' => [
-						'id' => 'pendingshares',
-						'content' => null
 					],
 					'shareoverview' => [
 						'id' => 'shareoverview',

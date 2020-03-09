@@ -62,27 +62,27 @@ const Template = {
 		this.options = $.extend({}, this.options, options)
 
 		this.elem = elem
-		const self = this
+		var self = this
 
 		if (typeof this.options.escapeFunction === 'function') {
-			const keys = Object.keys(this.vars)
-			for (let key = 0; key < keys.length; key++) {
+			var keys = Object.keys(this.vars)
+			for (var key = 0; key < keys.length; key++) {
 				if (typeof this.vars[keys[key]] === 'string') {
 					this.vars[keys[key]] = self.options.escapeFunction(this.vars[keys[key]])
 				}
 			}
 		}
 
-		const _html = this._build(this.vars)
+		var _html = this._build(this.vars)
 		return $(_html)
 	},
 	// From stackoverflow.com/questions/1408289/best-way-to-do-variable-interpolation-in-javascript
 	_build: function(o) {
-		const data = this.elem.attr('type') === 'text/template' ? this.elem.html() : this.elem.get(0).outerHTML
+		var data = this.elem.attr('type') === 'text/template' ? this.elem.html() : this.elem.get(0).outerHTML
 		try {
 			return data.replace(/{([^{}]*)}/g,
 				function(a, b) {
-					const r = o[b]
+					var r = o[b]
 					return typeof r === 'string' || typeof r === 'number' ? r : a
 				}
 			)
@@ -91,14 +91,14 @@ const Template = {
 		}
 	},
 	options: {
-		escapeFunction: escapeHTML,
-	},
+		escapeFunction: escapeHTML
+	}
 }
 
 $.fn.octemplate = function(vars, options) {
 	vars = vars || {}
 	if (this.length) {
-		const _template = Object.create(Template)
+		var _template = Object.create(Template)
 		return _template.init(vars, options, this)
 	}
 }

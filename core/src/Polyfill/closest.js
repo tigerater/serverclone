@@ -8,7 +8,7 @@ if (!Element.prototype.matches) {
 
 if (!Element.prototype.closest) {
 	Element.prototype.closest = function(s) {
-		let el = this
+		var el = this
 
 		do {
 			if (el.matches(s)) return el

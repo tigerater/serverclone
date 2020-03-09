@@ -20,7 +20,7 @@
 	 * @param {Array.<string>} [options.systemTagIds] array of system tag ids to
 	 * filter by
 	 */
-	const FileList = function($el, options) {
+	var FileList = function($el, options) {
 		this.initialize($el, options)
 	}
 	FileList.prototype = _.extend(
@@ -60,7 +60,7 @@
 
 				OC.Plugins.attach('OCA.SystemTags.FileList', this)
 
-				const $controls = this.$el.find('#controls').empty()
+				var $controls = this.$el.find('#controls').empty()
 
 				_.defer(_.bind(this._getLastUsedTags, this))
 				this._initFilterField($controls)
@@ -73,18 +73,18 @@
 			},
 
 			_getLastUsedTags: function() {
-				const self = this
+				var self = this
 				$.ajax({
 					type: 'GET',
 					url: OC.generateUrl('/apps/systemtags/lastused'),
 					success: function(response) {
 						self._lastUsedTags = response
-					},
+					}
 				})
 			},
 
 			_initFilterField: function($container) {
-				const self = this
+				var self = this
 				this.$filterField = $('<input type="hidden" name="tags"/>')
 				$container.append(this.$filterField)
 				this.$filterField.select2({
@@ -100,17 +100,17 @@
 					},
 
 					initSelection: function(element, callback) {
-						const val = $(element)
+						var val = $(element)
 							.val()
 							.trim()
 						if (val) {
-							const tagIds = val.split(',')
-							const tags = []
+							var tagIds = val.split(',')
+							var tags = []
 
 							OC.SystemTags.collection.fetch({
 								success: function() {
 									_.each(tagIds, function(tagId) {
-										const tag = OC.SystemTags.collection.get(
+										var tag = OC.SystemTags.collection.get(
 											tagId
 										)
 										if (!_.isUndefined(tag)) {
@@ -119,7 +119,7 @@
 									})
 
 									callback(tags)
-								},
+								}
 							})
 						} else {
 							// eslint-disable-next-line standard/no-callback-literal
@@ -138,8 +138,8 @@
 
 					sortResults: function(results) {
 						results.sort(function(a, b) {
-							const aLastUsed = self._lastUsedTags.indexOf(a.id)
-							const bLastUsed = self._lastUsedTags.indexOf(b.id)
+							var aLastUsed = self._lastUsedTags.indexOf(a.id)
+							var bLastUsed = self._lastUsedTags.indexOf(b.id)
 
 							if (aLastUsed !== bLastUsed) {
 								if (bLastUsed === -1) {
@@ -163,7 +163,7 @@
 					},
 					formatNoMatches: function() {
 						return t('systemtags', 'No tags found')
-					},
+					}
 				})
 				this.$filterField.on(
 					'change',
@@ -180,14 +180,14 @@
 			_queryTagsAutocomplete: function(query) {
 				OC.SystemTags.collection.fetch({
 					success: function() {
-						const results = OC.SystemTags.collection.filterByName(
+						var results = OC.SystemTags.collection.filterByName(
 							query.term
 						)
 
 						query.callback({
-							results: _.invoke(results, 'toJSON'),
+							results: _.invoke(results, 'toJSON')
 						})
-					},
+					}
 				})
 			},
 
@@ -198,7 +198,7 @@
 			 */
 			_onUrlChanged: function(e) {
 				if (e.dir) {
-					const tags = _.filter(e.dir.split('/'), function(val) {
+					var tags = _.filter(e.dir.split('/'), function(val) {
 						return val.trim() !== ''
 					})
 					this.$filterField.select2('val', tags || [])
@@ -208,7 +208,7 @@
 			},
 
 			_onTagsChanged: function(ev) {
-				const val = $(ev.target)
+				var val = $(ev.target)
 					.val()
 					.trim()
 				if (val !== '') {
@@ -219,14 +219,14 @@
 
 				this.$el.trigger(
 					$.Event('changeDirectory', {
-						dir: this._systemTagIds.join('/'),
+						dir: this._systemTagIds.join('/')
 					})
 				)
 				this.reload()
 			},
 
 			updateEmptyContent: function() {
-				const dir = this.getCurrentDirectory()
+				var dir = this.getCurrentDirectory()
 				if (dir === '/') {
 					// root has special permissions
 					if (!this._systemTagIds.length) {
@@ -300,17 +300,17 @@
 				this.showMask()
 				this._reloadCall = this.filesClient.getFilteredFiles(
 					{
-						systemTagIds: this._systemTagIds,
+						systemTagIds: this._systemTagIds
 					},
 					{
-						properties: this._getWebdavProperties(),
+						properties: this._getWebdavProperties()
 					}
 				)
 				if (this._detailsView) {
 					// close sidebar
 					this._updateDetailsView(null)
 				}
-				const callBack = this.reloadCallback.bind(this)
+				var callBack = this.reloadCallback.bind(this)
 				return this._reloadCall.then(callBack, callBack)
 			},
 
@@ -325,7 +325,7 @@
 					status,
 					result
 				)
-			},
+			}
 		}
 	)
 

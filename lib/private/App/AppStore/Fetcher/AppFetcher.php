@@ -68,6 +68,7 @@ class AppFetcher extends Fetcher {
 		);
 
 		$this->fileName = 'apps.json';
+		$this->setEndpoint();
 		$this->compareVersion = $compareVersion;
 		$this->ignoreMaxVersion = true;
 	}
@@ -142,6 +143,10 @@ class AppFetcher extends Fetcher {
 		return $response;
 	}
 
+	private function setEndpoint() {
+		$this->endpointUrl = 'https://apps.nextcloud.com/api/v1/apps.json';
+	}
+
 	/**
 	 * @param string $version
 	 * @param string $fileName
@@ -151,5 +156,6 @@ class AppFetcher extends Fetcher {
 		parent::setVersion($version);
 		$this->fileName = $fileName;
 		$this->ignoreMaxVersion = $ignoreMaxVersion;
+		$this->setEndpoint();
 	}
 }

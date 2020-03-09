@@ -108,18 +108,18 @@ class FilesAppSharingContext implements Context, ActorAwareInterface {
 		// forThe()->checkbox("Can reshare") can not be used here; that would
 		// return the checkbox itself, but the element that the user interacts
 		// with is the label.
-		return Locator::forThe()->xpath("//label[normalize-space() = 'Allow resharing']")->
+		return Locator::forThe()->xpath("//label[normalize-space() = 'Can reshare']")->
 				descendantOf(self::shareWithMenu($sharedWithName))->
-				describedAs("Allow resharing checkbox in the share with $sharedWithName menu in the details view in Files app");
+				describedAs("Can reshare checkbox in the share with $sharedWithName menu in the details view in Files app");
 	}
 
 	/**
 	 * @return Locator
 	 */
 	public static function canReshareCheckboxInput($sharedWithName) {
-		return Locator::forThe()->checkbox("Allow resharing")->
+		return Locator::forThe()->checkbox("Can reshare")->
 				descendantOf(self::shareWithMenu($sharedWithName))->
-				describedAs("Allow resharing checkbox input in the share with $sharedWithName menu in the details view in Files app");
+				describedAs("Can reshare checkbox input in the share with $sharedWithName menu in the details view in Files app");
 	}
 
 	/**

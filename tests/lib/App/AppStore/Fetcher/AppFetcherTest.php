@@ -92,8 +92,6 @@ EOD;
 					return true;
 				} else if ($key === 'version') {
 					return '11.0.0.2';
-				} else if ($key === 'appstoreurl' && $default === 'https://apps.nextcloud.com/api/v1') {
-					return 'https://custom.appsstore.endpoint/api/v1';
 				} else {
 					return $default;
 				}
@@ -124,7 +122,7 @@ EOD;
 		$response = $this->createMock(IResponse::class);
 		$client
 			->method('get')
-			->with('https://custom.appsstore.endpoint/api/v1/apps.json')
+			->with('https://apps.nextcloud.com/api/v1/apps.json')
 			->willReturn($response);
 		$response
 			->expects($this->once())

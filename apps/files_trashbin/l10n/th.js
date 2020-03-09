@@ -12,7 +12,6 @@ OC.L10N.register(
     "No entries found in this folder" : "ไม่พบรายการในโฟลเดอร์นี้",
     "Select all" : "เลือกทั้งหมด",
     "Name" : "ชื่อ",
-    "Actions" : "การกระทำ",
     "Deleted" : "ลบแล้ว",
     "Delete" : "ลบ"
 },

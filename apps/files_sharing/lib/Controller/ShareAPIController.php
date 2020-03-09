@@ -865,8 +865,8 @@ class ShareAPIController extends OCSController {
 		/** @var Node[] $nodes */
 		$nodes = [];
 		while ($node->getPath() !== $basePath) {
-			$node = $node->getParent();
 			$nodes[] = $node;
+			$node = $node->getParent();
 		}
 
 		// for each nodes, retrieve shares.
@@ -1077,56 +1077,6 @@ class ShareAPIController extends OCSController {
 		}
 
 		return new DataResponse($this->formatShare($share));
-	}
-
-	/**
-	 * @NoAdminRequired
-	 */
-	public function pendingShares(): DataResponse {
-		$pendingShares = [];
-
-		$shareTypes = [
-			IShare::TYPE_USER,
-			IShare::TYPE_GROUP
-		];
-
-		foreach ($shareTypes as $shareType) {
-			$shares = $this->shareManager->getSharedWith($this->currentUser, $shareType, null, -1, 0);
-
-			foreach ($shares as $share) {
-				if ($share->getStatus() === IShare::STATUS_PENDING || $share->getStatus() === IShare::STATUS_REJECTED) {
-					$pendingShares[] = $share;
-				}
-			}
-		}
-
-		$result = array_filter(array_map(function (IShare $share) {
-			$userFolder = $this->rootFolder->getUserFolder($share->getSharedBy());
-			$nodes = $userFolder->getById($share->getNodeId());
-			if (empty($nodes)) {
-				// fallback to guessing the path
-				$node = $userFolder->get($share->getTarget());
-				if ($node === null || $share->getTarget() === '') {
-					return null;
-				}
-			} else {
-				$node = $nodes[0];
-			}
-
-			try {
-				$formattedShare = $this->formatShare($share, $node);
-				$formattedShare['status'] = $share->getStatus();
-				$formattedShare['path'] = $share->getNode()->getName();
-				$formattedShare['permissions'] = 0;
-				return $formattedShare;
-			} catch (NotFoundException $e) {
-				return null;
-			}
-		}, $pendingShares), function ($entry) {
-			return $entry !== null;
-		});
-
-		return new DataResponse($result);
 	}
 
 	/**
@@ -1512,10 +1462,6 @@ class ShareAPIController extends OCSController {
 	 * @return bool
 	 */
 	private function hasResharingRights($viewer, $node): bool {
-		if ($viewer === $node->getOwner()->getUID()) {
-			return true;
-		}
-
 		foreach ([$node, $node->getParent()] as $node) {
 			$shares = $this->getSharesFromNode($viewer, $node, true);
 			foreach ($shares as $share) {

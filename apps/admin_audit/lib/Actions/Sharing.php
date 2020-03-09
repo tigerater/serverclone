@@ -9,6 +9,7 @@ declare(strict_types=1);
  * @author Joas Schilling <coding@schilljs.com>
  * @author Lukas Reschke <lukas@statuscode.ch>
  * @author Sascha Wiswedel <sascha.wiswedel@nextcloud.com>
+ * @author Sascha Wiswedel <wiswedel@users.noreply.github.com>
  *
  * @license GNU AGPL version 3 or any later version
  *

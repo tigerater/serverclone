@@ -24,7 +24,6 @@ OC.L10N.register(
     "Legal notice" : "Regskennisgewing",
     "Privacy policy" : "Privaatheidsbeleid",
     "Adjust the Nextcloud theme" : "Pas die Nextcloud-tema aan",
-    "Open documentation" : "Open dokumentasie",
     "Name" : "Naam",
     "Reset to default" : "Herstel na verstek",
     "Web link" : "Webskakel",
