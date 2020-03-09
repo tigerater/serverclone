@@ -227,11 +227,10 @@ class OC_App {
 	 * @internal
 	 * @param string $app
 	 * @param string $path
-	 * @param bool $force
 	 */
-	public static function registerAutoloading(string $app, string $path, bool $force = false) {
+	public static function registerAutoloading(string $app, string $path) {
 		$key = $app . '-' . $path;
-		if (!$force && isset(self::$alreadyRegistered[$key])) {
+		if(isset(self::$alreadyRegistered[$key])) {
 			return;
 		}
 
@@ -901,11 +900,10 @@ class OC_App {
 		if($appPath === false) {
 			return false;
 		}
+		self::registerAutoloading($appId, $appPath);
 
 		\OC::$server->getAppManager()->clearAppsCache();
 		$appData = self::getAppInfo($appId);
-
-		self::registerAutoloading($appId, $appPath, true);
 		self::executeRepairSteps($appId, $appData['repair-steps']['pre-migration']);
 
 		if (file_exists($appPath . '/appinfo/database.xml')) {
