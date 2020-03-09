@@ -266,7 +266,6 @@ class DecryptAll {
 
 		try {
 			$this->rootView->copy($source, $target);
-			$this->rootView->touch($target, $fileInfo->getMTime());
 			$this->rootView->rename($target, $source);
 		} catch (DecryptionFailedException $e) {
 			if ($this->rootView->file_exists($target)) {
