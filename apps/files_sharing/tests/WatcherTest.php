@@ -29,8 +29,6 @@
 
 namespace OCA\Files_Sharing\Tests;
 
-use OCP\Share\IShare;
-
 /**
  * Class WatcherTest
  *
@@ -75,9 +73,6 @@ class WatcherTest extends TestCase {
 			self::TEST_FILES_SHARING_API_USER2,
 			\OCP\Constants::PERMISSION_ALL
 		);
-
-		$this->_share->setStatus(IShare::STATUS_ACCEPTED);
-		$this->shareManager->updateShare($this->_share);
 
 		// login as user2
 		self::loginHelper(self::TEST_FILES_SHARING_API_USER2);
