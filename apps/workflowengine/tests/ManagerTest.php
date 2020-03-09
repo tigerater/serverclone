@@ -33,7 +33,6 @@ use OCP\ILogger;
 use OCP\IServerContainer;
 use OCP\IURLGenerator;
 use OCP\IUserSession;
-use OCP\SystemTag\ISystemTagManager;
 use OCP\WorkflowEngine\ICheck;
 use OCP\WorkflowEngine\IEntity;
 use OCP\WorkflowEngine\IManager;
@@ -284,10 +283,7 @@ class ManagerTest extends TestCase {
 							$this->l,
 							$this->createMock(IURLGenerator::class),
 							$this->createMock(IRootFolder::class),
-							$this->createMock(ILogger::class),
-							$this->createMock(\OCP\Share\IManager::class),
-							$this->createMock(IUserSession::class),
-							$this->createMock(ISystemTagManager::class)
+							$this->createMock(ILogger::class)
 						])
 						->setMethodsExcept(['getEvents'])
 						->getMock();
