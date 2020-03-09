@@ -104,7 +104,6 @@ OC.L10N.register(
     "Install Client" : "Εγκατάσταση πελάτη",
     "Create" : "Δημιουργία",
     "Change" : "Αλλαγή",
-    "Reshare" : "Επαναδιαμοιρασμός",
     "Unlimited" : "Απεριόριστο",
     "Verifying" : "Γίνεται επαλήθευση",
     "Nextcloud settings" : "Ρυθμίσεις Nextcloud ",
