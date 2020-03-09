@@ -86,23 +86,7 @@ class CryptoWrapper {
 				if($webRoot === '') {
 					$webRoot = '/';
 				}
-
-				if (PHP_VERSION_ID < 70300) {
-					setcookie(self::COOKIE_NAME, $this->passphrase, 0, $webRoot, '', $secureCookie, true);
-				} else {
-					setcookie(
-						self::COOKIE_NAME,
-						$this->passphrase,
-						[
-							'expires' => 0,
-							'path' => $webRoot,
-							'domain' => '',
-							'secure' => $secureCookie,
-							'httponly' => true,
-							'samesite' => 'Lax',
-						]
-					);
-				}
+				setcookie(self::COOKIE_NAME, $this->passphrase, 0, $webRoot, '', $secureCookie, true);
 			}
 		}
 	}
