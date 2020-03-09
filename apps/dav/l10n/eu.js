@@ -67,6 +67,7 @@ OC.L10N.register(
     "Tentative" : "Behin behinekoa",
     "Save" : "Gorde",
     "Calendar server" : "Egutegi-zerbitzaria",
-    "Send invitations to attendees" : "Gonbidatutakoei gonbidapenak bidali"
+    "Send invitations to attendees" : "Gonbidatutakoei gonbidapenak bidali",
+    "Please make sure to properly set up the email settings above." : "Mesedez, eposta ezarpenak ondo zehaztuta daudela ziurta ezazu"
 },
 "nplurals=2; plural=(n != 1);");

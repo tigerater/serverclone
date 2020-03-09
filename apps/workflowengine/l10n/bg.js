@@ -71,6 +71,7 @@ OC.L10N.register(
     "End" : "Край",
     "Select timezone…" : "Изберете часови пояс...",
     "Sync clients" : "Синхронизиране на клиенти",
+    "Workflow" : "Работен процес",
     "Open documentation" : "Отвори документация",
     "Loading…" : "Зареждане..."
 },

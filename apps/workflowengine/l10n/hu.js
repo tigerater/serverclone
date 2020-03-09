@@ -77,9 +77,10 @@ OC.L10N.register(
     "End" : "Vég",
     "Select timezone…" : "Időzóna választás...",
     "Sync clients" : "Szinkron kliensek",
-    "Tag management" : "Címkekezelés",
+    "Workflow" : "Munkafolyamat",
     "Files workflow engine" : "Fájl munkafolyamat motor",
     "Open documentation" : "Dokumentáció megnyitása",
-    "Loading…" : "Betöltés..."
+    "Loading…" : "Betöltés...",
+    "Tag management" : "Címkekezelés"
 },
 "nplurals=2; plural=(n != 1);");

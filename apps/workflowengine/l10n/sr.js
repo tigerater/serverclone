@@ -127,9 +127,10 @@ OC.L10N.register(
     "End" : "Крај",
     "Select timezone…" : "Одаберите временску зону…",
     "Sync clients" : "Синхронизовани клијенти",
-    "Tag management" : "Управљање ознакама",
+    "Workflow" : "Ток рада",
     "Files workflow engine" : "Датотеке за мотор процеса рада",
     "Open documentation" : "Отвори документацију",
-    "Loading…" : "Учитавање…"
+    "Loading…" : "Учитавање…",
+    "Tag management" : "Управљање ознакама"
 },
 "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);");

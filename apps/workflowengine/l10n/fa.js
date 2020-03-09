@@ -75,6 +75,7 @@ OC.L10N.register(
     "End" : "پایان ",
     "Select timezone…" : "انتخاب منطقه زمانی ",
     "Sync clients" : "دستگاه های همگام ",
+    "Workflow" : "جریان کاری",
     "Open documentation" : "مستندات باز",
     "Loading…" : "در حال بار گزاری"
 },
