@@ -233,7 +233,6 @@ OC.L10N.register(
     "Disabled apps" : "Letiltott alkalmazások",
     "Updates" : "Feltöltések",
     "App bundles" : "Alkalmazás csomagok",
-    "Featured apps" : "Kiemelt alkalmazások",
     "{license}-licensed" : "{license}-licencelt",
     "New user" : "Új felhasználó",
     "Add group" : "csoport hozzáadása",

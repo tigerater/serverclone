@@ -104,7 +104,6 @@ OC.L10N.register(
     "SMB / CIFS" : "SMB / CIFS",
     "Share" : "Megosztás",
     "Show hidden files" : "Rejtett fájlok megjelenítése",
-    "Timeout" : "Időtúllépés",
     "SMB / CIFS using OC login" : "SMB / CIFS OC belépéssel",
     "Username as share" : "Felhasználónév és megosztás",
     "OpenStack Object Storage" : "OpenStack Object Storage",
