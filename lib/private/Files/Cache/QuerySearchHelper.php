@@ -3,7 +3,6 @@
  * @copyright Copyright (c) 2017 Robin Appelman <robin@icewind.nl>
  *
  * @author Robin Appelman <robin@icewind.nl>
- * @author Roeland Jago Douma <roeland@famdouma.nl>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -18,7 +17,7 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
 
@@ -89,18 +88,14 @@ class QuerySearchHelper {
 	 * @param ISearchOperator $operator
 	 */
 	public function searchOperatorArrayToDBExprArray(IQueryBuilder $builder, array $operators) {
-		return array_filter(array_map(function ($operator) use ($builder) {
+		return array_map(function ($operator) use ($builder) {
 			return $this->searchOperatorToDBExpr($builder, $operator);
-		}, $operators));
+		}, $operators);
 	}
 
 	public function searchOperatorToDBExpr(IQueryBuilder $builder, ISearchOperator $operator) {
 		$expr = $builder->expr();
 		if ($operator instanceof ISearchBinaryOperator) {
-			if (count($operator->getArguments()) === 0) {
-				return null;
-			}
-
 			switch ($operator->getType()) {
 				case ISearchBinaryOperator::OPERATOR_NOT:
 					$negativeOperator = $operator->getArguments()[0];
@@ -161,6 +156,8 @@ class QuerySearchHelper {
 			$value = self::TAG_FAVORITE;
 		} else if ($field === 'tagname') {
 			$field = 'tag.category';
+		} else if ($field === 'fileid') {
+			$field = 'file.fileid';
 		}
 		return [$field, $value, $type];
 	}

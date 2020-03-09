@@ -2,13 +2,10 @@
 /**
  * @copyright Copyright (c) 2016, ownCloud, Inc.
  *
- * @author Arthur Schiwon <blizzz@arthur-schiwon.de>
  * @author Joas Schilling <coding@schilljs.com>
- * @author Julius Härtl <jus@bitgrid.net>
  * @author Morris Jobke <hey@morrisjobke.de>
  * @author Robin Appelman <robin@icewind.nl>
  * @author Robin McCorkell <robin@mccorkell.me.uk>
- * @author Roeland Jago Douma <roeland@famdouma.nl>
  * @author Vincent Petry <pvince81@owncloud.com>
  *
  * @license AGPL-3.0
@@ -23,7 +20,7 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License, version 3,
- * along with this program. If not, see <http://www.gnu.org/licenses/>
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
 
@@ -37,7 +34,7 @@ use OCP\Files\FileInfo;
 use OCP\Files\Mount\IMountPoint;
 use OCP\Files\NotFoundException;
 use OCP\Files\NotPermittedException;
-use OCP\Files\Search\ISearchQuery;
+use OCP\Files\Search\ISearchOperator;
 
 class Folder extends Node implements \OCP\Files\Folder {
 	/**
@@ -194,7 +191,7 @@ class Folder extends Node implements \OCP\Files\Folder {
 	/**
 	 * search for files with the name matching $query
 	 *
-	 * @param string|ISearchQuery $query
+	 * @param string|ISearchOperator $query
 	 * @return \OC\Files\Node\Node[]
 	 */
 	public function search($query) {
@@ -232,11 +229,6 @@ class Folder extends Node implements \OCP\Files\Folder {
 	 * @return \OC\Files\Node\Node[]
 	 */
 	private function searchCommon($method, $args) {
-		$limitToHome = ($method === 'searchQuery')? $args[0]->limitToHome(): false;
-		if ($limitToHome && count(explode('/', $this->path)) !== 3) {
-			throw new \InvalidArgumentException('searching by owner is only allows on the users home folder');
-		}
-
 		$files = array();
 		$rootLength = strlen($this->path);
 		$mount = $this->root->getMount($this->path);
@@ -260,22 +252,19 @@ class Folder extends Node implements \OCP\Files\Folder {
 			}
 		}
 
-		if (!$limitToHome) {
-			$mounts = $this->root->getMountsIn($this->path);
-			foreach ($mounts as $mount) {
-				$storage = $mount->getStorage();
-				if ($storage) {
-					$cache = $storage->getCache('');
+		$mounts = $this->root->getMountsIn($this->path);
+		foreach ($mounts as $mount) {
+			$storage = $mount->getStorage();
+			if ($storage) {
+				$cache = $storage->getCache('');
 
-					$relativeMountPoint = ltrim(substr($mount->getMountPoint(), $rootLength), '/');
-					$results = call_user_func_array([$cache, $method], $args);
-					foreach ($results as $result) {
-						$result['internalPath'] = $result['path'];
-						$result['path'] = $relativeMountPoint . $result['path'];
-						$result['storage'] = $storage;
-						$files[] = new \OC\Files\FileInfo($this->path . '/' . $result['path'], $storage,
-							$result['internalPath'], $result, $mount);
-					}
+				$relativeMountPoint = ltrim(substr($mount->getMountPoint(), $rootLength), '/');
+				$results = call_user_func_array(array($cache, $method), $args);
+				foreach ($results as $result) {
+					$result['internalPath'] = $result['path'];
+					$result['path'] = $relativeMountPoint . $result['path'];
+					$result['storage'] = $storage;
+					$files[] = new \OC\Files\FileInfo($this->path . '/' . $result['path'], $storage, $result['internalPath'], $result, $mount);
 				}
 			}
 		}

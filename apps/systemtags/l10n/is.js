@@ -2,7 +2,6 @@ OC.L10N.register(
     "systemtags",
     {
     "Tags" : "Merki",
-    "Tag name is empty" : "Nafn merkis vantar",
     "Update" : "Uppfæra",
     "Create" : "Búa til",
     "Select tag…" : "Veldu merki...",

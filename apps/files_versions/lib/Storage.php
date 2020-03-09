@@ -6,12 +6,10 @@
  * @author Bart Visscher <bartv@thisnet.nl>
  * @author Bjoern Schiessle <bjoern@schiessle.org>
  * @author Björn Schießle <bjoern@schiessle.org>
- * @author Christoph Wurst <christoph@winzerhof-wurst.at>
+ * @author Carlos Damken <carlos@damken.com>
  * @author Felix Moeller <mail@felixmoeller.de>
- * @author Felix Nieuwenhuizen <felix@tdlrali.com>
  * @author Joas Schilling <coding@schilljs.com>
  * @author Jörn Friedrich Dreyer <jfd@butonic.de>
- * @author Julius Härtl <jus@bitgrid.net>
  * @author Lukas Reschke <lukas@statuscode.ch>
  * @author Morris Jobke <hey@morrisjobke.de>
  * @author Robin Appelman <robin@icewind.nl>
@@ -33,7 +31,7 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License, version 3,
- * along with this program. If not, see <http://www.gnu.org/licenses/>
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
 
@@ -52,7 +50,6 @@ use OCA\Files_Versions\Command\Expire;
 use OCA\Files_Versions\Events\CreateVersionEvent;
 use OCA\Files_Versions\Versions\IVersionManager;
 use OCP\Files\NotFoundException;
-use OCP\IUser;
 use OCP\Lock\ILockingProvider;
 use OCP\User;
 
@@ -328,16 +325,20 @@ class Storage {
 	 * @param int $revision revision timestamp
 	 * @return bool
 	 */
-	public static function rollback(string $file, int $revision, IUser $user) {
+	public static function rollback($file, $revision) {
 
 		// add expected leading slash
-		$filename = '/' . ltrim($file, '/');
+		$file = '/' . ltrim($file, '/');
+		list($uid, $filename) = self::getUidAndFilename($file);
+		if ($uid === null || trim($filename, '/') === '') {
+			return false;
+		}
 
 		// Fetch the userfolder to trigger view hooks
-		$userFolder = \OC::$server->getUserFolder($user->getUID());
+		$userFolder = \OC::$server->getUserFolder($uid);
 
-		$users_view = new View('/'.$user->getUID());
-		$files_view = new View('/'. $user->getUID().'/files');
+		$users_view = new View('/'.$uid);
+		$files_view = new View('/'. User::getUser().'/files');
 
 		$versionCreated = false;
 
@@ -373,7 +374,7 @@ class Storage {
 		// rollback
 		if (self::copyFileContents($users_view, $fileToRestore, 'files' . $filename)) {
 			$files_view->touch($file, $revision);
-			Storage::scheduleExpire($user->getUID(), $file);
+			Storage::scheduleExpire($uid, $file);
 
 			$node = $userFolder->get($file);
 
