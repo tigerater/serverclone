@@ -29,7 +29,8 @@ namespace OCA\Settings\Tests\Settings\Personal\Security;
 
 use OC\Authentication\Token\DefaultToken;
 use OC\Authentication\Token\IProvider as IAuthTokenProvider;
-use OCA\Settings\Settings\Personal\Security\Authtokens;
+use OCA\Settings\Personal\Security;
+use OCA\Settings\Personal\Security\Authtokens;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IInitialStateService;
 use OCP\ISession;
@@ -54,7 +55,7 @@ class AuthtokensTest extends TestCase {
 	/** @var string */
 	private $uid;
 
-	/** @var Authtokens */
+	/** @var Security\Authtokens */
 	private $section;
 
 	protected function setUp(): void {

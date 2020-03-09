@@ -22,7 +22,7 @@
  *
  */
 
-namespace OCA\Settings\Settings\Personal;
+namespace OCA\Settings\Personal;
 
 
 use OCP\AppFramework\Http\TemplateResponse;
