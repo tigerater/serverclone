@@ -1,9 +1,9 @@
-<?php declare(strict_types=1);
+<?php
 
 /**
- * @copyright 2019 Christoph Wurst <christoph@winzerhof-wurst.at>
+ * @copyright Copyright (c) 2019, Maxence Lange <maxence@artificial-owl.com>
  *
- * @author 2019 Christoph Wurst <christoph@winzerhof-wurst.at>
+ * @author Maxence Lange <maxence@artificial-owl.com>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -19,45 +19,22 @@
  *
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-namespace OCP\User\Events;
+namespace OCA\Files_Sharing\Exceptions;
 
-use OCP\EventDispatcher\Event;
+use Exception;
+
 
 /**
- * @since 18.0.0
+ * Sharing and Resharing rights.
+ *
+ * Class SharingRightsException
+ *
+ * @package OCA\Files_Sharing\Exceptions
  */
-class CreateUserEvent extends Event {
-
-	/** @var string */
-	private $uid;
-
-	/** @var string */
-	private $password;
-
-	/**
-	 * @since 18.0.0
-	 */
-	public function __construct(string $uid,
-								string $password) {
-		parent::__construct();
-		$this->uid = $uid;
-		$this->password = $password;
-	}
-
-	/**
-	 * @since 18.0.0
-	 */
-	public function getUid(): string {
-		return $this->uid;
-	}
-
-	/**
-	 * @since 18.0.0
-	 */
-	public function getPassword(): string {
-		return $this->password;
-	}
+class SharingRightsException extends Exception {
 
 }
+
