@@ -3797,5 +3797,8 @@ $(document).ready(function() {
 			OCA.Files.FileList.lastAction();
 		}
 	});
+	$(window).on('unload', function () {
+		$(window).trigger('beforeunload');
+	});
 
 });
