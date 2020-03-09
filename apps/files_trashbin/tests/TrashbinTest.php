@@ -28,7 +28,6 @@
  */
 
 use OCA\Files_Trashbin\Tests;
-use OCA\Files_Sharing\AppInfo\Application;
 
 /**
  * Class Test_Encryption
@@ -68,9 +67,8 @@ class TrashbinTest extends \Test\TestCase {
 		// clear share hooks
 		\OC_Hook::clear('OCP\\Share');
 		\OC::registerShareHooks();
-
-		// init files sharing
-		new Application();
+		$application = \OC::$server->query(\OCA\Files_Sharing\AppInfo\Application::class);
+		$application->registerMountProviders();
 
 		//disable encryption
 		\OC::$server->getAppManager()->disableApp('encryption');

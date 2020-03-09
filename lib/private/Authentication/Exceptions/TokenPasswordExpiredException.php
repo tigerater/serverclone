@@ -1,9 +1,9 @@
 <?php
-
+declare(strict_types=1);
 /**
- * @copyright 2019 Christoph Wurst <christoph@winzerhof-wurst.at>
+ * @copyright Copyright (c) 2019, Roeland Jago Douma <roeland@famdouma.nl>
  *
- * @author 2019 Christoph Wurst <christoph@winzerhof-wurst.at>
+ * @author Roeland Jago Douma <roeland@famdouma.nl>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -19,11 +19,11 @@
  *
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
+namespace OC\Authentication\Exceptions;
 
-script(\OCA\Files\AppInfo\Application::APP_ID, 'dist/personal-settings');
+class TokenPasswordExpiredException extends ExpiredTokenException {
 
-?>
-<div id="files-personal-settings" class="section">
-</div>
+}
