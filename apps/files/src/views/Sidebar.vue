@@ -63,7 +63,6 @@ import AppSidebar from 'nextcloud-vue/dist/Components/AppSidebar'
 import FileInfo from '../services/FileInfo'
 import LegacyTab from '../components/LegacyTab'
 import LegacyView from '../components/LegacyView'
-import { encodePath } from '@nextcloud/paths'
 
 export default {
 	name: 'Sidebar',
@@ -116,7 +115,7 @@ export default {
 		 */
 		davPath() {
 			const user = OC.getCurrentUser().uid
-			return OC.linkToRemote(`dav/files/${user}${encodePath(this.file)}`)
+			return OC.linkToRemote(`dav/files/${user}${encodeURIComponent(this.file)}`)
 		},
 
 		/**

@@ -33,7 +33,7 @@
 				</button>
 				<span class="error">{{ directoryPickerError }}</span>
 			</p>
-			<p class="new-owner-row">
+			<p>
 				<label>
 					<span>{{ t('files', 'New owner') }}</span>
 					<Multiselect
@@ -217,30 +217,12 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 .middle-align {
 	vertical-align: middle;
 }
 p {
 	margin-top: 12px;
 	margin-bottom: 12px;
-}
-.new-owner-row {
-	display: flex;
-
-	label {
-		display: flex;
-		align-items: center;
-		flex-grow: 1;
-
-		span {
-			margin-right: 8px;
-		}
-
-		.multiselect {
-			flex-grow: 1;
-			max-width: 280px;
-		}
-	}
 }
 </style>
