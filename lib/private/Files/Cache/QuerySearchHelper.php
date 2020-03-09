@@ -88,18 +88,14 @@ class QuerySearchHelper {
 	 * @param ISearchOperator $operator
 	 */
 	public function searchOperatorArrayToDBExprArray(IQueryBuilder $builder, array $operators) {
-		return array_filter(array_map(function ($operator) use ($builder) {
+		return array_map(function ($operator) use ($builder) {
 			return $this->searchOperatorToDBExpr($builder, $operator);
-		}, $operators));
+		}, $operators);
 	}
 
 	public function searchOperatorToDBExpr(IQueryBuilder $builder, ISearchOperator $operator) {
 		$expr = $builder->expr();
 		if ($operator instanceof ISearchBinaryOperator) {
-			if (count($operator->getArguments()) === 0) {
-				return null;
-			}
-
 			switch ($operator->getType()) {
 				case ISearchBinaryOperator::OPERATOR_NOT:
 					$negativeOperator = $operator->getArguments()[0];
@@ -124,11 +120,6 @@ class QuerySearchHelper {
 
 	private function searchComparisonToDBExpr(IQueryBuilder $builder, ISearchComparison $comparison, array $operatorMap) {
 		$this->validateComparison($comparison);
-
-		// "owner" search is done by limiting the storages queries and should not be put in the sql
-		if ($comparison->getField() === 'owner') {
-			return null;
-		}
 
 		list($field, $value, $type) = $this->getOperatorFieldAndValue($comparison);
 		if (isset($operatorMap[$type])) {

@@ -793,10 +793,7 @@ class Cache implements ICache {
 				->andWhere($builder->expr()->eq('tag.uid', $builder->createNamedParameter($searchQuery->getUser()->getUID())));
 		}
 
-		$searchExpr = $this->querySearchHelper->searchOperatorToDBExpr($builder, $searchQuery->getSearchOperation());
-		if ($searchExpr) {
-			$query->andWhere($searchExpr);
-		}
+		$query->andWhere($this->querySearchHelper->searchOperatorToDBExpr($builder, $searchQuery->getSearchOperation()));
 
 		$this->querySearchHelper->addSearchOrdersToQuery($query, $searchQuery->getOrder());
 
