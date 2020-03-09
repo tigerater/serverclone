@@ -106,7 +106,7 @@ class ManagerTest extends TestCase {
 	 */
 	private $userFolder;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->editor = new Editor();
