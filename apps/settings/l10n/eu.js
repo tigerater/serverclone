@@ -225,7 +225,6 @@ OC.L10N.register(
     "Disabled apps" : "Gaitu gabeko aplikazioak",
     "Updates" : "Eguneraketak",
     "App bundles" : "Aplikazio sortak",
-    "Featured apps" : "App aipagarriak",
     "{license}-licensed" : "{license}-lizentziaduna",
     "New user" : "Erabiltzaile berria",
     "Add group" : "Taldea gehitu",
