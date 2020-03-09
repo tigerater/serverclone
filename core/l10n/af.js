@@ -174,6 +174,7 @@ OC.L10N.register(
     "The password is wrong. Try again." : "Die wagwoord is verkeerd. Probeer weer.",
     "Two-factor authentication" : "Twee-faktor-verifikasie",
     "Use backup code" : "Gebruik rugsteunkode",
+    "Cancel log in" : "Kanselleer aanmelding",
     "Error while validating your second factor" : "Fout terwyl u tweede faktor gevalideer word",
     "App update required" : "Toepbywerking benodig",
     "These apps will be updated:" : "Die volgende toeps sal bygewerk word:",
@@ -244,7 +245,6 @@ OC.L10N.register(
     "Error removing share" : "Fout terwyl deel verwyder word",
     "SQLite will be used as database." : "SQLite sal as databasis gebruik word.",
     "Wrong password." : "Verkeerde wagwoord.",
-    "New Password" : "Nuwe wagwoord",
-    "Cancel log in" : "Kanselleer aanmelding"
+    "New Password" : "Nuwe wagwoord"
 },
 "nplurals=2; plural=(n != 1);");
