@@ -29,10 +29,7 @@
 		<div v-tooltip.auto="tooltip" class="sharing-entry__desc">
 			<h5>{{ title }}</h5>
 		</div>
-		<Actions
-			menu-align="right"
-			class="sharing-entry__actions"
-			@close="onMenuClose">
+		<Actions menu-align="right" class="sharing-entry__actions">
 			<template v-if="share.canEdit">
 				<!-- edit permission -->
 				<ActionCheckbox
@@ -117,10 +114,9 @@
 						}"
 						:class="{ error: errors.note}"
 						:disabled="saving"
-						:value="share.newNote || share.note"
+						:value.sync="share.note"
 						icon="icon-edit"
-						@update:value="onNoteChange"
-						@submit="onNoteSubmit" />
+						@update:value="debounceQueueUpdate('note')" />
 				</template>
 			</template>
 
@@ -306,13 +302,6 @@ export default {
 
 			this.share.permissions = permissions
 			this.queueUpdate('permissions')
-		},
-
-		/**
-		 * Save potential changed data on menu close
-		 */
-		onMenuClose() {
-			this.onNoteSubmit()
 		},
 	},
 }

@@ -121,7 +121,7 @@
 			class="sharing-entry__actions"
 			menu-align="right"
 			:open.sync="open"
-			@close="onMenuClose">
+			@close="onPasswordSubmit">
 			<template v-if="share">
 				<template v-if="share.canEdit">
 					<!-- folder -->
@@ -252,10 +252,9 @@
 						:class="{ error: errors.note}"
 						:disabled="saving"
 						:placeholder="t('files_sharing', 'Enter a note for the share recipient')"
-						:value="share.newNote || share.note"
+						:value="share.note"
 						icon="icon-edit"
-						@update:value="onNoteChange"
-						@submit="onNoteSubmit" />
+						@update:value="onNoteChange" />
 				</template>
 
 				<!-- external sharing via url (social...) -->
@@ -776,14 +775,6 @@ export default {
 				this.share.password = this.share.newPassword.trim()
 				this.queueUpdate('password')
 			}
-		},
-
-		/**
-		 * Save potential changed data on menu close
-		 */
-		onMenuClose() {
-			this.onPasswordSubmit()
-			this.onNoteSubmit()
 		},
 
 		/**
