@@ -26,7 +26,6 @@ declare(strict_types=1);
 
 namespace OCA\Files_Sharing\Listener;
 
-use OCA\Files_Sharing\AppInfo\Application;
 use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventListener;
 use OCP\IConfig;
@@ -75,9 +74,7 @@ class UserShareAcceptanceListener implements IEventListener {
 	}
 
 	private function handleAutoAccept(IShare $share, string $userId) {
-		$defaultAcceptSystemConfig = $this->config->getSystemValueBool('sharing.enable_share_accept', false) ? 'no' : 'yes';
-		$acceptDefault = $this->config->getUserValue($userId, Application::APP_ID, 'default_accept', $defaultAcceptSystemConfig) === 'yes';
-		if (!$this->config->getSystemValueBool('sharing.force_share_accept', false) && $acceptDefault) {
+		if ($this->config->getUserValue($userId, 'files_sharing','default_accept','no') === 'yes') {
 			$this->shareManager->acceptShare($share, $userId);
 		}
 	}

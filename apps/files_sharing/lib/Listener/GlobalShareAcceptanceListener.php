@@ -24,41 +24,40 @@ declare(strict_types=1);
  *
  */
 
-namespace OCA\Files_Sharing\Settings;
+namespace OCA\Files_Sharing\Listener;
 
-use OCA\Files_Sharing\AppInfo\Application;
-use OCP\AppFramework\Http\TemplateResponse;
+use OCP\EventDispatcher\Event;
+use OCP\EventDispatcher\IEventListener;
 use OCP\IConfig;
-use OCP\IInitialStateService;
-use OCP\Settings\ISettings;
+use OCP\Share\Events\ShareCreatedEvent;
+use OCP\Share\IManager;
+use OCP\Share\IShare;
 
-class Personal implements ISettings {
+class GlobalShareAcceptanceListener implements IEventListener {
 
 	/** @var IConfig */
 	private $config;
-	/** @var IInitialStateService */
-	private $initialState;
-	/** @var string */
-	private $userId;
+	/** @var IManager */
+	private $shareManager;
 
-	public function __construct(IConfig $config, IInitialStateService $initialState, string $userId) {
+	public function __construct(IConfig $config, IManager $shareManager) {
 		$this->config = $config;
-		$this->initialState = $initialState;
-		$this->userId = $userId;
+		$this->shareManager = $shareManager;
 	}
 
-	public function getForm(): TemplateResponse {
-		$value = $this->config->getUserValue($this->userId, Application::APP_ID, 'default_accept', 'no') === 'yes';
-		$this->initialState->provideInitialState(Application::APP_ID, 'accept_default', $value);
-		return new TemplateResponse('files_sharing', 'Settings/personal');
-	}
+	public function handle(Event $event): void {
+		if (!($event instanceof ShareCreatedEvent)) {
+			return;
+		}
 
-	public function getSection(): string {
-		return 'sharing';
-	}
+		if ($this->config->getSystemValueBool('sharing.interal_shares_accepted', false)) {
+			$share = $event->getShare();
 
-	public function getPriority(): int {
-		return 90;
+			if ($share->getShareType() === IShare::TYPE_USER || $share->getShareType() === IShare::TYPE_GROUP) {
+				$share->setStatus(IShare::STATUS_ACCEPTED);
+				$this->shareManager->updateShare($share);
+			}
+		}
 	}
 
 }
