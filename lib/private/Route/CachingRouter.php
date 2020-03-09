@@ -58,9 +58,7 @@ class CachingRouter extends Router {
 			return $cachedKey;
 		} else {
 			$url = parent::generate($name, $parameters, $absolute);
-			if ($url) {
-				$this->cache->set($key, $url, 3600);
-			}
+			$this->cache->set($key, $url, 3600);
 			return $url;
 		}
 	}

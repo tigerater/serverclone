@@ -25,8 +25,6 @@
 
 namespace OCA\DAV\Tests\unit\Comments;
 
-use OC\EventDispatcher\EventDispatcher;
-use OC\EventDispatcher\SymfonyAdapter;
 use OCA\DAV\Comments\EntityTypeCollection as EntityTypeCollectionImplementation;
 use OCP\Comments\CommentsEntityEvent;
 use OCP\Comments\ICommentsManager;
@@ -34,7 +32,7 @@ use OCP\ILogger;
 use OCP\IUser;
 use OCP\IUserManager;
 use OCP\IUserSession;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 
 class RootCollectionTest extends \Test\TestCase {
 
@@ -48,7 +46,7 @@ class RootCollectionTest extends \Test\TestCase {
 	protected $collection;
 	/** @var \OCP\IUserSession|\PHPUnit_Framework_MockObject_MockObject */
 	protected $userSession;
-	/** @var EventDispatcherInterface */
+	/** @var \Symfony\Component\EventDispatcher\EventDispatcherInterface */
 	protected $dispatcher;
 	/** @var \OCP\IUser|\PHPUnit_Framework_MockObject_MockObject */
 	protected $user;
@@ -69,17 +67,10 @@ class RootCollectionTest extends \Test\TestCase {
 		$this->userSession = $this->getMockBuilder(IUserSession::class)
 			->disableOriginalConstructor()
 			->getMock();
+		$this->dispatcher = new EventDispatcher();
 		$this->logger = $this->getMockBuilder(ILogger::class)
 			->disableOriginalConstructor()
 			->getMock();
-		$this->dispatcher = new SymfonyAdapter(
-			new EventDispatcher(
-				new \Symfony\Component\EventDispatcher\EventDispatcher(),
-				\OC::$server,
-				$this->logger
-			),
-			$this->logger
-		);
 
 		$this->collection = new \OCA\DAV\Comments\RootCollection(
 			$this->commentsManager,

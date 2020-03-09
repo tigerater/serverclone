@@ -675,8 +675,7 @@ class Connection extends LDAPUtility {
 				ILogger::WARN);
 
 			// Set to failure mode, if LDAP error code is not LDAP_SUCCESS or LDAP_INVALID_CREDENTIALS
-			// or (needed for Apple Open Directory:) LDAP_INSUFFICIENT_ACCESS
-			if($errno !== 0 && $errno !== 49 && $errno !== 50) {
+			if($errno !== 0x00 && $errno !== 0x31) {
 				$this->ldapConnectionRes = null;
 			}
 
