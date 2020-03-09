@@ -82,12 +82,12 @@ class Result extends BaseResult {
 	 * @throws NotFoundException
 	 */
 	protected function getRelevantMessagePart(string $message, string $search): string {
-		$start = mb_stripos($message, $search);
+		$start = stripos($message, $search);
 		if ($start === false) {
 			throw new NotFoundException('Comment section not found');
 		}
 
-		$end = $start + mb_strlen($search);
+		$end = $start + strlen($search);
 
 		if ($start <= 25) {
 			$start = 0;
@@ -97,15 +97,15 @@ class Result extends BaseResult {
 			$prefix = '…';
 		}
 
-		if ((mb_strlen($message) - $end) <= 25) {
-			$end = mb_strlen($message);
+		if ((strlen($message) - $end) <= 25) {
+			$end = strlen($message);
 			$suffix = '';
 		} else {
 			$end += 25;
 			$suffix = '…';
 		}
 
-		return $prefix . mb_substr($message, $start, $end - $start) . $suffix;
+		return $prefix . substr($message, $start, $end - $start) . $suffix;
 	}
 
 }
