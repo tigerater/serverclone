@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 /**
  * @copyright 2019 Christoph Wurst <christoph@winzerhof-wurst.at>
@@ -23,24 +21,43 @@ declare(strict_types=1);
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace OCA\Files\Settings;
+namespace OCP\User\Events;
 
-use OCA\Files\AppInfo\Application;
-use OCP\AppFramework\Http\TemplateResponse;
-use OCP\Settings\ISettings;
+use OCP\EventDispatcher\Event;
 
-class PersonalSettings implements ISettings {
+/**
+ * @since 18.0.0
+ */
+class CreateUserEvent extends Event {
 
-	public function getForm(): TemplateResponse {
-		return new TemplateResponse(Application::APP_ID, 'settings-personal');
+	/** @var string */
+	private $uid;
+
+	/** @var string */
+	private $password;
+
+	/**
+	 * @since 18.0.0
+	 */
+	public function __construct(string $uid,
+								string $password) {
+		parent::__construct();
+		$this->uid = $uid;
+		$this->password = $password;
 	}
 
-	public function getSection(): string {
-		return 'sharing';
+	/**
+	 * @since 18.0.0
+	 */
+	public function getUid(): string {
+		return $this->uid;
 	}
 
-	public function getPriority(): int {
-		return 90;
+	/**
+	 * @since 18.0.0
+	 */
+	public function getPassword(): string {
+		return $this->password;
 	}
 
 }

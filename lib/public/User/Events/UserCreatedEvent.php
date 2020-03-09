@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * @copyright 2019 Christoph Wurst <christoph@winzerhof-wurst.at>
@@ -21,9 +21,51 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+namespace OCP\User\Events;
 
-script(\OCA\Files\AppInfo\Application::APP_ID, 'dist/personal-settings');
+use OCP\EventDispatcher\Event;
+use OCP\IUser;
 
-?>
-<div id="files-personal-settings" class="section">
-</div>
+/**
+ * @since 18.0.0
+ */
+class UserCreatedEvent extends Event {
+
+	/** @var IUser */
+	private $user;
+
+	/** @var string */
+	private $password;
+
+	/**
+	 * @since 18.0.0
+	 */
+	public function __construct(IUser $user,
+								string $password) {
+		parent::__construct();
+		$this->user = $user;
+		$this->password = $password;
+	}
+
+	/**
+	 * @since 18.0.0
+	 */
+	public function getUser(): IUser {
+		return $this->user;
+	}
+
+	/**
+	 * @since 18.0.0
+	 */
+	public function getUid(): string {
+		return $this->user->getUID();
+	}
+
+	/**
+	 * @since 18.0.0
+	 */
+	public function getPassword(): string {
+		return $this->password;
+	}
+
+}
