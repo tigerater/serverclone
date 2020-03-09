@@ -26,8 +26,8 @@ namespace OCA\OAuth2\Migration;
 
 use Closure;
 use OCP\DB\ISchemaWrapper;
-use OCP\Migration\IOutput;
 use OCP\Migration\SimpleMigrationStep;
+use OCP\Migration\IOutput;
 
 class Version010402Date20190107124745 extends SimpleMigrationStep {
 

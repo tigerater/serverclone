@@ -27,6 +27,7 @@ declare(strict_types=1);
  *
  */
 
+
 namespace OCP\Dashboard;
 
 
@@ -133,3 +134,4 @@ interface IDashboardManager {
 	public function createGlobalEvent(string $widgetId, array $payload, string $uniqueId = '');
 
 }
+

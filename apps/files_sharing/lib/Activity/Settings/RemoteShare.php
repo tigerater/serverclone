@@ -98,3 +98,4 @@ class RemoteShare implements ISetting {
 		return false;
 	}
 }
+

@@ -27,7 +27,6 @@ namespace Test\Template;
 use OC\Files\AppData\AppData;
 use OC\Files\AppData\Factory;
 use OC\Template\IconsCacher;
-use OC_App;
 use OCA\Theming\ThemingDefaults;
 use OCP\AppFramework\Utility\ITimeFactory;
 use OCP\Files\IAppData;
@@ -39,6 +38,7 @@ use OCP\ICacheFactory;
 use OCP\IConfig;
 use OCP\ILogger;
 use OCP\IURLGenerator;
+use OC_App;
 
 class IconsCacherTest extends \Test\TestCase {
 	/** @var ILogger|\PHPUnit_Framework_MockObject_MockObject */

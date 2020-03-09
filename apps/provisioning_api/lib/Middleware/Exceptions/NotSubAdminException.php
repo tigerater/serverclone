@@ -21,7 +21,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace OCA\Provisioning_API\Middleware\Exceptions;
 
 use OCP\AppFramework\Http;

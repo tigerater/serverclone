@@ -30,7 +30,6 @@ namespace OC\Files\Utils;
 
 use OC\Files\Cache\Cache;
 use OC\Files\Filesystem;
-use OC\Files\Storage\FailedStorage;
 use OC\ForbiddenException;
 use OC\Hooks\PublicEmitter;
 use OC\Lock\DBLockingProvider;
@@ -39,6 +38,7 @@ use OCP\Files\NotFoundException;
 use OCP\Files\Storage\IStorage;
 use OCP\Files\StorageNotAvailableException;
 use OCP\ILogger;
+use OC\Files\Storage\FailedStorage;
 
 /**
  * Class Scanner
@@ -279,3 +279,4 @@ class Scanner extends PublicEmitter {
 		}
 	}
 }
+

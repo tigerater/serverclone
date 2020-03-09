@@ -15,6 +15,7 @@ use OC\Authentication\Token\IProvider;
 use OC\Authentication\Token\IToken;
 use OC\Security\Bruteforce\Throttler;
 use OC\Session\Memory;
+use OCP\User\Events\PostLoginEvent;
 use OC\User\Manager;
 use OC\User\Session;
 use OC\User\User;
@@ -29,7 +30,6 @@ use OCP\IUser;
 use OCP\Lockdown\ILockdownManager;
 use OCP\Security\ICrypto;
 use OCP\Security\ISecureRandom;
-use OCP\User\Events\PostLoginEvent;
 use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 

@@ -27,6 +27,7 @@ declare(strict_types=1);
  *
  */
 
+
 namespace OCP\Dashboard\Service;
 
 
@@ -90,3 +91,4 @@ interface IEventsService {
 
 
 }
+

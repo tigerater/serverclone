@@ -24,13 +24,14 @@ declare(strict_types=1);
  *
  */
 
+
 namespace OC\Security;
 
-use OCP\IConfig;
-use OCP\Security\ICrypto;
-use OCP\Security\ISecureRandom;
 use phpseclib\Crypt\AES;
 use phpseclib\Crypt\Hash;
+use OCP\Security\ICrypto;
+use OCP\Security\ISecureRandom;
+use OCP\IConfig;
 
 /**
  * Class Crypto provides a high-level encryption layer using AES-CBC. If no key has been provided

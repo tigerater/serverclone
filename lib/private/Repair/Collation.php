@@ -151,3 +151,4 @@ class Collation implements IRepairStep {
 		return array_keys($result);
 	}
 }
+

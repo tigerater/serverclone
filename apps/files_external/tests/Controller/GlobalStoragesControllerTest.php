@@ -23,12 +23,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace OCA\Files_External\Tests\Controller;
 
 use OCA\Files_External\Controller\GlobalStoragesController;
-use OCA\Files_External\Service\BackendService;
-use OCP\AppFramework\Http;
+use \OCP\AppFramework\Http;
+use \OCA\Files_External\Service\BackendService;
 use OCP\IL10N;
 use OCP\ILogger;
 use OCP\IRequest;

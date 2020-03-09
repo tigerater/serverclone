@@ -1,5 +1,4 @@
 <?php
-
 namespace OCA\TwoFactorBackupCodes\Migration;
 
 use OCP\Migration\BigIntMigration;

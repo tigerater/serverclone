@@ -23,10 +23,10 @@
 
 namespace OCA\TwoFactorBackupCodes\Migration;
 
-use Doctrine\DBAL\Types\Type;
 use OCP\DB\ISchemaWrapper;
-use OCP\Migration\IOutput;
+use Doctrine\DBAL\Types\Type;
 use OCP\Migration\SimpleMigrationStep;
+use OCP\Migration\IOutput;
 
 class Version1002Date20170607104347 extends SimpleMigrationStep {
 	/**

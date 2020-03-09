@@ -28,8 +28,8 @@
 
 namespace OC\Group;
 
-use OCP\IGroupManager;
 use OCP\IUserSession;
+use OCP\IGroupManager;
 
 class MetaData {
 	const SORT_NONE = 0;

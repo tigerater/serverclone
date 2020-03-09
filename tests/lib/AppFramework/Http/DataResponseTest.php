@@ -21,11 +21,13 @@
  *
  */
 
+
 namespace Test\AppFramework\Http;
 
 
-use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataResponse;
+use OCP\AppFramework\Http;
+
 
 class DataResponseTest extends \Test\TestCase {
 

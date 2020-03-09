@@ -20,7 +20,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace OCA\DAV\Traits;
 
 use OCA\DAV\CalDAV\Proxy\Proxy;

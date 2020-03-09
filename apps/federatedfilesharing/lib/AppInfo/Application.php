@@ -23,6 +23,7 @@
  *
  */
 
+
 namespace OCA\FederatedFileSharing\AppInfo;
 
 

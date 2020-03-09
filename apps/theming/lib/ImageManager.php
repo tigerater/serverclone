@@ -21,15 +21,16 @@
  *
  */
 
+
 namespace OCA\Theming;
 
-use OCP\Files\IAppData;
-use OCP\Files\NotFoundException;
-use OCP\Files\NotPermittedException;
 use OCP\Files\SimpleFS\ISimpleFile;
 use OCP\Files\SimpleFS\ISimpleFolder;
 use OCP\ICacheFactory;
 use OCP\IConfig;
+use OCP\Files\IAppData;
+use OCP\Files\NotFoundException;
+use OCP\Files\NotPermittedException;
 use OCP\ILogger;
 use OCP\IURLGenerator;
 

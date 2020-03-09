@@ -22,7 +22,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace OCA\Encryption\AppInfo;
 
 
@@ -45,6 +44,7 @@ use OCP\AppFramework\IAppContainer;
 use OCP\Encryption\IManager;
 use OCP\IConfig;
 use Symfony\Component\Console\Helper\QuestionHelper;
+
 
 class Application extends \OCP\AppFramework\App {
 

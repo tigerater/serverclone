@@ -8,8 +8,8 @@
 
 namespace Test\Http\Client;
 
-use GuzzleHttp\Psr7\Response as GuzzleResponse;
 use function GuzzleHttp\Psr7\stream_for;
+use GuzzleHttp\Psr7\Response as GuzzleResponse;
 use OC\Http\Client\Response;
 
 /**

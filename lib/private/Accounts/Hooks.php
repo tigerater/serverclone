@@ -21,6 +21,7 @@
  *
  */
 
+
 namespace OC\Accounts;
 
 use OCP\ILogger;

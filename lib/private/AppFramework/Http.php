@@ -27,6 +27,7 @@
  *
  */
 
+
 namespace OC\AppFramework;
 
 use OCP\AppFramework\Http as BaseHttp;
@@ -151,3 +152,5 @@ class Http extends BaseHttp {
 
 
 }
+
+

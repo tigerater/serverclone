@@ -32,9 +32,9 @@ use OCP\Http\Client\IClientService;
 use OCP\Http\Client\IResponse;
 use OCP\IConfig;
 use OCP\ILogger;
-use Sabre\VObject;
-
 use Test\TestCase;
+
+use Sabre\VObject;
 
 class RefreshWebcalJobTest extends TestCase {
 

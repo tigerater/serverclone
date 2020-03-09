@@ -22,6 +22,7 @@ declare(strict_types=1);
  *
  */
 
+
 namespace OCA\TwoFactorBackupCodes\Tests\Unit\Listener;
 
 use OCA\TwoFactorBackupCodes\BackgroundJob\RememberBackupCodesJob;

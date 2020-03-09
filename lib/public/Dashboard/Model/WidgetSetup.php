@@ -32,6 +32,7 @@ namespace OCP\Dashboard\Model;
 
 use JsonSerializable;
 
+
 /**
  * Interface WidgetSetup
  *
@@ -267,3 +268,4 @@ final class WidgetSetup implements JsonSerializable {
 		];
 	}
 }
+

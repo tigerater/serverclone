@@ -25,6 +25,7 @@
  *
  */
 
+
 namespace OCA\Encryption\Tests;
 
 

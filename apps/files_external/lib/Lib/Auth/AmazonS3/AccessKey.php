@@ -22,9 +22,9 @@
 
 namespace OCA\Files_External\Lib\Auth\AmazonS3;
 
-use OCA\Files_External\Lib\Auth\AuthMechanism;
-use OCA\Files_External\Lib\DefinitionParameter;
-use OCP\IL10N;
+use \OCP\IL10N;
+use \OCA\Files_External\Lib\DefinitionParameter;
+use \OCA\Files_External\Lib\Auth\AuthMechanism;
 
 /**
  * Amazon S3 access key authentication

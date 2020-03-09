@@ -22,10 +22,10 @@
 
 namespace OCA\Files_External\Lib\Backend;
 
-use OCA\Files_External\Lib\Auth\AuthMechanism;
-use OCA\Files_External\Lib\Auth\Password\Password;
-use OCA\Files_External\Lib\DefinitionParameter;
-use OCP\IL10N;
+use \OCP\IL10N;
+use \OCA\Files_External\Lib\DefinitionParameter;
+use \OCA\Files_External\Lib\Auth\AuthMechanism;
+use \OCA\Files_External\Lib\Auth\Password\Password;
 
 class SFTP extends Backend {
 

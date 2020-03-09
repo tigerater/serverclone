@@ -20,14 +20,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace Test\Group;
 
 use OC\Group\Database;
 use OC\User\Manager;
-use OCP\GroupInterface;
 use OCP\ILogger;
 use OCP\IUser;
+use OCP\GroupInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Test\TestCase;

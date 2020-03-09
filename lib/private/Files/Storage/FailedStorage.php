@@ -27,8 +27,8 @@ namespace OC\Files\Storage;
 
 use OC\Files\Cache\FailedCache;
 use OCP\Files\Storage\IStorage;
-use OCP\Files\StorageNotAvailableException;
-use OCP\Lock\ILockingProvider;
+use \OCP\Lock\ILockingProvider;
+use \OCP\Files\StorageNotAvailableException;
 
 /**
  * Storage placeholder to represent a missing precondition, storage unavailable

@@ -97,3 +97,4 @@ class Event implements ISetting {
 		return false;
 	}
 }
+

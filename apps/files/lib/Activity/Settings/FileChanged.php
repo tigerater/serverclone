@@ -97,3 +97,4 @@ class FileChanged implements ISetting {
 		return false;
 	}
 }
+

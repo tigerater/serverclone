@@ -21,9 +21,11 @@
  *
  */
 
+
 namespace Test\AppFramework\Http;
 
 use OC\AppFramework\Http;
+
 
 class HttpTest extends \Test\TestCase {
 

@@ -23,11 +23,12 @@
  *
  */
 
+
 namespace Test\AppFramework\Http;
 
 
-use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\JSONResponse;
+use OCP\AppFramework\Http;
 
 class JSONResponseTest extends \Test\TestCase {
 

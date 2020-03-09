@@ -202,3 +202,4 @@ class RepairInvalidSharesTest extends TestCase {
 		return $this->connection->lastInsertId('*PREFIX*share');
 	}
 }
+

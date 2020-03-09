@@ -27,6 +27,7 @@ declare(strict_types=1);
  *
  */
 
+
 namespace OCP\FullTextSearch\Model;
 
 
@@ -135,3 +136,4 @@ interface ISearchRequestSimpleQuery {
 	public function addValueBool(bool $value): ISearchRequestSimpleQuery;
 
 }
+

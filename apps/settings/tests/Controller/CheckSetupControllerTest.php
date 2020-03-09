@@ -23,7 +23,6 @@ namespace OCA\Settings\Tests\Controller;
 
 use OC;
 use OC\DB\Connection;
-use OC\IntegrityCheck\Checker;
 use OC\MemoryInfo;
 use OC\Security\SecureRandom;
 use OCA\Settings\Controller\CheckSetupController;
@@ -43,6 +42,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Test\TestCase;
+use OC\IntegrityCheck\Checker;
 
 /**
  * Class CheckSetupControllerTest

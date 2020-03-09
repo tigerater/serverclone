@@ -195,3 +195,4 @@ class ExceptionOnLostConnection {
 
 $test = new ExceptionOnLostConnection('http://localhost:8474', 'ldap', 'dc=owncloud,dc=bzoc');
 $test->run();
+
