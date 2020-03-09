@@ -64,24 +64,13 @@ class SystemConfig {
 		],
 		'objectstore' => [
 			'arguments' => [
-				// @Todo: Is this still valid?
+				'password' => true,
 				'options' => [
 					'credentials' => [
 						'key' => true,
 						'secret' => true,
 					]
-				],
-				// S3
-				'key' => true,
-				'secret' => true,
-				// Swift v2
-				'username' => true,
-				'password' => true,
-				// Swift v3
-				'user' => [
-					'name' => true,
-					'password' => true,
-				],
+				]
 			],
 		],
 	];
