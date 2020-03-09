@@ -1,7 +1,5 @@
 <?php
-
 declare(strict_types=1);
-
 /**
  * @copyright Copyright (c) 2019, Roeland Jago Douma <roeland@famdouma.nl>
  *
@@ -24,53 +22,42 @@ declare(strict_types=1);
  *
  */
 
-namespace OCP\User\Events;
+namespace OC\User\Events;
 
 use OCP\EventDispatcher\Event;
 use OCP\IUser;
 
-/**
- * @since 18.0.0
- */
 class PostLoginEvent extends Event {
 
 	/** @var IUser */
 	private $user;
-
 	/** @var string */
 	private $password;
-
 	/** @var bool */
 	private $isTokenLogin;
 
-	/**
-	 * @since 18.0.0
-	 */
+
 	public function __construct(IUser $user, string $password, bool $isTokenLogin) {
 		parent::__construct();
+
 		$this->user = $user;
 		$this->password = $password;
 		$this->isTokenLogin = $isTokenLogin;
 	}
 
-	/**
-	 * @since 18.0.0
-	 */
 	public function getUser(): IUser {
 		return $this->user;
 	}
 
-	/**
-	 * @since 18.0.0
-	 */
+	public function hasPassword(): bool {
+		return $this->password !== '';
+	}
+
 	public function getPassword(): string {
 		return $this->password;
 	}
 
-	/**
-	 * @since 18.0.0
-	 */
-	public function isTokenLogin(): bool {
+	public function getIsTokenLogin(): bool {
 		return $this->isTokenLogin;
 	}
 }

@@ -21,6 +21,9 @@
  *
  */
 
+script('accessibility', 'accessibility');
+style('accessibility', 'style');
 ?>
 
+<span id="serverData" data-server="<?php p(json_encode($_['serverData']));?>"></span>
 <span id="accessibility"></span>

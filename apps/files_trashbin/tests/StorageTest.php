@@ -282,8 +282,7 @@ class StorageTest extends \Test\TestCase {
 			->setSharedBy($this->user)
 			->setSharedWith($recipientUser)
 			->setPermissions(\OCP\Constants::PERMISSION_ALL);
-		$share = \OC::$server->getShareManager()->createShare($share);
-		\OC::$server->getShareManager()->acceptShare($share, $recipientUser);
+		\OC::$server->getShareManager()->createShare($share);
 
 		$this->loginAsUser($recipientUser);
 
@@ -336,8 +335,7 @@ class StorageTest extends \Test\TestCase {
 			->setSharedBy($this->user)
 			->setSharedWith($recipientUser)
 			->setPermissions(\OCP\Constants::PERMISSION_ALL);
-		$share = \OC::$server->getShareManager()->createShare($share);
-		\OC::$server->getShareManager()->acceptShare($share, $recipientUser);
+		\OC::$server->getShareManager()->createShare($share);
 
 		$this->loginAsUser($recipientUser);
 

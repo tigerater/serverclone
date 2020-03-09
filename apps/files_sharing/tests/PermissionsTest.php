@@ -31,7 +31,6 @@ namespace OCA\Files_Sharing\Tests;
 use OC\Files\Cache\Cache;
 use OC\Files\Storage\Storage;
 use OC\Files\View;
-use OCP\Share\IShare;
 
 /**
  * Class PermissionsTest
@@ -90,9 +89,7 @@ class PermissionsTest extends TestCase {
 			->setSharedWith(self::TEST_FILES_SHARING_API_USER2)
 			->setSharedBy(self::TEST_FILES_SHARING_API_USER1)
 			->setPermissions(\OCP\Constants::PERMISSION_ALL);
-		$share = $this->shareManager->createShare($share);
-		$share->setStatus(IShare::STATUS_ACCEPTED);
-		$this->shareManager->updateShare($share);
+		$this->shareManager->createShare($share);
 
 		$node = $rootFolder->get('container/shareddirrestricted');
 		$share = $this->shareManager->newShare();
@@ -101,9 +98,7 @@ class PermissionsTest extends TestCase {
 			->setSharedWith(self::TEST_FILES_SHARING_API_USER2)
 			->setSharedBy(self::TEST_FILES_SHARING_API_USER1)
 			->setPermissions(\OCP\Constants::PERMISSION_READ | \OCP\Constants::PERMISSION_CREATE | \OCP\Constants::PERMISSION_UPDATE);
-		$share = $this->shareManager->createShare($share);
-		$share->setStatus(IShare::STATUS_ACCEPTED);
-		$this->shareManager->updateShare($share);
+		$this->shareManager->createShare($share);
 
 		// login as user2
 		self::loginHelper(self::TEST_FILES_SHARING_API_USER2);

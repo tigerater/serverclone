@@ -23,33 +23,33 @@
 
 use Behat\Behat\Context\Context;
 
-class ToastContext implements Context, ActorAwareInterface {
+class NotificationContext implements Context, ActorAwareInterface {
 
 	use ActorAware;
 
 	/**
 	 * @return Locator
 	 */
-	public static function toastMessage($message) {
+	public static function notificationMessage($message) {
 		return Locator::forThe()->xpath("//*[contains(concat(' ', normalize-space(@class), ' '), ' toastify ') and normalize-space(text()) = '$message']")->
-				descendantOf(self::toastContainer())->
-				describedAs("$message toast");
+				descendantOf(self::notificationContainer())->
+				describedAs("$message notification");
 	}
 
 	/**
 	 * @return Locator
 	 */
-	private static function toastContainer() {
+	private static function notificationContainer() {
 		return Locator::forThe()->id("content")->
-				describedAs("Toast container");
+				describedAs("Notification container");
 	}
 
 	/**
-	 * @Then I see that the :message toast is shown
+	 * @Then I see that the :message notification is shown
 	 */
-	public function iSeeThatTheToastIsShown($message) {
+	public function iSeeThatTheNotificationIsShown($message) {
 		PHPUnit_Framework_Assert::assertTrue($this->actor->find(
-				self::toastMessage($message), 10)->isVisible());
+				self::notificationMessage($message), 10)->isVisible());
 	}
 
 }
