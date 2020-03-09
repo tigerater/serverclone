@@ -1591,8 +1591,6 @@
 			td.append(linkElem);
 			tr.append(td);
 
-			var isDarkTheme = OCA.Accessibility && OCA.Accessibility.theme === 'dark'
-
 			try {
 				var maxContrastHex = window.getComputedStyle(document.documentElement)
 					.getPropertyValue('--color-text-maxcontrast').trim()
@@ -1601,7 +1599,10 @@
 				}
 				var maxContrast = parseInt(maxContrastHex.substring(1, 3), 16)
 			} catch(error) {
-				var maxContrast = isDarkTheme ? 130 : 118
+				var maxContrast = OCA.Accessibility
+					&& OCA.Accessibility.theme === 'themedark'
+						? 130
+						: 118
 			}
 
 			// size column
@@ -1617,7 +1618,7 @@
 					sizeColor = maxContrast;
 				}
 
-				if (isDarkTheme) {
+				if (OCA.Accessibility && OCA.Accessibility.theme === 'themedark') {
 					sizeColor = Math.abs(sizeColor);
 					// ensure that the dimmest color is still readable
 					// min. color contrast for normal text on black background according to WCAG AA
@@ -1645,7 +1646,7 @@
 				modifiedColor = maxContrast;
 			}
 
-			if (isDarkTheme) {
+			if (OCA.Accessibility && OCA.Accessibility.theme === 'themedark') {
 				modifiedColor = Math.abs(modifiedColor);
 
 				// ensure that the dimmest color is still readable
