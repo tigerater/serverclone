@@ -82,10 +82,7 @@ trait MoveFromCacheTrait {
 			'mimepart' => $entry->getMimePart(),
 			'etag' => $entry->getEtag(),
 			'permissions' => $entry->getPermissions(),
-			'encrypted' => $entry->isEncrypted(),
-			'creation_time' => $entry->getCreationTime(),
-			'upload_time' => $entry->getUploadTime(),
-			'metadata_etag' => $entry->getMetadataEtag(),
+			'encrypted' => $entry->isEncrypted()
 		];
 	}
 }
