@@ -1,12 +1,11 @@
 <?php
-
 declare(strict_types=1);
-
 /**
  * @copyright Copyright (c) 2016, ownCloud, Inc.
  *
  * @author Joas Schilling <coding@schilljs.com>
  * @author Morris Jobke <hey@morrisjobke.de>
+ * @author Roeland Jago Douma <roeland@famdouma.nl>
  *
  * @license AGPL-3.0
  *
@@ -20,7 +19,7 @@ declare(strict_types=1);
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License, version 3,
- * along with this program. If not, see <http://www.gnu.org/licenses/>
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
 
@@ -31,7 +30,6 @@ use OCP\AppFramework\QueryException;
 use OCP\ILogger;
 use OCP\Notification\AlreadyProcessedException;
 use OCP\Notification\IApp;
-use OCP\Notification\IDismissableNotifier;
 use OCP\Notification\IManager;
 use OCP\Notification\INotification;
 use OCP\Notification\INotifier;
@@ -296,19 +294,5 @@ class Manager implements IManager {
 		}
 
 		return $count;
-	}
-
-	public function dismissNotification(INotification $notification): void {
-		$notifiers = $this->getNotifiers();
-
-		foreach ($notifiers as $notifier) {
-			if ($notifier instanceof IDismissableNotifier) {
-				try {
-					$notifier->dismissNotification($notification);
-				} catch (\InvalidArgumentException $e) {
-					continue;
-				}
-			}
-		}
 	}
 }

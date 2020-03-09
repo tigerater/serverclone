@@ -6,13 +6,11 @@
  * @author Bastien Ho <bastienho@urbancube.fr>
  * @author Bjoern Schiessle <bjoern@schiessle.org>
  * @author Björn Schießle <bjoern@schiessle.org>
- * @author Christoph Wurst <christoph@winzerhof-wurst.at>
  * @author Florin Peter <github@florin-peter.de>
  * @author Georg Ehrke <oc.list@georgehrke.com>
  * @author Joas Schilling <coding@schilljs.com>
- * @author Jörn Friedrich Dreyer <jfd@butonic.de>
  * @author Juan Pablo Villafáñez <jvillafanez@solidgear.es>
- * @author Lars Knickrehm <mail@lars-sh.de>
+ * @author Jörn Friedrich Dreyer <jfd@butonic.de>
  * @author Lukas Reschke <lukas@statuscode.ch>
  * @author Morris Jobke <hey@morrisjobke.de>
  * @author Qingping Hou <dave2008713@gmail.com>
@@ -37,7 +35,7 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License, version 3,
- * along with this program. If not, see <http://www.gnu.org/licenses/>
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
 

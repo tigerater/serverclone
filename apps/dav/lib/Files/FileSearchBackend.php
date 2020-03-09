@@ -2,9 +2,7 @@
 /**
  * @copyright Copyright (c) 2017 Robin Appelman <robin@icewind.nl>
  *
- * @author Christian <16852529+cviereck@users.noreply.github.com>
  * @author Robin Appelman <robin@icewind.nl>
- * @author Roeland Jago Douma <roeland@famdouma.nl>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -19,7 +17,7 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
 
@@ -275,7 +273,6 @@ class FileSearchBackend implements ISearchBackend {
 		// TODO offset
 		$limit = $query->limit;
 		$orders = array_map([$this, 'mapSearchOrder'], $query->orderBy);
-		$offset = 0;
 
 		$limitHome = false;
 		$ownerProp = $this->extractWhereValue($query->where, FilesPlugin::OWNER_ID_PROPERTYNAME, Operator::OPERATION_EQUAL);
@@ -285,13 +282,12 @@ class FileSearchBackend implements ISearchBackend {
 			} else {
 				throw new \InvalidArgumentException("Invalid search value for '{http://owncloud.org/ns}owner-id', only the current user id is allowed");
 			}
-			$offset = $limit->firstResult;
 		}
 
 		return new SearchQuery(
 			$this->transformSearchOperation($query->where),
 			(int)$limit->maxResults,
-			$offset,
+			0,
 			$orders,
 			$this->user,
 			$limitHome

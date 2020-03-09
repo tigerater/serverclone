@@ -2,20 +2,22 @@
 /**
  * @copyright Copyright (c) 2016, ownCloud, Inc.
  *
- * @author Arthur Schiwon <blizzz@arthur-schiwon.de>
+ * @author Andreas Fischer <bantu@owncloud.com>
  * @author Bart Visscher <bartv@thisnet.nl>
  * @author duritong <peter.meier+github@immerda.ch>
  * @author Georg Ehrke <oc.list@georgehrke.com>
  * @author Joas Schilling <coding@schilljs.com>
- * @author Julius Härtl <jus@bitgrid.net>
+ * @author Juan Pablo Villafáñez <jvillafanez@solidgear.es>
  * @author Lukas Reschke <lukas@statuscode.ch>
  * @author Michael Gapczynski <GapczynskiM@gmail.com>
  * @author Morris Jobke <hey@morrisjobke.de>
+ * @author Phiber2000 <phiber2000@gmx.de>
  * @author Robin Appelman <robin@icewind.nl>
  * @author Roeland Jago Douma <roeland@famdouma.nl>
- * @author Roland Tapken <roland@bitarbeiter.net>
+ * @author Roger Szabo <roger.szabo@web.de>
  * @author Thomas Müller <thomas.mueller@tmit.eu>
  * @author Thomas Pulzer <t.pulzer@kniel.de>
+ * @author Vincent Petry <pvince81@owncloud.com>
  *
  * @license AGPL-3.0
  *
@@ -29,7 +31,7 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License, version 3,
- * along with this program. If not, see <http://www.gnu.org/licenses/>
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
 

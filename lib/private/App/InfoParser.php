@@ -5,8 +5,7 @@
  *
  * @author Andreas Fischer <bantu@owncloud.com>
  * @author Arthur Schiwon <blizzz@arthur-schiwon.de>
- * @author Christoph Wurst <christoph@winzerhof-wurst.at>
- * @author Daniel Kesselberg <mail@danielkesselberg.de>
+ * @author Christoph Wurst <christoph@owncloud.com>
  * @author Joas Schilling <coding@schilljs.com>
  * @author Lukas Reschke <lukas@statuscode.ch>
  * @author Morris Jobke <hey@morrisjobke.de>
@@ -25,7 +24,7 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License, version 3,
- * along with this program. If not, see <http://www.gnu.org/licenses/>
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
 

@@ -2,11 +2,8 @@
 /**
  * @copyright Copyright (c) 2016, ownCloud, Inc.
  *
- * @author Christoph Wurst <christoph@winzerhof-wurst.at>
+ * @author Christoph Wurst <christoph@owncloud.com>
  * @author Joas Schilling <coding@schilljs.com>
- * @author John Molakvoæ (skjnldsv) <skjnldsv@protonmail.com>
- * @author Julius Härtl <jus@bitgrid.net>
- * @author Morris Jobke <hey@morrisjobke.de>
  * @author Robin Appelman <robin@icewind.nl>
  * @author Roeland Jago Douma <roeland@famdouma.nl>
  * @author Tobias Kaminsky <tobias@kaminsky.me>
@@ -24,7 +21,7 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License, version 3,
- * along with this program. If not, see <http://www.gnu.org/licenses/>
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
 
@@ -41,7 +38,7 @@ use OCA\Files\Listener\LoadSidebarListener;
 use OCA\Files\Notification\Notifier;
 use OCA\Files\Service\TagService;
 use OCP\AppFramework\App;
-use OCP\Collaboration\Resources\IProviderManager;
+use OCP\Collaboration\Resources\IManager;
 use OCP\EventDispatcher\IEventDispatcher;
 use OCP\IContainer;
 
@@ -92,9 +89,9 @@ class Application extends App {
 		/**
 		 * Register Collaboration ResourceProvider
 		 */
-		/** @var IProviderManager $providerManager */
-		$providerManager = $container->query(IProviderManager::class);
-		$providerManager->registerResourceProvider(ResourceProvider::class);
+		/** @var IManager $resourceManager */
+		$resourceManager = $container->query(IManager::class);
+		$resourceManager->registerResourceProvider(ResourceProvider::class);
 		Listener::register($server->getEventDispatcher());
 
 		/** @var IEventDispatcher $dispatcher */

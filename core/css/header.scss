@@ -88,12 +88,10 @@
 		z-index: 2000;
 		position: absolute;
 		max-width: 350px;
-		min-height: calc(44px * 1.5); // show at least 1.5 entries
-		max-height: calc(100vh - #{$header-height} * 2);
+		max-height: $header-menu-entry-height * 7.5; // half entry
 		right: 5px; // relative to parent
 		top: $header-height;
 		margin: 0;
-		overflow-y: scroll;
 		-webkit-overflow-scrolling: touch;
 
 		&:not(.popovermenu) {
@@ -115,7 +113,7 @@
 
 		/* Use by the apps menu and the settings right menu */
 		#apps > ul,
-		&.settings-menu {
+		&.settings-menu > ul {
 			li {
 				a {
 					display: inline-flex;
@@ -319,6 +317,13 @@ nav[role='navigation'] {
 	.in-header {
 		display: none;
 	}
+}
+
+#apps {
+	max-height: inherit;
+	overflow-x: hidden;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
 }
 
 /* USER MENU -----------------------------------------------------------------*/

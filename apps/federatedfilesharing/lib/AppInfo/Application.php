@@ -4,7 +4,6 @@
  *
  * @author Bjoern Schiessle <bjoern@schiessle.org>
  * @author Björn Schießle <bjoern@schiessle.org>
- * @author Morris Jobke <hey@morrisjobke.de>
  * @author Robin Appelman <robin@icewind.nl>
  * @author Roeland Jago Douma <roeland@famdouma.nl>
  *
@@ -20,7 +19,7 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License, version 3,
- * along with this program. If not, see <http://www.gnu.org/licenses/>
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
 
@@ -32,7 +31,7 @@ use OCA\FederatedFileSharing\AddressHandler;
 use OCA\FederatedFileSharing\Controller\RequestHandlerController;
 use OCA\FederatedFileSharing\FederatedShareProvider;
 use OCA\FederatedFileSharing\Notifications;
-use OCA\FederatedFileSharing\Notifier;
+use OCA\FederatedFileSharing\OCM\CloudFederationProvider;
 use OCA\FederatedFileSharing\OCM\CloudFederationProviderFiles;
 use OCP\AppFramework\App;
 use OCP\GlobalScale\IConfig;
@@ -99,23 +98,6 @@ class Application extends App {
 				$server->getCloudFederationProviderManager()
 			);
 		});
-
-		// register events listeners
-		$eventDispatcher = $server->getEventDispatcher();
-		$manager = $server->getNotificationManager();
-		$federatedShareProvider = $this->getFederatedShareProvider();
-
-		$manager->registerNotifierService(Notifier::class);
-		
-		$eventDispatcher->addListener(
-			'OCA\Files::loadAdditionalScripts',
-			function() use ($federatedShareProvider) {
-				if ($federatedShareProvider->isIncomingServer2serverShareEnabled()) {
-					\OCP\Util::addScript('federatedfilesharing', 'external');
-				}
-			}
-		);
-
 	}
 
 	/**

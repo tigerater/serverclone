@@ -6,9 +6,8 @@
  * @author Arthur Schiwon <blizzz@arthur-schiwon.de>
  * @author Bernhard Posselt <dev@bernhard-posselt.com>
  * @author Bjoern Schiessle <bjoern@schiessle.org>
- * @author Christoph Wurst <christoph@winzerhof-wurst.at>
+ * @author Christoph Wurst <christoph@owncloud.com>
  * @author Felix Rupp <github@felixrupp.com>
- * @author Greta Doci <gretadoci@gmail.com>
  * @author Joas Schilling <coding@schilljs.com>
  * @author Jörn Friedrich Dreyer <jfd@butonic.de>
  * @author Lukas Reschke <lukas@statuscode.ch>
@@ -32,7 +31,7 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License, version 3,
- * along with this program. If not, see <http://www.gnu.org/licenses/>
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
 
@@ -900,9 +899,9 @@ class Session implements IUserSession, Emitter {
 	 * logout the user from the session
 	 */
 	public function logout() {
+		$this->manager->emit('\OC\User', 'logout');
 		$user = $this->getUser();
-		$this->manager->emit('\OC\User', 'logout', [$user]);
-		if ($user !== null) {
+		if (!is_null($user)) {
 			try {
 				$this->tokenProvider->invalidateToken($this->session->getId());
 			} catch (SessionNotAvailableException $ex) {
@@ -914,7 +913,7 @@ class Session implements IUserSession, Emitter {
 		$this->setToken(null);
 		$this->unsetMagicInCookie();
 		$this->session->clear();
-		$this->manager->emit('\OC\User', 'postLogout', [$user]);
+		$this->manager->emit('\OC\User', 'postLogout');
 	}
 
 	/**
