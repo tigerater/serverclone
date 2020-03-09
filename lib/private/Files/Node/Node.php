@@ -444,12 +444,4 @@ class Node implements \OCP\Files\Node {
 		}
 	}
 
-	public function getCreationTime(): int {
-		return $this->getFileInfo()->getCreationTime();
-	}
-
-	public function getUploadTime(): int {
-		return $this->getFileInfo()->getUploadTime();
-	}
-
 }
