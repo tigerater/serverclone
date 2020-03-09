@@ -17,7 +17,6 @@ OC.L10N.register(
     "File updated" : "Failas atnaujintas",
     "File renamed" : "Failas pervadintas",
     "File deleted" : "Failas ištrintas",
-    "File accessed" : "Gauta prieiga prie failo",
     "File copied" : "Failas nukopijuotas",
     "Tag assigned" : "Priskirta žymė",
     "Someone" : "Kažkas",
