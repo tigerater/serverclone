@@ -243,13 +243,14 @@ OC.L10N.register(
     "Execute one task with each page loaded" : "Udføre en opgave med hver side indlæsning",
     "Sharing" : "Deling",
     "Allow apps to use the Share API" : "Tillad apps til at bruge Share API",
-    "Expire after " : "Udløber efter",
-    "days" : "dage",
-    "Enforce expiration date" : "Påtving udløbsdato",
     "Allow users to share via link" : "Tillad brugere at dele via link",
     "Allow public uploads" : "Tillad offentlig upload",
     "Always ask for a password" : "Spørg altid efter kodeord",
     "Enforce password protection" : "Gennemtving beskyttelse med kodeord",
+    "Set default expiration date" : "Vælg standard udløbsdato",
+    "Expire after " : "Udløber efter",
+    "days" : "dage",
+    "Enforce expiration date" : "Påtving udløbsdato",
     "Allow resharing" : "Tillad videredeling",
     "Allow sharing with groups" : "Tillad deling med grupper",
     "Restrict users to only share with users in their groups" : "Begræns brugere til kun at dele med brugere i deres egen gruppe",
@@ -292,7 +293,6 @@ OC.L10N.register(
     "Current password" : "Nuværende adgangskode",
     "Change password" : "Skift kodeord",
     "Official" : "Officiel",
-    "Store credentials" : "Gem brugeroplysninger",
-    "Set default expiration date" : "Vælg standard udløbsdato"
+    "Store credentials" : "Gem brugeroplysninger"
 },
 "nplurals=2; plural=(n != 1);");

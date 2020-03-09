@@ -106,9 +106,6 @@ class ShareAPIControllerTest extends TestCase {
 			->expects($this->any())
 			->method('shareApiEnabled')
 			->willReturn(true);
-		$this->shareManager
-			->expects($this->any())
-		->method('shareProviderExists')->willReturn(true);
 		$this->groupManager = $this->createMock(IGroupManager::class);
 		$this->userManager = $this->createMock(IUserManager::class);
 		$this->request = $this->createMock(IRequest::class);
@@ -173,10 +170,10 @@ class ShareAPIControllerTest extends TestCase {
 		$this->expectExceptionMessage('Wrong share ID, share doesn\'t exist');
 
 		$this->shareManager
-			->expects($this->exactly(5))
+			->expects($this->exactly(3))
 			->method('getShareById')
 			->will($this->returnCallback(function($id) {
-				if ($id === 'ocinternal:42' || $id === 'ocRoomShare:42' || $id === 'ocFederatedSharing:42' || $id === 'ocCircleShare:42' || $id === 'ocMailShare:42') {
+				if ($id === 'ocinternal:42' || $id === 'ocRoomShare:42' || $id === 'ocFederatedSharing:42') {
 					throw new \OCP\Share\Exceptions\ShareNotFound();
 				} else {
 					throw new \Exception();
@@ -1011,7 +1008,9 @@ class ShareAPIControllerTest extends TestCase {
 				[
 				],
 				[
-					$file1UserShareOwnerExpected
+					$file1UserShareOwnerExpected,
+					$file1UserShareOwnerExpected,
+					$file1UserShareOwnerExpected,
 				]
 			],
 			[

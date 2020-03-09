@@ -134,7 +134,6 @@ class CardDavBackendTest extends TestCase {
 				$this->createMock(IUserSession::class),
 				$this->createMock(IAppManager::class),
 				$this->createMock(ProxyMapper::class),
-				$this->createMock(IConfig::class),
 				])
 			->setMethods(['getPrincipalByPath', 'getGroupMembership'])
 			->getMock();
@@ -397,7 +396,7 @@ class CardDavBackendTest extends TestCase {
 		// create a card
 		$uri0 = $this->getUniqueID('card');
 		$this->backend->createCard($bookId, $uri0, $this->vcardTest0);
-
+		
 		// create another card with same uid
 		$uri1 = $this->getUniqueID('card');
 		$this->expectException(BadRequest::class);

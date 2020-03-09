@@ -74,10 +74,4 @@ interface IToken {
 	 */
 	public function getEditor(): string;
 
-	/**
-	 * @since 18.0.0
-	 * @return string
-	 */
-	public function getUser(): string;
-
 }

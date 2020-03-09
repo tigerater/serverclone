@@ -25,7 +25,6 @@ namespace OC\Authentication\Token;
 
 use OC\Authentication\Exceptions\ExpiredTokenException;
 use OC\Authentication\Exceptions\InvalidTokenException;
-use OC\Authentication\Exceptions\TokenPasswordExpiredException;
 use OC\Authentication\Exceptions\PasswordlessTokenException;
 use OC\Authentication\Exceptions\WipeTokenException;
 use OC\Cache\CappedMemoryCache;
@@ -109,11 +108,6 @@ class PublicKeyTokenProvider implements IProvider {
 			throw new WipeTokenException($token);
 		}
 
-		if ($token->getPasswordInvalid() === true) {
-			//The password is invalid we should throw an TokenPasswordExpiredException
-			throw new TokenPasswordExpiredException($token);
-		}
-
 		return $token;
 	}
 
@@ -130,11 +124,6 @@ class PublicKeyTokenProvider implements IProvider {
 
 		if ($token->getType() === IToken::WIPE_TOKEN) {
 			throw new WipeTokenException($token);
-		}
-
-		if ($token->getPasswordInvalid() === true) {
-			//The password is invalid we should throw an TokenPasswordExpiredException
-			throw new TokenPasswordExpiredException($token);
 		}
 
 		return $token;
