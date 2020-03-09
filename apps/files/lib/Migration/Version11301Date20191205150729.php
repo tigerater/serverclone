@@ -18,19 +18,18 @@ declare(strict_types=1);
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 
 namespace OCA\Files\Migration;
 
 use Closure;
 use OCP\DB\ISchemaWrapper;
-use OCP\Migration\SimpleMigrationStep;
 use OCP\Migration\IOutput;
+use OCP\Migration\SimpleMigrationStep;
 
-class Version11301Date20191113195931 extends SimpleMigrationStep {
+class Version11301Date20191205150729 extends SimpleMigrationStep {
 
 	/**
 	 * @param IOutput $output
@@ -42,11 +41,12 @@ class Version11301Date20191113195931 extends SimpleMigrationStep {
 		/** @var ISchemaWrapper $schema */
 		$schema = $schemaClosure();
 
-		$table = $schema->createTable('user_transfer_ownership');
-		$table->addColumn('id', 'integer', [
+		$table = $schema->createTable('user_transfer_owner');
+		$table->addColumn('id', 'bigint', [
 			'autoincrement' => true,
 			'notnull' => true,
-			'length' => 4,
+			'length' => 20,
+			'unsigned' => true,
 		]);
 		$table->addColumn('source_user', 'string', [
 			'notnull' => true,
@@ -66,7 +66,12 @@ class Version11301Date20191113195931 extends SimpleMigrationStep {
 		]);
 		$table->setPrimaryKey(['id']);
 
+		// Quite radical, we just assume no one updates cross beta with a pending request.
+		// Do not try this at home
+		if ($schema->hasTable('user_transfer_ownership')) {
+			$schema->dropTable('user_transfer_ownership');
+		}
+
 		return $schema;
 	}
-
 }

@@ -13,7 +13,7 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
@@ -50,7 +50,7 @@ class Token implements IToken {
 		if ($this->data['share_id'] !== null) {
 			return $this->manager->getShareForToken($this->data['share_id']);
 		}
-		return $this->manager->getFileForToken($this->data['user_id'], $this->data['file_id']);
+		return $this->manager->getFileForToken($this->data['user_id'], $this->data['file_id'], $this->data['file_path']);
 	}
 
 	public function getToken(): string {

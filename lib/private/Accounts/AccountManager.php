@@ -6,6 +6,9 @@
  * @author Bjoern Schiessle <bjoern@schiessle.org>
  * @author Björn Schießle <bjoern@schiessle.org>
  * @author Joas Schilling <coding@schilljs.com>
+ * @author Julius Härtl <jus@bitgrid.net>
+ * @author Morris Jobke <hey@morrisjobke.de>
+ * @author Roeland Jago Douma <roeland@famdouma.nl>
  *
  * @license AGPL-3.0
  *
@@ -19,7 +22,7 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License, version 3,
- * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ * along with this program. If not, see <http://www.gnu.org/licenses/>
  *
  */
 
@@ -134,6 +137,9 @@ class AccountManager implements IAccountManager {
 		}
 
 		$userDataArray = json_decode($result[0]['data'], true);
+		if ($userDataArray === null || json_last_error() !== JSON_ERROR_NONE) {
+			return $this->buildDefaultUserRecord($user);
+		}
 
 		$userDataArray = $this->addMissingDefaultValues($userDataArray);
 
