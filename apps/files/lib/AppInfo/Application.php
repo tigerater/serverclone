@@ -41,7 +41,7 @@ use OCA\Files\Listener\LoadSidebarListener;
 use OCA\Files\Notification\Notifier;
 use OCA\Files\Service\TagService;
 use OCP\AppFramework\App;
-use OCP\Collaboration\Resources\IProviderManager;
+use OCP\Collaboration\Resources\IManager;
 use OCP\EventDispatcher\IEventDispatcher;
 use OCP\IContainer;
 
@@ -92,9 +92,9 @@ class Application extends App {
 		/**
 		 * Register Collaboration ResourceProvider
 		 */
-		/** @var IProviderManager $providerManager */
-		$providerManager = $container->query(IProviderManager::class);
-		$providerManager->registerResourceProvider(ResourceProvider::class);
+		/** @var IManager $resourceManager */
+		$resourceManager = $container->query(IManager::class);
+		$resourceManager->registerResourceProvider(ResourceProvider::class);
 		Listener::register($server->getEventDispatcher());
 
 		/** @var IEventDispatcher $dispatcher */
