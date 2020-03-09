@@ -21,10 +21,7 @@
   -->
 
 <template>
-	<Tab :id="id"
-		:icon="icon"
-		:name="name"
-		:class="{ 'icon-loading': loading }">
+	<Tab :icon="icon" :name="name" :class="{ 'icon-loading': loading }">
 		<!-- error message -->
 		<div v-if="error" class="emptycontent">
 			<div class="icon icon-error" />
@@ -154,7 +151,7 @@ export default {
 		 * @returns {string}
 		 */
 		id() {
-			return 'sharing'
+			return this.name.toLowerCase().replace(/ /g, '-')
 		},
 
 		/**
