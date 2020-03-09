@@ -5,11 +5,11 @@
     "{actor} created calendar {calendar}" : "{actor} utworzył kalendarz {calendar}",
     "You created calendar {calendar}" : "Utworzyłeś kalendarz {calendar}",
     "{actor} deleted calendar {calendar}" : "{actor} usunął kalendarz {calendar} .",
-    "You deleted calendar {calendar}" : "Usunąłeś/ęłaś kalendarz {calendar}",
+    "You deleted calendar {calendar}" : "Usunąłeś kalendarz {calendar}",
     "{actor} updated calendar {calendar}" : "{actor} zaktualizował kalendarz {calendar}",
     "You updated calendar {calendar}" : "Zaktualizowałeś kalendarz {calendar}",
     "You shared calendar {calendar} as public link" : "Udostępniłeś kalendarz {calendar} przez link publiczny",
-    "You removed public link for calendar {calendar}" : "Usunąłeś/aś link publiczny do kalendarza {calendar}",
+    "You removed public link for calendar {calendar}" : "Usunąłeś link publiczny do kalendarza {calendar}",
     "{actor} shared calendar {calendar} with you" : "{actor} współdzieli kalendarz {calendar} z Tobą",
     "You shared calendar {calendar} with {user}" : "Współdzielisz kalendarz {calendar} z {user}",
     "{actor} shared calendar {calendar} with {user}" : "{actor} współdzieli kalendarz {calendar} z {user}",
@@ -97,7 +97,6 @@
     "Send notifications for events" : "Wysyłaj powiadomienia o wydarzeniach",
     "Notifications are sent via background jobs, so these must occur often enough." : "Powiadomienia są wysyłane za pośrednictwem zadań w tle, więc muszą one występować wystarczająco często.",
     "Enable notifications for events via push" : "Włącz powiadomienia o zdarzeniach poprzez push",
-    "Please make sure to properly set up the email settings above." : "Upewnij się, że poprawnie skonfigurowałeś ustawienia e-mail.",
     "Notifications will be send through background jobs, so these need to happen often enough." : "Powiadomienia będą wysyłane za pośrednictwem zadań w tle, więc mogą pojawiać się one dosyć często."
 },"pluralForm" :"nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);"
 }

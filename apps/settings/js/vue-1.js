@@ -55,7 +55,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.getRequestToken = getRequestToken;
 exports.onRequestTokenUpdate = onRequestTokenUpdate;
 
-var _eventBus = __webpack_require__(/*! @nextcloud/event-bus */ "./node_modules/@nextcloud/event-bus/dist/index.js");
+var _eventBus = __webpack_require__(/*! @nextcloud/event-bus */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/dist/index.js");
 
 var tokenElement = document.getElementsByTagName('head')[0];
 var token = tokenElement ? tokenElement.getAttribute('data-requesttoken') : null;
@@ -117,10 +117,10 @@ function getCurrentUser() {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/dist/ProxyBus.js":
-/*!************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/dist/ProxyBus.js ***!
-  \************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/dist/ProxyBus.js":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/dist/ProxyBus.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -132,7 +132,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ProxyBus = void 0;
 
-var _semver = _interopRequireDefault(__webpack_require__(/*! semver */ "./node_modules/@nextcloud/event-bus/node_modules/semver/semver.js"));
+var _semver = _interopRequireDefault(__webpack_require__(/*! semver */ "./node_modules/@nextcloud/auth/node_modules/semver/semver.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -234,31 +234,31 @@ exports.ProxyBus = ProxyBus;
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/dist/SimpleBus.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/dist/SimpleBus.js ***!
-  \*************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/dist/SimpleBus.js":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/dist/SimpleBus.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(/*! core-js/modules/es.array.concat */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.array.concat.js");
+__webpack_require__(/*! core-js/modules/es.array.concat */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.array.concat.js");
 
-__webpack_require__(/*! core-js/modules/es.array.filter */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.array.filter.js");
+__webpack_require__(/*! core-js/modules/es.array.filter */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.array.filter.js");
 
-__webpack_require__(/*! core-js/modules/es.array.iterator */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.array.iterator.js");
+__webpack_require__(/*! core-js/modules/es.array.iterator */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.array.iterator.js");
 
-__webpack_require__(/*! core-js/modules/es.map */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.map.js");
+__webpack_require__(/*! core-js/modules/es.map */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.map.js");
 
-__webpack_require__(/*! core-js/modules/es.object.to-string */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.object.to-string.js");
+__webpack_require__(/*! core-js/modules/es.object.to-string */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.object.to-string.js");
 
-__webpack_require__(/*! core-js/modules/es.string.iterator */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.string.iterator.js");
+__webpack_require__(/*! core-js/modules/es.string.iterator */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.string.iterator.js");
 
-__webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/modules/web.dom-collections.for-each.js");
+__webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/modules/web.dom-collections.for-each.js");
 
-__webpack_require__(/*! core-js/modules/web.dom-collections.iterator */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/modules/web.dom-collections.iterator.js");
+__webpack_require__(/*! core-js/modules/web.dom-collections.iterator */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/modules/web.dom-collections.iterator.js");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -363,10 +363,10 @@ exports.SimpleBus = SimpleBus;
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/dist/index.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/dist/index.js ***!
-  \*********************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/dist/index.js":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/dist/index.js ***!
+  \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -380,9 +380,9 @@ exports.subscribe = subscribe;
 exports.unsubscribe = unsubscribe;
 exports.emit = emit;
 
-var _ProxyBus = __webpack_require__(/*! ./ProxyBus */ "./node_modules/@nextcloud/event-bus/dist/ProxyBus.js");
+var _ProxyBus = __webpack_require__(/*! ./ProxyBus */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/dist/ProxyBus.js");
 
-var _SimpleBus = __webpack_require__(/*! ./SimpleBus */ "./node_modules/@nextcloud/event-bus/dist/SimpleBus.js");
+var _SimpleBus = __webpack_require__(/*! ./SimpleBus */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/dist/SimpleBus.js");
 
 function getBus() {
   if (typeof window.OC !== 'undefined' && window.OC._eventBus && typeof window._nc_event_bus === 'undefined') {
@@ -437,10 +437,10 @@ function emit(name, event) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/a-function.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/a-function.js ***!
-  \****************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/a-function.js":
+/*!*********************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/a-function.js ***!
+  \*********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -453,14 +453,14 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/a-possible-prototype.js":
-/*!**************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/a-possible-prototype.js ***!
-  \**************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/a-possible-prototype.js":
+/*!*******************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/a-possible-prototype.js ***!
+  \*******************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-object.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-object.js");
 
 module.exports = function (it) {
   if (!isObject(it) && it !== null) {
@@ -471,16 +471,16 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/add-to-unscopables.js":
-/*!************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/add-to-unscopables.js ***!
-  \************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/add-to-unscopables.js":
+/*!*****************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/add-to-unscopables.js ***!
+  \*****************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
-var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-create.js");
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-property.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
+var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-create.js");
+var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-property.js");
 
 var UNSCOPABLES = wellKnownSymbol('unscopables');
 var ArrayPrototype = Array.prototype;
@@ -502,10 +502,10 @@ module.exports = function (key) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-instance.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-instance.js ***!
-  \*****************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-instance.js":
+/*!**********************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-instance.js ***!
+  \**********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -518,14 +518,14 @@ module.exports = function (it, Constructor, name) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-object.js":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-object.js ***!
-  \***************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-object.js":
+/*!********************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-object.js ***!
+  \********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-object.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-object.js");
 
 module.exports = function (it) {
   if (!isObject(it)) {
@@ -536,18 +536,18 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-for-each.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-for-each.js ***!
-  \********************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-for-each.js":
+/*!*************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-for-each.js ***!
+  \*************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $forEach = __webpack_require__(/*! ../internals/array-iteration */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-iteration.js").forEach;
-var arrayMethodIsStrict = __webpack_require__(/*! ../internals/array-method-is-strict */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-method-is-strict.js");
-var arrayMethodUsesToLength = __webpack_require__(/*! ../internals/array-method-uses-to-length */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-method-uses-to-length.js");
+var $forEach = __webpack_require__(/*! ../internals/array-iteration */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-iteration.js").forEach;
+var arrayMethodIsStrict = __webpack_require__(/*! ../internals/array-method-is-strict */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-method-is-strict.js");
+var arrayMethodUsesToLength = __webpack_require__(/*! ../internals/array-method-uses-to-length */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-method-uses-to-length.js");
 
 var STRICT_METHOD = arrayMethodIsStrict('forEach');
 var USES_TO_LENGTH = arrayMethodUsesToLength('forEach');
@@ -561,16 +561,16 @@ module.exports = (!STRICT_METHOD || !USES_TO_LENGTH) ? function forEach(callback
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-includes.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-includes.js ***!
-  \********************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-includes.js":
+/*!*************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-includes.js ***!
+  \*************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-indexed-object.js");
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-length.js");
-var toAbsoluteIndex = __webpack_require__(/*! ../internals/to-absolute-index */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-absolute-index.js");
+var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-indexed-object.js");
+var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-length.js");
+var toAbsoluteIndex = __webpack_require__(/*! ../internals/to-absolute-index */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-absolute-index.js");
 
 // `Array.prototype.{ indexOf, includes }` methods implementation
 var createMethod = function (IS_INCLUDES) {
@@ -604,18 +604,18 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-iteration.js":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-iteration.js ***!
-  \*********************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-iteration.js":
+/*!**************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-iteration.js ***!
+  \**************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/function-bind-context.js");
-var IndexedObject = __webpack_require__(/*! ../internals/indexed-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/indexed-object.js");
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-object.js");
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-length.js");
-var arraySpeciesCreate = __webpack_require__(/*! ../internals/array-species-create */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-species-create.js");
+var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/function-bind-context.js");
+var IndexedObject = __webpack_require__(/*! ../internals/indexed-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/indexed-object.js");
+var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-object.js");
+var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-length.js");
+var arraySpeciesCreate = __webpack_require__(/*! ../internals/array-species-create */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-species-create.js");
 
 var push = [].push;
 
@@ -680,16 +680,16 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-method-has-species-support.js":
-/*!**************************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-method-has-species-support.js ***!
-  \**************************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-method-has-species-support.js":
+/*!*******************************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-method-has-species-support.js ***!
+  \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
-var V8_VERSION = __webpack_require__(/*! ../internals/engine-v8-version */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/engine-v8-version.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
+var V8_VERSION = __webpack_require__(/*! ../internals/engine-v8-version */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/engine-v8-version.js");
 
 var SPECIES = wellKnownSymbol('species');
 
@@ -710,16 +710,16 @@ module.exports = function (METHOD_NAME) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-method-is-strict.js":
-/*!****************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-method-is-strict.js ***!
-  \****************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-method-is-strict.js":
+/*!*********************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-method-is-strict.js ***!
+  \*********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js");
 
 module.exports = function (METHOD_NAME, argument) {
   var method = [][METHOD_NAME];
@@ -732,16 +732,16 @@ module.exports = function (METHOD_NAME, argument) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-method-uses-to-length.js":
-/*!*********************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-method-uses-to-length.js ***!
-  \*********************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-method-uses-to-length.js":
+/*!**************************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-method-uses-to-length.js ***!
+  \**************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/descriptors.js");
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js");
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/descriptors.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js");
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js");
 
 var defineProperty = Object.defineProperty;
 var cache = {};
@@ -770,16 +770,16 @@ module.exports = function (METHOD_NAME, options) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-species-create.js":
-/*!**************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-species-create.js ***!
-  \**************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-species-create.js":
+/*!*******************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-species-create.js ***!
+  \*******************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-object.js");
-var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-array.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-object.js");
+var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-array.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
 
 var SPECIES = wellKnownSymbol('species');
 
@@ -801,14 +801,14 @@ module.exports = function (originalArray, length) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/call-with-safe-iteration-closing.js":
-/*!**************************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/call-with-safe-iteration-closing.js ***!
-  \**************************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/call-with-safe-iteration-closing.js":
+/*!*******************************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/call-with-safe-iteration-closing.js ***!
+  \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-object.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-object.js");
 
 // call something on iterator step with safe closing on error
 module.exports = function (iterator, fn, value, ENTRIES) {
@@ -825,14 +825,14 @@ module.exports = function (iterator, fn, value, ENTRIES) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/check-correctness-of-iteration.js":
-/*!************************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/check-correctness-of-iteration.js ***!
-  \************************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/check-correctness-of-iteration.js":
+/*!*****************************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/check-correctness-of-iteration.js ***!
+  \*****************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
 
 var ITERATOR = wellKnownSymbol('iterator');
 var SAFE_CLOSING = false;
@@ -874,10 +874,10 @@ module.exports = function (exec, SKIP_CLOSING) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/classof-raw.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/classof-raw.js ***!
-  \*****************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/classof-raw.js":
+/*!**********************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/classof-raw.js ***!
+  \**********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -890,16 +890,16 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/classof.js":
-/*!*************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/classof.js ***!
-  \*************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/classof.js":
+/*!******************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/classof.js ***!
+  \******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var TO_STRING_TAG_SUPPORT = __webpack_require__(/*! ../internals/to-string-tag-support */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-string-tag-support.js");
-var classofRaw = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/classof-raw.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
+var TO_STRING_TAG_SUPPORT = __webpack_require__(/*! ../internals/to-string-tag-support */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-string-tag-support.js");
+var classofRaw = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/classof-raw.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
 
 var TO_STRING_TAG = wellKnownSymbol('toStringTag');
 // ES3 wrong here
@@ -927,26 +927,26 @@ module.exports = TO_STRING_TAG_SUPPORT ? classofRaw : function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/collection-strong.js":
-/*!***********************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/collection-strong.js ***!
-  \***********************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/collection-strong.js":
+/*!****************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/collection-strong.js ***!
+  \****************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-property.js").f;
-var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-create.js");
-var redefineAll = __webpack_require__(/*! ../internals/redefine-all */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/redefine-all.js");
-var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/function-bind-context.js");
-var anInstance = __webpack_require__(/*! ../internals/an-instance */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-instance.js");
-var iterate = __webpack_require__(/*! ../internals/iterate */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterate.js");
-var defineIterator = __webpack_require__(/*! ../internals/define-iterator */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/define-iterator.js");
-var setSpecies = __webpack_require__(/*! ../internals/set-species */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-species.js");
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/descriptors.js");
-var fastKey = __webpack_require__(/*! ../internals/internal-metadata */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/internal-metadata.js").fastKey;
-var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/internal-state.js");
+var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-property.js").f;
+var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-create.js");
+var redefineAll = __webpack_require__(/*! ../internals/redefine-all */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/redefine-all.js");
+var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/function-bind-context.js");
+var anInstance = __webpack_require__(/*! ../internals/an-instance */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-instance.js");
+var iterate = __webpack_require__(/*! ../internals/iterate */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterate.js");
+var defineIterator = __webpack_require__(/*! ../internals/define-iterator */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/define-iterator.js");
+var setSpecies = __webpack_require__(/*! ../internals/set-species */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-species.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/descriptors.js");
+var fastKey = __webpack_require__(/*! ../internals/internal-metadata */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/internal-metadata.js").fastKey;
+var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/internal-state.js");
 
 var setInternalState = InternalStateModule.set;
 var internalStateGetterFor = InternalStateModule.getterFor;
@@ -1125,27 +1125,27 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/collection.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/collection.js ***!
-  \****************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/collection.js":
+/*!*********************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/collection.js ***!
+  \*********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/export.js");
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
-var isForced = __webpack_require__(/*! ../internals/is-forced */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-forced.js");
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/redefine.js");
-var InternalMetadataModule = __webpack_require__(/*! ../internals/internal-metadata */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/internal-metadata.js");
-var iterate = __webpack_require__(/*! ../internals/iterate */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterate.js");
-var anInstance = __webpack_require__(/*! ../internals/an-instance */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-instance.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-object.js");
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js");
-var checkCorrectnessOfIteration = __webpack_require__(/*! ../internals/check-correctness-of-iteration */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/check-correctness-of-iteration.js");
-var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-to-string-tag.js");
-var inheritIfRequired = __webpack_require__(/*! ../internals/inherit-if-required */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/inherit-if-required.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/export.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
+var isForced = __webpack_require__(/*! ../internals/is-forced */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-forced.js");
+var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/redefine.js");
+var InternalMetadataModule = __webpack_require__(/*! ../internals/internal-metadata */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/internal-metadata.js");
+var iterate = __webpack_require__(/*! ../internals/iterate */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterate.js");
+var anInstance = __webpack_require__(/*! ../internals/an-instance */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-instance.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-object.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js");
+var checkCorrectnessOfIteration = __webpack_require__(/*! ../internals/check-correctness-of-iteration */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/check-correctness-of-iteration.js");
+var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-to-string-tag.js");
+var inheritIfRequired = __webpack_require__(/*! ../internals/inherit-if-required */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/inherit-if-required.js");
 
 module.exports = function (CONSTRUCTOR_NAME, wrapper, common) {
   var IS_MAP = CONSTRUCTOR_NAME.indexOf('Map') !== -1;
@@ -1236,17 +1236,17 @@ module.exports = function (CONSTRUCTOR_NAME, wrapper, common) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/copy-constructor-properties.js":
-/*!*********************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/copy-constructor-properties.js ***!
-  \*********************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/copy-constructor-properties.js":
+/*!**************************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/copy-constructor-properties.js ***!
+  \**************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js");
-var ownKeys = __webpack_require__(/*! ../internals/own-keys */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/own-keys.js");
-var getOwnPropertyDescriptorModule = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-own-property-descriptor.js");
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-property.js");
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js");
+var ownKeys = __webpack_require__(/*! ../internals/own-keys */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/own-keys.js");
+var getOwnPropertyDescriptorModule = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-own-property-descriptor.js");
+var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-property.js");
 
 module.exports = function (target, source) {
   var keys = ownKeys(source);
@@ -1261,14 +1261,14 @@ module.exports = function (target, source) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/correct-prototype-getter.js":
-/*!******************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/correct-prototype-getter.js ***!
-  \******************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/correct-prototype-getter.js":
+/*!***********************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/correct-prototype-getter.js ***!
+  \***********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js");
 
 module.exports = !fails(function () {
   function F() { /* empty */ }
@@ -1279,20 +1279,20 @@ module.exports = !fails(function () {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-iterator-constructor.js":
-/*!*********************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-iterator-constructor.js ***!
-  \*********************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-iterator-constructor.js":
+/*!**************************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-iterator-constructor.js ***!
+  \**************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var IteratorPrototype = __webpack_require__(/*! ../internals/iterators-core */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterators-core.js").IteratorPrototype;
-var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-create.js");
-var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-property-descriptor.js");
-var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-to-string-tag.js");
-var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterators.js");
+var IteratorPrototype = __webpack_require__(/*! ../internals/iterators-core */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterators-core.js").IteratorPrototype;
+var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-create.js");
+var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-property-descriptor.js");
+var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-to-string-tag.js");
+var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterators.js");
 
 var returnThis = function () { return this; };
 
@@ -1307,16 +1307,16 @@ module.exports = function (IteratorConstructor, NAME, next) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-non-enumerable-property.js":
-/*!************************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-non-enumerable-property.js ***!
-  \************************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-non-enumerable-property.js":
+/*!*****************************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-non-enumerable-property.js ***!
+  \*****************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/descriptors.js");
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-property.js");
-var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-property-descriptor.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/descriptors.js");
+var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-property.js");
+var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-property-descriptor.js");
 
 module.exports = DESCRIPTORS ? function (object, key, value) {
   return definePropertyModule.f(object, key, createPropertyDescriptor(1, value));
@@ -1328,10 +1328,10 @@ module.exports = DESCRIPTORS ? function (object, key, value) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-property-descriptor.js":
-/*!********************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-property-descriptor.js ***!
-  \********************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-property-descriptor.js":
+/*!*************************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-property-descriptor.js ***!
+  \*************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1347,18 +1347,18 @@ module.exports = function (bitmap, value) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-property.js":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-property.js ***!
-  \*********************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-property.js":
+/*!**************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-property.js ***!
+  \**************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-primitive.js");
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-property.js");
-var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-property-descriptor.js");
+var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-primitive.js");
+var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-property.js");
+var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-property-descriptor.js");
 
 module.exports = function (object, key, value) {
   var propertyKey = toPrimitive(key);
@@ -1369,26 +1369,26 @@ module.exports = function (object, key, value) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/define-iterator.js":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/define-iterator.js ***!
-  \*********************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/define-iterator.js":
+/*!**************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/define-iterator.js ***!
+  \**************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/export.js");
-var createIteratorConstructor = __webpack_require__(/*! ../internals/create-iterator-constructor */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-iterator-constructor.js");
-var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-prototype-of.js");
-var setPrototypeOf = __webpack_require__(/*! ../internals/object-set-prototype-of */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-set-prototype-of.js");
-var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-to-string-tag.js");
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-non-enumerable-property.js");
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/redefine.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
-var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-pure.js");
-var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterators.js");
-var IteratorsCore = __webpack_require__(/*! ../internals/iterators-core */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterators-core.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/export.js");
+var createIteratorConstructor = __webpack_require__(/*! ../internals/create-iterator-constructor */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-iterator-constructor.js");
+var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-prototype-of.js");
+var setPrototypeOf = __webpack_require__(/*! ../internals/object-set-prototype-of */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-set-prototype-of.js");
+var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-to-string-tag.js");
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-non-enumerable-property.js");
+var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/redefine.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
+var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-pure.js");
+var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterators.js");
+var IteratorsCore = __webpack_require__(/*! ../internals/iterators-core */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterators-core.js");
 
 var IteratorPrototype = IteratorsCore.IteratorPrototype;
 var BUGGY_SAFARI_ITERATORS = IteratorsCore.BUGGY_SAFARI_ITERATORS;
@@ -1471,14 +1471,14 @@ module.exports = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, I
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/descriptors.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/descriptors.js ***!
-  \*****************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/descriptors.js":
+/*!**********************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/descriptors.js ***!
+  \**********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js");
 
 // Thank's IE8 for his funny defineProperty
 module.exports = !fails(function () {
@@ -1488,15 +1488,15 @@ module.exports = !fails(function () {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/document-create-element.js":
-/*!*****************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/document-create-element.js ***!
-  \*****************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/document-create-element.js":
+/*!**********************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/document-create-element.js ***!
+  \**********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-object.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-object.js");
 
 var document = global.document;
 // typeof document.createElement is 'object' in old IE
@@ -1509,10 +1509,10 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/dom-iterables.js":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/dom-iterables.js ***!
-  \*******************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/dom-iterables.js":
+/*!************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/dom-iterables.js ***!
+  \************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1555,29 +1555,29 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/engine-user-agent.js":
-/*!***********************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/engine-user-agent.js ***!
-  \***********************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/engine-user-agent.js":
+/*!****************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/engine-user-agent.js ***!
+  \****************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/get-built-in.js");
+var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/get-built-in.js");
 
 module.exports = getBuiltIn('navigator', 'userAgent') || '';
 
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/engine-v8-version.js":
-/*!***********************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/engine-v8-version.js ***!
-  \***********************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/engine-v8-version.js":
+/*!****************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/engine-v8-version.js ***!
+  \****************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
-var userAgent = __webpack_require__(/*! ../internals/engine-user-agent */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/engine-user-agent.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
+var userAgent = __webpack_require__(/*! ../internals/engine-user-agent */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/engine-user-agent.js");
 
 var process = global.process;
 var versions = process && process.versions;
@@ -1600,10 +1600,10 @@ module.exports = version && +version;
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/enum-bug-keys.js":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/enum-bug-keys.js ***!
-  \*******************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/enum-bug-keys.js":
+/*!************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/enum-bug-keys.js ***!
+  \************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1621,20 +1621,20 @@ module.exports = [
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/export.js":
-/*!************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/export.js ***!
-  \************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/export.js":
+/*!*****************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/export.js ***!
+  \*****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
-var getOwnPropertyDescriptor = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-own-property-descriptor.js").f;
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-non-enumerable-property.js");
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/redefine.js");
-var setGlobal = __webpack_require__(/*! ../internals/set-global */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-global.js");
-var copyConstructorProperties = __webpack_require__(/*! ../internals/copy-constructor-properties */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/copy-constructor-properties.js");
-var isForced = __webpack_require__(/*! ../internals/is-forced */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-forced.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
+var getOwnPropertyDescriptor = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-own-property-descriptor.js").f;
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-non-enumerable-property.js");
+var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/redefine.js");
+var setGlobal = __webpack_require__(/*! ../internals/set-global */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-global.js");
+var copyConstructorProperties = __webpack_require__(/*! ../internals/copy-constructor-properties */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/copy-constructor-properties.js");
+var isForced = __webpack_require__(/*! ../internals/is-forced */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-forced.js");
 
 /*
   options.target      - name of the target object
@@ -1686,10 +1686,10 @@ module.exports = function (options, source) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js ***!
-  \***********************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js":
+/*!****************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js ***!
+  \****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1704,14 +1704,14 @@ module.exports = function (exec) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/freezing.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/freezing.js ***!
-  \**************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/freezing.js":
+/*!*******************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/freezing.js ***!
+  \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js");
 
 module.exports = !fails(function () {
   return Object.isExtensible(Object.preventExtensions({}));
@@ -1720,14 +1720,14 @@ module.exports = !fails(function () {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/function-bind-context.js":
-/*!***************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/function-bind-context.js ***!
-  \***************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/function-bind-context.js":
+/*!********************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/function-bind-context.js ***!
+  \********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/a-function.js");
+var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/a-function.js");
 
 // optional / simple context binding
 module.exports = function (fn, that, length) {
@@ -1755,15 +1755,15 @@ module.exports = function (fn, that, length) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/get-built-in.js":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/get-built-in.js ***!
-  \******************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/get-built-in.js":
+/*!***********************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/get-built-in.js ***!
+  \***********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var path = __webpack_require__(/*! ../internals/path */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/path.js");
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
+var path = __webpack_require__(/*! ../internals/path */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/path.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
 
 var aFunction = function (variable) {
   return typeof variable == 'function' ? variable : undefined;
@@ -1777,16 +1777,16 @@ module.exports = function (namespace, method) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/get-iterator-method.js":
-/*!*************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/get-iterator-method.js ***!
-  \*************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/get-iterator-method.js":
+/*!******************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/get-iterator-method.js ***!
+  \******************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var classof = __webpack_require__(/*! ../internals/classof */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/classof.js");
-var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterators.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
+var classof = __webpack_require__(/*! ../internals/classof */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/classof.js");
+var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterators.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
 
 var ITERATOR = wellKnownSymbol('iterator');
 
@@ -1799,10 +1799,10 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js":
-/*!************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js ***!
-  \************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js":
+/*!*****************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js ***!
+  \*****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1820,14 +1820,14 @@ module.exports =
   // eslint-disable-next-line no-new-func
   Function('return this')();
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js ***!
-  \*********************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js":
+/*!**************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js ***!
+  \**************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1840,10 +1840,10 @@ module.exports = function (it, key) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/hidden-keys.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/hidden-keys.js ***!
-  \*****************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/hidden-keys.js":
+/*!**********************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/hidden-keys.js ***!
+  \**********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1852,30 +1852,30 @@ module.exports = {};
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/html.js":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/html.js ***!
-  \**********************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/html.js":
+/*!***************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/html.js ***!
+  \***************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/get-built-in.js");
+var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/get-built-in.js");
 
 module.exports = getBuiltIn('document', 'documentElement');
 
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/ie8-dom-define.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/ie8-dom-define.js ***!
-  \********************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/ie8-dom-define.js":
+/*!*************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/ie8-dom-define.js ***!
+  \*************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/descriptors.js");
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js");
-var createElement = __webpack_require__(/*! ../internals/document-create-element */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/document-create-element.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/descriptors.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js");
+var createElement = __webpack_require__(/*! ../internals/document-create-element */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/document-create-element.js");
 
 // Thank's IE8 for his funny defineProperty
 module.exports = !DESCRIPTORS && !fails(function () {
@@ -1887,15 +1887,15 @@ module.exports = !DESCRIPTORS && !fails(function () {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/indexed-object.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/indexed-object.js ***!
-  \********************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/indexed-object.js":
+/*!*************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/indexed-object.js ***!
+  \*************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js");
-var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/classof-raw.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js");
+var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/classof-raw.js");
 
 var split = ''.split;
 
@@ -1911,15 +1911,15 @@ module.exports = fails(function () {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/inherit-if-required.js":
-/*!*************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/inherit-if-required.js ***!
-  \*************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/inherit-if-required.js":
+/*!******************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/inherit-if-required.js ***!
+  \******************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-object.js");
-var setPrototypeOf = __webpack_require__(/*! ../internals/object-set-prototype-of */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-set-prototype-of.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-object.js");
+var setPrototypeOf = __webpack_require__(/*! ../internals/object-set-prototype-of */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-set-prototype-of.js");
 
 // makes subclassing work correct for wrapped built-ins
 module.exports = function ($this, dummy, Wrapper) {
@@ -1939,14 +1939,14 @@ module.exports = function ($this, dummy, Wrapper) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/inspect-source.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/inspect-source.js ***!
-  \********************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/inspect-source.js":
+/*!*************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/inspect-source.js ***!
+  \*************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var store = __webpack_require__(/*! ../internals/shared-store */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared-store.js");
+var store = __webpack_require__(/*! ../internals/shared-store */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared-store.js");
 
 var functionToString = Function.toString;
 
@@ -1962,19 +1962,19 @@ module.exports = store.inspectSource;
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/internal-metadata.js":
-/*!***********************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/internal-metadata.js ***!
-  \***********************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/internal-metadata.js":
+/*!****************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/internal-metadata.js ***!
+  \****************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/hidden-keys.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-object.js");
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js");
-var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-property.js").f;
-var uid = __webpack_require__(/*! ../internals/uid */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/uid.js");
-var FREEZING = __webpack_require__(/*! ../internals/freezing */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/freezing.js");
+var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/hidden-keys.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-object.js");
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js");
+var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-property.js").f;
+var uid = __webpack_require__(/*! ../internals/uid */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/uid.js");
+var FREEZING = __webpack_require__(/*! ../internals/freezing */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/freezing.js");
 
 var METADATA = uid('meta');
 var id = 0;
@@ -2034,20 +2034,20 @@ hiddenKeys[METADATA] = true;
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/internal-state.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/internal-state.js ***!
-  \********************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/internal-state.js":
+/*!*************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/internal-state.js ***!
+  \*************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var NATIVE_WEAK_MAP = __webpack_require__(/*! ../internals/native-weak-map */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/native-weak-map.js");
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-object.js");
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-non-enumerable-property.js");
-var objectHas = __webpack_require__(/*! ../internals/has */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js");
-var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared-key.js");
-var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/hidden-keys.js");
+var NATIVE_WEAK_MAP = __webpack_require__(/*! ../internals/native-weak-map */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/native-weak-map.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-object.js");
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-non-enumerable-property.js");
+var objectHas = __webpack_require__(/*! ../internals/has */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js");
+var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared-key.js");
+var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/hidden-keys.js");
 
 var WeakMap = global.WeakMap;
 var set, get, has;
@@ -2106,15 +2106,15 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-array-iterator-method.js":
-/*!******************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-array-iterator-method.js ***!
-  \******************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-array-iterator-method.js":
+/*!***********************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-array-iterator-method.js ***!
+  \***********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
-var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterators.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
+var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterators.js");
 
 var ITERATOR = wellKnownSymbol('iterator');
 var ArrayPrototype = Array.prototype;
@@ -2127,14 +2127,14 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-array.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-array.js ***!
-  \**************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-array.js":
+/*!*******************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-array.js ***!
+  \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/classof-raw.js");
+var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/classof-raw.js");
 
 // `IsArray` abstract operation
 // https://tc39.github.io/ecma262/#sec-isarray
@@ -2145,14 +2145,14 @@ module.exports = Array.isArray || function isArray(arg) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-forced.js":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-forced.js ***!
-  \***************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-forced.js":
+/*!********************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-forced.js ***!
+  \********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js");
 
 var replacement = /#|\.prototype\./;
 
@@ -2177,10 +2177,10 @@ module.exports = isForced;
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-object.js":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-object.js ***!
-  \***************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-object.js":
+/*!********************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-object.js ***!
+  \********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2191,10 +2191,10 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-pure.js":
-/*!*************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-pure.js ***!
-  \*************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-pure.js":
+/*!******************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-pure.js ***!
+  \******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2203,19 +2203,19 @@ module.exports = false;
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterate.js":
-/*!*************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterate.js ***!
-  \*************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterate.js":
+/*!******************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterate.js ***!
+  \******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-object.js");
-var isArrayIteratorMethod = __webpack_require__(/*! ../internals/is-array-iterator-method */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-array-iterator-method.js");
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-length.js");
-var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/function-bind-context.js");
-var getIteratorMethod = __webpack_require__(/*! ../internals/get-iterator-method */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/get-iterator-method.js");
-var callWithSafeIterationClosing = __webpack_require__(/*! ../internals/call-with-safe-iteration-closing */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/call-with-safe-iteration-closing.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-object.js");
+var isArrayIteratorMethod = __webpack_require__(/*! ../internals/is-array-iterator-method */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-array-iterator-method.js");
+var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-length.js");
+var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/function-bind-context.js");
+var getIteratorMethod = __webpack_require__(/*! ../internals/get-iterator-method */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/get-iterator-method.js");
+var callWithSafeIterationClosing = __webpack_require__(/*! ../internals/call-with-safe-iteration-closing */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/call-with-safe-iteration-closing.js");
 
 var Result = function (stopped, result) {
   this.stopped = stopped;
@@ -2257,20 +2257,20 @@ iterate.stop = function (result) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterators-core.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterators-core.js ***!
-  \********************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterators-core.js":
+/*!*************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterators-core.js ***!
+  \*************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-prototype-of.js");
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-non-enumerable-property.js");
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
-var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-pure.js");
+var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-prototype-of.js");
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-non-enumerable-property.js");
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
+var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-pure.js");
 
 var ITERATOR = wellKnownSymbol('iterator');
 var BUGGY_SAFARI_ITERATORS = false;
@@ -2306,10 +2306,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterators.js":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterators.js ***!
-  \***************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterators.js":
+/*!********************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterators.js ***!
+  \********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2318,14 +2318,14 @@ module.exports = {};
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/native-symbol.js":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/native-symbol.js ***!
-  \*******************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/native-symbol.js":
+/*!************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/native-symbol.js ***!
+  \************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js");
 
 module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
   // Chrome 38 Symbol has incorrect toString conversion
@@ -2336,15 +2336,15 @@ module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/native-weak-map.js":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/native-weak-map.js ***!
-  \*********************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/native-weak-map.js":
+/*!**************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/native-weak-map.js ***!
+  \**************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
-var inspectSource = __webpack_require__(/*! ../internals/inspect-source */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/inspect-source.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
+var inspectSource = __webpack_require__(/*! ../internals/inspect-source */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/inspect-source.js");
 
 var WeakMap = global.WeakMap;
 
@@ -2353,20 +2353,20 @@ module.exports = typeof WeakMap === 'function' && /native code/.test(inspectSour
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-create.js":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-create.js ***!
-  \*******************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-create.js":
+/*!************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-create.js ***!
+  \************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-object.js");
-var defineProperties = __webpack_require__(/*! ../internals/object-define-properties */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-properties.js");
-var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/enum-bug-keys.js");
-var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/hidden-keys.js");
-var html = __webpack_require__(/*! ../internals/html */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/html.js");
-var documentCreateElement = __webpack_require__(/*! ../internals/document-create-element */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/document-create-element.js");
-var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared-key.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-object.js");
+var defineProperties = __webpack_require__(/*! ../internals/object-define-properties */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-properties.js");
+var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/enum-bug-keys.js");
+var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/hidden-keys.js");
+var html = __webpack_require__(/*! ../internals/html */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/html.js");
+var documentCreateElement = __webpack_require__(/*! ../internals/document-create-element */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/document-create-element.js");
+var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared-key.js");
 
 var GT = '>';
 var LT = '<';
@@ -2442,17 +2442,17 @@ module.exports = Object.create || function create(O, Properties) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-properties.js":
-/*!******************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-properties.js ***!
-  \******************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-properties.js":
+/*!***********************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-properties.js ***!
+  \***********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/descriptors.js");
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-property.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-object.js");
-var objectKeys = __webpack_require__(/*! ../internals/object-keys */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-keys.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/descriptors.js");
+var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-property.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-object.js");
+var objectKeys = __webpack_require__(/*! ../internals/object-keys */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-keys.js");
 
 // `Object.defineProperties` method
 // https://tc39.github.io/ecma262/#sec-object.defineproperties
@@ -2469,17 +2469,17 @@ module.exports = DESCRIPTORS ? Object.defineProperties : function defineProperti
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-property.js":
-/*!****************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-property.js ***!
-  \****************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-property.js":
+/*!*********************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-property.js ***!
+  \*********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/descriptors.js");
-var IE8_DOM_DEFINE = __webpack_require__(/*! ../internals/ie8-dom-define */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/ie8-dom-define.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-object.js");
-var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-primitive.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/descriptors.js");
+var IE8_DOM_DEFINE = __webpack_require__(/*! ../internals/ie8-dom-define */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/ie8-dom-define.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-object.js");
+var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-primitive.js");
 
 var nativeDefineProperty = Object.defineProperty;
 
@@ -2500,20 +2500,20 @@ exports.f = DESCRIPTORS ? nativeDefineProperty : function defineProperty(O, P, A
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-own-property-descriptor.js":
-/*!****************************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-own-property-descriptor.js ***!
-  \****************************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-own-property-descriptor.js":
+/*!*********************************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-own-property-descriptor.js ***!
+  \*********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/descriptors.js");
-var propertyIsEnumerableModule = __webpack_require__(/*! ../internals/object-property-is-enumerable */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-property-is-enumerable.js");
-var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-property-descriptor.js");
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-indexed-object.js");
-var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-primitive.js");
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js");
-var IE8_DOM_DEFINE = __webpack_require__(/*! ../internals/ie8-dom-define */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/ie8-dom-define.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/descriptors.js");
+var propertyIsEnumerableModule = __webpack_require__(/*! ../internals/object-property-is-enumerable */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-property-is-enumerable.js");
+var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-property-descriptor.js");
+var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-indexed-object.js");
+var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-primitive.js");
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js");
+var IE8_DOM_DEFINE = __webpack_require__(/*! ../internals/ie8-dom-define */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/ie8-dom-define.js");
 
 var nativeGetOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
 
@@ -2531,15 +2531,15 @@ exports.f = DESCRIPTORS ? nativeGetOwnPropertyDescriptor : function getOwnProper
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-own-property-names.js":
-/*!***********************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-own-property-names.js ***!
-  \***********************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-own-property-names.js":
+/*!****************************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-own-property-names.js ***!
+  \****************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var internalObjectKeys = __webpack_require__(/*! ../internals/object-keys-internal */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-keys-internal.js");
-var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/enum-bug-keys.js");
+var internalObjectKeys = __webpack_require__(/*! ../internals/object-keys-internal */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-keys-internal.js");
+var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/enum-bug-keys.js");
 
 var hiddenKeys = enumBugKeys.concat('length', 'prototype');
 
@@ -2552,10 +2552,10 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-own-property-symbols.js":
-/*!*************************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-own-property-symbols.js ***!
-  \*************************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-own-property-symbols.js":
+/*!******************************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-own-property-symbols.js ***!
+  \******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2564,17 +2564,17 @@ exports.f = Object.getOwnPropertySymbols;
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-prototype-of.js":
-/*!*****************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-prototype-of.js ***!
-  \*****************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-prototype-of.js":
+/*!**********************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-prototype-of.js ***!
+  \**********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js");
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-object.js");
-var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared-key.js");
-var CORRECT_PROTOTYPE_GETTER = __webpack_require__(/*! ../internals/correct-prototype-getter */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/correct-prototype-getter.js");
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js");
+var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-object.js");
+var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared-key.js");
+var CORRECT_PROTOTYPE_GETTER = __webpack_require__(/*! ../internals/correct-prototype-getter */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/correct-prototype-getter.js");
 
 var IE_PROTO = sharedKey('IE_PROTO');
 var ObjectPrototype = Object.prototype;
@@ -2592,17 +2592,17 @@ module.exports = CORRECT_PROTOTYPE_GETTER ? Object.getPrototypeOf : function (O)
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-keys-internal.js":
-/*!**************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-keys-internal.js ***!
-  \**************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-keys-internal.js":
+/*!*******************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-keys-internal.js ***!
+  \*******************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js");
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-indexed-object.js");
-var indexOf = __webpack_require__(/*! ../internals/array-includes */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-includes.js").indexOf;
-var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/hidden-keys.js");
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js");
+var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-indexed-object.js");
+var indexOf = __webpack_require__(/*! ../internals/array-includes */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-includes.js").indexOf;
+var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/hidden-keys.js");
 
 module.exports = function (object, names) {
   var O = toIndexedObject(object);
@@ -2620,15 +2620,15 @@ module.exports = function (object, names) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-keys.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-keys.js ***!
-  \*****************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-keys.js":
+/*!**********************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-keys.js ***!
+  \**********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var internalObjectKeys = __webpack_require__(/*! ../internals/object-keys-internal */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-keys-internal.js");
-var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/enum-bug-keys.js");
+var internalObjectKeys = __webpack_require__(/*! ../internals/object-keys-internal */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-keys-internal.js");
+var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/enum-bug-keys.js");
 
 // `Object.keys` method
 // https://tc39.github.io/ecma262/#sec-object.keys
@@ -2639,10 +2639,10 @@ module.exports = Object.keys || function keys(O) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-property-is-enumerable.js":
-/*!***********************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-property-is-enumerable.js ***!
-  \***********************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-property-is-enumerable.js":
+/*!****************************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-property-is-enumerable.js ***!
+  \****************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2664,15 +2664,15 @@ exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-set-prototype-of.js":
-/*!*****************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-set-prototype-of.js ***!
-  \*****************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-set-prototype-of.js":
+/*!**********************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-set-prototype-of.js ***!
+  \**********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-object.js");
-var aPossiblePrototype = __webpack_require__(/*! ../internals/a-possible-prototype */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/a-possible-prototype.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-object.js");
+var aPossiblePrototype = __webpack_require__(/*! ../internals/a-possible-prototype */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/a-possible-prototype.js");
 
 // `Object.setPrototypeOf` method
 // https://tc39.github.io/ecma262/#sec-object.setprototypeof
@@ -2699,17 +2699,17 @@ module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-to-string.js":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-to-string.js ***!
-  \**********************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-to-string.js":
+/*!***************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-to-string.js ***!
+  \***************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var TO_STRING_TAG_SUPPORT = __webpack_require__(/*! ../internals/to-string-tag-support */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-string-tag-support.js");
-var classof = __webpack_require__(/*! ../internals/classof */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/classof.js");
+var TO_STRING_TAG_SUPPORT = __webpack_require__(/*! ../internals/to-string-tag-support */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-string-tag-support.js");
+var classof = __webpack_require__(/*! ../internals/classof */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/classof.js");
 
 // `Object.prototype.toString` method implementation
 // https://tc39.github.io/ecma262/#sec-object.prototype.tostring
@@ -2720,17 +2720,17 @@ module.exports = TO_STRING_TAG_SUPPORT ? {}.toString : function toString() {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/own-keys.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/own-keys.js ***!
-  \**************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/own-keys.js":
+/*!*******************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/own-keys.js ***!
+  \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/get-built-in.js");
-var getOwnPropertyNamesModule = __webpack_require__(/*! ../internals/object-get-own-property-names */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-own-property-names.js");
-var getOwnPropertySymbolsModule = __webpack_require__(/*! ../internals/object-get-own-property-symbols */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-own-property-symbols.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-object.js");
+var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/get-built-in.js");
+var getOwnPropertyNamesModule = __webpack_require__(/*! ../internals/object-get-own-property-names */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-own-property-names.js");
+var getOwnPropertySymbolsModule = __webpack_require__(/*! ../internals/object-get-own-property-symbols */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-get-own-property-symbols.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/an-object.js");
 
 // all object keys, includes non-enumerable and symbols
 module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
@@ -2742,28 +2742,28 @@ module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/path.js":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/path.js ***!
-  \**********************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/path.js":
+/*!***************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/path.js ***!
+  \***************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
 
 module.exports = global;
 
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/redefine-all.js":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/redefine-all.js ***!
-  \******************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/redefine-all.js":
+/*!***********************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/redefine-all.js ***!
+  \***********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/redefine.js");
+var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/redefine.js");
 
 module.exports = function (target, src, options) {
   for (var key in src) redefine(target, key, src[key], options);
@@ -2773,19 +2773,19 @@ module.exports = function (target, src, options) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/redefine.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/redefine.js ***!
-  \**************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/redefine.js":
+/*!*******************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/redefine.js ***!
+  \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-non-enumerable-property.js");
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js");
-var setGlobal = __webpack_require__(/*! ../internals/set-global */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-global.js");
-var inspectSource = __webpack_require__(/*! ../internals/inspect-source */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/inspect-source.js");
-var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/internal-state.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-non-enumerable-property.js");
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js");
+var setGlobal = __webpack_require__(/*! ../internals/set-global */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-global.js");
+var inspectSource = __webpack_require__(/*! ../internals/inspect-source */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/inspect-source.js");
+var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/internal-state.js");
 
 var getInternalState = InternalStateModule.get;
 var enforceInternalState = InternalStateModule.enforce;
@@ -2818,10 +2818,10 @@ var TEMPLATE = String(String).split('String');
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/require-object-coercible.js":
-/*!******************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/require-object-coercible.js ***!
-  \******************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/require-object-coercible.js":
+/*!***********************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/require-object-coercible.js ***!
+  \***********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2835,15 +2835,15 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-global.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-global.js ***!
-  \****************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-global.js":
+/*!*********************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-global.js ***!
+  \*********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-non-enumerable-property.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-non-enumerable-property.js");
 
 module.exports = function (key, value) {
   try {
@@ -2856,19 +2856,19 @@ module.exports = function (key, value) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-species.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-species.js ***!
-  \*****************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-species.js":
+/*!**********************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-species.js ***!
+  \**********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/get-built-in.js");
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-property.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/descriptors.js");
+var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/get-built-in.js");
+var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-property.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/descriptors.js");
 
 var SPECIES = wellKnownSymbol('species');
 
@@ -2887,16 +2887,16 @@ module.exports = function (CONSTRUCTOR_NAME) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-to-string-tag.js":
-/*!***********************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-to-string-tag.js ***!
-  \***********************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-to-string-tag.js":
+/*!****************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-to-string-tag.js ***!
+  \****************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-property.js").f;
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
+var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-define-property.js").f;
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
 
 var TO_STRING_TAG = wellKnownSymbol('toStringTag');
 
@@ -2909,15 +2909,15 @@ module.exports = function (it, TAG, STATIC) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared-key.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared-key.js ***!
-  \****************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared-key.js":
+/*!*********************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared-key.js ***!
+  \*********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var shared = __webpack_require__(/*! ../internals/shared */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared.js");
-var uid = __webpack_require__(/*! ../internals/uid */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/uid.js");
+var shared = __webpack_require__(/*! ../internals/shared */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared.js");
+var uid = __webpack_require__(/*! ../internals/uid */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/uid.js");
 
 var keys = shared('keys');
 
@@ -2928,15 +2928,15 @@ module.exports = function (key) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared-store.js":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared-store.js ***!
-  \******************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared-store.js":
+/*!***********************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared-store.js ***!
+  \***********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
-var setGlobal = __webpack_require__(/*! ../internals/set-global */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-global.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
+var setGlobal = __webpack_require__(/*! ../internals/set-global */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/set-global.js");
 
 var SHARED = '__core-js_shared__';
 var store = global[SHARED] || setGlobal(SHARED, {});
@@ -2946,15 +2946,15 @@ module.exports = store;
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared.js":
-/*!************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared.js ***!
-  \************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared.js":
+/*!*****************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared.js ***!
+  \*****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-pure.js");
-var store = __webpack_require__(/*! ../internals/shared-store */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared-store.js");
+var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-pure.js");
+var store = __webpack_require__(/*! ../internals/shared-store */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared-store.js");
 
 (module.exports = function (key, value) {
   return store[key] || (store[key] = value !== undefined ? value : {});
@@ -2967,15 +2967,15 @@ var store = __webpack_require__(/*! ../internals/shared-store */ "./node_modules
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/string-multibyte.js":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/string-multibyte.js ***!
-  \**********************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/string-multibyte.js":
+/*!***************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/string-multibyte.js ***!
+  \***************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-integer.js");
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/require-object-coercible.js");
+var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-integer.js");
+var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/require-object-coercible.js");
 
 // `String.prototype.{ codePointAt, at }` methods implementation
 var createMethod = function (CONVERT_TO_STRING) {
@@ -3005,14 +3005,14 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-absolute-index.js":
-/*!***********************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-absolute-index.js ***!
-  \***********************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-absolute-index.js":
+/*!****************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-absolute-index.js ***!
+  \****************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-integer.js");
+var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-integer.js");
 
 var max = Math.max;
 var min = Math.min;
@@ -3028,16 +3028,16 @@ module.exports = function (index, length) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-indexed-object.js":
-/*!***********************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-indexed-object.js ***!
-  \***********************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-indexed-object.js":
+/*!****************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-indexed-object.js ***!
+  \****************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 // toObject with fallback for non-array-like ES3 strings
-var IndexedObject = __webpack_require__(/*! ../internals/indexed-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/indexed-object.js");
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/require-object-coercible.js");
+var IndexedObject = __webpack_require__(/*! ../internals/indexed-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/indexed-object.js");
+var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/require-object-coercible.js");
 
 module.exports = function (it) {
   return IndexedObject(requireObjectCoercible(it));
@@ -3046,10 +3046,10 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-integer.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-integer.js ***!
-  \****************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-integer.js":
+/*!*********************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-integer.js ***!
+  \*********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -3065,14 +3065,14 @@ module.exports = function (argument) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-length.js":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-length.js ***!
-  \***************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-length.js":
+/*!********************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-length.js ***!
+  \********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-integer.js");
+var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-integer.js");
 
 var min = Math.min;
 
@@ -3085,14 +3085,14 @@ module.exports = function (argument) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-object.js":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-object.js ***!
-  \***************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-object.js":
+/*!********************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-object.js ***!
+  \********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/require-object-coercible.js");
+var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/require-object-coercible.js");
 
 // `ToObject` abstract operation
 // https://tc39.github.io/ecma262/#sec-toobject
@@ -3103,14 +3103,14 @@ module.exports = function (argument) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-primitive.js":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-primitive.js ***!
-  \******************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-primitive.js":
+/*!***********************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-primitive.js ***!
+  \***********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-object.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-object.js");
 
 // `ToPrimitive` abstract operation
 // https://tc39.github.io/ecma262/#sec-toprimitive
@@ -3128,14 +3128,14 @@ module.exports = function (input, PREFERRED_STRING) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-string-tag-support.js":
-/*!***************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-string-tag-support.js ***!
-  \***************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-string-tag-support.js":
+/*!********************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-string-tag-support.js ***!
+  \********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
 
 var TO_STRING_TAG = wellKnownSymbol('toStringTag');
 var test = {};
@@ -3147,10 +3147,10 @@ module.exports = String(test) === '[object z]';
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/uid.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/uid.js ***!
-  \*********************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/uid.js":
+/*!**************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/uid.js ***!
+  \**************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -3164,14 +3164,14 @@ module.exports = function (key) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/use-symbol-as-uid.js":
-/*!***********************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/use-symbol-as-uid.js ***!
-  \***********************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/use-symbol-as-uid.js":
+/*!****************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/use-symbol-as-uid.js ***!
+  \****************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var NATIVE_SYMBOL = __webpack_require__(/*! ../internals/native-symbol */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/native-symbol.js");
+var NATIVE_SYMBOL = __webpack_require__(/*! ../internals/native-symbol */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/native-symbol.js");
 
 module.exports = NATIVE_SYMBOL
   // eslint-disable-next-line no-undef
@@ -3182,19 +3182,19 @@ module.exports = NATIVE_SYMBOL
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js":
-/*!***********************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js ***!
-  \***********************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js":
+/*!****************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js ***!
+  \****************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
-var shared = __webpack_require__(/*! ../internals/shared */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared.js");
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js");
-var uid = __webpack_require__(/*! ../internals/uid */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/uid.js");
-var NATIVE_SYMBOL = __webpack_require__(/*! ../internals/native-symbol */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/native-symbol.js");
-var USE_SYMBOL_AS_UID = __webpack_require__(/*! ../internals/use-symbol-as-uid */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/use-symbol-as-uid.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
+var shared = __webpack_require__(/*! ../internals/shared */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/shared.js");
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/has.js");
+var uid = __webpack_require__(/*! ../internals/uid */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/uid.js");
+var NATIVE_SYMBOL = __webpack_require__(/*! ../internals/native-symbol */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/native-symbol.js");
+var USE_SYMBOL_AS_UID = __webpack_require__(/*! ../internals/use-symbol-as-uid */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/use-symbol-as-uid.js");
 
 var WellKnownSymbolsStore = shared('wks');
 var Symbol = global.Symbol;
@@ -3210,26 +3210,26 @@ module.exports = function (name) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.array.concat.js":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.array.concat.js ***!
-  \*******************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.array.concat.js":
+/*!************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.array.concat.js ***!
+  \************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/export.js");
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js");
-var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-array.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-object.js");
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-object.js");
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-length.js");
-var createProperty = __webpack_require__(/*! ../internals/create-property */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-property.js");
-var arraySpeciesCreate = __webpack_require__(/*! ../internals/array-species-create */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-species-create.js");
-var arrayMethodHasSpeciesSupport = __webpack_require__(/*! ../internals/array-method-has-species-support */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-method-has-species-support.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
-var V8_VERSION = __webpack_require__(/*! ../internals/engine-v8-version */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/engine-v8-version.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/export.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/fails.js");
+var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-array.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/is-object.js");
+var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-object.js");
+var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-length.js");
+var createProperty = __webpack_require__(/*! ../internals/create-property */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-property.js");
+var arraySpeciesCreate = __webpack_require__(/*! ../internals/array-species-create */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-species-create.js");
+var arrayMethodHasSpeciesSupport = __webpack_require__(/*! ../internals/array-method-has-species-support */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-method-has-species-support.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
+var V8_VERSION = __webpack_require__(/*! ../internals/engine-v8-version */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/engine-v8-version.js");
 
 var IS_CONCAT_SPREADABLE = wellKnownSymbol('isConcatSpreadable');
 var MAX_SAFE_INTEGER = 0x1FFFFFFFFFFFFF;
@@ -3282,19 +3282,19 @@ $({ target: 'Array', proto: true, forced: FORCED }, {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.array.filter.js":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.array.filter.js ***!
-  \*******************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.array.filter.js":
+/*!************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.array.filter.js ***!
+  \************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/export.js");
-var $filter = __webpack_require__(/*! ../internals/array-iteration */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-iteration.js").filter;
-var arrayMethodHasSpeciesSupport = __webpack_require__(/*! ../internals/array-method-has-species-support */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-method-has-species-support.js");
-var arrayMethodUsesToLength = __webpack_require__(/*! ../internals/array-method-uses-to-length */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-method-uses-to-length.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/export.js");
+var $filter = __webpack_require__(/*! ../internals/array-iteration */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-iteration.js").filter;
+var arrayMethodHasSpeciesSupport = __webpack_require__(/*! ../internals/array-method-has-species-support */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-method-has-species-support.js");
+var arrayMethodUsesToLength = __webpack_require__(/*! ../internals/array-method-uses-to-length */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-method-uses-to-length.js");
 
 var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('filter');
 // Edge 14- issue
@@ -3312,20 +3312,20 @@ $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGT
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.array.iterator.js":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.array.iterator.js ***!
-  \*********************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.array.iterator.js":
+/*!**************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.array.iterator.js ***!
+  \**************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-indexed-object.js");
-var addToUnscopables = __webpack_require__(/*! ../internals/add-to-unscopables */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/add-to-unscopables.js");
-var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterators.js");
-var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/internal-state.js");
-var defineIterator = __webpack_require__(/*! ../internals/define-iterator */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/define-iterator.js");
+var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-indexed-object.js");
+var addToUnscopables = __webpack_require__(/*! ../internals/add-to-unscopables */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/add-to-unscopables.js");
+var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/iterators.js");
+var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/internal-state.js");
+var defineIterator = __webpack_require__(/*! ../internals/define-iterator */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/define-iterator.js");
 
 var ARRAY_ITERATOR = 'Array Iterator';
 var setInternalState = InternalStateModule.set;
@@ -3377,17 +3377,17 @@ addToUnscopables('entries');
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.map.js":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.map.js ***!
-  \**********************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.map.js":
+/*!***************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.map.js ***!
+  \***************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var collection = __webpack_require__(/*! ../internals/collection */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/collection.js");
-var collectionStrong = __webpack_require__(/*! ../internals/collection-strong */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/collection-strong.js");
+var collection = __webpack_require__(/*! ../internals/collection */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/collection.js");
+var collectionStrong = __webpack_require__(/*! ../internals/collection-strong */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/collection-strong.js");
 
 // `Map` constructor
 // https://tc39.github.io/ecma262/#sec-map-objects
@@ -3398,16 +3398,16 @@ module.exports = collection('Map', function (init) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.object.to-string.js":
-/*!***********************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.object.to-string.js ***!
-  \***********************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.object.to-string.js":
+/*!****************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.object.to-string.js ***!
+  \****************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var TO_STRING_TAG_SUPPORT = __webpack_require__(/*! ../internals/to-string-tag-support */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-string-tag-support.js");
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/redefine.js");
-var toString = __webpack_require__(/*! ../internals/object-to-string */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-to-string.js");
+var TO_STRING_TAG_SUPPORT = __webpack_require__(/*! ../internals/to-string-tag-support */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/to-string-tag-support.js");
+var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/redefine.js");
+var toString = __webpack_require__(/*! ../internals/object-to-string */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/object-to-string.js");
 
 // `Object.prototype.toString` method
 // https://tc39.github.io/ecma262/#sec-object.prototype.tostring
@@ -3418,18 +3418,18 @@ if (!TO_STRING_TAG_SUPPORT) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.string.iterator.js":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.string.iterator.js ***!
-  \**********************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.string.iterator.js":
+/*!***************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.string.iterator.js ***!
+  \***************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var charAt = __webpack_require__(/*! ../internals/string-multibyte */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/string-multibyte.js").charAt;
-var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/internal-state.js");
-var defineIterator = __webpack_require__(/*! ../internals/define-iterator */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/define-iterator.js");
+var charAt = __webpack_require__(/*! ../internals/string-multibyte */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/string-multibyte.js").charAt;
+var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/internal-state.js");
+var defineIterator = __webpack_require__(/*! ../internals/define-iterator */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/define-iterator.js");
 
 var STRING_ITERATOR = 'String Iterator';
 var setInternalState = InternalStateModule.set;
@@ -3459,17 +3459,17 @@ defineIterator(String, 'String', function (iterated) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/modules/web.dom-collections.for-each.js":
-/*!********************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/modules/web.dom-collections.for-each.js ***!
-  \********************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/modules/web.dom-collections.for-each.js":
+/*!*************************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/modules/web.dom-collections.for-each.js ***!
+  \*************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
-var DOMIterables = __webpack_require__(/*! ../internals/dom-iterables */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/dom-iterables.js");
-var forEach = __webpack_require__(/*! ../internals/array-for-each */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-for-each.js");
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-non-enumerable-property.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
+var DOMIterables = __webpack_require__(/*! ../internals/dom-iterables */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/dom-iterables.js");
+var forEach = __webpack_require__(/*! ../internals/array-for-each */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/array-for-each.js");
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-non-enumerable-property.js");
 
 for (var COLLECTION_NAME in DOMIterables) {
   var Collection = global[COLLECTION_NAME];
@@ -3485,18 +3485,18 @@ for (var COLLECTION_NAME in DOMIterables) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/core-js/modules/web.dom-collections.iterator.js":
-/*!********************************************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/core-js/modules/web.dom-collections.iterator.js ***!
-  \********************************************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/modules/web.dom-collections.iterator.js":
+/*!*************************************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/modules/web.dom-collections.iterator.js ***!
+  \*************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
-var DOMIterables = __webpack_require__(/*! ../internals/dom-iterables */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/dom-iterables.js");
-var ArrayIteratorMethods = __webpack_require__(/*! ../modules/es.array.iterator */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.array.iterator.js");
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-non-enumerable-property.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/global.js");
+var DOMIterables = __webpack_require__(/*! ../internals/dom-iterables */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/dom-iterables.js");
+var ArrayIteratorMethods = __webpack_require__(/*! ../modules/es.array.iterator */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/modules/es.array.iterator.js");
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/create-non-enumerable-property.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@nextcloud/auth/node_modules/@nextcloud/event-bus/node_modules/core-js/internals/well-known-symbol.js");
 
 var ITERATOR = wellKnownSymbol('iterator');
 var TO_STRING_TAG = wellKnownSymbol('toStringTag');
@@ -3529,10 +3529,10 @@ for (var COLLECTION_NAME in DOMIterables) {
 
 /***/ }),
 
-/***/ "./node_modules/@nextcloud/event-bus/node_modules/semver/semver.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/@nextcloud/event-bus/node_modules/semver/semver.js ***!
-  \*************************************************************************/
+/***/ "./node_modules/@nextcloud/auth/node_modules/semver/semver.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@nextcloud/auth/node_modules/semver/semver.js ***!
+  \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5137,6 +5137,278 @@ function coerce (version, options) {
 
 /***/ }),
 
+/***/ "./node_modules/@nextcloud/vue/dist/Components/ActionButton.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@nextcloud/vue/dist/Components/ActionButton.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(t,e){ true?module.exports=e():undefined}(window,function(){return function(t){var e={};function n(o){if(e[o])return e[o].exports;var r=e[o]={i:o,l:!1,exports:{}};return t[o].call(r.exports,r,r.exports,n),r.l=!0,r.exports}return n.m=t,n.c=e,n.d=function(t,e,o){n.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:o})},n.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var o=Object.create(null);if(n.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var r in t)n.d(o,r,function(e){return t[e]}.bind(null,r));return o},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,"a",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p="/dist/",n(n.s=81)}({0:function(t,e,n){"use strict";function o(t,e,n,o,r,i,a,s){var c,u="function"==typeof t?t.options:t;if(e&&(u.render=e,u.staticRenderFns=n,u._compiled=!0),o&&(u.functional=!0),i&&(u._scopeId="data-v-"+i),a?(c=function(t){(t=t||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext)||"undefined"==typeof __VUE_SSR_CONTEXT__||(t=__VUE_SSR_CONTEXT__),r&&r.call(this,t),t&&t._registeredComponents&&t._registeredComponents.add(a)},u._ssrRegister=c):r&&(c=s?function(){r.call(this,this.$root.$options.shadowRoot)}:r),c)if(u.functional){u._injectStyles=c;var d=u.render;u.render=function(t,e){return c.call(e),d(t,e)}}else{var l=u.beforeCreate;u.beforeCreate=l?[].concat(l,c):[c]}return{exports:t,options:u}}n.d(e,"a",function(){return o})},1:function(t,e,n){"use strict";t.exports=function(t){var e=[];return e.toString=function(){return this.map(function(e){var n=function(t,e){var n=t[1]||"",o=t[3];if(!o)return n;if(e&&"function"==typeof btoa){var r=(a=o,s=btoa(unescape(encodeURIComponent(JSON.stringify(a)))),c="sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(s),"/*# ".concat(c," */")),i=o.sources.map(function(t){return"/*# sourceURL=".concat(o.sourceRoot||"").concat(t," */")});return[n].concat(i).concat([r]).join("\n")}var a,s,c;return[n].join("\n")}(e,t);return e[2]?"@media ".concat(e[2]," {").concat(n,"}"):n}).join("")},e.i=function(t,n,o){"string"==typeof t&&(t=[[null,t,""]]);var r={};if(o)for(var i=0;i<this.length;i++){var a=this[i][0];null!=a&&(r[a]=!0)}for(var s=0;s<t.length;s++){var c=[].concat(t[s]);o&&r[c[0]]||(n&&(c[2]?c[2]="".concat(n," and ").concat(c[2]):c[2]=n),e.push(c))}},e}},112:function(t,e,n){"use strict";var o=n(39);n.n(o).a},113:function(t,e,n){(e=n(1)(!1)).push([t.i,"li.active[data-v-42604de1]{box-shadow:inset 4px 0 var(--color-primary)}.action--disabled[data-v-42604de1]{pointer-events:none;opacity:.5}.action--disabled[data-v-42604de1]:hover,.action--disabled[data-v-42604de1]:focus{cursor:default;opacity:.5}.action--disabled *[data-v-42604de1]{opacity:1 !important}.action-button[data-v-42604de1]{display:flex;align-items:flex-start;width:100%;height:auto;margin:0;padding:0;padding-right:14px;cursor:pointer;white-space:nowrap;opacity:.7;color:var(--color-main-text);border:0;border-radius:0;background-color:transparent;box-shadow:none;font-weight:normal;line-height:44px}.action-button[data-v-42604de1]:hover,.action-button[data-v-42604de1]:focus{opacity:1}.action-button>span[data-v-42604de1]{cursor:pointer;white-space:nowrap}.action-button__icon[data-v-42604de1]{width:44px;height:44px;opacity:1;background-position:14px center;background-size:16px}.action-button p[data-v-42604de1]{width:150px;padding:7px 0;margin:auto;cursor:pointer;text-align:left;line-height:1.6em}.action-button__longtext[data-v-42604de1]{cursor:pointer;white-space:pre-wrap}.action-button__title[data-v-42604de1]{font-weight:bold}\n",""]),t.exports=e},13:function(t,e,n){"use strict";n(6),n(23);var o=n(5),r=n.n(o);
+/**
+ * @copyright Copyright (c) 2019 John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @author John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ */e.a={before:function(){this.$slots.default&&""!==this.text.trim()||(r.a.util.warn("".concat(this.$options.name," cannot be empty and requires a meaningful text content"),this),this.$destroy(),this.$el.remove())},beforeUpdate:function(){this.text=this.getText()},data:function(){return{text:this.getText()}},computed:{isLongText:function(){return this.text&&this.text.trim().length>20}},methods:{getText:function(){return this.$slots.default?this.$slots.default[0].text.trim():""}}}},16:function(t,e){t.exports=__webpack_require__(/*! core-js/modules/es.array.iterator */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/es.array.iterator.js")},17:function(t,e){t.exports=__webpack_require__(/*! core-js/modules/es.string.iterator */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/es.string.iterator.js")},18:function(t,e){t.exports=__webpack_require__(/*! core-js/modules/web.dom-collections.iterator */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/web.dom-collections.iterator.js")},2:function(t,e,n){"use strict";function o(t,e){for(var n=[],o={},r=0;r<e.length;r++){var i=e[r],a=i[0],s={id:t+":"+r,css:i[1],media:i[2],sourceMap:i[3]};o[a]?o[a].parts.push(s):n.push(o[a]={id:a,parts:[s]})}return n}n.r(e),n.d(e,"default",function(){return h});var r="undefined"!=typeof document;if("undefined"!=typeof DEBUG&&DEBUG&&!r)throw new Error("vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.");var i={},a=r&&(document.head||document.getElementsByTagName("head")[0]),s=null,c=0,u=!1,d=function(){},l=null,f="data-vue-ssr-id",p="undefined"!=typeof navigator&&/msie [6-9]\b/.test(navigator.userAgent.toLowerCase());function h(t,e,n,r){u=n,l=r||{};var a=o(t,e);return v(a),function(e){for(var n=[],r=0;r<a.length;r++){var s=a[r];(c=i[s.id]).refs--,n.push(c)}e?v(a=o(t,e)):a=[];for(r=0;r<n.length;r++){var c;if(0===(c=n[r]).refs){for(var u=0;u<c.parts.length;u++)c.parts[u]();delete i[c.id]}}}}function v(t){for(var e=0;e<t.length;e++){var n=t[e],o=i[n.id];if(o){o.refs++;for(var r=0;r<o.parts.length;r++)o.parts[r](n.parts[r]);for(;r<n.parts.length;r++)o.parts.push(b(n.parts[r]));o.parts.length>n.parts.length&&(o.parts.length=n.parts.length)}else{var a=[];for(r=0;r<n.parts.length;r++)a.push(b(n.parts[r]));i[n.id]={id:n.id,refs:1,parts:a}}}}function m(){var t=document.createElement("style");return t.type="text/css",a.appendChild(t),t}function b(t){var e,n,o=document.querySelector("style["+f+'~="'+t.id+'"]');if(o){if(u)return d;o.parentNode.removeChild(o)}if(p){var r=c++;o=s||(s=m()),e=y.bind(null,o,r,!1),n=y.bind(null,o,r,!0)}else o=m(),e=function(t,e){var n=e.css,o=e.media,r=e.sourceMap;o&&t.setAttribute("media",o);l.ssrId&&t.setAttribute(f,e.id);r&&(n+="\n/*# sourceURL="+r.sources[0]+" */",n+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(r))))+" */");if(t.styleSheet)t.styleSheet.cssText=n;else{for(;t.firstChild;)t.removeChild(t.firstChild);t.appendChild(document.createTextNode(n))}}.bind(null,o),n=function(){o.parentNode.removeChild(o)};return e(t),function(o){if(o){if(o.css===t.css&&o.media===t.media&&o.sourceMap===t.sourceMap)return;e(t=o)}else n()}}var g,x=(g=[],function(t,e){return g[t]=e,g.filter(Boolean).join("\n")});function y(t,e,n,o){var r=n?"":o.css;if(t.styleSheet)t.styleSheet.cssText=x(e,r);else{var i=document.createTextNode(r),a=t.childNodes;a[e]&&t.removeChild(a[e]),a.length?t.insertBefore(i,a[e]):t.appendChild(i)}}},22:function(t,e){t.exports=__webpack_require__(/*! core-js/modules/web.url */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/web.url.js")},23:function(t,e){t.exports=__webpack_require__(/*! core-js/modules/es.string.trim */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/es.string.trim.js")},25:function(t,e,n){"use strict";n(16),n(3),n(17),n(18),n(22);var o=n(13),r=(n(6),function(t,e){for(var n=t.$parent;n;){if(n.$options.name===e)return n;n=n.$parent}});e.a={mixins:[o.a],props:{icon:{type:String,default:""},title:{type:String,default:""},closeAfterClick:{type:Boolean,default:!1}},computed:{isIconUrl:function(){try{return new URL(this.icon)}catch(t){return!1}}},methods:{onClick:function(t){if(this.$emit("click",t),this.closeAfterClick){var e=r(this,"Actions");e&&e.closeMenu&&e.closeMenu()}}}}},3:function(t,e){t.exports=__webpack_require__(/*! core-js/modules/es.object.to-string */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/es.object.to-string.js")},39:function(t,e,n){var o=n(113);"string"==typeof o&&(o=[[t.i,o,""]]),o.locals&&(t.exports=o.locals);(0,n(2).default)("4a580912",o,!0,{})},48:function(t,e,n){"use strict";var o={name:"ActionButton",mixins:[n(25).a],props:{disabled:{type:Boolean,default:!1}},computed:{isFocusable:function(){return!this.disabled}}},r=(n(112),n(0)),i=n(50),a=n.n(i),s=Object(r.a)(o,function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("li",{class:{"action--disabled":t.disabled}},[n("button",{staticClass:"action-button",class:{focusable:t.isFocusable},on:{click:t.onClick}},[n("span",{staticClass:"action-button__icon",class:[t.isIconUrl?"action-button__icon--url":t.icon],style:{backgroundImage:t.isIconUrl?"url("+t.icon+")":null}}),t._v(" "),t.title?n("p",[n("strong",{staticClass:"action-button__title"},[t._v("\n\t\t\t\t"+t._s(t.title)+"\n\t\t\t")]),t._v(" "),n("br"),t._v(" "),n("span",{staticClass:"action-button__longtext",domProps:{textContent:t._s(t.text)}})]):t.isLongText?n("p",{staticClass:"action-button__longtext",domProps:{textContent:t._s(t.text)}}):n("span",{staticClass:"action-button__text"},[t._v(t._s(t.text))]),t._v(" "),t._e()],2)])},[],!1,null,"42604de1",null);"function"==typeof a.a&&a()(s);e.a=s.exports},5:function(t,e){t.exports=__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.runtime.esm.js")},50:function(t,e){},6:function(t,e){t.exports=__webpack_require__(/*! core-js/modules/es.function.name */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/es.function.name.js")},81:function(t,e,n){"use strict";n.r(e);var o=n(48);n.d(e,"ActionButton",function(){return o.a}),
+/**
+ * @copyright Copyright (c) 2019 John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @author John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ */e.default=o.a}})});
+//# sourceMappingURL=ActionButton.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@nextcloud/vue/dist/Components/AppNavigationCaption.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/@nextcloud/vue/dist/Components/AppNavigationCaption.js ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(e,t){ true?module.exports=t():undefined}(window,function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="/dist/",n(n.s=164)}({0:function(e,t,n){"use strict";function r(e,t,n,r,o,i,a,s){var u,c="function"==typeof e?e.options:e;if(t&&(c.render=t,c.staticRenderFns=n,c._compiled=!0),r&&(c.functional=!0),i&&(c._scopeId="data-v-"+i),a?(u=function(e){(e=e||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext)||"undefined"==typeof __VUE_SSR_CONTEXT__||(e=__VUE_SSR_CONTEXT__),o&&o.call(this,e),e&&e._registeredComponents&&e._registeredComponents.add(a)},c._ssrRegister=u):o&&(u=s?function(){o.call(this,this.$root.$options.shadowRoot)}:o),u)if(c.functional){c._injectStyles=u;var p=c.render;c.render=function(e,t){return u.call(t),p(e,t)}}else{var f=c.beforeCreate;c.beforeCreate=f?[].concat(f,u):[u]}return{exports:e,options:c}}n.d(t,"a",function(){return r})},1:function(e,t,n){"use strict";e.exports=function(e){var t=[];return t.toString=function(){return this.map(function(t){var n=function(e,t){var n=e[1]||"",r=e[3];if(!r)return n;if(t&&"function"==typeof btoa){var o=(a=r,s=btoa(unescape(encodeURIComponent(JSON.stringify(a)))),u="sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(s),"/*# ".concat(u," */")),i=r.sources.map(function(e){return"/*# sourceURL=".concat(r.sourceRoot||"").concat(e," */")});return[n].concat(i).concat([o]).join("\n")}var a,s,u;return[n].join("\n")}(t,e);return t[2]?"@media ".concat(t[2]," {").concat(n,"}"):n}).join("")},t.i=function(e,n,r){"string"==typeof e&&(e=[[null,e,""]]);var o={};if(r)for(var i=0;i<this.length;i++){var a=this[i][0];null!=a&&(o[a]=!0)}for(var s=0;s<e.length;s++){var u=[].concat(e[s]);r&&o[u[0]]||(n&&(u[2]?u[2]="".concat(n," and ").concat(u[2]):u[2]=n),t.push(u))}},t}},164:function(e,t,n){"use strict";n.r(t);var r={name:"AppNavigationCaption",props:{title:{type:String,required:!0}}},o=(n(195),n(0)),i=Object(o.a)(r,function(){var e=this.$createElement;return(this._self._c||e)("li",{staticClass:"app-navigation-caption"},[this._v("\n\t"+this._s(this.title)+"\n")])},[],!1,null,"779383f0",null).exports;n.d(t,"AppNavigationCaption",function(){return i});t.default=i},195:function(e,t,n){"use strict";var r=n(92);n.n(r).a},196:function(e,t,n){(t=n(1)(!1)).push([e.i,".app-navigation-caption[data-v-779383f0]{font-weight:bold;color:var(--color-text-maxcontrast);line-height:44px;padding-left:44px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:0.7;box-shadow:none !important;order:1;flex-shrink:0}.app-navigation-caption[data-v-779383f0]:not(:first-child){margin-top:22px}\n",""]),e.exports=t},2:function(e,t,n){"use strict";function r(e,t){for(var n=[],r={},o=0;o<t.length;o++){var i=t[o],a=i[0],s={id:e+":"+o,css:i[1],media:i[2],sourceMap:i[3]};r[a]?r[a].parts.push(s):n.push(r[a]={id:a,parts:[s]})}return n}n.r(t),n.d(t,"default",function(){return v});var o="undefined"!=typeof document;if("undefined"!=typeof DEBUG&&DEBUG&&!o)throw new Error("vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.");var i={},a=o&&(document.head||document.getElementsByTagName("head")[0]),s=null,u=0,c=!1,p=function(){},f=null,d="data-vue-ssr-id",l="undefined"!=typeof navigator&&/msie [6-9]\b/.test(navigator.userAgent.toLowerCase());function v(e,t,n,o){c=n,f=o||{};var a=r(e,t);return h(a),function(t){for(var n=[],o=0;o<a.length;o++){var s=a[o];(u=i[s.id]).refs--,n.push(u)}t?h(a=r(e,t)):a=[];for(o=0;o<n.length;o++){var u;if(0===(u=n[o]).refs){for(var c=0;c<u.parts.length;c++)u.parts[c]();delete i[u.id]}}}}function h(e){for(var t=0;t<e.length;t++){var n=e[t],r=i[n.id];if(r){r.refs++;for(var o=0;o<r.parts.length;o++)r.parts[o](n.parts[o]);for(;o<n.parts.length;o++)r.parts.push(m(n.parts[o]));r.parts.length>n.parts.length&&(r.parts.length=n.parts.length)}else{var a=[];for(o=0;o<n.parts.length;o++)a.push(m(n.parts[o]));i[n.id]={id:n.id,refs:1,parts:a}}}}function g(){var e=document.createElement("style");return e.type="text/css",a.appendChild(e),e}function m(e){var t,n,r=document.querySelector("style["+d+'~="'+e.id+'"]');if(r){if(c)return p;r.parentNode.removeChild(r)}if(l){var o=u++;r=s||(s=g()),t=x.bind(null,r,o,!1),n=x.bind(null,r,o,!0)}else r=g(),t=function(e,t){var n=t.css,r=t.media,o=t.sourceMap;r&&e.setAttribute("media",r);f.ssrId&&e.setAttribute(d,t.id);o&&(n+="\n/*# sourceURL="+o.sources[0]+" */",n+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(o))))+" */");if(e.styleSheet)e.styleSheet.cssText=n;else{for(;e.firstChild;)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(n))}}.bind(null,r),n=function(){r.parentNode.removeChild(r)};return t(e),function(r){if(r){if(r.css===e.css&&r.media===e.media&&r.sourceMap===e.sourceMap)return;t(e=r)}else n()}}var y,b=(y=[],function(e,t){return y[e]=t,y.filter(Boolean).join("\n")});function x(e,t,n,r){var o=n?"":r.css;if(e.styleSheet)e.styleSheet.cssText=b(t,o);else{var i=document.createTextNode(o),a=e.childNodes;a[t]&&e.removeChild(a[t]),a.length?e.insertBefore(i,a[t]):e.appendChild(i)}}},92:function(e,t,n){var r=n(196);"string"==typeof r&&(r=[[e.i,r,""]]),r.locals&&(e.exports=r.locals);(0,n(2).default)("2ebdb218",r,!0,{})}})});
+//# sourceMappingURL=AppNavigationCaption.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@nextcloud/vue/dist/Components/AppNavigationNew.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/@nextcloud/vue/dist/Components/AppNavigationNew.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(e,t){ true?module.exports=t():undefined}(window,function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="/dist/",n(n.s=167)}({0:function(e,t,n){"use strict";function r(e,t,n,r,o,i,a,s){var u,c="function"==typeof e?e.options:e;if(t&&(c.render=t,c.staticRenderFns=n,c._compiled=!0),r&&(c.functional=!0),i&&(c._scopeId="data-v-"+i),a?(u=function(e){(e=e||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext)||"undefined"==typeof __VUE_SSR_CONTEXT__||(e=__VUE_SSR_CONTEXT__),o&&o.call(this,e),e&&e._registeredComponents&&e._registeredComponents.add(a)},c._ssrRegister=u):o&&(u=s?function(){o.call(this,this.$root.$options.shadowRoot)}:o),u)if(c.functional){c._injectStyles=u;var d=c.render;c.render=function(e,t){return u.call(t),d(e,t)}}else{var f=c.beforeCreate;c.beforeCreate=f?[].concat(f,u):[u]}return{exports:e,options:c}}n.d(t,"a",function(){return r})},1:function(e,t,n){"use strict";e.exports=function(e){var t=[];return t.toString=function(){return this.map(function(t){var n=function(e,t){var n=e[1]||"",r=e[3];if(!r)return n;if(t&&"function"==typeof btoa){var o=(a=r,s=btoa(unescape(encodeURIComponent(JSON.stringify(a)))),u="sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(s),"/*# ".concat(u," */")),i=r.sources.map(function(e){return"/*# sourceURL=".concat(r.sourceRoot||"").concat(e," */")});return[n].concat(i).concat([o]).join("\n")}var a,s,u;return[n].join("\n")}(t,e);return t[2]?"@media ".concat(t[2]," {").concat(n,"}"):n}).join("")},t.i=function(e,n,r){"string"==typeof e&&(e=[[null,e,""]]);var o={};if(r)for(var i=0;i<this.length;i++){var a=this[i][0];null!=a&&(o[a]=!0)}for(var s=0;s<e.length;s++){var u=[].concat(e[s]);r&&o[u[0]]||(n&&(u[2]?u[2]="".concat(n," and ").concat(u[2]):u[2]=n),t.push(u))}},t}},167:function(e,t,n){"use strict";n.r(t);var r={props:{buttonId:{type:String,required:!1,default:""},buttonClass:{type:[String,Array,Object],required:!1,default:""},disabled:{type:Boolean,required:!1,default:!1},text:{type:String,required:!0}}},o=(n(205),n(0)),i=Object(o.a)(r,function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{staticClass:"app-navigation-new"},[n("button",{class:e.buttonClass,attrs:{id:e.buttonId,type:"button",disabled:e.disabled},on:{click:function(t){return e.$emit("click")}}},[e._v("\n\t\t"+e._s(e.text)+"\n\t")])])},[],!1,null,"15885669",null).exports;n.d(t,"AppNavigationNew",function(){return i});
+/*
+ * @copyright 2018 Christoph Wurst <christoph@winzerhof-wurst.at>
+ *
+ * @author 2018 Christoph Wurst <christoph@winzerhof-wurst.at>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */t.default=i},2:function(e,t,n){"use strict";function r(e,t){for(var n=[],r={},o=0;o<t.length;o++){var i=t[o],a=i[0],s={id:e+":"+o,css:i[1],media:i[2],sourceMap:i[3]};r[a]?r[a].parts.push(s):n.push(r[a]={id:a,parts:[s]})}return n}n.r(t),n.d(t,"default",function(){return v});var o="undefined"!=typeof document;if("undefined"!=typeof DEBUG&&DEBUG&&!o)throw new Error("vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.");var i={},a=o&&(document.head||document.getElementsByTagName("head")[0]),s=null,u=0,c=!1,d=function(){},f=null,l="data-vue-ssr-id",p="undefined"!=typeof navigator&&/msie [6-9]\b/.test(navigator.userAgent.toLowerCase());function v(e,t,n,o){c=n,f=o||{};var a=r(e,t);return g(a),function(t){for(var n=[],o=0;o<a.length;o++){var s=a[o];(u=i[s.id]).refs--,n.push(u)}t?g(a=r(e,t)):a=[];for(o=0;o<n.length;o++){var u;if(0===(u=n[o]).refs){for(var c=0;c<u.parts.length;c++)u.parts[c]();delete i[u.id]}}}}function g(e){for(var t=0;t<e.length;t++){var n=e[t],r=i[n.id];if(r){r.refs++;for(var o=0;o<r.parts.length;o++)r.parts[o](n.parts[o]);for(;o<n.parts.length;o++)r.parts.push(b(n.parts[o]));r.parts.length>n.parts.length&&(r.parts.length=n.parts.length)}else{var a=[];for(o=0;o<n.parts.length;o++)a.push(b(n.parts[o]));i[n.id]={id:n.id,refs:1,parts:a}}}}function h(){var e=document.createElement("style");return e.type="text/css",a.appendChild(e),e}function b(e){var t,n,r=document.querySelector("style["+l+'~="'+e.id+'"]');if(r){if(c)return d;r.parentNode.removeChild(r)}if(p){var o=u++;r=s||(s=h()),t=x.bind(null,r,o,!1),n=x.bind(null,r,o,!0)}else r=h(),t=function(e,t){var n=t.css,r=t.media,o=t.sourceMap;r&&e.setAttribute("media",r);f.ssrId&&e.setAttribute(l,t.id);o&&(n+="\n/*# sourceURL="+o.sources[0]+" */",n+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(o))))+" */");if(e.styleSheet)e.styleSheet.cssText=n;else{for(;e.firstChild;)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(n))}}.bind(null,r),n=function(){r.parentNode.removeChild(r)};return t(e),function(r){if(r){if(r.css===e.css&&r.media===e.media&&r.sourceMap===e.sourceMap)return;t(e=r)}else n()}}var y,m=(y=[],function(e,t){return y[e]=t,y.filter(Boolean).join("\n")});function x(e,t,n,r){var o=n?"":r.css;if(e.styleSheet)e.styleSheet.cssText=m(t,o);else{var i=document.createTextNode(o),a=e.childNodes;a[t]&&e.removeChild(a[t]),a.length?e.insertBefore(i,a[t]):e.appendChild(i)}}},205:function(e,t,n){"use strict";var r=n(97);n.n(r).a},206:function(e,t,n){(t=n(1)(!1)).push([e.i,".app-navigation-new[data-v-15885669]{display:block;padding:10px}.app-navigation-new button[data-v-15885669]{display:inline-block;width:100%;padding:10px;padding-left:34px;background-position:10px center;text-align:left;margin:0}\n",""]),e.exports=t},97:function(e,t,n){var r=n(206);"string"==typeof r&&(r=[[e.i,r,""]]),r.locals&&(e.exports=r.locals);(0,n(2).default)("3890adfa",r,!0,{})}})});
+//# sourceMappingURL=AppNavigationNew.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@nextcloud/vue/dist/Components/AppNavigationSettings.js":
+/*!******************************************************************************!*\
+  !*** ./node_modules/@nextcloud/vue/dist/Components/AppNavigationSettings.js ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(e,t){ true?module.exports=t():undefined}(window,function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="/dist/",n(n.s=168)}({0:function(e,t,n){"use strict";function r(e,t,n,r,o,i,a,s){var u,c="function"==typeof e?e.options:e;if(t&&(c.render=t,c.staticRenderFns=n,c._compiled=!0),r&&(c.functional=!0),i&&(c._scopeId="data-v-"+i),a?(u=function(e){(e=e||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext)||"undefined"==typeof __VUE_SSR_CONTEXT__||(e=__VUE_SSR_CONTEXT__),o&&o.call(this,e),e&&e._registeredComponents&&e._registeredComponents.add(a)},c._ssrRegister=u):o&&(u=s?function(){o.call(this,this.$root.$options.shadowRoot)}:o),u)if(c.functional){c._injectStyles=u;var d=c.render;c.render=function(e,t){return u.call(t),d(e,t)}}else{var p=c.beforeCreate;c.beforeCreate=p?[].concat(p,u):[u]}return{exports:e,options:c}}n.d(t,"a",function(){return r})},1:function(e,t,n){"use strict";e.exports=function(e){var t=[];return t.toString=function(){return this.map(function(t){var n=function(e,t){var n=e[1]||"",r=e[3];if(!r)return n;if(t&&"function"==typeof btoa){var o=(a=r,s=btoa(unescape(encodeURIComponent(JSON.stringify(a)))),u="sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(s),"/*# ".concat(u," */")),i=r.sources.map(function(e){return"/*# sourceURL=".concat(r.sourceRoot||"").concat(e," */")});return[n].concat(i).concat([o]).join("\n")}var a,s,u;return[n].join("\n")}(t,e);return t[2]?"@media ".concat(t[2]," {").concat(n,"}"):n}).join("")},t.i=function(e,n,r){"string"==typeof e&&(e=[[null,e,""]]);var o={};if(r)for(var i=0;i<this.length;i++){var a=this[i][0];null!=a&&(o[a]=!0)}for(var s=0;s<e.length;s++){var u=[].concat(e[s]);r&&o[u[0]]||(n&&(u[2]?u[2]="".concat(n," and ").concat(u[2]):u[2]=n),t.push(u))}},t}},15:function(e,t){e.exports=__webpack_require__(/*! v-click-outside */ "./node_modules/v-click-outside/dist/v-click-outside.umd.js")},168:function(e,n,r){"use strict";r.r(n);var o={directives:{ClickOutside:r(15).directive},props:{title:{type:String,required:!1,default:t("core","Settings")}},data:function(){return{open:!1}},methods:{toggleMenu:function(){this.open=!this.open},closeMenu:function(){this.open=!1}}},i=(r(207),r(0)),a=Object(i.a)(o,function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{directives:[{name:"click-outside",rawName:"v-click-outside",value:e.closeMenu,expression:"closeMenu"}],class:{open:e.open},attrs:{id:"app-settings"}},[n("div",{attrs:{id:"app-settings-header"}},[n("button",{staticClass:"settings-button",on:{click:e.toggleMenu}},[e._v("\n\t\t\t"+e._s(e.title)+"\n\t\t")])]),e._v(" "),n("transition",{attrs:{name:"slide-up"}},[n("div",{directives:[{name:"show",rawName:"v-show",value:e.open,expression:"open"}],attrs:{id:"app-settings-content"}},[e._t("default")],2)])],1)},[],!1,null,"7dc165a0",null).exports;r.d(n,"AppNavigationSettings",function(){return a});
+/*
+ * @copyright 2018 Christoph Wurst <christoph@winzerhof-wurst.at>
+ *
+ * @author 2018 Christoph Wurst <christoph@winzerhof-wurst.at>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */n.default=a},2:function(e,t,n){"use strict";function r(e,t){for(var n=[],r={},o=0;o<t.length;o++){var i=t[o],a=i[0],s={id:e+":"+o,css:i[1],media:i[2],sourceMap:i[3]};r[a]?r[a].parts.push(s):n.push(r[a]={id:a,parts:[s]})}return n}n.r(t),n.d(t,"default",function(){return v});var o="undefined"!=typeof document;if("undefined"!=typeof DEBUG&&DEBUG&&!o)throw new Error("vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.");var i={},a=o&&(document.head||document.getElementsByTagName("head")[0]),s=null,u=0,c=!1,d=function(){},p=null,l="data-vue-ssr-id",f="undefined"!=typeof navigator&&/msie [6-9]\b/.test(navigator.userAgent.toLowerCase());function v(e,t,n,o){c=n,p=o||{};var a=r(e,t);return h(a),function(t){for(var n=[],o=0;o<a.length;o++){var s=a[o];(u=i[s.id]).refs--,n.push(u)}t?h(a=r(e,t)):a=[];for(o=0;o<n.length;o++){var u;if(0===(u=n[o]).refs){for(var c=0;c<u.parts.length;c++)u.parts[c]();delete i[u.id]}}}}function h(e){for(var t=0;t<e.length;t++){var n=e[t],r=i[n.id];if(r){r.refs++;for(var o=0;o<r.parts.length;o++)r.parts[o](n.parts[o]);for(;o<n.parts.length;o++)r.parts.push(m(n.parts[o]));r.parts.length>n.parts.length&&(r.parts.length=n.parts.length)}else{var a=[];for(o=0;o<n.parts.length;o++)a.push(m(n.parts[o]));i[n.id]={id:n.id,refs:1,parts:a}}}}function g(){var e=document.createElement("style");return e.type="text/css",a.appendChild(e),e}function m(e){var t,n,r=document.querySelector("style["+l+'~="'+e.id+'"]');if(r){if(c)return d;r.parentNode.removeChild(r)}if(f){var o=u++;r=s||(s=g()),t=x.bind(null,r,o,!1),n=x.bind(null,r,o,!0)}else r=g(),t=function(e,t){var n=t.css,r=t.media,o=t.sourceMap;r&&e.setAttribute("media",r);p.ssrId&&e.setAttribute(l,t.id);o&&(n+="\n/*# sourceURL="+o.sources[0]+" */",n+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(o))))+" */");if(e.styleSheet)e.styleSheet.cssText=n;else{for(;e.firstChild;)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(n))}}.bind(null,r),n=function(){r.parentNode.removeChild(r)};return t(e),function(r){if(r){if(r.css===e.css&&r.media===e.media&&r.sourceMap===e.sourceMap)return;t(e=r)}else n()}}var y,b=(y=[],function(e,t){return y[e]=t,y.filter(Boolean).join("\n")});function x(e,t,n,r){var o=n?"":r.css;if(e.styleSheet)e.styleSheet.cssText=b(t,o);else{var i=document.createTextNode(o),a=e.childNodes;a[t]&&e.removeChild(a[t]),a.length?e.insertBefore(i,a[t]):e.appendChild(i)}}},207:function(e,t,n){"use strict";var r=n(98);n.n(r).a},208:function(e,t,n){(t=n(1)(!1)).push([e.i,"#app-settings-content[data-v-7dc165a0]{display:block;padding:10px;background-color:var(--color-main-background);max-height:300px;overflow-y:auto;box-sizing:border-box}.slide-up-leave-active[data-v-7dc165a0],.slide-up-enter-active[data-v-7dc165a0]{transition-duration:var(--animation-slow);transition-property:max-height, padding;overflow-y:hidden !important}.slide-up-enter[data-v-7dc165a0],.slide-up-leave-to[data-v-7dc165a0]{max-height:0 !important;padding:0 10px !important}\n",""]),e.exports=t},98:function(e,t,n){var r=n(208);"string"==typeof r&&(r=[[e.i,r,""]]),r.locals&&(e.exports=r.locals);(0,n(2).default)("56fb5cfa",r,!0,{})}})});
+//# sourceMappingURL=AppNavigationSettings.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@nextcloud/vue/dist/Components/Multiselect.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@nextcloud/vue/dist/Components/Multiselect.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(A,t){ true?module.exports=t():undefined}(window,function(){return function(A){var t={};function e(i){if(t[i])return t[i].exports;var a=t[i]={i:i,l:!1,exports:{}};return A[i].call(a.exports,a,a.exports,e),a.l=!0,a.exports}return e.m=A,e.c=t,e.d=function(A,t,i){e.o(A,t)||Object.defineProperty(A,t,{enumerable:!0,get:i})},e.r=function(A){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(A,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(A,"__esModule",{value:!0})},e.t=function(A,t){if(1&t&&(A=e(A)),8&t)return A;if(4&t&&"object"==typeof A&&A&&A.__esModule)return A;var i=Object.create(null);if(e.r(i),Object.defineProperty(i,"default",{enumerable:!0,value:A}),2&t&&"string"!=typeof A)for(var a in A)e.d(i,a,function(t){return A[t]}.bind(null,a));return i},e.n=function(A){var t=A&&A.__esModule?function(){return A.default}:function(){return A};return e.d(t,"a",t),t},e.o=function(A,t){return Object.prototype.hasOwnProperty.call(A,t)},e.p="/dist/",e(e.s=107)}([function(A,t,e){"use strict";function i(A,t,e,i,a,n,o,r){var s,c="function"==typeof A?A.options:A;if(t&&(c.render=t,c.staticRenderFns=e,c._compiled=!0),i&&(c.functional=!0),n&&(c._scopeId="data-v-"+n),o?(s=function(A){(A=A||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext)||"undefined"==typeof __VUE_SSR_CONTEXT__||(A=__VUE_SSR_CONTEXT__),a&&a.call(this,A),A&&A._registeredComponents&&A._registeredComponents.add(o)},c._ssrRegister=s):a&&(s=r?function(){a.call(this,this.$root.$options.shadowRoot)}:a),s)if(c.functional){c._injectStyles=s;var l=c.render;c.render=function(A,t){return s.call(t),l(A,t)}}else{var d=c.beforeCreate;c.beforeCreate=d?[].concat(d,s):[s]}return{exports:A,options:c}}e.d(t,"a",function(){return i})},function(A,t,e){"use strict";A.exports=function(A){var t=[];return t.toString=function(){return this.map(function(t){var e=function(A,t){var e=A[1]||"",i=A[3];if(!i)return e;if(t&&"function"==typeof btoa){var a=(o=i,r=btoa(unescape(encodeURIComponent(JSON.stringify(o)))),s="sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(r),"/*# ".concat(s," */")),n=i.sources.map(function(A){return"/*# sourceURL=".concat(i.sourceRoot||"").concat(A," */")});return[e].concat(n).concat([a]).join("\n")}var o,r,s;return[e].join("\n")}(t,A);return t[2]?"@media ".concat(t[2]," {").concat(e,"}"):e}).join("")},t.i=function(A,e,i){"string"==typeof A&&(A=[[null,A,""]]);var a={};if(i)for(var n=0;n<this.length;n++){var o=this[n][0];null!=o&&(a[o]=!0)}for(var r=0;r<A.length;r++){var s=[].concat(A[r]);i&&a[s[0]]||(e&&(s[2]?s[2]="".concat(e," and ").concat(s[2]):s[2]=e),t.push(s))}},t}},function(A,t,e){"use strict";function i(A,t){for(var e=[],i={},a=0;a<t.length;a++){var n=t[a],o=n[0],r={id:A+":"+a,css:n[1],media:n[2],sourceMap:n[3]};i[o]?i[o].parts.push(r):e.push(i[o]={id:o,parts:[r]})}return e}e.r(t),e.d(t,"default",function(){return g});var a="undefined"!=typeof document;if("undefined"!=typeof DEBUG&&DEBUG&&!a)throw new Error("vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.");var n={},o=a&&(document.head||document.getElementsByTagName("head")[0]),r=null,s=0,c=!1,l=function(){},d=null,u="data-vue-ssr-id",p="undefined"!=typeof navigator&&/msie [6-9]\b/.test(navigator.userAgent.toLowerCase());function g(A,t,e,a){c=e,d=a||{};var o=i(A,t);return f(o),function(t){for(var e=[],a=0;a<o.length;a++){var r=o[a];(s=n[r.id]).refs--,e.push(s)}t?f(o=i(A,t)):o=[];for(a=0;a<e.length;a++){var s;if(0===(s=e[a]).refs){for(var c=0;c<s.parts.length;c++)s.parts[c]();delete n[s.id]}}}}function f(A){for(var t=0;t<A.length;t++){var e=A[t],i=n[e.id];if(i){i.refs++;for(var a=0;a<i.parts.length;a++)i.parts[a](e.parts[a]);for(;a<e.parts.length;a++)i.parts.push(v(e.parts[a]));i.parts.length>e.parts.length&&(i.parts.length=e.parts.length)}else{var o=[];for(a=0;a<e.parts.length;a++)o.push(v(e.parts[a]));n[e.id]={id:e.id,refs:1,parts:o}}}}function m(){var A=document.createElement("style");return A.type="text/css",o.appendChild(A),A}function v(A){var t,e,i=document.querySelector("style["+u+'~="'+A.id+'"]');if(i){if(c)return l;i.parentNode.removeChild(i)}if(p){var a=s++;i=r||(r=m()),t=x.bind(null,i,a,!1),e=x.bind(null,i,a,!0)}else i=m(),t=function(A,t){var e=t.css,i=t.media,a=t.sourceMap;i&&A.setAttribute("media",i);d.ssrId&&A.setAttribute(u,t.id);a&&(e+="\n/*# sourceURL="+a.sources[0]+" */",e+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(a))))+" */");if(A.styleSheet)A.styleSheet.cssText=e;else{for(;A.firstChild;)A.removeChild(A.firstChild);A.appendChild(document.createTextNode(e))}}.bind(null,i),e=function(){i.parentNode.removeChild(i)};return t(A),function(i){if(i){if(i.css===A.css&&i.media===A.media&&i.sourceMap===A.sourceMap)return;t(A=i)}else e()}}var b,h=(b=[],function(A,t){return b[A]=t,b.filter(Boolean).join("\n")});function x(A,t,e,i){var a=e?"":i.css;if(A.styleSheet)A.styleSheet.cssText=h(t,a);else{var n=document.createTextNode(a),o=A.childNodes;o[t]&&A.removeChild(o[t]),o.length?A.insertBefore(n,o[t]):A.appendChild(n)}}},function(A,t){A.exports=__webpack_require__(/*! core-js/modules/es.object.to-string */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/es.object.to-string.js")},function(A,t){A.exports=__webpack_require__(/*! v-tooltip */ "./node_modules/v-tooltip/dist/v-tooltip.esm.js")},,function(A,t){A.exports=__webpack_require__(/*! core-js/modules/es.function.name */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/es.function.name.js")},function(A,t,e){"use strict";A.exports=function(A,t){return t||(t={}),"string"!=typeof(A=A&&A.__esModule?A.default:A)?A:(/^['"].*['"]$/.test(A)&&(A=A.slice(1,-1)),t.hash&&(A+=t.hash),/["'() \t\n]/.test(A)||t.needQuotes?'"'.concat(A.replace(/"/g,'\\"').replace(/\n/g,"\\n"),'"'):A)}},function(A,t,e){"use strict";e.r(t),t.default="data:application/vnd.ms-fontobject;base64,qgoAAOAJAAABAAIAAAAAAAIABQMAAAAAAAABQJABAAAAAExQAAAAABAAAAAAAAAAAAAAAAAAAAEAAAAAYwwKLwAAAAAAAAAAAAAAAAAAAAAAACgAAGkAYwBvAG4AZgBvAG4AdAAtAHYAdQBlAC0AYwAwAGYAOQAzAGIAOQAAAAAAABYAAFYAZQByAHMAaQBvAG4AIAAxAC4AMAAAKAAAaQBjAG8AbgBmAG8AbgB0AC0AdgB1AGUALQBjADAAZgA5ADMAYgA5AAAAAAABAAAACgCAAAMAIE9TLzJ045CJAAAArAAAAGBjbWFwAA3rsgAAAQwAAAFCZ2x5ZrP154sAAAJQAAADgGhlYWQnIrhJAAAF0AAAADZoaGVhJxwTgAAABggAAAAkaG10eBOI//8AAAYsAAAAHmxvY2EFNAW+AAAGTAAAABxtYXhwARoAVwAABmgAAAAgbmFtZUwtfAwAAAaIAAACpnBvc3TeHIDjAAAJMAAAALAABBOIAZAABQAADGUNrAAAArwMZQ2sAAAJYAD1BQoAAAIABQMAAAAAAAAAAAAAEAAAAAAAAAAAAAAAUGZFZABA6gHqDBOIAAABwhOIAAAAAAABAAAAAAAAAAAAAAAgAAAAAAADAAAAAwAAABwAAQAAAAAAPAADAAEAAAAcAAQAIAAAAAQABAABAADqDP//AADqAf//FgAAAQAAAAAAAAEGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAOpg9DAAUACwAACQIRCQQRCQEOpvqCBX77ugRG+oL6ggV++7oERg9C+oL6ggE4BEYERgE4+oL6ggE4BEYERgABAAAAAA1uElAABQAACQERCQERBhsHU/d0CIwJxPit/sgIiwiM/scAAgAAAAAP3w9DAAUACwAACQIRCQQRCQEE4gV++oIERvu6BX4Ff/qBBEb7ugRGBX4Ffv7I+7r7uv7IBX4Ffv7I+7r7ugABAAAAAA6mElAABQAACQERCQERDW74rQiL93UJxAdTATn3dPd1ATgAAQAAAAARhw+DAAUAAAkFD8338/v7/kYFvwnHD4P38wQF/kf6QQnGAAEAAAAAERcRFwALAAAJCxEX/e36wPrA/e0FQPrAAhMFQAVAAhP6wASE/e0FQPrAAhMFQAVAAhP6wAVA/e36wAAB//8AABOTEuwAMwAAASIHDgEXFhcBISYHBgcGBwYUFxYXFhcWNyEBBgcGFxYXHgEXFhcWNzY3ATY3NicmJwEuAQpgZU9KRhASSAXX8eBNPjopJxQUFBQnKTo+TQ4g+ik3GhgDAxsZVjU3Oz46PzUH7TsVFRQVPPgTLHQS7Dk0rFlgR/oqARsYLiw5OHg4OSwuGBsC+ik1Pzs+Ojc2VhkaAwMYGTgH7DxRUE9SPAfsLTIAAAADAAAAABEXERcAAwAHAAsAAAERIREBESERAREhEQJxDqbxWg6m8VoOphEX/Y8Ccfnm/Y8Ccfnl/Y8CcQADAAAAABJQDDUAGAAxAEoAAAEiBw4BBwYWFx4BFxYyNz4BNzY0Jy4BJyYhIgcOAQcGFBceARcWMjc+ATc2NCcuAScmISIHDgEHBhQXHgEXFjI3PgE3NjQnLgEnJgOqgHRwrS8yATEvrXB0/3RwrS8yMi+tcHQFm390cK0wMTEwrXB0/nRwrTAxMTCtcHQFnIB0cK0vMTEvrXB0/3RwrS8yMi+tcHQMNTEwrXB0/nRwrTAxMTCtcHT+dHCtMDExMK1wdP50cK0wMTEwrXB0/nRwrTAxMTCtcHT+dHCtMDExMK1wdP50cK0wMQAAAAIAAAAAD98P3wADAAcAAAERIREhESERA6oE4gJxBOIP3/PLDDXzyww1AAAAAQAAAAARFxEXAAIAAAkCAnEOpvFaERf4rfitAAEAAAAADqYMNQACAAAJAgTiBOIE4gw1+x4E4AABAAAAAQAALwoMY18PPPUACxOIAAAAANphmGwAAAAA2hC8bP//AAATkxLsAAAACAACAAAAAAAAAAEAABOIAAAAABOI////9ROTAAEAAAAAAAAAAAAAAAAAAAACAAAAABOIAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAAAAACIANgBYAGwAgACgAPoBGAGOAaQBsgHAAAEAAAANAEsAAwAAAAAAAgAAAAoACgAAAP8AAAAAAAAAAAAQAMYAAQAAAAAAAQAUAAAAAQAAAAAAAgAHABQAAQAAAAAAAwAUABsAAQAAAAAABAAUAC8AAQAAAAAABQALAEMAAQAAAAAABgAUAE4AAQAAAAAACgArAGIAAQAAAAAACwATAI0AAwABBAkAAQAoAKAAAwABBAkAAgAOAMgAAwABBAkAAwAoANYAAwABBAkABAAoAP4AAwABBAkABQAWASYAAwABBAkABgAoATwAAwABBAkACgBWAWQAAwABBAkACwAmAbppY29uZm9udC12dWUtYzBmOTNiOVJlZ3VsYXJpY29uZm9udC12dWUtYzBmOTNiOWljb25mb250LXZ1ZS1jMGY5M2I5VmVyc2lvbiAxLjBpY29uZm9udC12dWUtYzBmOTNiOUdlbmVyYXRlZCBieSBzdmcydHRmIGZyb20gRm9udGVsbG8gcHJvamVjdC5odHRwOi8vZm9udGVsbG8uY29tAGkAYwBvAG4AZgBvAG4AdAAtAHYAdQBlAC0AYwAwAGYAOQAzAGIAOQBSAGUAZwB1AGwAYQByAGkAYwBvAG4AZgBvAG4AdAAtAHYAdQBlAC0AYwAwAGYAOQAzAGIAOQBpAGMAbwBuAGYAbwBuAHQALQB2AHUAZQAtAGMAMABmADkAMwBiADkAVgBlAHIAcwBpAG8AbgAgADEALgAwAGkAYwBvAG4AZgBvAG4AdAAtAHYAdQBlAC0AYwAwAGYAOQAzAGIAOQBHAGUAbgBlAHIAYQB0AGUAZAAgAGIAeQAgAHMAdgBnADIAdAB0AGYAIABmAHIAbwBtACAARgBvAG4AdABlAGwAbABvACAAcAByAG8AagBlAGMAdAAuAGgAdAB0AHAAOgAvAC8AZgBvAG4AdABlAGwAbABvAC4AYwBvAG0AAAACAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAAAAAANAA0AAAECAQMBBAEFAQYBBwEIAQkBCgELAQwBDRFhcnJvdy1sZWZ0LWRvdWJsZQphcnJvdy1sZWZ0EmFycm93LXJpZ2h0LWRvdWJsZQthcnJvdy1yaWdodAljaGVja21hcmsFY2xvc2UHY29uZmlybQRtZW51BG1vcmUFcGF1c2UEcGxheQp0cmlhbmdsZS1z"},function(A,t,e){"use strict";e.r(t),t.default="data:font/woff;base64,d09GRgABAAAAAAooAAoAAAAACeAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABPUy8yAAAA9AAAAGAAAABgdOOQiWNtYXAAAAFUAAABQgAAAUIADeuyZ2x5ZgAAApgAAAOAAAADgLP154toZWFkAAAGGAAAADYAAAA2JyK4SWhoZWEAAAZQAAAAJAAAACQnHBOAaG10eAAABnQAAAAeAAAAHhOI//9sb2NhAAAGlAAAABwAAAAcBTQFvm1heHAAAAawAAAAIAAAACABGgBXbmFtZQAABtAAAAKmAAACpkwtfAxwb3N0AAAJeAAAALAAAACw3hyA4wAEE4gBkAAFAAAMZQ2sAAACvAxlDawAAAlgAPUFCgAAAgAFAwAAAAAAAAAAAAAQAAAAAAAAAAAAAABQZkVkAEDqAeoME4gAAAHCE4gAAAAAAAEAAAAAAAAAAAAAACAAAAAAAAMAAAADAAAAHAABAAAAAAA8AAMAAQAAABwABAAgAAAABAAEAAEAAOoM//8AAOoB//8WAAABAAAAAAAAAQYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA6mD0MABQALAAAJAhEJBBEJAQ6m+oIFfvu6BEb6gvqCBX77ugRGD0L6gvqCATgERgRGATj6gvqCATgERgRGAAEAAAAADW4SUAAFAAAJAREJAREGGwdT93QIjAnE+K3+yAiLCIz+xwACAAAAAA/fD0MABQALAAAJAhEJBBEJAQTiBX76ggRG+7oFfgV/+oEERvu6BEYFfgV+/sj7uvu6/sgFfgV+/sj7uvu6AAEAAAAADqYSUAAFAAAJAREJARENbvitCIv3dQnEB1MBOfd093UBOAABAAAAABGHD4MABQAACQUPzffz+/v+RgW/CccPg/fzBAX+R/pBCcYAAQAAAAARFxEXAAsAAAkLERf97frA+sD97QVA+sACEwVABUACE/rABIT97QVA+sACEwVABUACE/rABUD97frAAAH//wAAE5MS7AAzAAABIgcOARcWFwEhJgcGBwYHBhQXFhcWFxY3IQEGBwYXFhceARcWFxY3NjcBNjc2JyYnAS4BCmBlT0pGEBJIBdfx4E0+OiknFBQUFCcpOj5NDiD6KTcaGAMDGxlWNTc7Pjo/NQftOxUVFBU8+BMsdBLsOTSsWWBH+ioBGxguLDk4eDg5LC4YGwL6KTU/Oz46NzZWGRoDAxgZOAfsPFFQT1I8B+wtMgAAAAMAAAAAERcRFwADAAcACwAAAREhEQERIREBESERAnEOpvFaDqbxWg6mERf9jwJx+eb9jwJx+eX9jwJxAAMAAAAAElAMNQAYADEASgAAASIHDgEHBhYXHgEXFjI3PgE3NjQnLgEnJiEiBw4BBwYUFx4BFxYyNz4BNzY0Jy4BJyYhIgcOAQcGFBceARcWMjc+ATc2NCcuAScmA6qAdHCtLzIBMS+tcHT/dHCtLzIyL61wdAWbf3RwrTAxMTCtcHT+dHCtMDExMK1wdAWcgHRwrS8xMS+tcHT/dHCtLzIyL61wdAw1MTCtcHT+dHCtMDExMK1wdP50cK0wMTEwrXB0/nRwrTAxMTCtcHT+dHCtMDExMK1wdP50cK0wMTEwrXB0/nRwrTAxAAAAAgAAAAAP3w/fAAMABwAAAREhESERIREDqgTiAnEE4g/f88sMNfPLDDUAAAABAAAAABEXERcAAgAACQICcQ6m8VoRF/it+K0AAQAAAAAOpgw1AAIAAAkCBOIE4gTiDDX7HgTgAAEAAAABAAAvCgxjXw889QALE4gAAAAA2mGYbAAAAADaELxs//8AABOTEuwAAAAIAAIAAAAAAAAAAQAAE4gAAAAAE4j////1E5MAAQAAAAAAAAAAAAAAAAAAAAIAAAAAE4gAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAIgA2AFgAbACAAKAA+gEYAY4BpAGyAcAAAQAAAA0ASwADAAAAAAACAAAACgAKAAAA/wAAAAAAAAAAABAAxgABAAAAAAABABQAAAABAAAAAAACAAcAFAABAAAAAAADABQAGwABAAAAAAAEABQALwABAAAAAAAFAAsAQwABAAAAAAAGABQATgABAAAAAAAKACsAYgABAAAAAAALABMAjQADAAEECQABACgAoAADAAEECQACAA4AyAADAAEECQADACgA1gADAAEECQAEACgA/gADAAEECQAFABYBJgADAAEECQAGACgBPAADAAEECQAKAFYBZAADAAEECQALACYBumljb25mb250LXZ1ZS1jMGY5M2I5UmVndWxhcmljb25mb250LXZ1ZS1jMGY5M2I5aWNvbmZvbnQtdnVlLWMwZjkzYjlWZXJzaW9uIDEuMGljb25mb250LXZ1ZS1jMGY5M2I5R2VuZXJhdGVkIGJ5IHN2ZzJ0dGYgZnJvbSBGb250ZWxsbyBwcm9qZWN0Lmh0dHA6Ly9mb250ZWxsby5jb20AaQBjAG8AbgBmAG8AbgB0AC0AdgB1AGUALQBjADAAZgA5ADMAYgA5AFIAZQBnAHUAbABhAHIAaQBjAG8AbgBmAG8AbgB0AC0AdgB1AGUALQBjADAAZgA5ADMAYgA5AGkAYwBvAG4AZgBvAG4AdAAtAHYAdQBlAC0AYwAwAGYAOQAzAGIAOQBWAGUAcgBzAGkAbwBuACAAMQAuADAAaQBjAG8AbgBmAG8AbgB0AC0AdgB1AGUALQBjADAAZgA5ADMAYgA5AEcAZQBuAGUAcgBhAHQAZQBkACAAYgB5ACAAcwB2AGcAMgB0AHQAZgAgAGYAcgBvAG0AIABGAG8AbgB0AGUAbABsAG8AIABwAHIAbwBqAGUAYwB0AC4AaAB0AHQAcAA6AC8ALwBmAG8AbgB0AGUAbABsAG8ALgBjAG8AbQAAAAIAAAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAAAAAAA0ADQAAAQIBAwEEAQUBBgEHAQgBCQEKAQsBDAENEWFycm93LWxlZnQtZG91YmxlCmFycm93LWxlZnQSYXJyb3ctcmlnaHQtZG91YmxlC2Fycm93LXJpZ2h0CWNoZWNrbWFyawVjbG9zZQdjb25maXJtBG1lbnUEbW9yZQVwYXVzZQRwbGF5CnRyaWFuZ2xlLXM="},function(A,t,e){"use strict";e.r(t),t.default="data:font/ttf;base64,AAEAAAAKAIAAAwAgT1MvMnTjkIkAAACsAAAAYGNtYXAADeuyAAABDAAAAUJnbHlms/XniwAAAlAAAAOAaGVhZCciuEkAAAXQAAAANmhoZWEnHBOAAAAGCAAAACRobXR4E4j//wAABiwAAAAebG9jYQU0Bb4AAAZMAAAAHG1heHABGgBXAAAGaAAAACBuYW1lTC18DAAABogAAAKmcG9zdN4cgOMAAAkwAAAAsAAEE4gBkAAFAAAMZQ2sAAACvAxlDawAAAlgAPUFCgAAAgAFAwAAAAAAAAAAAAAQAAAAAAAAAAAAAABQZkVkAEDqAeoME4gAAAHCE4gAAAAAAAEAAAAAAAAAAAAAACAAAAAAAAMAAAADAAAAHAABAAAAAAA8AAMAAQAAABwABAAgAAAABAAEAAEAAOoM//8AAOoB//8WAAABAAAAAAAAAQYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA6mD0MABQALAAAJAhEJBBEJAQ6m+oIFfvu6BEb6gvqCBX77ugRGD0L6gvqCATgERgRGATj6gvqCATgERgRGAAEAAAAADW4SUAAFAAAJAREJAREGGwdT93QIjAnE+K3+yAiLCIz+xwACAAAAAA/fD0MABQALAAAJAhEJBBEJAQTiBX76ggRG+7oFfgV/+oEERvu6BEYFfgV+/sj7uvu6/sgFfgV+/sj7uvu6AAEAAAAADqYSUAAFAAAJAREJARENbvitCIv3dQnEB1MBOfd093UBOAABAAAAABGHD4MABQAACQUPzffz+/v+RgW/CccPg/fzBAX+R/pBCcYAAQAAAAARFxEXAAsAAAkLERf97frA+sD97QVA+sACEwVABUACE/rABIT97QVA+sACEwVABUACE/rABUD97frAAAH//wAAE5MS7AAzAAABIgcOARcWFwEhJgcGBwYHBhQXFhcWFxY3IQEGBwYXFhceARcWFxY3NjcBNjc2JyYnAS4BCmBlT0pGEBJIBdfx4E0+OiknFBQUFCcpOj5NDiD6KTcaGAMDGxlWNTc7Pjo/NQftOxUVFBU8+BMsdBLsOTSsWWBH+ioBGxguLDk4eDg5LC4YGwL6KTU/Oz46NzZWGRoDAxgZOAfsPFFQT1I8B+wtMgAAAAMAAAAAERcRFwADAAcACwAAAREhEQERIREBESERAnEOpvFaDqbxWg6mERf9jwJx+eb9jwJx+eX9jwJxAAMAAAAAElAMNQAYADEASgAAASIHDgEHBhYXHgEXFjI3PgE3NjQnLgEnJiEiBw4BBwYUFx4BFxYyNz4BNzY0Jy4BJyYhIgcOAQcGFBceARcWMjc+ATc2NCcuAScmA6qAdHCtLzIBMS+tcHT/dHCtLzIyL61wdAWbf3RwrTAxMTCtcHT+dHCtMDExMK1wdAWcgHRwrS8xMS+tcHT/dHCtLzIyL61wdAw1MTCtcHT+dHCtMDExMK1wdP50cK0wMTEwrXB0/nRwrTAxMTCtcHT+dHCtMDExMK1wdP50cK0wMTEwrXB0/nRwrTAxAAAAAgAAAAAP3w/fAAMABwAAAREhESERIREDqgTiAnEE4g/f88sMNfPLDDUAAAABAAAAABEXERcAAgAACQICcQ6m8VoRF/it+K0AAQAAAAAOpgw1AAIAAAkCBOIE4gTiDDX7HgTgAAEAAAABAAAvCgxjXw889QALE4gAAAAA2mGYbAAAAADaELxs//8AABOTEuwAAAAIAAIAAAAAAAAAAQAAE4gAAAAAE4j////1E5MAAQAAAAAAAAAAAAAAAAAAAAIAAAAAE4gAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAIgA2AFgAbACAAKAA+gEYAY4BpAGyAcAAAQAAAA0ASwADAAAAAAACAAAACgAKAAAA/wAAAAAAAAAAABAAxgABAAAAAAABABQAAAABAAAAAAACAAcAFAABAAAAAAADABQAGwABAAAAAAAEABQALwABAAAAAAAFAAsAQwABAAAAAAAGABQATgABAAAAAAAKACsAYgABAAAAAAALABMAjQADAAEECQABACgAoAADAAEECQACAA4AyAADAAEECQADACgA1gADAAEECQAEACgA/gADAAEECQAFABYBJgADAAEECQAGACgBPAADAAEECQAKAFYBZAADAAEECQALACYBumljb25mb250LXZ1ZS1jMGY5M2I5UmVndWxhcmljb25mb250LXZ1ZS1jMGY5M2I5aWNvbmZvbnQtdnVlLWMwZjkzYjlWZXJzaW9uIDEuMGljb25mb250LXZ1ZS1jMGY5M2I5R2VuZXJhdGVkIGJ5IHN2ZzJ0dGYgZnJvbSBGb250ZWxsbyBwcm9qZWN0Lmh0dHA6Ly9mb250ZWxsby5jb20AaQBjAG8AbgBmAG8AbgB0AC0AdgB1AGUALQBjADAAZgA5ADMAYgA5AFIAZQBnAHUAbABhAHIAaQBjAG8AbgBmAG8AbgB0AC0AdgB1AGUALQBjADAAZgA5ADMAYgA5AGkAYwBvAG4AZgBvAG4AdAAtAHYAdQBlAC0AYwAwAGYAOQAzAGIAOQBWAGUAcgBzAGkAbwBuACAAMQAuADAAaQBjAG8AbgBmAG8AbgB0AC0AdgB1AGUALQBjADAAZgA5ADMAYgA5AEcAZQBuAGUAcgBhAHQAZQBkACAAYgB5ACAAcwB2AGcAMgB0AHQAZgAgAGYAcgBvAG0AIABGAG8AbgB0AGUAbABsAG8AIABwAHIAbwBqAGUAYwB0AC4AaAB0AHQAcAA6AC8ALwBmAG8AbgB0AGUAbABsAG8ALgBjAG8AbQAAAAIAAAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAAAAAAA0ADQAAAQIBAwEEAQUBBgEHAQgBCQEKAQsBDAENEWFycm93LWxlZnQtZG91YmxlCmFycm93LWxlZnQSYXJyb3ctcmlnaHQtZG91YmxlC2Fycm93LXJpZ2h0CWNoZWNrbWFyawVjbG9zZQdjb25maXJtBG1lbnUEbW9yZQVwYXVzZQRwbGF5CnRyaWFuZ2xlLXM="},function(A,t,e){"use strict";e.r(t),t.default="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCIgPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48bWV0YWRhdGE+PC9tZXRhZGF0YT48ZGVmcz48Zm9udCBpZD0iaWNvbmZvbnQtdnVlLWMwZjkzYjkiIGhvcml6LWFkdi14PSI1MDAwIj48Zm9udC1mYWNlIGZvbnQtZmFtaWx5PSJpY29uZm9udC12dWUtYzBmOTNiOSIgZm9udC13ZWlnaHQ9IjQwMCIgZm9udC1zdHJldGNoPSJub3JtYWwiIHVuaXRzLXBlci1lbT0iNTAwMCIgcGFub3NlLTE9IjIgMCA1IDMgMCAwIDAgMCAwIDAiIGFzY2VudD0iNTAwMCIgZGVzY2VudD0iMCIgeC1oZWlnaHQ9IjAiIGJib3g9Ii0xIDAgNTAxMSA0ODQ0IiB1bmRlcmxpbmUtdGhpY2tuZXNzPSIwIiB1bmRlcmxpbmUtcG9zaXRpb249IjUwIiB1bmljb2RlLXJhbmdlPSJVK2VhMDEtZWEwYyIgLz48bWlzc2luZy1nbHlwaCBob3Jpei1hZHYteD0iMCIgIC8+PGdseXBoIGdseXBoLW5hbWU9ImFycm93LWxlZnQtZG91YmxlIiB1bmljb2RlPSImI3hlYTAxOyIgZD0iTTM3NTAgMzkwNiBsLTE0MDYgLTE0MDYgbDE0MDYgLTE0MDYgbDAgMzEyIGwtMTA5NCAxMDk0IGwxMDk0IDEwOTQgbDAgMzEyIFpNMjM0NCAzOTA2IGwtMTQwNiAtMTQwNiBsMTQwNiAtMTQwNiBsMCAzMTIgbC0xMDk0IDEwOTQgbDEwOTQgMTA5NCBsMCAzMTIgWiIgLz48Z2x5cGggZ2x5cGgtbmFtZT0iYXJyb3ctbGVmdCIgdW5pY29kZT0iJiN4ZWEwMjsiIGQ9Ik0xNTYzIDI1MDAgbDE4NzUgLTE4NzUgbDAgLTMxMiBsLTIxODggMjE4NyBsMjE4OCAyMTg4IGwwIC0zMTMgbC0xODc1IC0xODc1IFoiIC8+PGdseXBoIGdseXBoLW5hbWU9ImFycm93LXJpZ2h0LWRvdWJsZSIgdW5pY29kZT0iJiN4ZWEwMzsiIGQ9Ik0xMjUwIDEwOTQgbDE0MDYgMTQwNiBsLTE0MDYgMTQwNiBsMCAtMzEyIGwxMDk0IC0xMDk0IGwtMTA5NCAtMTA5NCBsMCAtMzEyIFpNMjY1NiAxMDk0IGwxNDA3IDE0MDYgbC0xNDA3IDE0MDYgbDAgLTMxMiBsMTA5NCAtMTA5NCBsLTEwOTQgLTEwOTQgbDAgLTMxMiBaIiAvPjxnbHlwaCBnbHlwaC1uYW1lPSJhcnJvdy1yaWdodCIgdW5pY29kZT0iJiN4ZWEwNDsiIGQ9Ik0zNDM4IDI1MDAgbC0xODc1IDE4NzUgbDAgMzEzIGwyMTg3IC0yMTg4IGwtMjE4NyAtMjE4NyBsMCAzMTIgbDE4NzUgMTg3NSBaIiAvPjxnbHlwaCBnbHlwaC1uYW1lPSJjaGVja21hcmsiIHVuaWNvZGU9IiYjeGVhMDU7IiBkPSJNNDA0NSAzOTcxIGwtMjA2MSAtMjA2MSBsLTEwMjkgMTAyOSBsLTQ0MiAtNDQxIGwxNDcxIC0xNDcxIGwyNTAzIDI1MDIgbC00NDIgNDQyIFoiIC8+PGdseXBoIGdseXBoLW5hbWU9ImNsb3NlIiB1bmljb2RlPSImI3hlYTA2OyIgZD0iTTQzNzUgMTE1NiBsLTUzMSAtNTMxIGwtMTM0NCAxMzQ0IGwtMTM0NCAtMTM0NCBsLTUzMSA1MzEgbDEzNDQgMTM0NCBsLTEzNDQgMTM0NCBsNTMxIDUzMSBsMTM0NCAtMTM0NCBsMTM0NCAxMzQ0IGw1MzEgLTUzMSBsLTEzNDQgLTEzNDQgbDEzNDQgLTEzNDQgWiIgLz48Z2x5cGggZ2x5cGgtbmFtZT0iY29uZmlybSIgdW5pY29kZT0iJiN4ZWEwNzsiIGQ9Ik0yNjU2IDQ4NDQgcS0xMDEgMCAtMTgwIC01NyBxLTc0IC01MiAtMTA5IC0xMzggcS0zNSAtODYgLTE5IC0xNzUgcTE4IC05NiA5MCAtMTY3IGwxNDk1IC0xNDk0IGwtMzYxNiAwIHEtNzcgMSAtMTM5IC0yNiBxLTU4IC0yNCAtOTkgLTcwIHEtMzkgLTQ0IC01OSAtMTAxIHEtMjAgLTU2IC0yMCAtMTE2IHEwIC02MCAyMCAtMTE2IHEyMCAtNTcgNTkgLTEwMSBxNDEgLTQ2IDk5IC03MCBxNjIgLTI3IDEzOSAtMjUgbDM2MTYgMCBsLTE0OTUgLTE0OTUgcS01NSAtNTMgLTgxIC0xMTYgcS0yNCAtNTkgLTIxIC0xMjEgcTMgLTU4IDMwIC0xMTMgcTI1IC01NCA2OCAtOTcgcTQzIC00MyA5NiAtNjggcTU1IC0yNiAxMTQgLTI5IHE2MiAtMyAxMjAgMjEgcTYzIDI1IDExNiA4MSBsMjAyOSAyMDI4IHE1OSA2MCA4MCAxNDEgcTIxIDgwIDEgMTU5IHEtMjEgODIgLTgxIDE0MiBsLTIwMjkgMjAyOCBxLTQ0IDQ1IC0xMDIgNzAgcS01OCAyNSAtMTIyIDI1IFoiIC8+PGdseXBoIGdseXBoLW5hbWU9Im1lbnUiIHVuaWNvZGU9IiYjeGVhMDg7IiBkPSJNNjI1IDQzNzUgbDAgLTYyNSBsMzc1MCAwIGwwIDYyNSBsLTM3NTAgMCBaTTYyNSAyODEzIGwwIC02MjUgbDM3NTAgMCBsMCA2MjUgbC0zNzUwIDAgWk02MjUgMTI1MCBsMCAtNjI1IGwzNzUwIDAgbDAgNjI1IGwtMzc1MCAwIFoiIC8+PGdseXBoIGdseXBoLW5hbWU9Im1vcmUiIHVuaWNvZGU9IiYjeGVhMDk7IiBkPSJNOTM4IDMxMjUgcS0xMjggMCAtMjQ0IC00OSBxLTExMiAtNDggLTE5OC41IC0xMzQuNSBxLTg2LjUgLTg2LjUgLTEzMy41IC0xOTguNSBxLTUwIC0xMTYgLTQ5LjUgLTI0MyBxMC41IC0xMjcgNDkuNSAtMjQzIHE0NyAtMTEyIDEzMy41IC0xOTguNSBxODYuNSAtODYuNSAxOTguNSAtMTM0LjUgcTExNiAtNDkgMjQzLjUgLTQ5IHExMjcuNSAwIDI0My41IDQ5IHExMTIgNDggMTk4LjUgMTM0LjUgcTg2LjUgODYuNSAxMzMuNSAxOTguNSBxNTAgMTE2IDUwIDI0MyBxMCAxMjcgLTUwIDI0MyBxLTQ3IDExMiAtMTMzLjUgMTk4LjUgcS04Ni41IDg2LjUgLTE5OC41IDEzNC41IHEtMTE2IDQ5IC0yNDMgNDkgWk0yNTAwIDMxMjUgcS0xMjcgMCAtMjQzIC00OSBxLTExMiAtNDggLTE5OC41IC0xMzQuNSBxLTg2LjUgLTg2LjUgLTEzNC41IC0xOTguNSBxLTQ5IC0xMTYgLTQ5IC0yNDMgcTAgLTEyNyA0OSAtMjQzIHE0OCAtMTEyIDEzNC41IC0xOTguNSBxODYuNSAtODYuNSAxOTguNSAtMTM0LjUgcTExNiAtNDkgMjQzIC00OSBxMTI3IDAgMjQzIDQ5IHExMTIgNDggMTk4LjUgMTM0LjUgcTg2LjUgODYuNSAxMzQuNSAxOTguNSBxNDkgMTE2IDQ5IDI0MyBxMCAxMjcgLTQ5IDI0MyBxLTQ4IDExMiAtMTM0LjUgMTk4LjUgcS04Ni41IDg2LjUgLTE5OC41IDEzNC41IHEtMTE2IDQ5IC0yNDMgNDkgWk00MDYzIDMxMjUgcS0xMjggMCAtMjQ0IC00OSBxLTExMiAtNDggLTE5OC41IC0xMzQuNSBxLTg2LjUgLTg2LjUgLTEzMy41IC0xOTguNSBxLTQ5IC0xMTYgLTQ5IC0yNDMgcTAgLTEyNyA0OSAtMjQzIHE0NyAtMTEyIDEzMy41IC0xOTguNSBxODYuNSAtODYuNSAxOTguNSAtMTM0LjUgcTExNiAtNDkgMjQzLjUgLTQ5IHExMjcuNSAwIDI0My41IDQ5IHExMTIgNDggMTk4LjUgMTM0LjUgcTg2LjUgODYuNSAxMzMuNSAxOTguNSBxNTAgMTE2IDUwIDI0MyBxMCAxMjcgLTUwIDI0MyBxLTQ3IDExMiAtMTMzLjUgMTk4LjUgcS04Ni41IDg2LjUgLTE5OC41IDEzNC41IHEtMTE2IDQ5IC0yNDMgNDkgWiIgLz48Z2x5cGggZ2x5cGgtbmFtZT0icGF1c2UiIHVuaWNvZGU9IiYjeGVhMGE7IiBkPSJNOTM4IDQwNjMgbDAgLTMxMjUgbDEyNTAgMCBsMCAzMTI1IGwtMTI1MCAwIFpNMjgxMyA0MDYzIGwwIC0zMTI1IGwxMjUwIDAgbDAgMzEyNSBsLTEyNTAgMCBaIiAvPjxnbHlwaCBnbHlwaC1uYW1lPSJwbGF5IiB1bmljb2RlPSImI3hlYTBiOyIgZD0iTTYyNSA0Mzc1IGwzNzUwIC0xODc1IGwtMzc1MCAtMTg3NSBsMCAzNzUwIFoiIC8+PGdseXBoIGdseXBoLW5hbWU9InRyaWFuZ2xlLXMiIHVuaWNvZGU9IiYjeGVhMGM7IiBkPSJNMTI1MCAzMTI1IGwxMjUwIC0xMjUwIGwxMjUwIDEyNDggbC0yNTAwIDIgWiIgLz48L2ZvbnQ+PC9kZWZzPjwvc3ZnPg=="},function(A,t,e){"use strict";e.r(t);var i=e(4);e(37);
+/**
+ * @copyright Copyright (c) 2019 Julius Härtl <jus@bitgrid.net>
+ *
+ * @author Julius Härtl <jus@bitgrid.net>
+ * @author John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+i.VTooltip.options.defaultTemplate='<div class="vue-tooltip" role="tooltip" data-v-'.concat("c0f93b9",'><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'),i.VTooltip.options.defaultHtml=!1,t.default=i.VTooltip},,function(A,t){A.exports=__webpack_require__(/*! core-js/modules/es.regexp.exec */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/es.regexp.exec.js")},function(A,t){A.exports=__webpack_require__(/*! v-click-outside */ "./node_modules/v-click-outside/dist/v-click-outside.umd.js")},function(A,t){A.exports=__webpack_require__(/*! core-js/modules/es.array.iterator */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/es.array.iterator.js")},function(A,t){A.exports=__webpack_require__(/*! core-js/modules/es.string.iterator */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/es.string.iterator.js")},function(A,t){A.exports=__webpack_require__(/*! core-js/modules/web.dom-collections.iterator */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/web.dom-collections.iterator.js")},function(A,t){A.exports=__webpack_require__(/*! core-js/modules/es.array.index-of */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/es.array.index-of.js")},function(A,t){A.exports=__webpack_require__(/*! core-js/modules/es.regexp.to-string */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/es.regexp.to-string.js")},,function(A,t){A.exports=__webpack_require__(/*! core-js/modules/web.url */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/web.url.js")},,function(A,t){A.exports=__webpack_require__(/*! core-js/modules/es.string.replace */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/es.string.replace.js")},,function(A,t){A.exports=__webpack_require__(/*! core-js/modules/es.array.concat */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/es.array.concat.js")},function(A,t,e){var i=e(63);"string"==typeof i&&(i=[[A.i,i,""]]),i.locals&&(A.exports=i.locals);(0,e(2).default)("6d914181",i,!0,{})},function(A,t,e){var i=e(65);"string"==typeof i&&(i=[[A.i,i,""]]),i.locals&&(A.exports=i.locals);(0,e(2).default)("2fc216d3",i,!0,{})},function(A,t,e){var i=e(67);"string"==typeof i&&(i=[[A.i,i,""]]),i.locals&&(A.exports=i.locals);(0,e(2).default)("b619cfa6",i,!0,{})},function(A,t){A.exports=__webpack_require__(/*! core-js/modules/es.number.constructor */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/es.number.constructor.js")},,function(A,t,e){var i=e(80);"string"==typeof i&&(i=[[A.i,i,""]]),i.locals&&(A.exports=i.locals);(0,e(2).default)("9be9793c",i,!0,{})},function(A,t){},function(A,t,e){"use strict";
+/**
+ * @copyright Copyright (c) 2018 John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @author John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ */t.a=function(A){A.mounted?Array.isArray(A.mounted)||(A.mounted=[A.mounted]):A.mounted=[],A.mounted.push(function(){this.$el.setAttribute("data-v-".concat("c0f93b9"),"")})}},,function(A,t){A.exports=__webpack_require__(/*! escape-html */ "./node_modules/escape-html/index.js")},function(A,t,e){var i=e(38);"string"==typeof i&&(i=[[A.i,i,""]]),i.locals&&(A.exports=i.locals);(0,e(2).default)("941c791e",i,!0,{})},function(A,t,e){(t=e(1)(!1)).push([A.i,".vue-tooltip[data-v-c0f93b9]{position:absolute;z-index:100000;right:auto;left:auto;display:block;margin:0;margin-top:-3px;padding:10px 0;text-align:left;text-align:start;white-space:normal;text-decoration:none;letter-spacing:normal;word-spacing:normal;text-transform:none;word-wrap:normal;word-break:normal;opacity:0;text-shadow:none;font-family:'Nunito', 'Open Sans', Frutiger, Calibri, 'Myriad Pro', Myriad, sans-serif;font-size:12px;font-weight:normal;font-style:normal;line-height:1.6;line-break:auto;filter:drop-shadow(0 1px 10px var(--color-box-shadow))}.vue-tooltip[data-v-c0f93b9][x-placement^='top'] .tooltip-arrow{bottom:0;margin-top:0;margin-bottom:0;border-width:10px 10px 0 10px;border-right-color:transparent;border-bottom-color:transparent;border-left-color:transparent}.vue-tooltip[data-v-c0f93b9][x-placement^='bottom'] .tooltip-arrow{top:0;margin-top:0;margin-bottom:0;border-width:0 10px 10px 10px;border-top-color:transparent;border-right-color:transparent;border-left-color:transparent}.vue-tooltip[data-v-c0f93b9][x-placement^='right'] .tooltip-arrow{right:100%;margin-right:0;margin-left:0;border-width:10px 10px 10px 0;border-top-color:transparent;border-bottom-color:transparent;border-left-color:transparent}.vue-tooltip[data-v-c0f93b9][x-placement^='left'] .tooltip-arrow{left:100%;margin-right:0;margin-left:0;border-width:10px 0 10px 10px;border-top-color:transparent;border-right-color:transparent;border-bottom-color:transparent}.vue-tooltip[data-v-c0f93b9][aria-hidden='true']{visibility:hidden;transition:opacity .15s, visibility .15s;opacity:0}.vue-tooltip[data-v-c0f93b9][aria-hidden='false']{visibility:visible;transition:opacity .15s;opacity:1}.vue-tooltip[data-v-c0f93b9] .tooltip-inner{max-width:350px;padding:5px 8px;text-align:center;color:var(--color-main-text);border-radius:var(--border-radius);background-color:var(--color-main-background)}.vue-tooltip[data-v-c0f93b9] .tooltip-arrow{position:absolute;z-index:1;width:0;height:0;margin:0;border-style:solid;border-color:var(--color-main-background)}\n",""]),A.exports=t},,,function(A,t,e){"use strict";e(26);
+/**
+ * @copyright Copyright (c) 2019 John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @author John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+function i(A,t,e){this.r=A,this.g=t,this.b=e}function a(A,t,e){var a=[];a.push(t);for(var n=function(A,t){var e=new Array(3);return e[0]=(t[1].r-t[0].r)/A,e[1]=(t[1].g-t[0].g)/A,e[2]=(t[1].b-t[0].b)/A,e}(A,[t,e]),o=1;o<A;o++){var r=parseInt(t.r+n[0]*o,10),s=parseInt(t.g+n[1]*o,10),c=parseInt(t.b+n[2]*o,10);a.push(new i(r,s,c))}return a}t.a=function(A){A||(A=6);var t=new i(182,70,157),e=new i(221,203,85),n=new i(0,130,201),o=a(A,t,e),r=a(A,e,n),s=a(A,n,t);return o.concat(r).concat(s)}},,function(A,t){},function(A,t,e){"use strict";e.r(t);e(19),e(16),e(3),e(20),e(17),e(18),e(22);var i={name:"PopoverMenuItem",props:{item:{type:Object,required:!0,default:function(){return{key:"nextcloud-link",href:"https://nextcloud.com",icon:"icon-links",text:"Nextcloud"}},validator:function(A){return!A.input||-1!==["text","checkbox"].indexOf(A.input)}}},computed:{key:function(){return this.item.key?this.item.key:Math.round(16*Math.random()*1e6).toString(16)},iconIsUrl:function(){try{return new URL(this.item.icon),!0}catch(A){return!1}}},methods:{action:function(A){this.item.action&&this.item.action(A)}}},a=(e(62),e(64),e(0)),n={name:"PopoverMenu",components:{PopoverMenuItem:Object(a.a)(i,function(){var A=this,t=A.$createElement,e=A._self._c||t;return e("li",[A.item.href?e("a",{staticClass:"focusable",attrs:{href:A.item.href?A.item.href:"#",target:A.item.target?A.item.target:"",download:A.item.download,rel:"noreferrer noopener"},on:{click:A.action}},[A.iconIsUrl?e("img",{attrs:{src:A.item.icon}}):e("span",{class:A.item.icon}),A._v(" "),A.item.text&&A.item.longtext?e("p",[e("strong",{staticClass:"menuitem-text"},[A._v("\n\t\t\t\t"+A._s(A.item.text)+"\n\t\t\t")]),e("br"),A._v(" "),e("span",{staticClass:"menuitem-text-detail"},[A._v("\n\t\t\t\t"+A._s(A.item.longtext)+"\n\t\t\t")])]):A.item.text?e("span",[A._v("\n\t\t\t"+A._s(A.item.text)+"\n\t\t")]):A.item.longtext?e("p",[A._v("\n\t\t\t"+A._s(A.item.longtext)+"\n\t\t")]):A._e()]):A.item.input?e("span",{staticClass:"menuitem",class:{active:A.item.active}},["checkbox"!==A.item.input?e("span",{class:A.item.icon}):A._e(),A._v(" "),"text"===A.item.input?e("form",{class:A.item.input,on:{submit:function(t){return t.preventDefault(),A.item.action(t)}}},[e("input",{attrs:{type:A.item.input,placeholder:A.item.text,required:""},domProps:{value:A.item.value}}),A._v(" "),e("input",{staticClass:"icon-confirm",attrs:{type:"submit",value:""}})]):["checkbox"===A.item.input?e("input",{directives:[{name:"model",rawName:"v-model",value:A.item.model,expression:"item.model"}],class:A.item.input,attrs:{id:A.key,type:"checkbox"},domProps:{checked:Array.isArray(A.item.model)?A._i(A.item.model,null)>-1:A.item.model},on:{change:[function(t){var e=A.item.model,i=t.target,a=!!i.checked;if(Array.isArray(e)){var n=A._i(e,null);i.checked?n<0&&A.$set(A.item,"model",e.concat([null])):n>-1&&A.$set(A.item,"model",e.slice(0,n).concat(e.slice(n+1)))}else A.$set(A.item,"model",a)},A.item.action]}}):"radio"===A.item.input?e("input",{directives:[{name:"model",rawName:"v-model",value:A.item.model,expression:"item.model"}],class:A.item.input,attrs:{id:A.key,type:"radio"},domProps:{checked:A._q(A.item.model,null)},on:{change:[function(t){return A.$set(A.item,"model",null)},A.item.action]}}):e("input",{directives:[{name:"model",rawName:"v-model",value:A.item.model,expression:"item.model"}],class:A.item.input,attrs:{id:A.key,type:A.item.input},domProps:{value:A.item.model},on:{change:A.item.action,input:function(t){t.target.composing||A.$set(A.item,"model",t.target.value)}}}),A._v(" "),e("label",{attrs:{for:A.key},on:{click:function(t){return t.stopPropagation(),t.preventDefault(),A.item.action(t)}}},[A._v("\n\t\t\t\t"+A._s(A.item.text)+"\n\t\t\t")])]],2):A.item.action?e("button",{staticClass:"menuitem focusable",class:{active:A.item.active},attrs:{disabled:A.item.disabled},on:{click:function(t){return t.stopPropagation(),t.preventDefault(),A.item.action(t)}}},[e("span",{class:A.item.icon}),A._v(" "),A.item.text&&A.item.longtext?e("p",[e("strong",{staticClass:"menuitem-text"},[A._v("\n\t\t\t\t"+A._s(A.item.text)+"\n\t\t\t")]),e("br"),A._v(" "),e("span",{staticClass:"menuitem-text-detail"},[A._v("\n\t\t\t\t"+A._s(A.item.longtext)+"\n\t\t\t")])]):A.item.text?e("span",[A._v("\n\t\t\t"+A._s(A.item.text)+"\n\t\t")]):A.item.longtext?e("p",[A._v("\n\t\t\t"+A._s(A.item.longtext)+"\n\t\t")]):A._e()]):e("span",{staticClass:"menuitem",class:{active:A.item.active}},[e("span",{class:A.item.icon}),A._v(" "),A.item.text&&A.item.longtext?e("p",[e("strong",{staticClass:"menuitem-text"},[A._v("\n\t\t\t\t"+A._s(A.item.text)+"\n\t\t\t")]),e("br"),A._v(" "),e("span",{staticClass:"menuitem-text-detail"},[A._v("\n\t\t\t\t"+A._s(A.item.longtext)+"\n\t\t\t")])]):A.item.text?e("span",[A._v("\n\t\t\t"+A._s(A.item.text)+"\n\t\t")]):A.item.longtext?e("p",[A._v("\n\t\t\t"+A._s(A.item.longtext)+"\n\t\t")]):A._e()])])},[],!1,null,"8dc4efb0",null).exports},props:{menu:{type:Array,default:function(){return[{href:"https://nextcloud.com",icon:"icon-links",text:"Nextcloud"}]},required:!0}}},o=(e(66),e(33)),r=e.n(o),s=Object(a.a)(n,function(){var A=this.$createElement,t=this._self._c||A;return t("ul",this._l(this.menu,function(A,e){return t("PopoverMenuItem",{key:e,attrs:{item:A}})}),1)},[],!1,null,"769d0d8a",null);"function"==typeof r.a&&r()(s);var c=s.exports;e.d(t,"PopoverMenu",function(){return c});
+/**
+ * @copyright Copyright (c) 2018 John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @author John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ */t.default=c},function(A,t){A.exports=__webpack_require__(/*! @nextcloud/axios */ "./node_modules/@nextcloud/axios/dist/index.js")},function(A,t){A.exports=__webpack_require__(/*! core-js/modules/es.array.map */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/es.array.map.js")},function(A,t,e){"use strict";e.r(t);e(26),e(61),e(46),e(30),e(3),e(59),e(60);var i=e(15),a=e(44),n=e(45),o=e.n(n),r=e(12),s=(e(14),e(78),e(24),e(57)),c=e.n(s),l=e(41),d=function(A){var t=A.toLowerCase();null===t.match(/^([0-9a-f]{4}-?){8}$/)&&(t=c()(t)),t=t.replace(/[^0-9a-f]/g,"");return Object(l.a)(6)[function(A,t){for(var e=0,i=[],a=0;a<A.length;a++)i.push(parseInt(A.charAt(a),16)%16);for(var n in i)e+=i[n];return parseInt(parseInt(e,10)%t,10)}(t,18)]};function u(A,t,e,i,a,n,o){try{var r=A[n](o),s=r.value}catch(A){return void e(A)}r.done?t(s):Promise.resolve(s).then(i,a)}var p={name:"Avatar",directives:{tooltip:r.default,ClickOutside:i.directive},components:{PopoverMenu:a.PopoverMenu},props:{url:{type:String,default:void 0},iconClass:{type:String,default:void 0},user:{type:String,default:void 0},isGuest:{type:Boolean,default:!1},displayName:{type:String,default:void 0},size:{type:Number,default:32},allowPlaceholder:{type:Boolean,default:!0},disableTooltip:{type:Boolean,default:!1},disableMenu:{type:Boolean,default:!1},tooltipMessage:{type:String,default:null},isNoUser:{type:Boolean,default:!1},status:{type:String,default:null,validator:function(A){switch(A){case"positive":case"negative":case"neutral":return!0}return!1}},statusColor:{type:[Number,String],default:null,validator:function(A){return/^([a-f0-9]{3}){1,2}$/i.test(A)}},menuPosition:{type:String,default:"center"}},data:function(){return{avatarUrlLoaded:null,avatarSrcSetLoaded:null,userDoesNotExist:!1,isAvatarLoaded:!1,isMenuLoaded:!1,contactsMenuActions:[],contactsMenuOpenState:!1}},computed:{getUserIdentifier:function(){return this.isDisplayNameDefined?this.displayName:this.isUserDefined?this.user:""},isUserDefined:function(){return void 0!==this.user},isDisplayNameDefined:function(){return void 0!==this.displayName},isUrlDefined:function(){return void 0!==this.url},hasMenu:function(){return!this.disableMenu&&(this.isMenuLoaded?this.menu.length>0:!(this.user===OC.getCurrentUser().uid||this.userDoesNotExist||this.url))},shouldShowPlaceholder:function(){return this.allowPlaceholder&&this.userDoesNotExist},avatarStyle:function(){var A={width:this.size+"px",height:this.size+"px",lineHeight:this.size+"px",fontSize:Math.round(.55*this.size)+"px"};if(!this.iconClass&&!this.avatarSrcSetLoaded){var t=d(this.getUserIdentifier);A.backgroundColor="rgb("+t.r+", "+t.g+", "+t.b+")"}return A},tooltip:function(){return!this.disableTooltip&&(this.tooltipMessage?this.tooltipMessage:this.displayName)},initials:function(){return this.shouldShowPlaceholder?this.getUserIdentifier.charAt(0).toUpperCase():"?"},menu:function(){return this.contactsMenuActions.map(function(A){return{href:A.hyperlink,icon:A.icon,text:A.title}})}},watch:{url:function(){this.userDoesNotExist=!1,this.loadAvatarUrl()},user:function(){this.userDoesNotExist=!1,this.isMenuLoaded=!1,this.loadAvatarUrl()}},mounted:function(){this.loadAvatarUrl()},methods:{toggleMenu:function(){this.hasMenu&&(this.contactsMenuOpenState=!this.contactsMenuOpenState,this.contactsMenuOpenState&&this.fetchContactsMenu())},closeMenu:function(){this.contactsMenuOpenState=!1},fetchContactsMenu:function(){var A,t=this;return(A=regeneratorRuntime.mark(function A(){var e,i,a;return regeneratorRuntime.wrap(function(A){for(;;)switch(A.prev=A.next){case 0:return A.prev=0,e=encodeURIComponent(t.user),A.next=4,o.a.post(OC.generateUrl("contactsmenu/findOne"),"shareType=0&shareWith=".concat(e));case 4:i=A.sent,a=i.data,t.contactsMenuActions=[a.topAction].concat(a.actions),A.next=12;break;case 9:A.prev=9,A.t0=A.catch(0),t.contactsMenuOpenState=!1;case 12:t.isMenuLoaded=!0;case 13:case"end":return A.stop()}},A,null,[[0,9]])}),function(){var t=this,e=arguments;return new Promise(function(i,a){var n=A.apply(t,e);function o(A){u(n,i,a,o,r,"next",A)}function r(A){u(n,i,a,o,r,"throw",A)}o(void 0)})})()},loadAvatarUrl:function(){var A=this;if(this.isAvatarLoaded=!1,!this.isUrlDefined&&(!this.isUserDefined||this.isNoUser))return this.isAvatarLoaded=!0,void(this.userDoesNotExist=!0);var t=function(t,e){var i="/avatar/{user}/{size}";A.isGuest&&(i="/avatar/guest/{user}/{size}");var a=OC.generateUrl(i,{user:t,size:e});return t===OC.getCurrentUser().uid&&"undefined"!=typeof oc_userconfig&&(a+="?v="+oc_userconfig.avatar.version),a},e=t(this.user,this.size);this.isUrlDefined&&(e=this.url);var i=[e+" 1x",t(this.user,2*this.size)+" 2x",t(this.user,4*this.size)+" 4x"].join(", "),a=new Image;a.onload=function(){A.avatarUrlLoaded=e,A.isUrlDefined||(A.avatarSrcSetLoaded=i),A.isAvatarLoaded=!0},a.onerror=function(){A.userDoesNotExist=!0,A.isAvatarLoaded=!0},this.isUrlDefined||(a.srcset=i),a.src=e}}},g=(e(79),e(0)),f=e(43),m=e.n(f),v=Object(g.a)(p,function(){var A=this,t=A.$createElement,e=A._self._c||t;return e("div",{directives:[{name:"tooltip",rawName:"v-tooltip",value:A.tooltip,expression:"tooltip"},{name:"click-outside",rawName:"v-click-outside",value:A.closeMenu,expression:"closeMenu"}],staticClass:"avatardiv popovermenu-wrapper",class:{"icon-loading":!A.isAvatarLoaded&&A.size>16,"icon-loading-small":!A.isAvatarLoaded&&A.size<=16,"avatardiv--unknown":A.userDoesNotExist,"avatardiv--with-menu":A.hasMenu},style:A.avatarStyle,on:{click:A.toggleMenu}},[A.iconClass?e("div",{staticClass:"avatar-class-icon",class:A.iconClass}):A.isAvatarLoaded&&!A.userDoesNotExist?e("img",{attrs:{src:A.avatarUrlLoaded,srcset:A.avatarSrcSetLoaded}}):A._e(),A._v(" "),A.hasMenu?e("div",{staticClass:"icon-more"}):A._e(),A._v(" "),A.status?e("div",{staticClass:"avatardiv__status",class:"avatardiv__status--"+A.status,style:{backgroundColor:"#"+A.statusColor}},["neutral"===A.status?e("svg",{attrs:{xmlns:"http://www.w3.org/2000/svg",width:"12",height:"11",viewBox:"0 0 3.175 2.91"}},[e("path",{style:{fill:"#"+A.statusColor},attrs:{d:"M3.21 3.043H.494l.679-1.177.68-1.176.678 1.176z",stroke:"#fff","stroke-width":".265","stroke-linecap":"square"}})]):A._e()]):A._e(),A._v(" "),A.userDoesNotExist?e("div",{staticClass:"unknown"},[A._v("\n\t\t"+A._s(A.initials)+"\n\t")]):A._e(),A._v(" "),A.hasMenu?e("div",{directives:[{name:"show",rawName:"v-show",value:A.contactsMenuOpenState,expression:"contactsMenuOpenState"}],staticClass:"popovermenu",class:"menu-"+A.menuPosition},[e("PopoverMenu",{attrs:{"is-open":A.contactsMenuOpenState,menu:A.menu}})],1):A._e()])},[],!1,null,"27e1af54",null);"function"==typeof m.a&&m()(v);var b=v.exports;e.d(t,"Avatar",function(){return b});
+/**
+ * @copyright Copyright (c) 2018 Julius Härtl <jus@bitgrid.net>
+ *
+ * @author Julius Härtl <jus@bitgrid.net>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ */t.default=b},,,,,,function(A,t,e){var i=e(141);"string"==typeof i&&(i=[[A.i,i,""]]),i.locals&&(A.exports=i.locals);(0,e(2).default)("05387ef8",i,!0,{})},function(A,t,e){var i=e(143);"string"==typeof i&&(i=[[A.i,i,""]]),i.locals&&(A.exports=i.locals);(0,e(2).default)("a375d0ac",i,!0,{})},,,function(A,t){A.exports=__webpack_require__(/*! md5 */ "./node_modules/md5/md5.js")},,function(A,t){A.exports=__webpack_require__(/*! core-js/modules/es.promise */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/es.promise.js")},function(A,t){A.exports=__webpack_require__(/*! regenerator-runtime/runtime */ "./node_modules/regenerator-runtime/runtime.js")},function(A,t){A.exports=__webpack_require__(/*! core-js/modules/es.array.join */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/es.array.join.js")},function(A,t,e){"use strict";var i=e(27);e.n(i).a},function(A,t,e){(t=e(1)(!1)).push([A.i,"\nbutton.menuitem[data-v-8dc4efb0] {\n\ttext-align: left;\n}\nbutton.menuitem *[data-v-8dc4efb0] {\n\tcursor: pointer;\n}\nbutton.menuitem[data-v-8dc4efb0]:disabled {\n\topacity: 0.5 !important;\n\tcursor: default;\n}\nbutton.menuitem:disabled *[data-v-8dc4efb0] {\n\tcursor: default;\n}\n.menuitem.active[data-v-8dc4efb0] {\n\tbox-shadow: inset 2px 0 var(--color-primary);\n\tborder-radius: 0;\n}\n",""]),A.exports=t},function(A,t,e){"use strict";var i=e(28);e.n(i).a},function(A,t,e){(t=e(1)(!1)).push([A.i,"li[data-v-8dc4efb0]{display:flex;flex:0 0 auto}li.hidden[data-v-8dc4efb0]{display:none}li>button[data-v-8dc4efb0],li>a[data-v-8dc4efb0],li>.menuitem[data-v-8dc4efb0]{cursor:pointer;line-height:44px;border:0;border-radius:0;background-color:transparent;display:flex;align-items:flex-start;height:auto;margin:0;padding:0;font-weight:normal;box-shadow:none;width:100%;color:var(--color-main-text);white-space:nowrap;opacity:.7}li>button span[class^='icon-'][data-v-8dc4efb0],li>button span[class*=' icon-'][data-v-8dc4efb0],li>button[class^='icon-'][data-v-8dc4efb0],li>button[class*=' icon-'][data-v-8dc4efb0],li>a span[class^='icon-'][data-v-8dc4efb0],li>a span[class*=' icon-'][data-v-8dc4efb0],li>a[class^='icon-'][data-v-8dc4efb0],li>a[class*=' icon-'][data-v-8dc4efb0],li>.menuitem span[class^='icon-'][data-v-8dc4efb0],li>.menuitem span[class*=' icon-'][data-v-8dc4efb0],li>.menuitem[class^='icon-'][data-v-8dc4efb0],li>.menuitem[class*=' icon-'][data-v-8dc4efb0]{min-width:0;min-height:0;background-position:14px center;background-size:16px}li>button span[class^='icon-'][data-v-8dc4efb0],li>button span[class*=' icon-'][data-v-8dc4efb0],li>a span[class^='icon-'][data-v-8dc4efb0],li>a span[class*=' icon-'][data-v-8dc4efb0],li>.menuitem span[class^='icon-'][data-v-8dc4efb0],li>.menuitem span[class*=' icon-'][data-v-8dc4efb0]{padding:22px 0 22px 44px}li>button:not([class^='icon-']):not([class*='icon-'])>span[data-v-8dc4efb0]:not([class^='icon-']):not([class*='icon-']):first-child,li>button:not([class^='icon-']):not([class*='icon-'])>input[data-v-8dc4efb0]:not([class^='icon-']):not([class*='icon-']):first-child,li>button:not([class^='icon-']):not([class*='icon-'])>form[data-v-8dc4efb0]:not([class^='icon-']):not([class*='icon-']):first-child,li>a:not([class^='icon-']):not([class*='icon-'])>span[data-v-8dc4efb0]:not([class^='icon-']):not([class*='icon-']):first-child,li>a:not([class^='icon-']):not([class*='icon-'])>input[data-v-8dc4efb0]:not([class^='icon-']):not([class*='icon-']):first-child,li>a:not([class^='icon-']):not([class*='icon-'])>form[data-v-8dc4efb0]:not([class^='icon-']):not([class*='icon-']):first-child,li>.menuitem:not([class^='icon-']):not([class*='icon-'])>span[data-v-8dc4efb0]:not([class^='icon-']):not([class*='icon-']):first-child,li>.menuitem:not([class^='icon-']):not([class*='icon-'])>input[data-v-8dc4efb0]:not([class^='icon-']):not([class*='icon-']):first-child,li>.menuitem:not([class^='icon-']):not([class*='icon-'])>form[data-v-8dc4efb0]:not([class^='icon-']):not([class*='icon-']):first-child{margin-left:44px}li>button[class^='icon-'][data-v-8dc4efb0],li>button[class*=' icon-'][data-v-8dc4efb0],li>a[class^='icon-'][data-v-8dc4efb0],li>a[class*=' icon-'][data-v-8dc4efb0],li>.menuitem[class^='icon-'][data-v-8dc4efb0],li>.menuitem[class*=' icon-'][data-v-8dc4efb0]{padding:0 14px 0 44px}li>button[data-v-8dc4efb0]:not(:disabled):hover,li>button[data-v-8dc4efb0]:not(:disabled):focus,li>button:not(:disabled).active[data-v-8dc4efb0],li>a[data-v-8dc4efb0]:not(:disabled):hover,li>a[data-v-8dc4efb0]:not(:disabled):focus,li>a:not(:disabled).active[data-v-8dc4efb0],li>.menuitem[data-v-8dc4efb0]:not(:disabled):hover,li>.menuitem[data-v-8dc4efb0]:not(:disabled):focus,li>.menuitem:not(:disabled).active[data-v-8dc4efb0]{opacity:1 !important}li>button.action[data-v-8dc4efb0],li>a.action[data-v-8dc4efb0],li>.menuitem.action[data-v-8dc4efb0]{padding:inherit !important}li>button>span[data-v-8dc4efb0],li>a>span[data-v-8dc4efb0],li>.menuitem>span[data-v-8dc4efb0]{cursor:pointer;white-space:nowrap}li>button>p[data-v-8dc4efb0],li>a>p[data-v-8dc4efb0],li>.menuitem>p[data-v-8dc4efb0]{width:150px;line-height:1.6em;padding:8px 0;white-space:normal}li>button>select[data-v-8dc4efb0],li>a>select[data-v-8dc4efb0],li>.menuitem>select[data-v-8dc4efb0]{margin:0;margin-left:6px}li>button[data-v-8dc4efb0]:not(:empty),li>a[data-v-8dc4efb0]:not(:empty),li>.menuitem[data-v-8dc4efb0]:not(:empty){padding-right:14px !important}li>button>img[data-v-8dc4efb0],li>a>img[data-v-8dc4efb0],li>.menuitem>img[data-v-8dc4efb0]{width:16px;padding:14px}li>button>input.radio+label[data-v-8dc4efb0],li>button>input.checkbox+label[data-v-8dc4efb0],li>a>input.radio+label[data-v-8dc4efb0],li>a>input.checkbox+label[data-v-8dc4efb0],li>.menuitem>input.radio+label[data-v-8dc4efb0],li>.menuitem>input.checkbox+label[data-v-8dc4efb0]{padding:0 !important;width:100%}li>button>input.checkbox+label[data-v-8dc4efb0]::before,li>a>input.checkbox+label[data-v-8dc4efb0]::before,li>.menuitem>input.checkbox+label[data-v-8dc4efb0]::before{margin:-2px 13px 0}li>button>input.radio+label[data-v-8dc4efb0]::before,li>a>input.radio+label[data-v-8dc4efb0]::before,li>.menuitem>input.radio+label[data-v-8dc4efb0]::before{margin:-2px 12px 0}li>button>input[data-v-8dc4efb0]:not([type=radio]):not([type=checkbox]):not([type=image]),li>a>input[data-v-8dc4efb0]:not([type=radio]):not([type=checkbox]):not([type=image]),li>.menuitem>input[data-v-8dc4efb0]:not([type=radio]):not([type=checkbox]):not([type=image]){width:150px}li>button form[data-v-8dc4efb0],li>a form[data-v-8dc4efb0],li>.menuitem form[data-v-8dc4efb0]{display:flex;flex:1 1 auto}li>button form[data-v-8dc4efb0]:not(:first-child),li>a form[data-v-8dc4efb0]:not(:first-child),li>.menuitem form[data-v-8dc4efb0]:not(:first-child){margin-left:5px}li>button>span.hidden+form[data-v-8dc4efb0],li>button>span[style*='display:none']+form[data-v-8dc4efb0],li>a>span.hidden+form[data-v-8dc4efb0],li>a>span[style*='display:none']+form[data-v-8dc4efb0],li>.menuitem>span.hidden+form[data-v-8dc4efb0],li>.menuitem>span[style*='display:none']+form[data-v-8dc4efb0]{margin-left:0}li>button input[data-v-8dc4efb0],li>a input[data-v-8dc4efb0],li>.menuitem input[data-v-8dc4efb0]{min-width:44px;max-height:40px;margin:2px 0;flex:1 1 auto}li>button input[data-v-8dc4efb0]:not(:first-child),li>a input[data-v-8dc4efb0]:not(:first-child),li>.menuitem input[data-v-8dc4efb0]:not(:first-child){margin-left:5px}li:not(.hidden):not([style*='display:none']):first-of-type>button>form[data-v-8dc4efb0],li:not(.hidden):not([style*='display:none']):first-of-type>button>input[data-v-8dc4efb0],li:not(.hidden):not([style*='display:none']):first-of-type>a>form[data-v-8dc4efb0],li:not(.hidden):not([style*='display:none']):first-of-type>a>input[data-v-8dc4efb0],li:not(.hidden):not([style*='display:none']):first-of-type>.menuitem>form[data-v-8dc4efb0],li:not(.hidden):not([style*='display:none']):first-of-type>.menuitem>input[data-v-8dc4efb0]{margin-top:12px}li:not(.hidden):not([style*='display:none']):last-of-type>button>form[data-v-8dc4efb0],li:not(.hidden):not([style*='display:none']):last-of-type>button>input[data-v-8dc4efb0],li:not(.hidden):not([style*='display:none']):last-of-type>a>form[data-v-8dc4efb0],li:not(.hidden):not([style*='display:none']):last-of-type>a>input[data-v-8dc4efb0],li:not(.hidden):not([style*='display:none']):last-of-type>.menuitem>form[data-v-8dc4efb0],li:not(.hidden):not([style*='display:none']):last-of-type>.menuitem>input[data-v-8dc4efb0]{margin-bottom:12px}li>button[data-v-8dc4efb0]{padding:0}li>button span[data-v-8dc4efb0]{opacity:1}\n",""]),A.exports=t},function(A,t,e){"use strict";var i=e(29);e.n(i).a},function(A,t,e){(t=e(1)(!1)).push([A.i,"ul[data-v-769d0d8a]{display:flex;flex-direction:column}\n",""]),A.exports=t},,function(A,t){},function(A,t){},,,,,,,,function(A,t){A.exports=__webpack_require__(/*! core-js/modules/es.string.match */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/es.string.match.js")},function(A,t,e){"use strict";var i=e(32);e.n(i).a},function(A,t,e){var i=e(1),a=e(7),n=e(8),o=e(9),r=e(10),s=e(11);t=i(!1);var c=a(n),l=a(o),d=a(r),u=a(s);t.push([A.i,'@font-face{font-family:"iconfont-vue-c0f93b9";src:url('+c+");src:url("+c+') format("embedded-opentype"),url('+l+') format("woff"),url('+d+') format("truetype"),url('+u+') format("svg")}.icon[data-v-27e1af54]{font-style:normal;font-weight:400}.icon.arrow-left-double[data-v-27e1af54]:before{font-family:"iconfont-vue-c0f93b9";content:""}.icon.arrow-left[data-v-27e1af54]:before{font-family:"iconfont-vue-c0f93b9";content:""}.icon.arrow-right-double[data-v-27e1af54]:before{font-family:"iconfont-vue-c0f93b9";content:""}.icon.arrow-right[data-v-27e1af54]:before{font-family:"iconfont-vue-c0f93b9";content:""}.icon.checkmark[data-v-27e1af54]:before{font-family:"iconfont-vue-c0f93b9";content:""}.icon.close[data-v-27e1af54]:before{font-family:"iconfont-vue-c0f93b9";content:""}.icon.confirm[data-v-27e1af54]:before{font-family:"iconfont-vue-c0f93b9";content:""}.icon.menu[data-v-27e1af54]:before{font-family:"iconfont-vue-c0f93b9";content:""}.icon.more[data-v-27e1af54]:before{font-family:"iconfont-vue-c0f93b9";content:""}.icon.pause[data-v-27e1af54]:before{font-family:"iconfont-vue-c0f93b9";content:""}.icon.play[data-v-27e1af54]:before{font-family:"iconfont-vue-c0f93b9";content:""}.icon.triangle-s[data-v-27e1af54]:before{font-family:"iconfont-vue-c0f93b9";content:""}.avatardiv[data-v-27e1af54]{position:relative;display:inline-block}.avatardiv--unknown[data-v-27e1af54]{position:relative;background-color:var(--color-text-maxcontrast)}.avatardiv--with-menu[data-v-27e1af54]{cursor:pointer}.avatardiv--with-menu .icon-more[data-v-27e1af54]{position:absolute;top:0;left:0;display:flex;align-items:center;justify-content:center;width:inherit;height:inherit;cursor:pointer;opacity:0;background:none;font-size:18px}.avatardiv--with-menu .icon-more[data-v-27e1af54]:before{font-family:"iconfont-vue-c0f93b9";font-style:normal;font-weight:400;content:""}.avatardiv--with-menu .icon-more[data-v-27e1af54]::before{display:block}.avatardiv--with-menu:focus .icon-more[data-v-27e1af54],.avatardiv--with-menu:hover .icon-more[data-v-27e1af54]{opacity:1}.avatardiv--with-menu:focus img[data-v-27e1af54],.avatardiv--with-menu:hover img[data-v-27e1af54]{opacity:0}.avatardiv--with-menu .icon-more[data-v-27e1af54],.avatardiv--with-menu img[data-v-27e1af54]{transition:opacity var(--animation-quick)}.avatardiv>.unknown[data-v-27e1af54]{position:absolute;top:0;left:0;display:block;width:100%;text-align:center;color:var(--color-main-background)}.avatardiv img[data-v-27e1af54]{width:100%;height:100%}.avatardiv .avatardiv__status[data-v-27e1af54]{position:absolute;top:22px;left:22px;width:10px;height:10px;border:1px solid rgba(255,255,255,0.5);background-clip:content-box}.avatardiv .avatardiv__status--positive[data-v-27e1af54]{border-radius:50%;background-color:var(--color-success)}.avatardiv .avatardiv__status--negative[data-v-27e1af54]{background-color:var(--color-error)}.avatardiv .avatardiv__status--neutral[data-v-27e1af54]{border:none;background-color:transparent !important}.avatardiv .avatardiv__status--neutral svg[data-v-27e1af54]{position:absolute;top:-3px;left:-2px}.avatardiv .avatardiv__status--neutral svg path[data-v-27e1af54]{fill:#aaa}.avatardiv .popovermenu-wrapper[data-v-27e1af54]{position:relative;display:inline-block}.avatardiv .popovermenu[data-v-27e1af54]{display:block;margin:0;font-size:initial}.avatar-class-icon[data-v-27e1af54]{border-radius:50%;background-color:var(--color-background-darker)}\n',""]),A.exports=t},,,,,,,,,,,,,,,,,,,,,,,,,,,function(A,t,e){"use strict";e.r(t);var i=e(34),a=(e(130),e(136),e(137),e(16),e(61),e(46),e(138),e(30),e(3),e(17),e(18),e(14),e(110),e(36)),n=e.n(a),o=e(47),r=(e(139),e(20),e(24),{methods:{highlightText:function(A,t){return t.length?A.replace(new RegExp(t,"gi"),"<strong>".concat(t,"</strong>")):A}}}),s={name:"AvatarSelectOption",components:{Avatar:o.default},mixins:[r],props:{desc:{type:String,default:""},displayName:{type:String,required:!0},icon:{type:String,default:""},user:{type:String,default:""},isNoUser:{type:Boolean,default:!1},search:{type:String,default:""}},computed:{highlightedDisplayName:function(){return this.highlightText(n()(this.displayName),this.search)},highlightedDesc:function(){return this.highlightText(n()(this.desc),this.search)}}},c=(e(140),e(0)),l=e(69),d=e.n(l),u=Object(c.a)(s,function(){var A=this,t=A.$createElement,e=A._self._c||t;return e("span",{staticClass:"option"},[e("Avatar",{staticClass:"option__avatar",attrs:{"display-name":A.displayName,user:A.user,"is-no-user":A.isNoUser,"disable-menu":!0,"disable-tooltip":!0}}),A._v(" "),e("div",{staticClass:"option__desc"},[e("span",{staticClass:"option__desc--lineone",domProps:{innerHTML:A._s(A.highlightedDisplayName)}}),A._v(" "),""!==A.desc?e("span",{staticClass:"option__desc--linetwo",domProps:{innerHTML:A._s(A.highlightedDesc)}}):A._e()]),A._v(" "),""!==A.icon?e("span",{staticClass:"icon option__icon",class:A.icon}):A._e()],1)},[],!1,null,"30d8da34",null);"function"==typeof d.a&&d()(u);var p=u.exports,g=(e(6),{name:"EllipsisedOption",mixins:[r],props:{option:{type:[String,Object],required:!0,default:""},label:{type:String,default:""},search:{type:String,default:""}},computed:{name:function(){return this.$parent.getOptionLabel(this.option)},needsTruncate:function(){return this.name&&this.name.length>=10},part1:function(){if(this.needsTruncate){var A=Math.min(Math.floor(this.name.length/2),10);return this.name.substr(0,this.name.length-A)}return this.name},part2:function(){if(this.needsTruncate){var A=Math.min(Math.floor(this.name.length/2),10);return this.name.substr(this.name.length-A)}return""},highlightedPart1:function(){return this.highlightText(n()(this.part1),this.search)},highlightedPart2:function(){return this.highlightText(n()(this.part2),this.search)}}}),f=(e(142),Object(c.a)(g,function(){var A=this,t=A.$createElement,e=A._self._c||t;return e("div",{staticClass:"name-parts",attrs:{title:A.name}},[e("span",{staticClass:"name-parts__first",domProps:{innerHTML:A._s(A.highlightedPart1)}}),A._v(" "),A.part2?e("span",{staticClass:"name-parts__last",domProps:{innerHTML:A._s(A.highlightedPart2)}}):A._e()])},[],!1,null,"c4325954",null).exports),m=e(12),v=e(111);function b(A){return(b="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(A){return typeof A}:function(A){return A&&"function"==typeof Symbol&&A.constructor===Symbol&&A!==Symbol.prototype?"symbol":typeof A})(A)}var h={name:"Multiselect",components:{AvatarSelectOption:p,EllipsisedOption:f,VueMultiselect:e.n(v).a},directives:{tooltip:m.default},inheritAttrs:!1,props:{value:{default:function(){return[]}},multiple:{type:Boolean,default:!1},limit:{type:Number,default:99999},label:{type:String,default:""},trackBy:{type:String,default:""},options:{type:Array,required:!0},userSelect:{type:Boolean,default:!1},loading:{type:Boolean,default:!1},autoLimit:{type:Boolean,default:!0},tagWidth:{type:Number,default:150,validator:function(A){return A>0}}},data:function(){return{elWidth:0}},computed:{maxOptions:function(){if(this.autoLimit&&this.elWidth>0&&0!==this.tagWidth){var A=Math.floor(this.elWidth/this.tagWidth);return A>0?A:1}return this.limit?this.limit:9999},limitString:function(){return"+".concat(this.value.length-this.maxOptions)},localValue:{get:function(){return this.trackBy&&this.options&&"object"!==b(this.value)&&this.options[this.value]?this.options[this.value]:this.value},set:function(A){this.$emit("update:value",A),this.$emit("change",A)}}},watch:{value:function(){this.updateWidth()}},mounted:function(){this.updateWidth(),window.addEventListener("resize",this.updateWidth)},beforeDestroy:function(){window.removeEventListener("resize",this.updateWidth)},methods:{formatLimitTitle:function(A){var t=this;if(Array.isArray(A)&&A.length>0){var e=A;return"object"===b(A[0])&&(e=A.map(function(A){return A[t.label]})),e.slice(this.maxOptions).join(", ")}return""},updateWidth:function(){this.$el&&this.$el.querySelector(".multiselect__tags-wrap")&&(this.elWidth=this.$el.querySelector(".multiselect__tags-wrap").offsetWidth-10)}}},x=e(70),B=e.n(x),M=Object(c.a)(h,function(){var A=this,t=A.$createElement,e=A._self._c||t;return e("VueMultiselect",A._g(A._b({class:[{"icon-loading-small":A.loading},A.multiple?"multiselect--multiple":"multiselect--single"],attrs:{options:A.options,limit:A.maxOptions,"close-on-select":!A.multiple,multiple:A.multiple,label:A.label,"track-by":A.trackBy,"tag-placeholder":"create"},scopedSlots:A._u([{key:"option",fn:function(t){return[A.userSelect&&!A.$scopedSlots.option?e("AvatarSelectOption",A._b({attrs:{search:t.search}},"AvatarSelectOption",t.option,!1)):A.$scopedSlots.option?A._t("option",null,null,t):e("EllipsisedOption",{attrs:{option:t.option,search:t.search,label:A.label}})]}},A.multiple?{key:"limit",fn:function(){return[e("span",{directives:[{name:"tooltip",rawName:"v-tooltip.auto",value:A.formatLimitTitle(A.value),expression:"formatLimitTitle(value)",modifiers:{auto:!0}}],staticClass:"multiselect__limit"},[A._v("\n\t\t\t"+A._s(A.limitString)+"\n\t\t")])]},proxy:!0}:null,A._l(A.$scopedSlots,function(t,e){return{key:e,fn:function(t){return[A._t(e,null,null,t)]}}})],null,!0),model:{value:A.localValue,callback:function(t){A.localValue=t},expression:"localValue"}},"VueMultiselect",A.$attrs,!1),A.$listeners))},[],!1,null,null,null);"function"==typeof B.a&&B()(M);var w=M.exports;e(144);e.d(t,"Multiselect",function(){return w}),
+/**
+ * @copyright Copyright (c) 2018 John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @author John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+Object(i.a)(w);t.default=w},,,function(A,t){A.exports=__webpack_require__(/*! core-js/modules/es.string.search */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/es.string.search.js")},function(A,t){A.exports=__webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js")},,,,,,,,,,,,,,,,,,,function(A,t){A.exports=__webpack_require__(/*! core-js/modules/es.symbol */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/es.symbol.js")},,,,,,function(A,t){A.exports=__webpack_require__(/*! core-js/modules/es.symbol.description */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/es.symbol.description.js")},function(A,t){A.exports=__webpack_require__(/*! core-js/modules/es.symbol.iterator */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/es.symbol.iterator.js")},function(A,t){A.exports=__webpack_require__(/*! core-js/modules/es.array.slice */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/es.array.slice.js")},function(A,t){A.exports=__webpack_require__(/*! core-js/modules/es.regexp.constructor */ "./node_modules/@nextcloud/vue/node_modules/core-js/modules/es.regexp.constructor.js")},function(A,t,e){"use strict";var i=e(53);e.n(i).a},function(A,t,e){(t=e(1)(!1)).push([A.i,".option[data-v-30d8da34]{display:flex;align-items:center;width:100%;height:32px}.option__avatar[data-v-30d8da34]{flex:0 0 32px;width:32px;height:32px;margin-right:6px}.option__desc[data-v-30d8da34]{display:flex;flex:1 1;flex-direction:column;justify-content:center;min-width:0}.option__desc--lineone[data-v-30d8da34]{color:var(--color-text-light)}.option__desc--linetwo[data-v-30d8da34]{opacity:.7}.option__desc--lineone[data-v-30d8da34],.option__desc--linetwo[data-v-30d8da34]{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.option__desc--lineone strong[data-v-30d8da34],.option__desc--linetwo strong[data-v-30d8da34]{font-weight:bold}.option__icon[data-v-30d8da34]{flex:0 0 44px;width:44px;height:44px;margin:-6px;opacity:.5;background-position:center;background-size:16px}\n",""]),A.exports=t},function(A,t,e){"use strict";var i=e(54);e.n(i).a},function(A,t,e){(t=e(1)(!1)).push([A.i,".name-parts[data-v-c4325954]{display:flex;max-width:100%}.name-parts__first[data-v-c4325954]{overflow:hidden;text-overflow:ellipsis}.name-parts__first[data-v-c4325954],.name-parts__last[data-v-c4325954]{white-space:pre}.name-parts__first strong[data-v-c4325954],.name-parts__last strong[data-v-c4325954]{font-weight:bold}\n",""]),A.exports=t},function(A,t,e){var i=e(145);"string"==typeof i&&(i=[[A.i,i,""]]),i.locals&&(A.exports=i.locals);(0,e(2).default)("b5985a26",i,!0,{})},function(A,t,e){(t=e(1)(!1)).push([A.i,".multiselect[data-v-c0f93b9]{margin:0;padding:0 !important;display:inline-block;min-width:160px;position:relative;background-color:var(--color-main-background)}.multiselect[data-v-c0f93b9].multiselect--active input.multiselect__input{opacity:1 !important;cursor:text !important;border-radius:var(--border-radius) var(--border-radius) 0 0}.multiselect[data-v-c0f93b9].multiselect--active .multiselect__limit{display:none}.multiselect[data-v-c0f93b9].multiselect--active.multiselect--above input.multiselect__input{border-radius:0 0 var(--border-radius) var(--border-radius)}.multiselect[data-v-c0f93b9].multiselect--disabled,.multiselect[data-v-c0f93b9].multiselect--disabled .multiselect__single{background-color:var(--color-background-dark) !important}.multiselect[data-v-c0f93b9].icon-loading-small::after{left:100%;margin-left:-24px}.multiselect[data-v-c0f93b9] .multiselect__tags{display:flex;flex-wrap:nowrap;overflow:hidden;border:1px solid var(--color-border-dark);cursor:pointer;position:relative;border-radius:3px;height:34px}.multiselect[data-v-c0f93b9] .multiselect__tags .multiselect__tags-wrap{align-items:center;display:inline-flex;overflow:hidden;max-width:100%;position:relative;padding:3px 5px;flex-grow:1}.multiselect[data-v-c0f93b9] .multiselect__tags .multiselect__tags-wrap:empty ~ input.multiselect__input{opacity:1 !important}.multiselect[data-v-c0f93b9] .multiselect__tags .multiselect__tags-wrap:empty ~ input.multiselect__input+span:not(.multiselect__single){display:none}.multiselect[data-v-c0f93b9] .multiselect__tags .multiselect__tags-wrap .multiselect__tag{flex:1 0 0;line-height:20px;padding:1px 5px;background-image:none;color:var(--color-main-text);border:1px solid var(--color-border-dark);display:inline-flex;align-items:center;border-radius:3px;min-width:0;max-width:50%;max-width:fit-content;max-width:-moz-fit-content}.multiselect[data-v-c0f93b9] .multiselect__tags .multiselect__tags-wrap .multiselect__tag:only-child{flex:0 1 auto}.multiselect[data-v-c0f93b9] .multiselect__tags .multiselect__tags-wrap .multiselect__tag:not(:last-child){margin-right:5px}.multiselect[data-v-c0f93b9] .multiselect__tags .multiselect__tags-wrap .multiselect__tag>span{white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.multiselect[data-v-c0f93b9] .multiselect__tags .multiselect__single,.multiselect[data-v-c0f93b9] .multiselect__tags .multiselect__placeholder{padding:7px 6px;flex:0 0 100%;z-index:1;background-color:var(--color-main-background);cursor:pointer;line-height:18px;color:var(--color-text-lighter)}.multiselect[data-v-c0f93b9] .multiselect__tags .multiselect__strong,.multiselect[data-v-c0f93b9] .multiselect__tags .multiselect__limit{flex:0 0 auto;line-height:20px;color:var(--color-text-lighter);display:inline-flex;align-items:center;opacity:.7;margin-right:5px;z-index:5}.multiselect[data-v-c0f93b9] .multiselect__tags input.multiselect__input{width:100% !important;position:absolute !important;top:0;left:0;margin:0;opacity:0;height:100%;border:none;display:block !important;cursor:pointer;padding:7px 6px !important}.multiselect[data-v-c0f93b9] .multiselect__content-wrapper{position:absolute;width:100%;margin-top:-1px;border:1px solid var(--color-border-dark);background:var(--color-main-background);z-index:50;max-height:250px;overflow-y:auto;border-radius:0 0 var(--border-radius) var(--border-radius)}.multiselect[data-v-c0f93b9] .multiselect__content-wrapper .multiselect__content{width:100%;padding:0}.multiselect[data-v-c0f93b9] .multiselect__content-wrapper li{position:relative;display:flex;align-items:center;background-color:transparent}.multiselect[data-v-c0f93b9] .multiselect__content-wrapper li,.multiselect[data-v-c0f93b9] .multiselect__content-wrapper li span{cursor:pointer}.multiselect[data-v-c0f93b9] .multiselect__content-wrapper li>span{padding:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:0;height:auto;min-height:1em;-webkit-touch-callout:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;display:inline-flex;align-items:center;background-color:transparent;color:var(--color-text-lighter);width:100%}.multiselect[data-v-c0f93b9] .multiselect__content-wrapper li>span::before{content:' ';background-repeat:no-repeat;background-position:center;min-width:16px;min-height:16px;display:block;opacity:.5;margin-right:5px;visibility:hidden}.multiselect[data-v-c0f93b9] .multiselect__content-wrapper li>span.multiselect__option--disabled{background-color:var(--color-background-dark);opacity:.5}.multiselect[data-v-c0f93b9] .multiselect__content-wrapper li>span.multiselect__option--highlight{color:var(--color-main-text);background-color:var(--color-background-dark)}.multiselect[data-v-c0f93b9] .multiselect__content-wrapper li>span:not(.multiselect__option--disabled):hover::before{opacity:.3}.multiselect[data-v-c0f93b9] .multiselect__content-wrapper li>span.multiselect__option--selected::before,.multiselect[data-v-c0f93b9] .multiselect__content-wrapper li>span:not(.multiselect__option--disabled):hover::before{visibility:visible}.multiselect[data-v-c0f93b9].multiselect--above .multiselect__content-wrapper{bottom:100%;margin-bottom:-1px}.multiselect[data-v-c0f93b9].multiselect--multiple .multiselect__content-wrapper li>span::before{background-image:var(--icon-checkmark-000)}.multiselect[data-v-c0f93b9].multiselect--multiple .multiselect__content-wrapper li>span[data-select='create']::before{background-image:var(--icon-add-000);visibility:visible}.multiselect[data-v-c0f93b9].multiselect--single .multiselect__content-wrapper li>span::before{display:none}.multiselect[data-v-c0f93b9]:hover .multiselect__placeholder,.multiselect[data-v-c0f93b9] input.multiselect__input .multiselect__placeholder{color:var(--color-main-text)}\n",""]),A.exports=t}])});
+//# sourceMappingURL=Multiselect.js.map
+
+/***/ }),
+
 /***/ "./node_modules/vue-click-outside/index.js":
 /*!*************************************************!*\
   !*** ./node_modules/vue-click-outside/index.js ***!
@@ -5233,4 +5505,4 @@ exports = module.exports = {
 /***/ })
 
 }]);
-//# sourceMappingURL=vue-1.js.map?v=51a3c16d4784be6ab1e7
+//# sourceMappingURL=vue-1.js.map?v=75219e658e60f559bccd

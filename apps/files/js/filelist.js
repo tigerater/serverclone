@@ -3658,10 +3658,9 @@
 		 */
 		registerTabView: function(tabView) {
 			console.warn('registerTabView is deprecated! It will be removed in nextcloud 20.');
-			const name = tabView.getLabel()
 			const enabled = tabView.canDisplay || undefined
-			if (name) {
-				OCA.Files.Sidebar.registerTab(new OCA.Files.Sidebar.Tab(name, tabView, enabled, true))
+			if (tabView.id) {
+				OCA.Files.Sidebar.registerTab(new OCA.Files.Sidebar.Tab(tabView.id, tabView, enabled, true))
 			}
 		},
 
@@ -3797,9 +3796,6 @@ $(document).ready(function() {
 		if (OCA.Files.FileList.lastAction) {
 			OCA.Files.FileList.lastAction();
 		}
-	});
-	$(window).on('unload', function () {
-		$(window).trigger('beforeunload');
 	});
 
 });

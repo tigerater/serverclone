@@ -17,6 +17,7 @@ OC.L10N.register(
     "File updated" : "Failas atnaujintas",
     "File renamed" : "Failas pervadintas",
     "File deleted" : "Failas ištrintas",
+    "File accessed" : "Gauta prieiga prie failo",
     "File copied" : "Failas nukopijuotas",
     "Tag assigned" : "Priskirta žymė",
     "Someone" : "Kažkas",
@@ -115,10 +116,9 @@ OC.L10N.register(
     "End" : "Pabaiga",
     "Select timezone…" : "Pasirinkite laiko juostą…",
     "Sync clients" : "Sinchronizavimo klientas",
-    "Workflow" : "Darbo eiga",
+    "Tag management" : "Žymių tvarkymas",
     "Files workflow engine" : "Darbo eigos su failais modulis",
     "Open documentation" : "Atverti dokumentaciją",
-    "Loading…" : "Įkeliama…",
-    "Tag management" : "Žymių tvarkymas"
+    "Loading…" : "Įkeliama…"
 },
 "nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);");
