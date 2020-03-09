@@ -30,7 +30,6 @@ lint-fix-watch:
 clean:
 	rm -rf apps/accessibility/js/
 	rm -rf apps/comments/js/
-	rm -rf apps/files/js/dist/
 	rm -rf apps/files_sharing/js/dist/
 	rm -rf apps/files_trashbin/js/
 	rm -rf apps/files_versions/js/
@@ -48,7 +47,6 @@ clean-dev:
 clean-git: clean
 	git checkout -- apps/accessibility/js/
 	git checkout -- apps/comments/js/
-	git checkout -- apps/files/js/dist/
 	git checkout -- apps/files_sharing/js/dist/
 	git checkout -- apps/files_trashbin/js/
 	git checkout -- apps/files_versions/js/

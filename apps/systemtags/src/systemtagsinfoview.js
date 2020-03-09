@@ -30,8 +30,7 @@
 
 			_rendered: false,
 
-			className: 'systemTagsInfoView',
-			name: 'systemTags',
+			className: 'systemTagsInfoView hidden',
 
 			/**
 			 * @type OC.SystemTags.SystemTagsInputField
@@ -124,7 +123,11 @@
 							var appliedTags = collection.map(modelToSelection)
 							self._inputView.setData(appliedTags)
 
-							self.show()
+							if (appliedTags.length !== 0) {
+								self.show()
+							} else {
+								self.hide()
+							}
 						}
 					})
 				}

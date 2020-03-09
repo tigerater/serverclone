@@ -27,7 +27,7 @@
 				<LoginForm
 					:username.sync="user"
 					:redirect-url="redirectUrl"
-					:direct-login="directLogin"
+					:directLogin="directLogin"
 					:messages="messages"
 					:errors="errors"
 					:throttle-delay="throttleDelay"

@@ -577,8 +577,6 @@ class ShareAPIControllerTest extends TestCase {
 			'displayname_file_owner' => 'ownerDisplay',
 			'mimetype' => 'myMimeType',
 			'hide_download' => 0,
-			'can_edit' => false,
-			'can_delete' => false,
 		];
 		$data[] = [$share, $expected];
 
@@ -625,8 +623,6 @@ class ShareAPIControllerTest extends TestCase {
 			'displayname_file_owner' => 'ownerDisplay',
 			'mimetype' => 'myFolderMimeType',
 			'hide_download' => 0,
-			'can_edit' => false,
-			'can_delete' => false,
 		];
 		$data[] = [$share, $expected];
 
@@ -680,8 +676,6 @@ class ShareAPIControllerTest extends TestCase {
 			'displayname_file_owner' => 'ownerDisplay',
 			'mimetype' => 'myFolderMimeType',
 			'hide_download' => 0,
-			'can_edit' => false,
-			'can_delete' => false,
 		];
 		$data[] = [$share, $expected];
 
@@ -3437,8 +3431,6 @@ class ShareAPIControllerTest extends TestCase {
 				'mail_send' => 0,
 				'mimetype' => 'myMimeType',
 				'hide_download' => 0,
-				'can_edit' => false,
-				'can_delete' => false,
 			], $share, [], false
 		];
 		// User backend up
@@ -3470,8 +3462,6 @@ class ShareAPIControllerTest extends TestCase {
 				'mail_send' => 0,
 				'mimetype' => 'myMimeType',
 				'hide_download' => 0,
-				'can_edit' => false,
-				'can_delete' => false,
 			], $share, [
 				['owner', $owner],
 				['initiator', $initiator],
@@ -3519,53 +3509,6 @@ class ShareAPIControllerTest extends TestCase {
 				'mail_send' => 0,
 				'mimetype' => 'myMimeType',
 				'hide_download' => 0,
-				'can_edit' => false,
-				'can_delete' => false,
-			], $share, [], false
-		];
-
-		$share = \OC::$server->getShareManager()->newShare();
-		$share->setShareType(\OCP\Share::SHARE_TYPE_USER)
-			->setSharedWith('recipient')
-			->setSharedBy('initiator')
-			->setShareOwner('currentUser')
-			->setPermissions(\OCP\Constants::PERMISSION_READ)
-			->setNode($file)
-			->setShareTime(new \DateTime('2000-01-01T00:01:02'))
-			->setTarget('myTarget')
-			->setNote('personal note')
-			->setId(42);
-		// User backend down
-		$result[] = [
-			[
-				'id' => 42,
-				'share_type' => \OCP\Share::SHARE_TYPE_USER,
-				'uid_owner' => 'initiator',
-				'displayname_owner' => 'initiator',
-				'permissions' => 1,
-				'stime' => 946684862,
-				'parent' => null,
-				'expiration' => null,
-				'token' => null,
-				'uid_file_owner' => 'currentUser',
-				'displayname_file_owner' => 'currentUser',
-				'note' => 'personal note',
-				'label' => null,
-				'path' => 'file',
-				'item_type' => 'file',
-				'storage_id' => 'storageId',
-				'storage' => 100,
-				'item_source' => 3,
-				'file_source' => 3,
-				'file_parent' => 1,
-				'file_target' => 'myTarget',
-				'share_with' => 'recipient',
-				'share_with_displayname' => 'recipient',
-				'mail_send' => 0,
-				'mimetype' => 'myMimeType',
-				'hide_download' => 0,
-				'can_edit' => true,
-				'can_delete' => true,
 			], $share, [], false
 		];
 
@@ -3611,8 +3554,6 @@ class ShareAPIControllerTest extends TestCase {
 				'mail_send' => 0,
 				'mimetype' => 'myMimeType',
 				'hide_download' => 0,
-				'can_edit' => false,
-				'can_delete' => false,
 			], $share, [], false
 		];
 
@@ -3656,8 +3597,6 @@ class ShareAPIControllerTest extends TestCase {
 				'mail_send' => 0,
 				'mimetype' => 'myMimeType',
 				'hide_download' => 0,
-				'can_edit' => false,
-				'can_delete' => false,
 			], $share, [], false
 		];
 
@@ -3707,8 +3646,6 @@ class ShareAPIControllerTest extends TestCase {
 				'url' => 'myLink',
 				'mimetype' => 'myMimeType',
 				'hide_download' => 0,
-				'can_edit' => false,
-				'can_delete' => false,
 			], $share, [], false
 		];
 
@@ -3759,8 +3696,6 @@ class ShareAPIControllerTest extends TestCase {
 				'url' => 'myLink',
 				'mimetype' => 'myMimeType',
 				'hide_download' => 0,
-				'can_edit' => false,
-				'can_delete' => false,
 			], $share, [], false
 		];
 
@@ -3804,8 +3739,6 @@ class ShareAPIControllerTest extends TestCase {
 				'mail_send' => 0,
 				'mimetype' => 'myFolderMimeType',
 				'hide_download' => 0,
-				'can_edit' => false,
-				'can_delete' => false,
 			], $share, [], false
 		];
 
@@ -3852,8 +3785,6 @@ class ShareAPIControllerTest extends TestCase {
 				'mail_send' => 0,
 				'mimetype' => 'myFolderMimeType',
 				'hide_download' => 0,
-				'can_edit' => false,
-				'can_delete' => false,
 			], $share, [], false
 		];
 
@@ -3898,8 +3829,6 @@ class ShareAPIControllerTest extends TestCase {
 				'mail_send' => 0,
 				'mimetype' => 'myFolderMimeType',
 				'hide_download' => 0,
-				'can_edit' => false,
-				'can_delete' => false,
 			], $share, [], false
 		];
 
@@ -3944,8 +3873,6 @@ class ShareAPIControllerTest extends TestCase {
 				'mail_send' => 0,
 				'mimetype' => 'myFolderMimeType',
 				'hide_download' => 0,
-				'can_edit' => false,
-				'can_delete' => false,
 			], $share, [], false
 		];
 
@@ -4006,8 +3933,6 @@ class ShareAPIControllerTest extends TestCase {
 				'password' => 'password',
 				'send_password_by_talk' => false,
 				'hide_download' => 0,
-				'can_edit' => false,
-				'can_delete' => false,
 			], $share, [], false
 		];
 
@@ -4054,8 +3979,6 @@ class ShareAPIControllerTest extends TestCase {
 				'password' => 'password',
 				'send_password_by_talk' => true,
 				'hide_download' => 0,
-				'can_edit' => false,
-				'can_delete' => false,
 			], $share, [], false
 		];
 
@@ -4197,8 +4120,6 @@ class ShareAPIControllerTest extends TestCase {
 				'mimetype' => 'myMimeType',
 				'hide_download' => 0,
 				'label' => '',
-				'can_edit' => false,
-				'can_delete' => false,
 			], $share, false, []
 		];
 
@@ -4242,8 +4163,6 @@ class ShareAPIControllerTest extends TestCase {
 				'mimetype' => 'myMimeType',
 				'hide_download' => 0,
 				'label' => '',
-				'can_edit' => false,
-				'can_delete' => false,
 			], $share, true, [
 				'share_with_displayname' => 'recipientRoomName'
 			]

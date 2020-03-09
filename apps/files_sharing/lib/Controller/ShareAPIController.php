@@ -154,11 +154,7 @@ class ShareAPIController extends OCSController {
 			'share_type' => $share->getShareType(),
 			'uid_owner' => $share->getSharedBy(),
 			'displayname_owner' => $sharedBy !== null ? $sharedBy->getDisplayName() : $share->getSharedBy(),
-			// recipient permissions
 			'permissions' => $share->getPermissions(),
-			// current user permissions on this share
-			'can_edit' => $this->canEditShare($share),
-			'can_delete' => $this->canDeleteShare($share),
 			'stime' => $share->getShareTime()->getTimestamp(),
 			'parent' => null,
 			'expiration' => null,
