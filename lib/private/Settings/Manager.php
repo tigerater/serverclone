@@ -37,9 +37,9 @@ use OCP\ILogger;
 use OCP\IServerContainer;
 use OCP\IURLGenerator;
 use OCP\L10N\IFactory;
-use OCP\Settings\ISettings;
 use OCP\Settings\IManager;
 use OCP\Settings\ISection;
+use OCP\Settings\ISettings;
 use OCP\Settings\ISubAdminSettings;
 
 class Manager implements IManager {
@@ -348,7 +348,7 @@ class Manager implements IManager {
 		}
 
 		$sections = [
-			0 => [new Section('personal-info', $this->l->t('Personal info'), 0, $this->url->imagePath('core', 'actions/info.svg'))],
+			0 => [new Section('personal-info', $this->l->t('Personal info'), 0, $this->url->imagePath('core', 'actions/user.svg'))],
 			5 => [new Section('security', $this->l->t('Security'), 0, $this->url->imagePath('settings', 'password.svg'))],
 			15 => [new Section('sync-clients', $this->l->t('Mobile & desktop'), 0, $this->url->imagePath('core', 'clients/phone.svg'))],
 		];

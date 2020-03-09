@@ -32,6 +32,7 @@ declare(strict_types=1);
 namespace OCA\Files_Sharing\Controller;
 
 use OCA\Files\Helper;
+use OCA\Files_Sharing\External\Storage;
 use OCP\App\IAppManager;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\OCS\OCSBadRequestException;
@@ -41,24 +42,23 @@ use OCP\AppFramework\OCS\OCSNotFoundException;
 use OCP\AppFramework\OCSController;
 use OCP\AppFramework\QueryException;
 use OCP\Constants;
+use OCP\Files\IRootFolder;
 use OCP\Files\Node;
 use OCP\Files\NotFoundException;
 use OCP\IConfig;
 use OCP\IGroupManager;
 use OCP\IL10N;
-use OCP\IUserManager;
 use OCP\IRequest;
 use OCP\IServerContainer;
 use OCP\IURLGenerator;
-use OCP\Files\IRootFolder;
+use OCP\IUserManager;
+use OCP\Lock\ILockingProvider;
 use OCP\Lock\LockedException;
 use OCP\Share;
-use OCP\Share\IManager;
-use OCP\Share\Exceptions\ShareNotFound;
 use OCP\Share\Exceptions\GenericShareException;
-use OCP\Lock\ILockingProvider;
+use OCP\Share\Exceptions\ShareNotFound;
+use OCP\Share\IManager;
 use OCP\Share\IShare;
-use OCA\Files_Sharing\External\Storage;
 
 /**
  * Class Share20OCS
@@ -181,7 +181,7 @@ class ShareAPIController extends OCSController {
 					throw new NotFoundException();
 				}
 			} else {
-				$node = $nodes[0];
+				$node = reset($nodes);
 			}
 		}
 
@@ -947,6 +947,38 @@ class ShareAPIController extends OCSController {
 	}
 
 	/**
+	 * @NoAdminRequired
+	 *
+	 * @param string $id
+	 * @return DataResponse
+	 * @throws OCSNotFoundException
+	 * @throws OCSException
+	 * @throws OCSBadRequestException
+	 */
+	public function acceptShare(string $id): DataResponse {
+		try {
+			$share = $this->getShareById($id);
+		} catch (ShareNotFound $e) {
+			throw new OCSNotFoundException($this->l->t('Wrong share ID, share doesn\'t exist'));
+		}
+
+		if (!$this->canAccessShare($share)) {
+			throw new OCSNotFoundException($this->l->t('Wrong share ID, share doesn\'t exist'));
+		}
+
+		try {
+			$this->shareManager->acceptShare($share, $this->currentUser);
+		} catch (GenericShareException $e) {
+			$code = $e->getCode() === 0 ? 403 : $e->getCode();
+			throw new OCSException($e->getHint(), $code);
+		} catch (\Exception $e) {
+			throw new OCSBadRequestException($e->getMessage(), $e);
+		}
+
+		return new DataResponse();
+	}
+
+	/**
 	 * Does the user have read permission on the share
 	 *
 	 * @param \OCP\Share\IShare $share the share to check
@@ -1078,8 +1110,8 @@ class ShareAPIController extends OCSController {
 	 * @suppress PhanUndeclaredClassMethod
 	 */
 	protected function canDeleteShareFromSelf(\OCP\Share\IShare $share): bool {
-		if ($share->getShareType() !== Share::SHARE_TYPE_GROUP &&
-			$share->getShareType() !== Share::SHARE_TYPE_ROOM
+		if ($share->getShareType() !== IShare::TYPE_GROUP &&
+			$share->getShareType() !== IShare::TYPE_ROOM
 		) {
 			return false;
 		}

@@ -26,8 +26,8 @@ use OCA\OAuth2\Db\ClientMapper;
 use OCA\OAuth2\Settings\Admin;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IInitialStateService;
-use Test\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
+use Test\TestCase;
 
 class AdminTest extends TestCase {
 
@@ -40,7 +40,7 @@ class AdminTest extends TestCase {
 	/** @var ClientMapper|MockObject */
 	private $clientMapper;
 
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 
 		$this->initialStateService = $this->createMock(IInitialStateService::class);

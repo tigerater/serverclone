@@ -22,8 +22,6 @@
 namespace OCA\Settings\Tests\Mailer;
 
 use OC\Mail\EMailTemplate;
-use OCP\L10N\IFactory;
-use OCP\Mail\IEMailTemplate;
 use OC\Mail\Message;
 use OCA\Settings\Mailer\NewUserMailHelper;
 use OCP\AppFramework\Utility\ITimeFactory;
@@ -32,6 +30,8 @@ use OCP\IConfig;
 use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\IUser;
+use OCP\L10N\IFactory;
+use OCP\Mail\IEMailTemplate;
 use OCP\Mail\IMailer;
 use OCP\Security\ICrypto;
 use OCP\Security\ISecureRandom;
@@ -57,7 +57,7 @@ class NewUserMailHelperTest extends TestCase {
 	/** @var \OCA\Settings\Mailer\NewUserMailHelper */
 	private $newUserMailHelper;
 
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 
 		$this->defaults = $this->createMock(Defaults::class);

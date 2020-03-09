@@ -20,6 +20,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
+
 namespace OCA\Files_Sharing\Tests\Controller;
 
 use OCA\Files_Sharing\Controller\PublicPreviewController;
@@ -53,7 +54,7 @@ class PublicPreviewControllerTest extends TestCase {
 	/** @var PublicPreviewController */
 	private $controller;
 
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 
 		$this->previewManager = $this->createMock(IPreview::class);

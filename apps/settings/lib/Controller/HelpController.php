@@ -50,7 +50,7 @@ class HelpController extends Controller {
 		IRequest $request,
 		INavigationManager $navigationManager,
 		IURLGenerator $urlGenerator,
-		string $userId,
+		?string $userId,
 		IGroupManager $groupManager
 	) {
 		parent::__construct($appName, $request);
@@ -65,6 +65,7 @@ class HelpController extends Controller {
 	 *
 	 * @NoCSRFRequired
 	 * @NoAdminRequired
+	 * @NoSubadminRequired
 	 */
 	public function help(string $mode = 'user'): TemplateResponse {
 		$this->navigationManager->setActiveEntry('help');

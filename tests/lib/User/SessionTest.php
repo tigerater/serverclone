@@ -15,7 +15,6 @@ use OC\Authentication\Token\IProvider;
 use OC\Authentication\Token\IToken;
 use OC\Security\Bruteforce\Throttler;
 use OC\Session\Memory;
-use OC\User\Events\PostLoginEvent;
 use OC\User\Manager;
 use OC\User\Session;
 use OC\User\User;
@@ -30,6 +29,7 @@ use OCP\IUser;
 use OCP\Lockdown\ILockdownManager;
 use OCP\Security\ICrypto;
 use OCP\Security\ISecureRandom;
+use OCP\User\Events\PostLoginEvent;
 use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
@@ -61,7 +61,7 @@ class SessionTest extends \Test\TestCase {
 	/** @var IEventDispatcher|MockObject */
 	private $dispatcher;
 
-	protected function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 
 		$this->timeFactory = $this->createMock(ITimeFactory::class);
@@ -258,13 +258,12 @@ class SessionTest extends \Test\TestCase {
 			->method('prepareUserLogin');
 
 		$this->dispatcher->expects($this->once())
-			->method('dispatch')
+			->method('dispatchTyped')
 			->with(
-				PostLoginEvent::class,
 				$this->callback(function(PostLoginEvent $e) {
 					return $e->getUser()->getUID() === 'foo' &&
 						$e->getPassword() === 'bar' &&
-						$e->getIsTokenLogin() === false;
+						$e->isTokenLogin() === false;
 				})
 			);
 
@@ -272,10 +271,10 @@ class SessionTest extends \Test\TestCase {
 		$this->assertEquals($user, $userSession->getUser());
 	}
 
-	/**
-	 * @expectedException \OC\User\LoginException
-	 */
+	
 	public function testLoginValidPasswordDisabled() {
+		$this->expectException(\OC\User\LoginException::class);
+
 		$session = $this->getMockBuilder(Memory::class)->setConstructorArgs([''])->getMock();
 		$session->expects($this->never())
 			->method('set');
@@ -405,10 +404,10 @@ class SessionTest extends \Test\TestCase {
 		$userSession->login('foo', 'bar');
 	}
 
-	/**
-	 * @expectedException \OC\Authentication\Exceptions\PasswordLoginForbiddenException
-	 */
+	
 	public function testLogClientInNoTokenPasswordWith2fa() {
+		$this->expectException(\OC\Authentication\Exceptions\PasswordLoginForbiddenException::class);
+
 		$manager = $this->createMock(Manager::class);
 		$session = $this->createMock(ISession::class);
 		$request = $this->createMock(IRequest::class);
@@ -509,10 +508,10 @@ class SessionTest extends \Test\TestCase {
 		$this->assertTrue($userSession->logClientIn('john', 'I-AM-AN-APP-PASSWORD', $request, $this->throttler));
 	}
 
-	/**
-	 * @expectedException \OC\Authentication\Exceptions\PasswordLoginForbiddenException
-	 */
+	
 	public function testLogClientInNoTokenPasswordNo2fa() {
+		$this->expectException(\OC\Authentication\Exceptions\PasswordLoginForbiddenException::class);
+
 		$manager = $this->createMock(Manager::class);
 		$session = $this->createMock(ISession::class);
 		$request = $this->createMock(IRequest::class);
@@ -974,10 +973,10 @@ class SessionTest extends \Test\TestCase {
 		$this->assertFalse($userSession->createSessionToken($request, $uid, $loginName, $password));
 	}
 
-	/**
-	 * @expectedException \OC\User\LoginException
-	 */
+	
 	public function testTryTokenLoginWithDisabledUser() {
+		$this->expectException(\OC\User\LoginException::class);
+
 		$manager = $this->getMockBuilder('\OC\User\Manager')
 			->disableOriginalConstructor()
 			->getMock();

@@ -8,7 +8,7 @@
 
 namespace Test\Security;
 
-use \OC\Security\TrustedDomainHelper;
+use OC\Security\TrustedDomainHelper;
 use OCP\IConfig;
 
 /**
@@ -18,7 +18,7 @@ class TrustedDomainHelperTest extends \Test\TestCase {
 	/** @var IConfig */
 	protected $config;
 
-	protected function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 
 		$this->config = $this->getMockBuilder(IConfig::class)->getMock();

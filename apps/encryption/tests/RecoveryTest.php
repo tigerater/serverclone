@@ -25,7 +25,6 @@
  *
  */
 
-
 namespace OCA\Encryption\Tests;
 
 
@@ -260,7 +259,7 @@ class RecoveryTest extends TestCase {
 			['/', 'testkey', 'admin']));
 	}
 
-	protected function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 
 		$this->user = $this->createMock(IUser::class);

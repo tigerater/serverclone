@@ -15,16 +15,16 @@ use OC\Group\Group;
 use OC\User\User;
 use OCP\App\AppPathNotFoundException;
 use OCP\App\IAppManager;
+use OCP\IAppConfig;
 use OCP\ICache;
 use OCP\ICacheFactory;
+use OCP\IConfig;
 use OCP\IGroup;
 use OCP\IGroupManager;
 use OCP\ILogger;
+use OCP\IURLGenerator;
 use OCP\IUser;
 use OCP\IUserSession;
-use OCP\IAppConfig;
-use OCP\IConfig;
-use OCP\IURLGenerator;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Test\TestCase;
 
@@ -97,7 +97,7 @@ class AppManagerTest extends TestCase {
 	/** @var IAppManager */
 	protected $manager;
 
-	protected function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 
 		$this->userSession = $this->createMock(IUserSession::class);
@@ -248,10 +248,11 @@ class AppManagerTest extends TestCase {
 	 *
 	 * @param string $type
 	 *
-	 * @expectedException \Exception
-	 * @expectedExceptionMessage test can't be enabled for groups.
 	 */
 	public function testEnableAppForGroupsForbiddenTypes($type) {
+		$this->expectException(\Exception::class);
+		$this->expectExceptionMessage('test can\'t be enabled for groups.');
+
 		$group1 = $this->createMock(IGroup::class);
 		$group1->method('getGID')
 			->willReturn('group1');

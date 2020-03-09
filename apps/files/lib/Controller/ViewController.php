@@ -32,12 +32,12 @@ namespace OCA\Files\Controller;
 use OCA\Files\Activity\Helper;
 use OCA\Files\Event\LoadAdditionalScriptsEvent;
 use OCA\Files\Event\LoadSidebar;
+use OCP\App\IAppManager;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\ContentSecurityPolicy;
 use OCP\AppFramework\Http\RedirectResponse;
 use OCP\AppFramework\Http\Response;
 use OCP\AppFramework\Http\TemplateResponse;
-use OCP\App\IAppManager;
 use OCP\EventDispatcher\IEventDispatcher;
 use OCP\Files\Folder;
 use OCP\Files\IRootFolder;
@@ -275,8 +275,8 @@ class ViewController extends Controller {
 
 		$params                                = [];
 		$params['usedSpacePercent']            = (int) $storageInfo['relative'];
-		$params['owner']                       = $storageInfo['owner'];
-		$params['ownerDisplayName']            = $storageInfo['ownerDisplayName'];
+		$params['owner']                       = $storageInfo['owner'] ?? '';
+		$params['ownerDisplayName']            = $storageInfo['ownerDisplayName'] ?? '';
 		$params['isPublic']                    = false;
 		$params['allowShareWithLink']          = $this->config->getAppValue('core', 'shareapi_allow_links', 'yes');
 		$params['defaultFileSorting']          = $this->config->getUserValue($user, 'files', 'file_sorting', 'name');

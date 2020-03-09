@@ -31,21 +31,21 @@ namespace OCA\Files\Tests\Controller;
 
 use OCA\Files\Activity\Helper;
 use OCA\Files\Controller\ViewController;
+use OCP\App\IAppManager;
 use OCP\AppFramework\Http;
 use OCP\EventDispatcher\IEventDispatcher;
 use OCP\Files\File;
 use OCP\Files\Folder;
 use OCP\Files\IRootFolder;
-use OCP\IUser;
-use OCP\Template;
-use Test\TestCase;
+use OCP\IConfig;
+use OCP\IL10N;
 use OCP\IRequest;
 use OCP\IURLGenerator;
-use OCP\IL10N;
-use OCP\IConfig;
+use OCP\IUser;
 use OCP\IUserSession;
+use OCP\Template;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use OCP\App\IAppManager;
+use Test\TestCase;
 
 /**
  * Class ViewControllerTest
@@ -76,7 +76,7 @@ class ViewControllerTest extends TestCase {
 	/** @var Helper|\PHPUnit_Framework_MockObject_MockObject */
 	private $activityHelper;
 
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->request = $this->getMockBuilder(IRequest::class)->getMock();
 		$this->urlGenerator = $this->getMockBuilder(IURLGenerator::class)->getMock();

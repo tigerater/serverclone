@@ -25,9 +25,9 @@ use OCA\Settings\Controller\CertificateController;
 use OCP\App\IAppManager;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataResponse;
-use OCP\IRequest;
-use OCP\IL10N;
 use OCP\ICertificateManager;
+use OCP\IL10N;
+use OCP\IRequest;
 
 /**
  * Class CertificateControllerTest
@@ -48,7 +48,7 @@ class CertificateControllerTest extends \Test\TestCase {
 	/** @var  ICertificateManager */
 	private $systemCertificateManager;
 
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 
 		$this->request = $this->getMockBuilder(IRequest::class)->getMock();
