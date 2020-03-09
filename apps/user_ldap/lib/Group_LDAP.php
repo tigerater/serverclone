@@ -1148,7 +1148,7 @@ class Group_LDAP extends BackendUtility implements \OCP\GroupInterface, IGroupLD
 						$uuid,
 						false
 					);
-					$this->access->cacheGroupExists($gid);
+					$this->access->connection->writeToCache("groupExists" . $gid, true);
 				}
 			}
 			return $dn != null;
