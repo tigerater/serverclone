@@ -232,7 +232,7 @@ OC.L10N.register(
     "The password is wrong. Try again." : "The password is wrong. Try again.",
     "Two-factor authentication" : "Two-factor authentication",
     "Use backup code" : "Use backup code",
-    "Cancel login" : "Cancel login",
+    "Cancel log in" : "Cancel log in",
     "Error while validating your second factor" : "Error while validating your second factor",
     "Access through untrusted domain" : "Access through untrusted domain",
     "Please contact your administrator. If you are an administrator, edit the \"trusted_domains\" setting in config/config.php like the example in config.sample.php." : "Please contact your administrator. If you are an administrator, edit the \"trusted_domains\" setting in config/config.php like the example in config.sample.php.",
@@ -320,7 +320,6 @@ OC.L10N.register(
     "For larger installations we recommend to choose a different database backend." : "For larger installations we recommend to choose a different database backend.",
     "Especially when using the desktop client for file syncing the use of SQLite is discouraged." : "Especially when using the desktop client for file syncing, the use of SQLite is discouraged.",
     "Wrong password." : "Wrong password.",
-    "New Password" : "New Password",
-    "Cancel log in" : "Cancel log in"
+    "New Password" : "New Password"
 },
 "nplurals=2; plural=(n != 1);");
