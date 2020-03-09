@@ -85,16 +85,13 @@ import L10N, {
 } from './l10n'
 
 import {
+	filePath,
 	generateUrl,
-	generateFilePath,
-	generateOcsUrl,
-	generateRemoteUrl,
-	getRootUrl,
+	getRootPath,
 	imagePath,
 	linkTo,
-} from '@nextcloud/router'
-
-import {
+	linkToOCS,
+	linkToRemote,
 	linkToRemoteBase,
 } from './routing'
 import msg from './msg'
@@ -149,7 +146,7 @@ export default {
 	 * Currently logged in user or null if none
 	 *
 	 * @type String
-	 * @deprecated use `getCurrentUser` from https://www.npmjs.com/package/@nextcloud/auth
+	 * @deprecated use {@link OC.getCurrentUser} instead
 	 */
 	currentUser,
 	dialogs: Dialogs,
@@ -159,7 +156,6 @@ export default {
 	 * user (public page mode)
 	 *
 	 * @since 9.0.0
-	 * @deprecated 19.0.0 use `getCurrentUser` from https://www.npmjs.com/package/@nextcloud/auth
 	 */
 	getCurrentUser,
 	isUserAdmin,
@@ -252,45 +248,18 @@ export default {
 	theme,
 	Util,
 	debug,
-	/**
-	 * @deprecated 19.0.0 use `generateFilePath` from https://www.npmjs.com/package/@nextcloud/router
-	 */
-	filePath: generateFilePath,
-	/**
-	 * @deprecated 19.0.0 use `generateUrl` from https://www.npmjs.com/package/@nextcloud/router
-	 */
+	filePath,
 	generateUrl,
-	/**
-	 * @deprecated 19.0.0 use https://lodash.com/docs#get
-	 */
 	get: get(window),
-	/**
-	 * @deprecated 19.0.0 use https://lodash.com/docs#set
-	 */
 	set: set(window),
-	/**
-	 * @deprecated 19.0.0 use `getRootUrl` from https://www.npmjs.com/package/@nextcloud/router
-	 */
-	getRootPath: getRootUrl,
-	/**
-	 * @deprecated 19.0.0 use `imagePath` from https://www.npmjs.com/package/@nextcloud/router
-	 */
+	getRootPath,
 	imagePath,
 	redirect,
 	reload,
 	requestToken: getRequestToken(),
-	/**
-	 * @deprecated 19.0.0 use `linkTo` from https://www.npmjs.com/package/@nextcloud/router
-	 */
 	linkTo,
-	/**
-	 * @deprecated 19.0.0 use `generateOcsUrl` from https://www.npmjs.com/package/@nextcloud/router
-	 */
-	linkToOCS: generateOcsUrl,
-	/**
-	 * @deprecated 19.0.0 use `generateRemoteUrl` from https://www.npmjs.com/package/@nextcloud/router
-	 */
-	linkToRemote: generateRemoteUrl,
+	linkToOCS,
+	linkToRemote,
 	linkToRemoteBase,
 	/**
 	 * Relative path to Nextcloud root.
@@ -298,7 +267,7 @@ export default {
 	 *
 	 * @type string
 	 *
-	 * @deprecated 19.0.0 use `getRootUrl` from https://www.npmjs.com/package/@nextcloud/router
+	 * @deprecated since 8.2, use OC.getRootPath() instead
 	 * @see OC#getRootPath
 	 */
 	webroot,
