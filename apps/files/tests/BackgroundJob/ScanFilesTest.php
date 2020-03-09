@@ -59,11 +59,6 @@ class ScanFilesTest extends TestCase {
 	public function testRunWithoutUsers() {
 		$this->config
 				->expects($this->at(0))
-				->method('getSystemValueBool')
-				->with('files_no_background_scan', false)
-				->will($this->returnValue(false));
-		$this->config
-				->expects($this->at(1))
 				->method('getAppValue')
 				->with('files', 'cronjob_scan_files', 0)
 				->will($this->returnValue(50));
@@ -78,7 +73,7 @@ class ScanFilesTest extends TestCase {
 				->with('', 500)
 				->will($this->returnValue([]));
 		$this->config
-				->expects($this->at(2))
+				->expects($this->at(1))
 				->method('setAppValue')
 				->with('files', 'cronjob_scan_files', 500);
 
@@ -89,11 +84,6 @@ class ScanFilesTest extends TestCase {
 		$fakeUser = $this->createMock(IUser::class);
 		$this->config
 				->expects($this->at(0))
-				->method('getSystemValueBool')
-				->with('files_no_background_scan', false)
-				->will($this->returnValue(false));
-		$this->config
-				->expects($this->at(1))
 				->method('getAppValue')
 				->with('files', 'cronjob_scan_files', 0)
 				->will($this->returnValue(50));
@@ -105,7 +95,7 @@ class ScanFilesTest extends TestCase {
 						$fakeUser
 				]));
 		$this->config
-				->expects($this->at(2))
+				->expects($this->at(1))
 				->method('setAppValue')
 				->with('files', 'cronjob_scan_files', 550);
 		$this->scanFiles
@@ -119,11 +109,6 @@ class ScanFilesTest extends TestCase {
 	public function testRunWithUsersAndOffsetAtEndOfUserList() {
 		$this->config
 				->expects($this->at(0))
-				->method('getSystemValueBool')
-				->with('files_no_background_scan', false)
-				->will($this->returnValue(false));
-		$this->config
-				->expects($this->at(1))
 				->method('getAppValue')
 				->with('files', 'cronjob_scan_files', 0)
 				->will($this->returnValue(50));
@@ -138,7 +123,7 @@ class ScanFilesTest extends TestCase {
 				->with('', 500)
 				->will($this->returnValue([]));
 		$this->config
-				->expects($this->at(2))
+				->expects($this->at(1))
 				->method('setAppValue')
 				->with('files', 'cronjob_scan_files', 500);
 		$this->scanFiles
