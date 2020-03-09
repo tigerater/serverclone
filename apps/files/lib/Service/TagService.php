@@ -24,6 +24,7 @@
 
 namespace OCA\Files\Service;
 
+use OC\Tags;
 use OCA\Files\Activity\FavoriteProvider;
 use OCP\Activity\IManager;
 use OCP\Files\Folder;
@@ -91,14 +92,14 @@ class TagService {
 
 		$newTags = array_diff($tags, $currentTags);
 		foreach ($newTags as $tag) {
-			if ($tag === ITags::TAG_FAVORITE) {
+			if ($tag === Tags::TAG_FAVORITE) {
 				$this->addActivity(true, $fileId, $path);
 			}
 			$this->tagger->tagAs($fileId, $tag);
 		}
 		$deletedTags = array_diff($currentTags, $tags);
 		foreach ($deletedTags as $tag) {
-			if ($tag === ITags::TAG_FAVORITE) {
+			if ($tag === Tags::TAG_FAVORITE) {
 				$this->addActivity(false, $fileId, $path);
 			}
 			$this->tagger->unTag($fileId, $tag);
