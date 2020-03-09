@@ -549,7 +549,6 @@ class AppTest extends \Test\TestCase {
 		$this->overwriteService('AppConfig', $appConfig);
 		$this->overwriteService('AppManager', new \OC\App\AppManager(
 			\OC::$server->getUserSession(),
-			\OC::$server->getConfig(),
 			$appConfig,
 			\OC::$server->getGroupManager(),
 			\OC::$server->getMemCacheFactory(),

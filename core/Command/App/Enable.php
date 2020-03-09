@@ -73,22 +73,15 @@ class Enable extends Command implements CompletionAwareInterface {
 				'g',
 				InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY,
 				'enable the app only for a list of groups'
-			)
-			->addOption(
-				'force',
-				'f',
-				InputOption::VALUE_NONE,
-				'enable the app regardless of the Nextcloud version requirement'
 			);
 	}
 
 	protected function execute(InputInterface $input, OutputInterface $output) {
 		$appIds = $input->getArgument('app-id');
 		$groups = $this->resolveGroupIds($input->getOption('groups'));
-		$forceEnable = (bool) $input->getOption('force');
 
 		foreach ($appIds as $appId) {
-			$this->enableApp($appId, $groups, $forceEnable, $output);
+			$this->enableApp($appId, $groups, $output);
 		}
 
 		return $this->exitCode;
@@ -97,10 +90,9 @@ class Enable extends Command implements CompletionAwareInterface {
 	/**
 	 * @param string $appId
 	 * @param array $groupIds
-	 * @param bool $forceEnable
 	 * @param OutputInterface $output
 	 */
-	private function enableApp(string $appId, array $groupIds, bool $forceEnable, OutputInterface $output): void {
+	private function enableApp(string $appId, array $groupIds, OutputInterface $output): void {
 		$groupNames = array_map(function (IGroup $group) {
 			return $group->getDisplayName();
 		}, $groupIds);
@@ -114,13 +106,13 @@ class Enable extends Command implements CompletionAwareInterface {
 				$installer->downloadApp($appId);
 			}
 
-			$installer->installApp($appId, $forceEnable);
+			$installer->installApp($appId);
 
 			if ($groupIds === []) {
-				$this->appManager->enableApp($appId, $forceEnable);
+				$this->appManager->enableApp($appId);
 				$output->writeln($appId . ' enabled');
 			} else {
-				$this->appManager->enableAppForGroups($appId, $groupIds, $forceEnable);
+				$this->appManager->enableAppForGroups($appId, $groupIds);
 				$output->writeln($appId . ' enabled for groups: ' . implode(', ', $groupNames));
 			}
 		} catch (AppPathNotFoundException $e) {

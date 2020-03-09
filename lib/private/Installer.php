@@ -94,11 +94,10 @@ class Installer {
 	 * Installs an app that is located in one of the app folders already
 	 *
 	 * @param string $appId App to install
-	 * @param bool $forceEnable
 	 * @throws \Exception
 	 * @return string app ID
 	 */
-	public function installApp(string $appId, bool $forceEnable = false): string {
+	public function installApp($appId) {
 		$app = \OC_App::findAppInDirectories($appId);
 		if($app === false) {
 			throw new \Exception('App not found in any app directory');
@@ -118,7 +117,7 @@ class Installer {
 		}
 
 		$ignoreMaxApps = $this->config->getSystemValue('app_install_overwrite', []);
-		$ignoreMax = $forceEnable || in_array($appId, $ignoreMaxApps, true);
+		$ignoreMax = in_array($appId, $ignoreMaxApps);
 
 		$version = implode('.', \OCP\Util::getVersion());
 		if (!\OC_App::isAppCompatible($version, $info, $ignoreMax)) {

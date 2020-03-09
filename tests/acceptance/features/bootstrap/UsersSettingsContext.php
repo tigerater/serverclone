@@ -1,10 +1,9 @@
 <?php
 
 /**
- *
+ * 
  * @copyright Copyright (c) 2017, Daniel Calviño Sánchez (danxuliu@gmail.com)
  * @copyright Copyright (c) 2018, John Molakvoæ (skjnldsv) <skjnldsv@protonmail.com>
- * @copyright Copyright (c) 2019, Greta Doci <gretadoci@gmail.com>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -34,7 +33,7 @@ class UsersSettingsContext implements Context, ActorAwareInterface {
 	 */
 	public static function newUserForm() {
 		return Locator::forThe()->id("new-user")->
-			describedAs("New user form in Users Settings");
+				describedAs("New user form in Users Settings");
 	}
 
 	/**
@@ -42,7 +41,7 @@ class UsersSettingsContext implements Context, ActorAwareInterface {
 	 */
 	public static function userNameFieldForNewUser() {
 		return Locator::forThe()->field("newusername")->
-			describedAs("User name field for new user in Users Settings");
+				describedAs("User name field for new user in Users Settings");
 	}
 
 	/**
@@ -50,7 +49,7 @@ class UsersSettingsContext implements Context, ActorAwareInterface {
 	 */
 	public static function displayNameFieldForNewUser() {
 		return Locator::forThe()->field("newdisplayname")->
-			describedAs("Display name field for new user in Users Settings");
+				describedAs("Display name field for new user in Users Settings");
 	}
 
 	/**
@@ -58,7 +57,7 @@ class UsersSettingsContext implements Context, ActorAwareInterface {
 	 */
 	public static function passwordFieldForNewUser() {
 		return Locator::forThe()->field("newuserpassword")->
-			describedAs("Password field for new user in Users Settings");
+				describedAs("Password field for new user in Users Settings");
 	}
 
 	/**
@@ -66,7 +65,7 @@ class UsersSettingsContext implements Context, ActorAwareInterface {
 	 */
 	public static function newUserButton() {
 		return Locator::forThe()->id("new-user-button")->
-			describedAs("New user button in Users Settings");
+				describedAs("New user button in Users Settings");
 	}
 
 	/**
@@ -74,26 +73,26 @@ class UsersSettingsContext implements Context, ActorAwareInterface {
 	 */
 	public static function createNewUserButton() {
 		return Locator::forThe()->xpath("//form[@id = 'new-user']//input[@type = 'submit']")->
-			describedAs("Create user button in Users Settings");
+				describedAs("Create user button in Users Settings");
 	}
 
 	/**
 	 * @return Locator
 	 */
 	public static function rowForUser($user) {
-		return Locator::forThe()->css("div.user-list-grid div.row[data-id=$user]")->
-			describedAs("Row for user $user in Users Settings");
+		return Locator::forThe()->xpath("//div[@id='app-content']/div/div[normalize-space() = '$user']/..")->
+				describedAs("Row for user $user in Users Settings");
 	}
 
 	/**
 	 * Warning: you need to watch out for the proper classes order
-	 *
+	 * 
 	 * @return Locator
 	 */
 	public static function classCellForUser($class, $user) {
 		return Locator::forThe()->xpath("//*[contains(concat(' ', normalize-space(@class), ' '), ' $class ')]")->
-			descendantOf(self::rowForUser($user))->
-			describedAs("$class cell for user $user in Users Settings");
+				descendantOf(self::rowForUser($user))->
+				describedAs("$class cell for user $user in Users Settings");
 	}
 
 	/**
@@ -101,8 +100,8 @@ class UsersSettingsContext implements Context, ActorAwareInterface {
 	 */
 	public static function inputForUserInCell($cell, $user) {
 		return Locator::forThe()->css("input")->
-			descendantOf(self::classCellForUser($cell, $user))->
-			describedAs("$cell input for user $user in Users Settings");
+				descendantOf(self::classCellForUser($cell, $user))->
+				describedAs("$cell input for user $user in Users Settings");
 	}
 
 	/**
@@ -117,8 +116,8 @@ class UsersSettingsContext implements Context, ActorAwareInterface {
 	 */
 	public static function optionInInputForUser($cell, $user) {
 		return Locator::forThe()->css(".multiselect__option--highlight")->
-			descendantOf(self::classCellForUser($cell, $user))->
-			describedAs("Selected $cell option in $cell input for user $user in Users Settings");
+				descendantOf(self::classCellForUser($cell, $user))->
+				describedAs("Selected $cell option in $cell input for user $user in Users Settings");
 	}
 
 	/**
@@ -126,8 +125,8 @@ class UsersSettingsContext implements Context, ActorAwareInterface {
 	 */
 	public static function actionsMenuOf($user) {
 		return Locator::forThe()->css(".icon-more")->
-			descendantOf(self::rowForUser($user))->
-			describedAs("Actions menu for user $user in Users Settings");
+				descendantOf(self::rowForUser($user))->
+				describedAs("Actions menu for user $user in Users Settings");
 	}
 
 	/**
@@ -135,8 +134,8 @@ class UsersSettingsContext implements Context, ActorAwareInterface {
 	 */
 	public static function theAction($action, $user) {
 		return Locator::forThe()->xpath("//button[normalize-space() = '$action']")->
-			descendantOf(self::rowForUser($user))->
-			describedAs("$action action for the user $user row in Users Settings");
+				descendantOf(self::rowForUser($user))->
+				describedAs("$action action for the user $user row in Users Settings");
 	}
 
 	/**
@@ -144,7 +143,7 @@ class UsersSettingsContext implements Context, ActorAwareInterface {
 	 */
 	public static function theColumn($column) {
 		return Locator::forThe()->xpath("//div[@class='user-list-grid']//div[normalize-space() = '$column']")->
-			describedAs("The $column column in Users Settings");
+				describedAs("The $column column in Users Settings");
 	}
 
 	/**
@@ -152,25 +151,8 @@ class UsersSettingsContext implements Context, ActorAwareInterface {
 	 */
 	public static function selectedSelectOption($cell, $user) {
 		return Locator::forThe()->css(".multiselect__single")->
-			descendantOf(self::classCellForUser($cell, $user))->
-			describedAs("The selected option of the $cell select for the user $user in Users Settings");
-	}
-
-	/**
-	 * @return Locator
-	 */
-	public static function editModeToggle($user) {
-		return Locator::forThe()->css(".toggleUserActions button.icon-rename")->
-			descendantOf(self::rowForUser($user))->
-			describedAs("The edit toggle button for the user $user in Users Settings");
-	}
-
-	/**
-	 * @return Locator
-	 */
-	public static function editModeOn($user) {
-		return Locator::forThe()->css("div.user-list-grid div.row.row--editable[data-id=$user]")->
-			describedAs("I see the edit mode is on for the user $user in Users Settings");
+				descendantOf(self::classCellForUser($cell, $user))->
+				describedAs("The selected option of the $cell select for the user $user in Users Settings");
 	}
 
 	/**
@@ -220,13 +202,6 @@ class UsersSettingsContext implements Context, ActorAwareInterface {
 	 */
 	public function iCreateTheNewUser() {
 		$this->actor->find(self::createNewUserButton(), 10)->click();
-	}
-
-	/**
-	 * @When I toggle the edit mode for the user :user
-	 */
-	public function iToggleTheEditModeForUser($user) {
-		$this->actor->find(self::editModeToggle($user), 10)->click();
 	}
 
 	/**
@@ -283,7 +258,7 @@ class UsersSettingsContext implements Context, ActorAwareInterface {
 	 */
 	public function iSeeThatTheNewUserFormIsShown() {
 		PHPUnit_Framework_Assert::assertTrue(
-			$this->actor->find(self::newUserForm(), 10)->isVisible());
+				$this->actor->find(self::newUserForm(), 10)->isVisible());
 	}
 
 	/**
@@ -291,7 +266,7 @@ class UsersSettingsContext implements Context, ActorAwareInterface {
 	 */
 	public function iSeeTheAction($action, $user) {
 		PHPUnit_Framework_Assert::assertTrue(
-			$this->actor->find(self::theAction($action, $user), 10)->isVisible());
+				$this->actor->find(self::theAction($action, $user), 10)->isVisible());
 	}
 
 	/**
@@ -299,7 +274,7 @@ class UsersSettingsContext implements Context, ActorAwareInterface {
 	 */
 	public function iSeeThatTheColumnIsShown($column) {
 		PHPUnit_Framework_Assert::assertTrue(
-			$this->actor->find(self::theColumn($column), 10)->isVisible());
+				$this->actor->find(self::theColumn($column), 10)->isVisible());
 	}
 
 	/**
@@ -314,16 +289,15 @@ class UsersSettingsContext implements Context, ActorAwareInterface {
 	 * @Then I see that the display name for the user :user is :displayName
 	 */
 	public function iSeeThatTheDisplayNameForTheUserIs($user, $displayName) {
-		PHPUnit_Framework_Assert::assertEquals(
-			$displayName, $this->actor->find(self::displayNameCellForUser($user), 10)->getValue());
+		PHPUnit_Framework_Assert::assertEquals($displayName, $this->actor->find(self::displayNameCellForUser($user), 10)->getValue());
 	}
 
 	/**
 	 * @Then I see that the :cell cell for user :user is done loading
 	 */
 	public function iSeeThatTheCellForUserIsDoneLoading($cell, $user) {
-		WaitFor::elementToBeEventuallyShown($this->actor, self::classCellForUser($cell . ' icon-loading-small', $user));
-		WaitFor::elementToBeEventuallyNotShown($this->actor, self::classCellForUser($cell . ' icon-loading-small', $user));
+		WaitFor::elementToBeEventuallyShown($this->actor, self::classCellForUser($cell.' icon-loading-small', $user));
+		WaitFor::elementToBeEventuallyNotShown($this->actor, self::classCellForUser($cell.' icon-loading-small', $user));
 	}
 
 	/**
@@ -333,11 +307,6 @@ class UsersSettingsContext implements Context, ActorAwareInterface {
 		PHPUnit_Framework_Assert::assertEquals(
 			$this->actor->find(self::selectedSelectOption('quota', $user), 2)->getText(), $quota);
 	}
+	
 
-	/**
-	 * @Then I see that the edit mode is on for user :user
-	 */
-	public function iSeeThatTheEditModeIsOn($user) {
-		WaitFor::elementToBeEventuallyShown($this->actor, self::editModeOn($user));
-	}
 }
