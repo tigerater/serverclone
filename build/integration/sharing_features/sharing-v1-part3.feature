@@ -10,7 +10,6 @@ Feature: sharing
     And user "user1" exists
     And User "user0" uploads file with content "foo" to "/tmp.txt"
     And file "/tmp.txt" of user "user0" is shared with user "user1"
-    And user "user1" accepts last share
     When as "user1" gets properties of folder "/tmp.txt" with
       |{http://open-collaboration-services.org/ns}share-permissions |
     Then the single response should contain a property "{http://open-collaboration-services.org/ns}share-permissions" with value "19"
@@ -20,7 +19,6 @@ Feature: sharing
     And user "user1" exists
     And User "user0" uploads file with content "foo" to "/tmp.txt"
     And file "tmp.txt" of user "user0" is shared with user "user1"
-    And user "user1" accepts last share
     And As an "user0"
     And Updating last share with
       | permissions | 3 |
@@ -33,7 +31,6 @@ Feature: sharing
     And user "user1" exists
     And User "user0" uploads file with content "foo" to "/tmp.txt"
     And file "tmp.txt" of user "user0" is shared with user "user1"
-    And user "user1" accepts last share
     And As an "user0"
     And Updating last share with
       | permissions | 17 |
@@ -53,7 +50,6 @@ Feature: sharing
     And user "user1" exists
     And user "user0" created a folder "/tmp"
     And file "/tmp" of user "user0" is shared with user "user1"
-    And user "user1" accepts last share
     When as "user1" gets properties of folder "/tmp" with
       |{http://open-collaboration-services.org/ns}share-permissions |
     Then the single response should contain a property "{http://open-collaboration-services.org/ns}share-permissions" with value "31"
@@ -63,7 +59,6 @@ Feature: sharing
     And user "user1" exists
     And user "user0" created a folder "/tmp"
     And file "/tmp" of user "user0" is shared with user "user1"
-    And user "user1" accepts last share
     And As an "user0"
     And Updating last share with
       | permissions | 29 |
@@ -76,7 +71,6 @@ Feature: sharing
     And user "user1" exists
     And user "user0" created a folder "/tmp"
     And file "/tmp" of user "user0" is shared with user "user1"
-    And user "user1" accepts last share
     And As an "user0"
     And Updating last share with
       | permissions | 27 |
@@ -89,7 +83,6 @@ Feature: sharing
     And user "user1" exists
     And user "user0" created a folder "/tmp"
     And file "/tmp" of user "user0" is shared with user "user1"
-    And user "user1" accepts last share
     And As an "user0"
     And Updating last share with
       | permissions | 23 |
@@ -102,7 +95,6 @@ Feature: sharing
     And user "user1" exists
     And user "user0" created a folder "/tmp"
     And file "/tmp" of user "user0" is shared with user "user1"
-    And user "user1" accepts last share
     And As an "user0"
     And Updating last share with
       | permissions | 15 |
@@ -117,9 +109,7 @@ Feature: sharing
     And user "user0" created a folder "/foo"
     And user "user1" created a folder "/foo"
     When file "/foo" of user "user0" is shared with user "user2"
-    And user "user2" accepts last share
     And file "/foo" of user "user1" is shared with user "user2"
-    And user "user2" accepts last share
     Then user "user2" should see following elements
       | /foo/       |
       | /foo%20(2)/ |
@@ -130,7 +120,7 @@ Feature: sharing
     And user "user1" exists
     And assure user "user0" is disabled
     And As an "user0"
-    When creating a share with
+    When sending "POST" to "/apps/files_sharing/api/v1/shares" with
       | path | welcome.txt |
       | shareWith | user1 |
       | shareType | 0 |
@@ -153,11 +143,11 @@ Feature: sharing
     And Deleting last share
     Then the OCS status code should be "100"
     And the HTTP status code should be "200"
-    And Getting info of last share
+    And Getting info of last share 
     And the OCS status code should be "404"
     And the HTTP status code should be "200"
     And As an "user1"
-    And Getting info of last share
+    And Getting info of last share 
     And the OCS status code should be "404"
     And the HTTP status code should be "200"
 
@@ -186,9 +176,7 @@ Feature: sharing
     And user "user1" belongs to group "group1"
     And user "user0" created a folder "/merge-test-outside"
     When folder "/merge-test-outside" of user "user0" is shared with group "group1"
-    And user "user1" accepts last share
     And folder "/merge-test-outside" of user "user0" is shared with user "user1"
-    And user "user1" accepts last share
     Then as "user1" the folder "/merge-test-outside" exists
     And as "user1" the folder "/merge-test-outside (2)" does not exist
 
@@ -200,9 +188,7 @@ Feature: sharing
     And user "user1" belongs to group "group1"
     And user "user0" created a folder "/merge-test-outside-perms"
     When folder "/merge-test-outside-perms" of user "user0" is shared with group "group1" with permissions 1
-    And user "user1" accepts last share
     And folder "/merge-test-outside-perms" of user "user0" is shared with user "user1" with permissions 31
-    And user "user1" accepts last share
     Then as "user1" gets properties of folder "/merge-test-outside-perms" with
       |{http://owncloud.org/ns}permissions|
     And the single response should contain a property "{http://owncloud.org/ns}permissions" with value "SRGDNVCK"
@@ -218,9 +204,7 @@ Feature: sharing
     And user "user1" belongs to group "group2"
     And user "user0" created a folder "/merge-test-outside-twogroups"
     When folder "/merge-test-outside-twogroups" of user "user0" is shared with group "group1"
-    And user "user1" accepts last share
     And folder "/merge-test-outside-twogroups" of user "user0" is shared with group "group2"
-    And user "user1" accepts last share
     Then as "user1" the folder "/merge-test-outside-twogroups" exists
     And as "user1" the folder "/merge-test-outside-twogroups (2)" does not exist
 
@@ -234,9 +218,7 @@ Feature: sharing
     And user "user1" belongs to group "group2"
     And user "user0" created a folder "/merge-test-outside-twogroups-perms"
     When folder "/merge-test-outside-twogroups-perms" of user "user0" is shared with group "group1" with permissions 1
-    And user "user1" accepts last share
     And folder "/merge-test-outside-twogroups-perms" of user "user0" is shared with group "group2" with permissions 31
-    And user "user1" accepts last share
     Then as "user1" gets properties of folder "/merge-test-outside-twogroups-perms" with
       |{http://owncloud.org/ns}permissions|
     And the single response should contain a property "{http://owncloud.org/ns}permissions" with value "SRGDNVCK"
@@ -252,11 +234,8 @@ Feature: sharing
     And user "user1" belongs to group "group2"
     And user "user0" created a folder "/merge-test-outside-twogroups-member-perms"
     When folder "/merge-test-outside-twogroups-member-perms" of user "user0" is shared with group "group1" with permissions 1
-    And user "user1" accepts last share
     And folder "/merge-test-outside-twogroups-member-perms" of user "user0" is shared with group "group2" with permissions 31
-    And user "user1" accepts last share
     And folder "/merge-test-outside-twogroups-member-perms" of user "user0" is shared with user "user1" with permissions 1
-    And user "user1" accepts last share
     Then as "user1" gets properties of folder "/merge-test-outside-twogroups-member-perms" with
       |{http://owncloud.org/ns}permissions|
     And the single response should contain a property "{http://owncloud.org/ns}permissions" with value "SRGDNVCK"
@@ -310,11 +289,9 @@ Feature: sharing
     And user "user1" belongs to group "group1"
     And user "user0" created a folder "/merge-test-outside-groups-renamebeforesecondshare"
     When folder "/merge-test-outside-groups-renamebeforesecondshare" of user "user0" is shared with group "group1"
-    And user "user1" accepts last share
     And User "user1" moved folder "/merge-test-outside-groups-renamebeforesecondshare" to "/merge-test-outside-groups-renamebeforesecondshare-renamed"
     And Sleep for "1" seconds
     And folder "/merge-test-outside-groups-renamebeforesecondshare" of user "user0" is shared with user "user1"
-    And user "user1" accepts last share
     Then as "user1" gets properties of folder "/merge-test-outside-groups-renamebeforesecondshare-renamed" with
       |{http://owncloud.org/ns}permissions|
     And the single response should contain a property "{http://owncloud.org/ns}permissions" with value "SRGDNVCK"
@@ -329,11 +306,9 @@ Feature: sharing
     And user "user1" belongs to group "group1"
     And user "user0" created a folder "/merge-test-outside-groups-renamebeforesecondshare"
     When folder "/merge-test-outside-groups-renamebeforesecondshare" of user "user0" is shared with user "user1"
-    And user "user1" accepts last share
     And User "user1" moved folder "/merge-test-outside-groups-renamebeforesecondshare" to "/merge-test-outside-groups-renamebeforesecondshare-renamed"
     And Sleep for "1" seconds
     And folder "/merge-test-outside-groups-renamebeforesecondshare" of user "user0" is shared with group "group1"
-    And user "user1" accepts last share
     Then as "user1" gets properties of folder "/merge-test-outside-groups-renamebeforesecondshare-renamed" with
       |{http://owncloud.org/ns}permissions|
     And the single response should contain a property "{http://owncloud.org/ns}permissions" with value "SRGDNVCK"
@@ -353,7 +328,6 @@ Feature: sharing
     And user "user0" created a folder "/common"
     And user "user0" created a folder "/common/sub"
     And file "/common/sub" of user "user0" is shared with user "user1"
-    And user "user1" accepts last share
     And User "user0" deletes folder "/common"
     When User "user0" empties trashbin
     Then as "user1" the folder "/sub" does not exist
@@ -365,7 +339,7 @@ Feature: sharing
     And user "user0" belongs to group "sharing-group"
     And file "welcome.txt" of user "user0" is shared with group "sharing-group"
     And Deleting last share
-    When creating a share with
+    When sending "POST" to "/apps/files_sharing/api/v1/shares" with
       | path | welcome.txt |
       | shareWith | sharing-group |
       | shareType | 1 |
@@ -380,7 +354,6 @@ Feature: sharing
     And user "user0" belongs to group "sharing-group"
     And user "user1" belongs to group "sharing-group"
     And file "/PARENT/parent.txt" of user "user0" is shared with group "sharing-group"
-    And user "user1" accepts last share
     And user "user0" stores etag of element "/PARENT"
     And user "user1" stores etag of element "/"
     And As an "user1"
@@ -417,7 +390,6 @@ Feature: sharing
       | shareType | 0 |
       | shareWith | user1 |
       | permissions | 31 |
-    And user "user1" accepts last share
     And creating a share with
       | path | TMP |
       | shareType | 0 |
@@ -441,7 +413,6 @@ Feature: sharing
       | shareWith | user1 |
       | permissions | 17  |
     When As an "user1"
-    And accepting last share
     And creating a share with
       | path | TMP |
       | shareType | 3 |
@@ -463,7 +434,6 @@ Feature: sharing
       | shareWith | user1 |
       | permissions | 17  |
     When As an "user1"
-    And accepting last share
     And creating a share with
       | path | TMP/SUB |
       | shareType | 3 |
@@ -479,7 +449,6 @@ Feature: sharing
     And user "user0" created a folder "/shared"
     And User "user0" moved file "/textfile0.txt" to "/shared/shared_file.txt"
     And folder "/shared" of user "user0" is shared with user "user1"
-    And user "user1" accepts last share
     When User "user1" deletes file "/shared/shared_file.txt"
     Then as "user1" the file "/shared/shared_file.txt" does not exist
     And as "user0" the file "/shared/shared_file.txt" does not exist
@@ -494,7 +463,6 @@ Feature: sharing
     And user "user0" created a folder "/shared/sub"
     And User "user0" moved file "/textfile0.txt" to "/shared/sub/shared_file.txt"
     And folder "/shared" of user "user0" is shared with user "user1"
-    And user "user1" accepts last share
     When User "user1" deletes folder "/shared/sub"
     Then as "user1" the folder "/shared/sub" does not exist
     And as "user0" the folder "/shared/sub" does not exist
@@ -509,7 +477,6 @@ Feature: sharing
     And user "user1" exists
     And user "user0" created a folder "/shared"
     And folder "/shared" of user "user0" is shared with user "user1"
-    And user "user1" accepts last share
     When User "user1" moved file "/textfile0.txt" to "/shared/shared_file.txt"
     Then as "user1" the file "/shared/shared_file.txt" exists
     And as "user0" the file "/shared/shared_file.txt" exists
@@ -523,7 +490,6 @@ Feature: sharing
     And As an "user0"
     And user "user0" created a folder "/share"
     And folder "/share" of user "user0" is shared with group "group1"
-    And user "user1" accepts last share
     And user "user0" created a folder "/share/subfolder"
     And As an "user1"
     And save the last share data as "original"

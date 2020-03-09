@@ -19,7 +19,6 @@ OC.L10N.register(
     "Operation %s does not exist" : "Operacijos %s nėra",
     "Operation %s is invalid" : "Neteisinga %s operacija",
     "Check %s is invalid or does not exist" : "%s neteisingas arba neegzistuoja",
-    "Workflows" : "Darbo eigos",
     "PDF documents" : "PDF dokumentai",
     "Predefined URLs" : "Iš anksto apibrėžti URL adresai",
     "Files WebDAV" : "WebDAV failai",
@@ -77,7 +76,6 @@ OC.L10N.register(
     "Workflow" : "Darbo eiga",
     "Files workflow engine" : "Darbo eigos su failais modulis",
     "Open documentation" : "Atverti dokumentaciją",
-    "Loading…" : "Įkeliama…",
-    "Tag management" : "Žymių tvarkymas"
+    "Loading…" : "Įkeliama…"
 },
 "nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);");

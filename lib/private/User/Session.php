@@ -61,7 +61,6 @@ use OCP\IUserSession;
 use OCP\Lockdown\ILockdownManager;
 use OCP\Security\ISecureRandom;
 use OCP\Session\Exceptions\SessionNotAvailableException;
-use OCP\User\Events\PostLoginEvent;
 use OCP\Util;
 use Symfony\Component\EventDispatcher\GenericEvent;
 
@@ -399,11 +398,13 @@ class Session implements IUserSession, Emitter {
 			$firstTimeLogin = $user->updateLastLoginTimestamp();
 		}
 
-		$this->dispatcher->dispatchTyped(new PostLoginEvent(
+		$postLoginEvent = new OC\User\Events\PostLoginEvent(
 			$user,
 			$loginDetails['password'],
 			$isToken
-		));
+		);
+		$this->dispatcher->dispatch(OC\User\Events\PostLoginEvent::class, $postLoginEvent);
+
 		$this->manager->emit('\OC\User', 'postLogin', [
 			$user,
 			$loginDetails['password'],

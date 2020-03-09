@@ -15,7 +15,7 @@ use OC\Authentication\Token\IProvider;
 use OC\Authentication\Token\IToken;
 use OC\Security\Bruteforce\Throttler;
 use OC\Session\Memory;
-use OCP\User\Events\PostLoginEvent;
+use OC\User\Events\PostLoginEvent;
 use OC\User\Manager;
 use OC\User\Session;
 use OC\User\User;
@@ -258,12 +258,13 @@ class SessionTest extends \Test\TestCase {
 			->method('prepareUserLogin');
 
 		$this->dispatcher->expects($this->once())
-			->method('dispatchTyped')
+			->method('dispatch')
 			->with(
+				PostLoginEvent::class,
 				$this->callback(function(PostLoginEvent $e) {
 					return $e->getUser()->getUID() === 'foo' &&
 						$e->getPassword() === 'bar' &&
-						$e->isTokenLogin() === false;
+						$e->getIsTokenLogin() === false;
 				})
 			);
 

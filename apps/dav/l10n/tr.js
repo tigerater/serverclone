@@ -70,7 +70,7 @@ OC.L10N.register(
     "%1$s invited you to »%2$s«" : "%1$s sizi »%2$s« görüşmesine çağırdı",
     "When:" : "Zaman:",
     "Link:" : "Bağlantı:",
-    "Accept" : "Kabul Et",
+    "Accept" : "Onayla",
     "Decline" : "Reddet",
     "More options …" : "Diğer seçenekler…",
     "More options at %s" : "%s üzerindeki diğer seçenekler",

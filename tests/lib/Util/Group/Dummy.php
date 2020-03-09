@@ -177,8 +177,7 @@ class Dummy extends Backend {
 	public function usersInGroup($gid, $search = '', $limit = -1, $offset = 0) {
 		if(isset($this->groups[$gid])) {
 			if(empty($search)) {
-				$length = $limit < 0 ? null : $limit;
-				return array_slice($this->groups[$gid], $offset, $length);
+				return $this->groups[$gid];
 			}
 			$result = array();
 			foreach($this->groups[$gid] as $user) {
