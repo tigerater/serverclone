@@ -2,7 +2,6 @@
 /**
  * @copyright Copyright (c) 2016 Lukas Reschke <lukas@statuscode.ch>
  *
- * @author Arthur Schiwon <blizzz@arthur-schiwon.de>
  * @author Joas Schilling <coding@schilljs.com>
  * @author Lukas Reschke <lukas@statuscode.ch>
  * @author Morris Jobke <hey@morrisjobke.de>
@@ -22,7 +21,7 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
 
@@ -174,10 +173,10 @@ abstract class Fetcher {
 			$file->putContent(json_encode($responseJson));
 			return json_decode($file->getContent(), true)['data'];
 		} catch (ConnectException $e) {
-			$this->logger->warning('Could not connect to appstore: ' . $e->getMessage(), ['app' => 'appstoreFetcher']);
+			$this->logger->logException($e, ['app' => 'appstoreFetcher', 'level' => ILogger::INFO, 'message' => 'Could not connect to appstore']);
 			return [];
 		} catch (\Exception $e) {
-			$this->logger->logException($e, ['app' => 'appstoreFetcher', 'level' => ILogger::WARN]);
+			$this->logger->logException($e, ['app' => 'appstoreFetcher', 'level' => ILogger::INFO]);
 			return [];
 		}
 	}

@@ -14,7 +14,6 @@
  * @author Roeland Jago Douma <roeland@famdouma.nl>
  * @author Thomas Tanghus <thomas@tanghus.net>
  * @author Vincent Petry <pvince81@owncloud.com>
- * @author Xheni Myrtaj <myrtajxheni@gmail.com>
  *
  * @license AGPL-3.0
  *
@@ -28,14 +27,13 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License, version 3,
- * along with this program. If not, see <http://www.gnu.org/licenses/>
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
 
 namespace OC\Files\Type;
 
 use OCP\Files\IMimeTypeDetector;
-use OCP\ILogger;
 use OCP\IURLGenerator;
 
 /**
@@ -46,10 +44,6 @@ use OCP\IURLGenerator;
  * @package OC\Files\Type
  */
 class Detection implements IMimeTypeDetector {
-
-	private const CUSTOM_MIMETYPEMAPPING = 'mimetypemapping.json';
-	private const CUSTOM_MIMETYPEALIASES = 'mimetypealiases.json';
-
 	protected $mimetypes = [];
 	protected $secureMimeTypes = [];
 
@@ -60,9 +54,6 @@ class Detection implements IMimeTypeDetector {
 	/** @var IURLGenerator */
 	private $urlGenerator;
 
-	/** @var ILogger */
-	private $logger;
-
 	/** @var string */
 	private $customConfigDir;
 
@@ -71,16 +62,13 @@ class Detection implements IMimeTypeDetector {
 
 	/**
 	 * @param IURLGenerator $urlGenerator
-	 * @param ILogger $logger
 	 * @param string $customConfigDir
 	 * @param string $defaultConfigDir
 	 */
 	public function __construct(IURLGenerator $urlGenerator,
-								ILogger $logger,
 								$customConfigDir,
 								$defaultConfigDir) {
 		$this->urlGenerator = $urlGenerator;
-		$this->logger = $logger;
 		$this->customConfigDir = $customConfigDir;
 		$this->defaultConfigDir = $defaultConfigDir;
 	}
@@ -121,18 +109,6 @@ class Detection implements IMimeTypeDetector {
 		}
 	}
 
-	private function loadCustomDefinitions(string $fileName, array $definitions): array {
-		if (file_exists($this->customConfigDir . '/' . $fileName)) {
-			$custom = json_decode(file_get_contents($this->customConfigDir . '/' . $fileName), true);
-			if (json_last_error() === JSON_ERROR_NONE) {
-				$definitions = array_merge($definitions, $custom);
-			} else {
-				$this->logger->warning('Failed to parse ' . $fileName . ': ' . json_last_error_msg());
-			}
-		}
-		return $definitions;
-	}
-
 	/**
 	 * Add the mimetype aliases if they are not yet present
 	 */
@@ -142,7 +118,11 @@ class Detection implements IMimeTypeDetector {
 		}
 
 		$this->mimeTypeAlias = json_decode(file_get_contents($this->defaultConfigDir . '/mimetypealiases.dist.json'), true);
-		$this->mimeTypeAlias = $this->loadCustomDefinitions(self::CUSTOM_MIMETYPEALIASES, $this->mimeTypeAlias);
+
+		if (file_exists($this->customConfigDir . '/mimetypealiases.json')) {
+			$custom = json_decode(file_get_contents($this->customConfigDir . '/mimetypealiases.json'), true);
+			$this->mimeTypeAlias = array_merge($this->mimeTypeAlias, $custom);
+		}
 	}
 
 	/**
@@ -168,7 +148,12 @@ class Detection implements IMimeTypeDetector {
 		}
 
 		$mimetypeMapping = json_decode(file_get_contents($this->defaultConfigDir . '/mimetypemapping.dist.json'), true);
-		$mimetypeMapping = $this->loadCustomDefinitions(self::CUSTOM_MIMETYPEMAPPING, $mimetypeMapping);
+
+		//Check if need to load custom mappings
+		if (file_exists($this->customConfigDir . '/mimetypemapping.json')) {
+			$custom = json_decode(file_get_contents($this->customConfigDir . '/mimetypemapping.json'), true);
+			$mimetypeMapping = array_merge($mimetypeMapping, $custom);
+		}
 
 		$this->registerTypeArray($mimetypeMapping);
 	}

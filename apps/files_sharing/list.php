@@ -2,7 +2,6 @@
 /**
  * @copyright Copyright (c) 2016, ownCloud, Inc.
  *
- * @author John Molakvoæ (skjnldsv) <skjnldsv@protonmail.com>
  * @author Vincent Petry <pvince81@owncloud.com>
  *
  * @license AGPL-3.0
@@ -17,12 +16,11 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License, version 3,
- * along with this program. If not, see <http://www.gnu.org/licenses/>
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
 use OCA\Files\Event\LoadAdditionalScriptsEvent;
 use OCA\Files\Event\LoadSidebar;
-use OCP\EventDispatcher\GenericEvent;
 
 // Check if we are a user
 OCP\User::checkLoggedIn();
@@ -39,7 +37,7 @@ $tmpl = new OCP\Template('files_sharing', 'list', '');
 $tmpl->assign('showgridview', $showgridview && !$isIE);
 
 // fire script events
-$eventDispatcher->dispatch('\OCP\Collaboration\Resources::loadAdditionalScripts', new GenericEvent());
+$eventDispatcher->dispatch('\OCP\Collaboration\Resources::loadAdditionalScripts');
 $eventDispatcher->dispatch(LoadAdditionalScriptsEvent::class, new LoadAdditionalScriptsEvent());
 $eventDispatcher->dispatch(LoadSidebar::class, new LoadSidebar());
 
