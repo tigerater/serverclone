@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 
 /**
  * Copyright (c) 2014 Robin Appelman <icewind@owncloud.com>
@@ -11,17 +11,20 @@ namespace Test\App;
 
 use OC\App\AppManager;
 use OC\AppConfig;
+use OC\Group\Group;
+use OC\User\User;
 use OCP\App\AppPathNotFoundException;
 use OCP\App\IAppManager;
+use OCP\IAppConfig;
 use OCP\ICache;
 use OCP\ICacheFactory;
 use OCP\IConfig;
 use OCP\IGroup;
 use OCP\IGroupManager;
 use OCP\ILogger;
+use OCP\IURLGenerator;
 use OCP\IUser;
 use OCP\IUserSession;
-use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Test\TestCase;
 
@@ -32,7 +35,7 @@ use Test\TestCase;
  */
 class AppManagerTest extends TestCase {
 	/**
-	 * @return AppConfig|MockObject
+	 * @return AppConfig|\PHPUnit_Framework_MockObject_MockObject
 	 */
 	protected function getAppConfig() {
 		$appConfig = array();
@@ -70,28 +73,25 @@ class AppManagerTest extends TestCase {
 		return $config;
 	}
 
-	/** @var IUserSession|MockObject */
+	/** @var IUserSession|\PHPUnit_Framework_MockObject_MockObject */
 	protected $userSession;
 
-	/** @var IConfig|MockObject */
-	private $config;
-
-	/** @var IGroupManager|MockObject */
+	/** @var IGroupManager|\PHPUnit_Framework_MockObject_MockObject */
 	protected $groupManager;
 
-	/** @var AppConfig|MockObject */
+	/** @var AppConfig|\PHPUnit_Framework_MockObject_MockObject */
 	protected $appConfig;
 
-	/** @var ICache|MockObject */
+	/** @var ICache|\PHPUnit_Framework_MockObject_MockObject */
 	protected $cache;
 
-	/** @var ICacheFactory|MockObject */
+	/** @var ICacheFactory|\PHPUnit_Framework_MockObject_MockObject */
 	protected $cacheFactory;
 
-	/** @var EventDispatcherInterface|MockObject */
+	/** @var EventDispatcherInterface|\PHPUnit_Framework_MockObject_MockObject */
 	protected $eventDispatcher;
 
-	/** @var ILogger|MockObject */
+	/** @var ILogger|\PHPUnit_Framework_MockObject_MockObject */
 	protected $logger;
 
 	/** @var IAppManager */
@@ -102,7 +102,6 @@ class AppManagerTest extends TestCase {
 
 		$this->userSession = $this->createMock(IUserSession::class);
 		$this->groupManager = $this->createMock(IGroupManager::class);
-		$this->config = $this->createMock(IConfig::class);
 		$this->appConfig = $this->getAppConfig();
 		$this->cacheFactory = $this->createMock(ICacheFactory::class);
 		$this->cache = $this->createMock(ICache::class);
@@ -112,15 +111,7 @@ class AppManagerTest extends TestCase {
 			->method('createDistributed')
 			->with('settings')
 			->willReturn($this->cache);
-		$this->manager = new AppManager(
-			$this->userSession,
-			$this->config,
-			$this->appConfig,
-			$this->groupManager,
-			$this->cacheFactory,
-			$this->eventDispatcher,
-			$this->logger
-		);
+		$this->manager = new AppManager($this->userSession, $this->appConfig, $this->groupManager, $this->cacheFactory, $this->eventDispatcher, $this->logger);
 	}
 
 	protected function expectClearCache() {
@@ -170,10 +161,10 @@ class AppManagerTest extends TestCase {
 		$groups = [$group1, $group2];
 		$this->expectClearCache();
 
-		/** @var AppManager|MockObject $manager */
+		/** @var AppManager|\PHPUnit_Framework_MockObject_MockObject $manager */
 		$manager = $this->getMockBuilder(AppManager::class)
 			->setConstructorArgs([
-				$this->userSession, $this->config, $this->appConfig, $this->groupManager, $this->cacheFactory, $this->eventDispatcher, $this->logger
+				$this->userSession, $this->appConfig, $this->groupManager, $this->cacheFactory, $this->eventDispatcher, $this->logger
 			])
 			->setMethods([
 				'getAppPath',
@@ -217,10 +208,10 @@ class AppManagerTest extends TestCase {
 		$groups = [$group1, $group2];
 		$this->expectClearCache();
 
-		/** @var AppManager|MockObject $manager */
+		/** @var AppManager|\PHPUnit_Framework_MockObject_MockObject $manager */
 		$manager = $this->getMockBuilder(AppManager::class)
 			->setConstructorArgs([
-				$this->userSession, $this->config, $this->appConfig, $this->groupManager, $this->cacheFactory, $this->eventDispatcher, $this->logger
+				$this->userSession, $this->appConfig, $this->groupManager, $this->cacheFactory, $this->eventDispatcher, $this->logger
 			])
 			->setMethods([
 				'getAppPath',
@@ -271,10 +262,10 @@ class AppManagerTest extends TestCase {
 
 		$groups = [$group1, $group2];
 
-		/** @var AppManager|MockObject $manager */
+		/** @var AppManager|\PHPUnit_Framework_MockObject_MockObject $manager */
 		$manager = $this->getMockBuilder(AppManager::class)
 			->setConstructorArgs([
-				$this->userSession, $this->config, $this->appConfig, $this->groupManager, $this->cacheFactory, $this->eventDispatcher, $this->logger
+				$this->userSession, $this->appConfig, $this->groupManager, $this->cacheFactory, $this->eventDispatcher, $this->logger
 			])
 			->setMethods([
 				'getAppPath',
@@ -435,9 +426,9 @@ class AppManagerTest extends TestCase {
 	}
 
 	public function testGetAppsNeedingUpgrade() {
-		/** @var AppManager|MockObject $manager */
+		/** @var AppManager|\PHPUnit_Framework_MockObject_MockObject $manager */
 		$manager = $this->getMockBuilder(AppManager::class)
-			->setConstructorArgs([$this->userSession, $this->config, $this->appConfig, $this->groupManager, $this->cacheFactory, $this->eventDispatcher, $this->logger])
+			->setConstructorArgs([$this->userSession, $this->appConfig, $this->groupManager, $this->cacheFactory, $this->eventDispatcher, $this->logger])
 			->setMethods(['getAppInfo'])
 			->getMock();
 
@@ -485,9 +476,9 @@ class AppManagerTest extends TestCase {
 	}
 
 	public function testGetIncompatibleApps() {
-		/** @var AppManager|MockObject $manager */
+		/** @var AppManager|\PHPUnit_Framework_MockObject_MockObject $manager */
 		$manager = $this->getMockBuilder(AppManager::class)
-			->setConstructorArgs([$this->userSession, $this->config, $this->appConfig, $this->groupManager, $this->cacheFactory, $this->eventDispatcher, $this->logger])
+			->setConstructorArgs([$this->userSession, $this->appConfig, $this->groupManager, $this->cacheFactory, $this->eventDispatcher, $this->logger])
 			->setMethods(['getAppInfo'])
 			->getMock();
 
