@@ -1,4 +1,6 @@
-/*
+<?php declare(strict_types=1);
+
+/**
  * @copyright 2019 Christoph Wurst <christoph@winzerhof-wurst.at>
  *
  * @author 2019 Christoph Wurst <christoph@winzerhof-wurst.at>
@@ -19,8 +21,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-export default [
-	'contacts',
-	'calendar',
-	'mail'
-]
+script('core', 'dist/recommendedapps');
+
+?>
+
+<div id="recommended-apps"></div>
