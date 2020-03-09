@@ -3,7 +3,6 @@
  * @copyright Copyright (c) 2016 Lukas Reschke <lukas@statuscode.ch>
  *
  * @author Daniel Kesselberg <mail@danielkesselberg.de>
- * @author Georg Ehrke <oc.list@georgehrke.com>
  * @author Joas Schilling <coding@schilljs.com>
  * @author Lukas Reschke <lukas@statuscode.ch>
  * @author Morris Jobke <hey@morrisjobke.de>
@@ -55,6 +54,8 @@ abstract class Fetcher {
 	protected $logger;
 	/** @var string */
 	protected $fileName;
+	/** @var string */
+	protected $endpointName;
 	/** @var string */
 	protected $version;
 	/** @var string */
@@ -220,6 +221,6 @@ abstract class Fetcher {
 	}
 
 	protected function getEndpoint(): string {
-		return $this->config->getSystemValue('appstoreurl', 'https://apps.nextcloud.com/api/v1') . '/' . $this->fileName;
+		return $this->config->getSystemValue('appstoreurl', 'https://apps.nextcloud.com/api/v1') . '/' . $this->endpointName;
 	}
 }
