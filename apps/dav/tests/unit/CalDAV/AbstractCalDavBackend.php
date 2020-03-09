@@ -86,7 +86,6 @@ abstract class AbstractCalDavBackend extends TestCase {
 				$this->createMock(IUserSession::class),
 				$this->createMock(IAppManager::class),
 				$this->createMock(ProxyMapper::class),
-				$this->createMock(IConfig::class),
 			])
 			->setMethods(['getPrincipalByPath', 'getGroupMembership'])
 			->getMock();
