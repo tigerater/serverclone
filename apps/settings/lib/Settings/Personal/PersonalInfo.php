@@ -29,7 +29,7 @@
  *
  */
 
-namespace OCA\Settings\Settings\Personal;
+namespace OCA\Settings\Personal;
 
 use OC\Accounts\AccountManager;
 use OCA\FederatedFileSharing\AppInfo\Application;

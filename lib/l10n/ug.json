@@ -7,6 +7,7 @@
     "Settings" : "تەڭشەكلەر",
     "Log out" : "تىزىمدىن چىق",
     "Users" : "ئىشلەتكۈچىلەر",
+    "Sharing" : "ھەمبەھىر",
     "Sunday" : "يەكشەنبە",
     "Monday" : "دۈشەنبە",
     "Tuesday" : "سەيشەنبە",
@@ -51,7 +52,6 @@
     "Create" : "قۇر",
     "Delete" : "ئۆچۈر",
     "Share" : "ھەمبەھىر",
-    "Sharing" : "ھەمبەھىر",
     "Unlimited" : "چەكسىز"
 },"pluralForm" :"nplurals=1; plural=0;"
 }

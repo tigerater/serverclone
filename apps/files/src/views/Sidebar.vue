@@ -62,7 +62,6 @@
 			<component
 				:is="tabComponent(tab).is"
 				v-if="canDisplay(tab)"
-				:id="tab.id"
 				:key="tab.id"
 				:component="tabComponent(tab).component"
 				:name="tab.name"

@@ -136,6 +136,7 @@ OC.L10N.register(
     "Quota Default" : "Vaikimisi mahupiirang",
     "Email Field" : "E-posti väli",
     "User Home Folder Naming Rule" : "Kasutaja kodukataloogi nimetamise reegel",
+    "Leave empty for user name (default). Otherwise, specify an LDAP/AD attribute." : "Kasutajanime (vaikeväärtus) kasutamiseks jäta tühjaks. Vastasel juhul määra LDAP/AD omadus.",
     "Internal Username" : "Sisemine kasutajanimi",
     "Internal Username Attribute:" : "Sisemise kasutajatunnuse atribuut:",
     "Override UUID detection" : "Tühista UUID tuvastus",
@@ -144,7 +145,6 @@ OC.L10N.register(
     "UUID Attribute for Groups:" : "UUID atribuut gruppidele:",
     "Username-LDAP User Mapping" : "LDAP-Kasutajatunnus Kasutaja Vastendus",
     "Clear Username-LDAP User Mapping" : "Puhasta LDAP-Kasutajatunnus Kasutaja Vastendus",
-    "Clear Groupname-LDAP Group Mapping" : "Puhasta LDAP-Grupinimi Grupp Vastendus",
-    "Leave empty for user name (default). Otherwise, specify an LDAP/AD attribute." : "Kasutajanime (vaikeväärtus) kasutamiseks jäta tühjaks. Vastasel juhul määra LDAP/AD omadus."
+    "Clear Groupname-LDAP Group Mapping" : "Puhasta LDAP-Grupinimi Grupp Vastendus"
 },
 "nplurals=2; plural=(n != 1);");
