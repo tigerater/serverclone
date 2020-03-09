@@ -19,7 +19,7 @@
 					type="button"
 					class="check--add"
 					value="Add a new filter"
-					@click="rule.checks.push({class: null, operator: null, value: ''})">
+					@click="rule.checks.push({class: null, operator: null, value: null})">
 			</p>
 		</div>
 		<div class="flow-icon icon-confirm" />
