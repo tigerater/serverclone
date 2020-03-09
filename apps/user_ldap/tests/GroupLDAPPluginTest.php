@@ -24,8 +24,8 @@
 namespace OCA\User_LDAP\Tests;
 
 
-use OCA\User_LDAP\GroupPluginManager;
 use OCP\GroupInterface;
+use OCA\User_LDAP\GroupPluginManager;
 
 class GroupLDAPPluginTest extends \Test\TestCase {
 

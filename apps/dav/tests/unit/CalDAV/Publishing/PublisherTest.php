@@ -21,7 +21,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace OCA\DAV\Tests\unit\CalDAV\Publishing;
 
 use OCA\DAV\CalDAV\Publishing\Xml\Publisher;

@@ -57,3 +57,4 @@ class DropAccountTermsTable implements IRepairStep {
 		$this->db->dropTable('account_terms');
 	}
 }
+

@@ -27,10 +27,12 @@ declare(strict_types=1);
  *
  */
 
+
 namespace OCP\FullTextSearch\Model;
 
 
 use OCP\FullTextSearch\IFullTextSearchProvider;
+
 
 /**
  * Class ISearchTemplate
@@ -174,3 +176,4 @@ interface ISearchTemplate {
 	public function getNavigationOptions(): array;
 
 }
+

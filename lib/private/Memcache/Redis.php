@@ -178,3 +178,4 @@ class Redis extends Cache implements IMemcacheTTL {
 		return \OC::$server->getGetRedisFactory()->isAvailable();
 	}
 }
+

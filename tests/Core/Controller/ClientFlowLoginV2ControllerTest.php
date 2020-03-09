@@ -318,3 +318,4 @@ class ClientFlowLoginV2ControllerTest extends TestCase {
 		$this->assertTrue($clearedState);
 	}
 }
+

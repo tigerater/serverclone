@@ -9,7 +9,6 @@
  * later.
  * See the COPYING-README file.
  */
-
 namespace Test\Files\ObjectStore;
 
 class NoopScannerTest extends \Test\TestCase {

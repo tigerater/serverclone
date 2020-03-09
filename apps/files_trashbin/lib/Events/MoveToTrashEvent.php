@@ -21,11 +21,12 @@
  *
  */
 
+
 namespace OCA\Files_Trashbin\Events;
 
 
-use OCP\EventDispatcher\Event;
 use OCP\Files\Node;
+use OCP\EventDispatcher\Event;
 
 /**
  * Class MoveToTrashEvent

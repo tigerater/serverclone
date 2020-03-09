@@ -25,9 +25,9 @@ use OCA\Settings\Controller\CertificateController;
 use OCP\App\IAppManager;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataResponse;
-use OCP\ICertificateManager;
-use OCP\IL10N;
 use OCP\IRequest;
+use OCP\IL10N;
+use OCP\ICertificateManager;
 
 /**
  * Class CertificateControllerTest

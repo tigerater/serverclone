@@ -29,7 +29,6 @@ namespace OCA\Encryption\Tests\Crypto;
 use OCA\Encryption\Crypto\Crypt;
 use OCA\Encryption\Crypto\DecryptAll;
 use OCA\Encryption\Crypto\EncryptAll;
-use OCA\Encryption\Crypto\Encryption;
 use OCA\Encryption\Exceptions\PublicKeyMissingException;
 use OCA\Encryption\KeyManager;
 use OCA\Encryption\Session;
@@ -40,6 +39,7 @@ use OCP\ILogger;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Test\TestCase;
+use OCA\Encryption\Crypto\Encryption;
 
 class EncryptionTest extends TestCase {
 

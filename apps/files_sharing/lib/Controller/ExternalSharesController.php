@@ -27,10 +27,10 @@
 namespace OCA\Files_Sharing\Controller;
 
 use OCP\AppFramework\Controller;
-use OCP\AppFramework\Http\DataResponse;
+use OCP\IRequest;
 use OCP\AppFramework\Http\JSONResponse;
 use OCP\Http\Client\IClientService;
-use OCP\IRequest;
+use OCP\AppFramework\Http\DataResponse;
 
 /**
  * Class ExternalSharesController

@@ -44,7 +44,6 @@ use OC\AppFramework\Http;
 use OC\Encryption\Exceptions\ModuleDoesNotExistsException;
 use OC\ForbiddenException;
 use OC\Security\IdentityProof\Manager;
-use OCA\Settings\BackgroundJobs\VerifyUserData;
 use OCA\User_LDAP\User_Proxy;
 use OCP\App\IAppManager;
 use OCP\AppFramework\Controller;
@@ -61,6 +60,7 @@ use OCP\IUserManager;
 use OCP\IUserSession;
 use OCP\L10N\IFactory;
 use OCP\Mail\IMailer;
+use OCA\Settings\BackgroundJobs\VerifyUserData;
 
 class UsersController extends Controller {
 	/** @var IUserManager */

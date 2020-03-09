@@ -9,6 +9,7 @@
  * @copyright Thomas Müller 2014
  */
 
+
 namespace Test\AppFramework\Middleware;
 
 use OC\AppFramework\Http\Request;
@@ -17,6 +18,7 @@ use OC\AppFramework\Utility\ControllerMethodReflector;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\Response;
 use OCP\IConfig;
+
 
 class SessionMiddlewareTest extends \Test\TestCase {
 

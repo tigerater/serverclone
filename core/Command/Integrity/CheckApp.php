@@ -20,13 +20,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace OC\Core\Command\Integrity;
 
-use OC\Core\Command\Base;
 use OC\IntegrityCheck\Checker;
-use Symfony\Component\Console\Input\InputArgument;
+use OC\Core\Command\Base;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 

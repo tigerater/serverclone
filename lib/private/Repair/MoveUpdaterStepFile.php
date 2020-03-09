@@ -77,3 +77,4 @@ class MoveUpdaterStepFile implements IRepairStep {
 		}
 	}
 }
+

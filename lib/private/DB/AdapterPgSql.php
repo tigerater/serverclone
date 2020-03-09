@@ -21,6 +21,7 @@
  *
  */
 
+
 namespace OC\DB;
 
 use Doctrine\DBAL\DBALException;

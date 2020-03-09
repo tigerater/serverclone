@@ -26,8 +26,8 @@ use Closure;
 use Doctrine\DBAL\Types\Type;
 use OCP\DB\ISchemaWrapper;
 use OCP\IDBConnection;
-use OCP\Migration\IOutput;
 use OCP\Migration\SimpleMigrationStep;
+use OCP\Migration\IOutput;
 
 class Version18000Date20190920085628 extends SimpleMigrationStep {
 

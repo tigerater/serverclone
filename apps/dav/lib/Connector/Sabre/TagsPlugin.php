@@ -22,7 +22,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace OCA\DAV\Connector\Sabre;
 
 /**
@@ -46,8 +45,8 @@ namespace OCA\DAV\Connector\Sabre;
  *
  */
 
-use Sabre\DAV\PropFind;
-use Sabre\DAV\PropPatch;
+use \Sabre\DAV\PropFind;
+use \Sabre\DAV\PropPatch;
 
 class TagsPlugin extends \Sabre\DAV\ServerPlugin
 {

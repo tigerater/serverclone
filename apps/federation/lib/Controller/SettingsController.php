@@ -31,6 +31,7 @@ use OCP\AppFramework\Http\DataResponse;
 use OCP\IL10N;
 use OCP\IRequest;
 
+
 class SettingsController extends Controller {
 
 	/** @var IL10N */

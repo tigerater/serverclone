@@ -25,7 +25,6 @@
 
 namespace OC\Files\Config;
 
-use OC\Cache\CappedMemoryCache;
 use OCA\Files_Sharing\SharedMount;
 use OCP\DB\QueryBuilder\IQueryBuilder;
 use OCP\Files\Config\ICachedMountFileInfo;
@@ -38,6 +37,7 @@ use OCP\IDBConnection;
 use OCP\ILogger;
 use OCP\IUser;
 use OCP\IUserManager;
+use OC\Cache\CappedMemoryCache;
 
 /**
  * Cache mounts points per user in the cache so we can easilly look them up

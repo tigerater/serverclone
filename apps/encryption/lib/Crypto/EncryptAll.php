@@ -24,6 +24,7 @@
  *
  */
 
+
 namespace OCA\Encryption\Crypto;
 
 use OC\Encryption\Exceptions\DecryptionFailedException;

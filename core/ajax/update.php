@@ -235,3 +235,4 @@ if (\OCP\Util::needUpgrade()) {
 
 $eventSource->send('done', '');
 $eventSource->close();
+

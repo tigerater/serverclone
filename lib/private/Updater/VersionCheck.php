@@ -127,3 +127,4 @@ class VersionCheck {
 		return $response->getBody();
 	}
 }
+

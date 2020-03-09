@@ -25,13 +25,13 @@
 
 namespace Test\Command;
 
-use OC\Core\Command\Background\Ajax;
-use OC\Core\Command\Background\Cron;
-use OC\Core\Command\Background\WebCron;
-
+use Test\TestCase;
 use Symfony\Component\Console\Input\StringInput;
 use Symfony\Component\Console\Output\NullOutput;
-use Test\TestCase;
+
+use OC\Core\Command\Background\Cron;
+use OC\Core\Command\Background\WebCron;
+use OC\Core\Command\Background\Ajax;
 
 class BackgroundJobsTest extends TestCase {
 

@@ -27,7 +27,6 @@ declare(strict_types=1);
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace OCA\Files_Sharing\Controller;
 
 use function array_filter;
@@ -41,8 +40,8 @@ use OCP\AppFramework\OCSController;
 use OCP\Collaboration\Collaborators\ISearch;
 use OCP\Collaboration\Collaborators\ISearchResult;
 use OCP\Collaboration\Collaborators\SearchResultType;
-use OCP\IConfig;
 use OCP\IRequest;
+use OCP\IConfig;
 use OCP\IURLGenerator;
 use OCP\Share;
 use OCP\Share\IManager;

@@ -27,8 +27,8 @@
 
 namespace OC\App\AppStore\Fetcher;
 
-use GuzzleHttp\Exception\ConnectException;
 use OC\Files\AppData\Factory;
+use GuzzleHttp\Exception\ConnectException;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Utility\ITimeFactory;
 use OCP\Files\IAppData;

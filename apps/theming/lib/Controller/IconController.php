@@ -22,7 +22,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace OCA\Theming\Controller;
 
 use OC\IntegrityCheck\Helpers\FileAccessHelper;
@@ -31,9 +30,9 @@ use OCA\Theming\ImageManager;
 use OCA\Theming\ThemingDefaults;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
-use OCP\AppFramework\Http\DataDisplayResponse;
-use OCP\AppFramework\Http\FileDisplayResponse;
 use OCP\AppFramework\Http\NotFoundResponse;
+use OCP\AppFramework\Http\FileDisplayResponse;
+use OCP\AppFramework\Http\DataDisplayResponse;
 use OCP\AppFramework\Http\Response;
 use OCP\Files\NotFoundException;
 use OCP\IRequest;

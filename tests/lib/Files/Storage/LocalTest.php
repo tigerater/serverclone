@@ -109,3 +109,4 @@ class LocalTest extends Storage {
 		$this->addToAssertionCount(1);
 	}
 }
+

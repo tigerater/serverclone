@@ -97,3 +97,4 @@ class FavoriteAction implements ISetting {
 		return false;
 	}
 }
+

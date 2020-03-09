@@ -31,7 +31,6 @@
 
 namespace OCA\User_LDAP\Tests;
 
-use OC\HintException;
 use OC\User\Backend;
 use OC\User\Session;
 use OCA\User_LDAP\Access;
@@ -40,14 +39,15 @@ use OCA\User_LDAP\Mapping\AbstractMapping;
 use OCA\User_LDAP\Mapping\UserMapping;
 use OCA\User_LDAP\User\Manager;
 use OCA\User_LDAP\User\OfflineUser;
+use OC\HintException;
 use OCA\User_LDAP\User\User;
-use OCA\User_LDAP\User_LDAP;
 use OCA\User_LDAP\User_LDAP as UserLDAP;
+use OCA\User_LDAP\User_LDAP;
 use OCA\User_LDAP\UserPluginManager;
 use OCP\IConfig;
 use OCP\IUser;
-use OCP\Notification\IManager as INotificationManager;
 use Test\TestCase;
+use OCP\Notification\IManager as INotificationManager;
 
 /**
  * Class Test_User_Ldap_Direct

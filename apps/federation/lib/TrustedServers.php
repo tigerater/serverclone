@@ -24,6 +24,7 @@
  *
  */
 
+
 namespace OCA\Federation;
 
 use OC\HintException;

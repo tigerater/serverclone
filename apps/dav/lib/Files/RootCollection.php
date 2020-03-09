@@ -21,13 +21,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace OCA\DAV\Files;
 
 use OCP\Files\FileInfo;
 use Sabre\DAV\INode;
-use Sabre\DAV\SimpleCollection;
 use Sabre\DAVACL\AbstractPrincipalCollection;
+use Sabre\DAV\SimpleCollection;
 
 class RootCollection extends AbstractPrincipalCollection {
 

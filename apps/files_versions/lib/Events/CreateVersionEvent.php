@@ -21,10 +21,11 @@
  *
  */
 
+
 namespace OCA\Files_Versions\Events;
 
-use OCP\EventDispatcher\Event;
 use OCP\Files\Node;
+use OCP\EventDispatcher\Event;
 
 /**
  * Class CreateVersionEvent

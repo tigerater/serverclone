@@ -7,6 +7,7 @@
  * See the COPYING-README file.
  */
 
+
 namespace Test\DB;
 
 use Doctrine\DBAL\Platforms\OraclePlatform;
