@@ -71,10 +71,9 @@ class RuleMatcher implements IRuleMatcher {
 		$this->l = $l;
 	}
 
-	public function setFileInfo(IStorage $storage, string $path, bool $isDir = false): void {
+	public function setFileInfo(IStorage $storage, string $path): void {
 		$this->fileInfo['storage'] = $storage;
 		$this->fileInfo['path'] = $path;
-		$this->fileInfo['isDir'] = $isDir;
 	}
 
 	public function setEntitySubject(IEntity $entity, $subject): void {
@@ -169,7 +168,7 @@ class RuleMatcher implements IRuleMatcher {
 			if (empty($this->fileInfo)) {
 				throw new RuntimeException('Must set file info before running the check');
 			}
-			$checkInstance->setFileInfo($this->fileInfo['storage'], $this->fileInfo['path'], $this->fileInfo['isDir']);
+			$checkInstance->setFileInfo($this->fileInfo['storage'], $this->fileInfo['path']);
 		} elseif ($checkInstance instanceof IEntityCheck) {
 			foreach($this->contexts as $entityInfo) {
 				list($entity, $subject) = $entityInfo;

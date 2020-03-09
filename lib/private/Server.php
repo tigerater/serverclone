@@ -113,7 +113,6 @@ use OC\Security\Bruteforce\Throttler;
 use OC\Security\CertificateManager;
 use OC\Security\CredentialsManager;
 use OC\Security\Crypto;
-use OC\Security\CSP\ContentSecurityPolicyManager;
 use OC\Security\CSP\ContentSecurityPolicyNonceManager;
 use OC\Security\CSRF\CsrfTokenGenerator;
 use OC\Security\CSRF\CsrfTokenManager;
@@ -148,6 +147,14 @@ use OCP\Files\NotFoundException;
 use OCP\Files\Storage\IStorageFactory;
 use OCP\FullTextSearch\IFullTextSearchManager;
 use OCP\GlobalScale\IConfig;
+use OCP\Group\Events\BeforeGroupCreatedEvent;
+use OCP\Group\Events\BeforeGroupDeletedEvent;
+use OCP\Group\Events\BeforeUserAddedEvent;
+use OCP\Group\Events\BeforeUserRemovedEvent;
+use OCP\Group\Events\GroupCreatedEvent;
+use OCP\Group\Events\GroupDeletedEvent;
+use OCP\Group\Events\UserAddedEvent;
+use OCP\Group\Events\UserRemovedEvent;
 use OCP\Group\ISubAdmin;
 use OCP\ICacheFactory;
 use OCP\IDBConnection;
@@ -163,6 +170,19 @@ use OCP\Remote\IInstanceFactory;
 use OCP\RichObjectStrings\IValidator;
 use OCP\Security\IContentSecurityPolicyManager;
 use OCP\Share\IShareHelper;
+use OCP\User\Events\BeforePasswordUpdatedEvent;
+use OCP\User\Events\BeforeUserCreatedEvent;
+use OCP\User\Events\BeforeUserDeletedEvent;
+use OCP\User\Events\BeforeUserLoggedInEvent;
+use OCP\User\Events\BeforeUserLoggedInWithCookieEvent;
+use OCP\User\Events\BeforeUserLoggedOutEvent;
+use OCP\User\Events\PasswordUpdatedEvent;
+use OCP\User\Events\UserChangedEvent;
+use OCP\User\Events\UserCreatedEvent;
+use OCP\User\Events\UserDeletedEvent;
+use OCP\User\Events\UserLoggedInEvent;
+use OCP\User\Events\UserLoggedInWithCookieEvent;
+use OCP\User\Events\UserLoggedOutEvent;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 
@@ -329,23 +349,57 @@ class Server extends ServerContainer implements IServerContainer {
 			$groupManager = new \OC\Group\Manager($this->getUserManager(), $c->getEventDispatcher(), $this->getLogger());
 			$groupManager->listen('\OC\Group', 'preCreate', function ($gid) {
 				\OC_Hook::emit('OC_Group', 'pre_createGroup', array('run' => true, 'gid' => $gid));
+
+				/** @var IEventDispatcher $dispatcher */
+				$dispatcher = $this->query(IEventDispatcher::class);
+				$dispatcher->dispatchTyped(new BeforeGroupCreatedEvent($gid));
 			});
-			$groupManager->listen('\OC\Group', 'postCreate', function (\OC\Group\Group $gid) {
-				\OC_Hook::emit('OC_User', 'post_createGroup', array('gid' => $gid->getGID()));
+			$groupManager->listen('\OC\Group', 'postCreate', function (\OC\Group\Group $group) {
+				\OC_Hook::emit('OC_User', 'post_createGroup', array('gid' => $group->getGID()));
+
+				/** @var IEventDispatcher $dispatcher */
+				$dispatcher = $this->query(IEventDispatcher::class);
+				$dispatcher->dispatchTyped(new GroupCreatedEvent($group));
 			});
 			$groupManager->listen('\OC\Group', 'preDelete', function (\OC\Group\Group $group) {
 				\OC_Hook::emit('OC_Group', 'pre_deleteGroup', array('run' => true, 'gid' => $group->getGID()));
+
+				/** @var IEventDispatcher $dispatcher */
+				$dispatcher = $this->query(IEventDispatcher::class);
+				$dispatcher->dispatchTyped(new BeforeGroupDeletedEvent($group));
 			});
 			$groupManager->listen('\OC\Group', 'postDelete', function (\OC\Group\Group $group) {
 				\OC_Hook::emit('OC_User', 'post_deleteGroup', array('gid' => $group->getGID()));
+
+				/** @var IEventDispatcher $dispatcher */
+				$dispatcher = $this->query(IEventDispatcher::class);
+				$dispatcher->dispatchTyped(new GroupDeletedEvent($group));
 			});
 			$groupManager->listen('\OC\Group', 'preAddUser', function (\OC\Group\Group $group, \OC\User\User $user) {
 				\OC_Hook::emit('OC_Group', 'pre_addToGroup', array('run' => true, 'uid' => $user->getUID(), 'gid' => $group->getGID()));
+
+				/** @var IEventDispatcher $dispatcher */
+				$dispatcher = $this->query(IEventDispatcher::class);
+				$dispatcher->dispatchTyped(new BeforeUserAddedEvent($group, $user));
 			});
 			$groupManager->listen('\OC\Group', 'postAddUser', function (\OC\Group\Group $group, \OC\User\User $user) {
 				\OC_Hook::emit('OC_Group', 'post_addToGroup', array('uid' => $user->getUID(), 'gid' => $group->getGID()));
 				//Minimal fix to keep it backward compatible TODO: clean up all the GroupManager hooks
 				\OC_Hook::emit('OC_User', 'post_addToGroup', array('uid' => $user->getUID(), 'gid' => $group->getGID()));
+
+				/** @var IEventDispatcher $dispatcher */
+				$dispatcher = $this->query(IEventDispatcher::class);
+				$dispatcher->dispatchTyped(new UserAddedEvent($group, $user));
+			});
+			$groupManager->listen('\OC\Group', 'preRemoveUser', function (\OC\Group\Group $group, \OC\User\User $user) {
+				/** @var IEventDispatcher $dispatcher */
+				$dispatcher = $this->query(IEventDispatcher::class);
+				$dispatcher->dispatchTyped(new BeforeUserRemovedEvent($group, $user));
+			});
+			$groupManager->listen('\OC\Group', 'postRemoveUser', function (\OC\Group\Group $group, \OC\User\User $user) {
+				/** @var IEventDispatcher $dispatcher */
+				$dispatcher = $this->query(IEventDispatcher::class);
+				$dispatcher->dispatchTyped(new UserRemovedEvent($group, $user));
 			});
 			return $groupManager;
 		});
@@ -380,7 +434,7 @@ class Server extends ServerContainer implements IServerContainer {
 				$defaultTokenProvider = null;
 			}
 
-			$dispatcher = $c->getEventDispatcher();
+			$legacyDispatcher = $c->getEventDispatcher();
 
 			$userSession = new \OC\User\Session(
 				$manager,
@@ -395,45 +449,99 @@ class Server extends ServerContainer implements IServerContainer {
 			);
 			$userSession->listen('\OC\User', 'preCreateUser', function ($uid, $password) {
 				\OC_Hook::emit('OC_User', 'pre_createUser', array('run' => true, 'uid' => $uid, 'password' => $password));
+
+				/** @var IEventDispatcher $dispatcher */
+				$dispatcher = $this->query(IEventDispatcher::class);
+				$dispatcher->dispatchTyped(new BeforeUserCreatedEvent($uid, $password));
 			});
 			$userSession->listen('\OC\User', 'postCreateUser', function ($user, $password) {
 				/** @var $user \OC\User\User */
 				\OC_Hook::emit('OC_User', 'post_createUser', array('uid' => $user->getUID(), 'password' => $password));
+
+				/** @var IEventDispatcher $dispatcher */
+				$dispatcher = $this->query(IEventDispatcher::class);
+				$dispatcher->dispatchTyped(new UserCreatedEvent($user, $password));
 			});
-			$userSession->listen('\OC\User', 'preDelete', function ($user) use ($dispatcher) {
+			$userSession->listen('\OC\User', 'preDelete', function ($user) use ($legacyDispatcher) {
 				/** @var $user \OC\User\User */
 				\OC_Hook::emit('OC_User', 'pre_deleteUser', array('run' => true, 'uid' => $user->getUID()));
-				$dispatcher->dispatch('OCP\IUser::preDelete', new GenericEvent($user));
+				$legacyDispatcher->dispatch('OCP\IUser::preDelete', new GenericEvent($user));
+
+				/** @var IEventDispatcher $dispatcher */
+				$dispatcher = $this->query(IEventDispatcher::class);
+				$dispatcher->dispatchTyped(new BeforeUserDeletedEvent($user));
 			});
 			$userSession->listen('\OC\User', 'postDelete', function ($user) {
 				/** @var $user \OC\User\User */
 				\OC_Hook::emit('OC_User', 'post_deleteUser', array('uid' => $user->getUID()));
+
+				/** @var IEventDispatcher $dispatcher */
+				$dispatcher = $this->query(IEventDispatcher::class);
+				$dispatcher->dispatchTyped(new UserDeletedEvent($user));
 			});
 			$userSession->listen('\OC\User', 'preSetPassword', function ($user, $password, $recoveryPassword) {
 				/** @var $user \OC\User\User */
 				\OC_Hook::emit('OC_User', 'pre_setPassword', array('run' => true, 'uid' => $user->getUID(), 'password' => $password, 'recoveryPassword' => $recoveryPassword));
+
+				/** @var IEventDispatcher $dispatcher */
+				$dispatcher = $this->query(IEventDispatcher::class);
+				$dispatcher->dispatchTyped(new BeforePasswordUpdatedEvent($user, $password, $recoveryPassword));
 			});
 			$userSession->listen('\OC\User', 'postSetPassword', function ($user, $password, $recoveryPassword) {
 				/** @var $user \OC\User\User */
 				\OC_Hook::emit('OC_User', 'post_setPassword', array('run' => true, 'uid' => $user->getUID(), 'password' => $password, 'recoveryPassword' => $recoveryPassword));
+
+				/** @var IEventDispatcher $dispatcher */
+				$dispatcher = $this->query(IEventDispatcher::class);
+				$dispatcher->dispatchTyped(new PasswordUpdatedEvent($user, $password, $recoveryPassword));
 			});
 			$userSession->listen('\OC\User', 'preLogin', function ($uid, $password) {
 				\OC_Hook::emit('OC_User', 'pre_login', array('run' => true, 'uid' => $uid, 'password' => $password));
+
+				/** @var IEventDispatcher $dispatcher */
+				$dispatcher = $this->query(IEventDispatcher::class);
+				$dispatcher->dispatchTyped(new BeforeUserLoggedInEvent($uid, $password));
 			});
 			$userSession->listen('\OC\User', 'postLogin', function ($user, $password, $isTokenLogin) {
 				/** @var $user \OC\User\User */
 				\OC_Hook::emit('OC_User', 'post_login', array('run' => true, 'uid' => $user->getUID(), 'password' => $password, 'isTokenLogin' => $isTokenLogin));
+
+				/** @var IEventDispatcher $dispatcher */
+				$dispatcher = $this->query(IEventDispatcher::class);
+				$dispatcher->dispatchTyped(new UserLoggedInEvent($user, $password, $isTokenLogin));
+			});
+			$userSession->listen('\OC\User', 'preRememberedLogin', function ($uid) {
+				/** @var IEventDispatcher $dispatcher */
+				$dispatcher = $this->query(IEventDispatcher::class);
+				$dispatcher->dispatchTyped(new BeforeUserLoggedInWithCookieEvent($uid));
 			});
 			$userSession->listen('\OC\User', 'postRememberedLogin', function ($user, $password) {
 				/** @var $user \OC\User\User */
 				\OC_Hook::emit('OC_User', 'post_login', array('run' => true, 'uid' => $user->getUID(), 'password' => $password));
+
+				/** @var IEventDispatcher $dispatcher */
+				$dispatcher = $this->query(IEventDispatcher::class);
+				$dispatcher->dispatchTyped(new UserLoggedInWithCookieEvent($user, $password));
 			});
-			$userSession->listen('\OC\User', 'logout', function () {
+			$userSession->listen('\OC\User', 'logout', function ($user) {
 				\OC_Hook::emit('OC_User', 'logout', array());
+
+				/** @var IEventDispatcher $dispatcher */
+				$dispatcher = $this->query(IEventDispatcher::class);
+				$dispatcher->dispatchTyped(new BeforeUserLoggedOutEvent($user));
+			});
+			$userSession->listen('\OC\User', 'postLogout', function ($user) {
+				/** @var IEventDispatcher $dispatcher */
+				$dispatcher = $this->query(IEventDispatcher::class);
+				$dispatcher->dispatchTyped(new UserLoggedOutEvent($user));
 			});
 			$userSession->listen('\OC\User', 'changeUser', function ($user, $feature, $value, $oldValue) {
 				/** @var $user \OC\User\User */
 				\OC_Hook::emit('OC_User', 'changeUser', array('run' => true, 'user' => $user, 'feature' => $feature, 'value' => $value, 'old_value' => $oldValue));
+
+				/** @var IEventDispatcher $dispatcher */
+				$dispatcher = $this->query(IEventDispatcher::class);
+				$dispatcher->dispatchTyped(new UserChangedEvent($user, $feature, $value, $oldValue));
 			});
 			return $userSession;
 		});
@@ -1848,6 +1956,7 @@ class Server extends ServerContainer implements IServerContainer {
 	 *
 	 * @return EventDispatcherInterface
 	 * @since 8.2.0
+	 * @deprecated 18.0.0 use \OCP\EventDispatcher\IEventDispatcher
 	 */
 	public function getEventDispatcher() {
 		return $this->query(\OC\EventDispatcher\SymfonyAdapter::class);
