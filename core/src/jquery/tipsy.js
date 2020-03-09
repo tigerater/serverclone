@@ -32,12 +32,12 @@ $.fn.tipsy = function(argument) {
 	if (typeof argument === 'object' && argument !== null) {
 
 		// tipsy defaults
-		const options = {
+		var options = {
 			placement: 'bottom',
 			delay: { 'show': 0, 'hide': 0 },
 			trigger: 'hover',
 			html: false,
-			container: 'body',
+			container: 'body'
 		}
 		if (argument.gravity) {
 			switch (argument.gravity) {

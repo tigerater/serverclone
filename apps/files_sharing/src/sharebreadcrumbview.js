@@ -23,10 +23,10 @@
 (function() {
 	'use strict'
 
-	const BreadCrumbView = OC.Backbone.View.extend({
+	var BreadCrumbView = OC.Backbone.View.extend({
 		tagName: 'span',
 		events: {
-			click: '_onClick',
+			click: '_onClick'
 		},
 		_dirInfo: undefined,
 
@@ -34,7 +34,7 @@
 			this._dirInfo = data.dirInfo || null
 
 			if (this._dirInfo !== null && (this._dirInfo.path !== '/' || this._dirInfo.name !== '')) {
-				const isShared = data.dirInfo && data.dirInfo.shareTypes && data.dirInfo.shareTypes.length > 0
+				var isShared = data.dirInfo && data.dirInfo.shareTypes && data.dirInfo.shareTypes.length > 0
 				this.$el.removeClass('shared icon-public icon-shared')
 				if (isShared) {
 					this.$el.addClass('shared')
@@ -58,18 +58,18 @@
 		_onClick: function(e) {
 			e.preventDefault()
 
-			const fileInfoModel = new OCA.Files.FileInfoModel(this._dirInfo)
-			const self = this
+			var fileInfoModel = new OCA.Files.FileInfoModel(this._dirInfo)
+			var self = this
 			fileInfoModel.on('change', function() {
 				self.render({
-					dirInfo: self._dirInfo,
+					dirInfo: self._dirInfo
 				})
 			})
 
-			const path = fileInfoModel.attributes.path + '/' + fileInfoModel.attributes.name
+			var path = fileInfoModel.attributes.path + '/' + fileInfoModel.attributes.name
 			OCA.Files.Sidebar.open(path)
 			OCA.Files.Sidebar.setActiveTab('sharing')
-		},
+		}
 	})
 
 	OCA.Sharing.ShareBreadCrumbView = BreadCrumbView

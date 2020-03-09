@@ -26,13 +26,13 @@
  * @returns {string}
  */
 export default function humanFileSize(size, skipSmallSizes) {
-	const humanList = ['B', 'KB', 'MB', 'GB', 'TB']
+	var humanList = ['B', 'KB', 'MB', 'GB', 'TB']
 	// Calculate Log with base 1024: size = 1024 ** order
-	let order = size > 0 ? Math.floor(Math.log(size) / Math.log(1024)) : 0
+	var order = size > 0 ? Math.floor(Math.log(size) / Math.log(1024)) : 0
 	// Stay in range of the byte sizes that are defined
 	order = Math.min(humanList.length - 1, order)
-	const readableFormat = humanList[order]
-	let relativeSize = (size / Math.pow(1024, order)).toFixed(1)
+	var readableFormat = humanList[order]
+	var relativeSize = (size / Math.pow(1024, order)).toFixed(1)
 	if (skipSmallSizes === true && order === 0) {
 		if (relativeSize !== '0.0') {
 			return '< 1 KB'

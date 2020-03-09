@@ -11,7 +11,7 @@
 (function() {
 
 	_.extend(OC.Files.Client, {
-		PROPERTY_COMMENTS_UNREAD:	'{' + OC.Files.Client.NS_OWNCLOUD + '}comments-unread',
+		PROPERTY_COMMENTS_UNREAD:	'{' + OC.Files.Client.NS_OWNCLOUD + '}comments-unread'
 	})
 
 	OCA.Comments = _.extend({}, OCA.Comments)
@@ -28,36 +28,36 @@
 	OCA.Comments.FilesPlugin = {
 		ignoreLists: [
 			'trashbin',
-			'files.public',
+			'files.public'
 		],
 
 		_formatCommentCount: function(count) {
 			return OCA.Comments.Templates['filesplugin']({
 				count: count,
 				countMessage: n('comments', '%n unread comment', '%n unread comments', count),
-				iconUrl: OC.imagePath('core', 'actions/comment'),
+				iconUrl: OC.imagePath('core', 'actions/comment')
 			})
 		},
 
 		attach: function(fileList) {
-			const self = this
+			var self = this
 			if (this.ignoreLists.indexOf(fileList.id) >= 0) {
 				return
 			}
 
 			fileList.registerTabView(new OCA.Comments.CommentsTabView('commentsTabView'))
 
-			const oldGetWebdavProperties = fileList._getWebdavProperties
+			var oldGetWebdavProperties = fileList._getWebdavProperties
 			fileList._getWebdavProperties = function() {
-				const props = oldGetWebdavProperties.apply(this, arguments)
+				var props = oldGetWebdavProperties.apply(this, arguments)
 				props.push(OC.Files.Client.PROPERTY_COMMENTS_UNREAD)
 				return props
 			}
 
 			fileList.filesClient.addFileInfoParser(function(response) {
-				const data = {}
-				const props = response.propStat[0].properties
-				const commentsUnread = props[OC.Files.Client.PROPERTY_COMMENTS_UNREAD]
+				var data = {}
+				var props = response.propStat[0].properties
+				var commentsUnread = props[OC.Files.Client.PROPERTY_COMMENTS_UNREAD]
 				if (!_.isUndefined(commentsUnread) && commentsUnread !== '') {
 					data.commentsUnread = parseInt(commentsUnread, 10)
 				}
@@ -65,9 +65,9 @@
 			})
 
 			fileList.$el.addClass('has-comments')
-			const oldCreateRow = fileList._createRow
+			var oldCreateRow = fileList._createRow
 			fileList._createRow = function(fileData) {
-				const $tr = oldCreateRow.apply(this, arguments)
+				var $tr = oldCreateRow.apply(this, arguments)
 				if (fileData.commentsUnread) {
 					$tr.attr('data-comments-unread', fileData.commentsUnread)
 				}
@@ -79,7 +79,7 @@
 				name: 'Comment',
 				displayName: function(context) {
 					if (context && context.$file) {
-						const unread = parseInt(context.$file.data('comments-unread'), 10)
+						var unread = parseInt(context.$file.data('comments-unread'), 10)
 						if (unread >= 0) {
 							return n('comments', '1 new comment', '{unread} new comments', unread, { unread: unread })
 						}
@@ -92,10 +92,10 @@
 				permissions: OC.PERMISSION_READ,
 				type: OCA.Files.FileActions.TYPE_INLINE,
 				render: function(actionSpec, isDefault, context) {
-					const $file = context.$file
-					const unreadComments = $file.data('comments-unread')
+					var $file = context.$file
+					var unreadComments = $file.data('comments-unread')
 					if (unreadComments) {
-						const $actionLink = $(self._formatCommentCount(unreadComments))
+						var $actionLink = $(self._formatCommentCount(unreadComments))
 						context.$file.find('a.name>span.fileactions').append($actionLink)
 						return $actionLink
 					}
@@ -105,20 +105,20 @@
 					context.$file.find('.action-comment').tooltip('hide')
 					// open sidebar in comments section
 					context.fileList.showDetailsView(fileName, 'comments')
-				},
+				}
 			})
 
 			// add attribute to "elementToFile"
-			const oldElementToFile = fileList.elementToFile
+			var oldElementToFile = fileList.elementToFile
 			fileList.elementToFile = function($el) {
-				const fileInfo = oldElementToFile.apply(this, arguments)
-				const commentsUnread = $el.data('comments-unread')
+				var fileInfo = oldElementToFile.apply(this, arguments)
+				var commentsUnread = $el.data('comments-unread')
 				if (commentsUnread) {
 					fileInfo.commentsUnread = commentsUnread
 				}
 				return fileInfo
 			}
-		},
+		}
 	}
 
 })()

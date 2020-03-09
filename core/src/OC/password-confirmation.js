@@ -39,8 +39,8 @@ export default {
 	},
 
 	requiresPasswordConfirmation: function() {
-		const serverTimeDiff = this.pageLoadTime - (window.nc_pageLoad * 1000)
-		const timeSinceLogin = moment.now() - (serverTimeDiff + (window.nc_lastLogin * 1000))
+		var serverTimeDiff = this.pageLoadTime - (window.nc_pageLoad * 1000)
+		var timeSinceLogin = moment.now() - (serverTimeDiff + (window.nc_lastLogin * 1000))
 
 		// if timeSinceLogin > 30 minutes and user backend allows password confirmation
 		return (window.backendAllowsPasswordConfirmation && timeSinceLogin > 30 * 60 * 1000)
@@ -53,7 +53,7 @@ export default {
 	 */
 	requirePasswordConfirmation: function(callback, options, rejectCallback) {
 		options = typeof options !== 'undefined' ? options : {}
-		const defaults = {
+		var defaults = {
 			title: t('core', 'Authentication required'),
 			text: t(
 				'core',
@@ -61,12 +61,12 @@ export default {
 			),
 			confirm: t('core', 'Confirm'),
 			label: t('core', 'Password'),
-			error: '',
+			error: ''
 		}
 
-		const config = _.extend(defaults, options)
+		var config = _.extend(defaults, options)
 
-		const self = this
+		var self = this
 
 		if (this.requiresPasswordConfirmation()) {
 			OC.dialogs.prompt(
@@ -83,16 +83,16 @@ export default {
 				config.label,
 				true
 			).then(function() {
-				const $dialog = $('.oc-dialog:visible')
+				var $dialog = $('.oc-dialog:visible')
 				$dialog.find('.ui-icon').remove()
 				$dialog.addClass('password-confirmation')
 				if (config.error !== '') {
-					const $error = $('<p></p>').addClass('msg warning').text(config.error)
-					$dialog.find('.oc-dialog-content').append($error)
+					var $error = $('<p></p>').addClass('msg warning').text(config.error)
 				}
+				$dialog.find('.oc-dialog-content').append($error)
 				$dialog.find('.oc-dialog-buttonrow').addClass('aside')
 
-				const $buttons = $dialog.find('button')
+				var $buttons = $dialog.find('button')
 				$buttons.eq(0).hide()
 				$buttons.eq(1).text(config.confirm)
 			})
@@ -102,12 +102,12 @@ export default {
 	},
 
 	_confirmPassword: function(password, config) {
-		const self = this
+		var self = this
 
 		$.ajax({
 			url: OC.generateUrl('/login/confirm'),
 			data: {
-				password: password,
+				password: password
 			},
 			type: 'POST',
 			success: function(response) {
@@ -120,7 +120,7 @@ export default {
 			error: function() {
 				config.error = t('core', 'Failed to authenticate, try again')
 				OC.PasswordConfirmation.requirePasswordConfirmation(self.callback, config)
-			},
+			}
 		})
-	},
+	}
 }

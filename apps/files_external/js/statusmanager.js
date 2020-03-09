@@ -413,7 +413,7 @@ OCA.Files_External.StatusManager = {
 					}
 				},
 				success: function (data) {
-					OC.Notification.show(t('files_external', 'Credentials saved'), {type: 'success'});
+					OC.Notification.show(t('files_external', 'Credentials saved'), {type: 'error'});
 					dialog.ocdialog('close');
 					/* Trigger status check again */
 					OCA.Files_External.StatusManager.recheckConnectivityForMount([OC.basename(data.mountPoint)], true);

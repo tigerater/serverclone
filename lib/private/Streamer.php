@@ -2,7 +2,6 @@
 /**
  * @copyright Copyright (c) 2016, ownCloud, Inc.
  *
- * @author Arthur Schiwon <blizzz@arthur-schiwon.de>
  * @author Daniel Calviño Sánchez <danxuliu@gmail.com>
  * @author Joas Schilling <coding@schilljs.com>
  * @author Roeland Jago Douma <roeland@famdouma.nl>
@@ -27,12 +26,6 @@
 
 namespace OC;
 
-use OC\Files\Filesystem;
-use OCP\Files\File;
-use OCP\Files\Folder;
-use OCP\Files\InvalidPathException;
-use OCP\Files\NotFoundException;
-use OCP\Files\NotPermittedException;
 use OCP\IRequest;
 use ownCloud\TarStreamer\TarStreamer;
 use ZipStreamer\ZipStreamer;
@@ -84,25 +77,23 @@ class Streamer {
 			$this->streamerInstance = new ZipStreamer(['zip64' => PHP_INT_SIZE !== 4]);
 		}
 	}
-
+	
 	/**
 	 * Send HTTP headers
-	 * @param string $name
+	 * @param string $name 
 	 */
 	public function sendHeaders($name){
 		$extension = $this->streamerInstance instanceof ZipStreamer ? '.zip' : '.tar';
 		$fullName = $name . $extension;
 		$this->streamerInstance->sendHeaders($fullName);
 	}
-
+	
 	/**
 	 * Stream directory recursively
-	 *
-	 * @throws NotFoundException
-	 * @throws NotPermittedException
-	 * @throws InvalidPathException
+	 * @param string $dir
+	 * @param string $internalDir
 	 */
-	public function addDirRecursive(string $dir, string $internalDir = ''): void {
+	public function addDirRecursive($dir, $internalDir='') {
 		$dirname = basename($dir);
 		$rootDir = $internalDir . $dirname;
 		if (!empty($rootDir)) {
@@ -112,33 +103,22 @@ class Streamer {
 		// prevent absolute dirs
 		$internalDir = ltrim($internalDir, '/');
 
-		$userFolder = \OC::$server->getRootFolder()->get(Filesystem::getRoot());
-		/** @var Folder $dirNode */
-		$dirNode = $userFolder->get($dir);
-		$files = $dirNode->getDirectoryListing();
-
+		$files= \OC\Files\Filesystem::getDirectoryContent($dir);
 		foreach($files as $file) {
-			if($file instanceof File) {
-				try {
-					$fh = $file->fopen('r');
-				} catch (NotPermittedException $e) {
-					continue;
-				}
-				$this->addFileFromStream(
-					$fh,
-					$internalDir . $file->getName(),
-					$file->getSize(),
-					$file->getMTime()
-				);
+			$filename = $file['name'];
+			$file = $dir . '/' . $filename;
+			if(\OC\Files\Filesystem::is_file($file)) {
+				$filesize = \OC\Files\Filesystem::filesize($file);
+				$fileTime = \OC\Files\Filesystem::filemtime($file);
+				$fh = \OC\Files\Filesystem::fopen($file, 'r');
+				$this->addFileFromStream($fh, $internalDir . $filename, $filesize, $fileTime);
 				fclose($fh);
-			} elseif ($file instanceof Folder) {
-				if($file->isReadable()) {
-					$this->addDirRecursive($dir . '/' . $file->getName(), $internalDir);
-				}
+			}elseif(\OC\Files\Filesystem::is_dir($file)) {
+				$this->addDirRecursive($file, $internalDir);
 			}
 		}
 	}
-
+	
 	/**
 	 * Add a file to the archive at the specified location and file name.
 	 *

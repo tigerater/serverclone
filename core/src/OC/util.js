@@ -28,7 +28,7 @@ import humanFileSize from '../Util/human-file-size'
 
 function chunkify(t) {
 	// Adapted from http://my.opera.com/GreyWyvern/blog/show.dml/1671288
-	const tz = []
+	let tz = []
 	let x = 0
 	let y = -1
 	let n = 0
@@ -37,7 +37,7 @@ function chunkify(t) {
 	while (x < t.length) {
 		c = t.charAt(x)
 		// only include the dot in strings
-		const m = ((!n && c === '.') || (c >= '0' && c <= '9'))
+		var m = ((!n && c === '.') || (c >= '0' && c <= '9'))
 		if (m !== n) {
 			// next chunk
 			y++
@@ -75,10 +75,10 @@ export default {
 			return null
 		}
 
-		const s = string.toLowerCase().trim()
-		let bytes = null
+		var s = string.toLowerCase().trim()
+		var bytes = null
 
-		const bytesArray = {
+		var bytesArray = {
 			'b': 1,
 			'k': 1024,
 			'kb': 1024,
@@ -89,10 +89,10 @@ export default {
 			'tb': 1024 * 1024 * 1024 * 1024,
 			't': 1024 * 1024 * 1024 * 1024,
 			'pb': 1024 * 1024 * 1024 * 1024 * 1024,
-			'p': 1024 * 1024 * 1024 * 1024 * 1024,
+			'p': 1024 * 1024 * 1024 * 1024 * 1024
 		}
 
-		const matches = s.match(/^[\s+]?([0-9]*)(\.([0-9]+))?( +)?([kmgtp]?b?)$/i)
+		var matches = s.match(/^[\s+]?([0-9]*)(\.([0-9]+))?( +)?([kmgtp]?b?)$/i)
 		if (matches !== null) {
 			bytes = parseFloat(s)
 			if (!isFinite(bytes)) {
@@ -124,7 +124,7 @@ export default {
 	 * @returns {string} human readable difference from now
 	 */
 	relativeModifiedDate: function(timestamp) {
-		const diff = moment().diff(moment(timestamp))
+		var diff = moment().diff(moment(timestamp))
 		if (diff >= 0 && diff < 45000) {
 			return t('core', 'seconds ago')
 		}
@@ -150,11 +150,11 @@ export default {
 			return this._scrollBarWidth
 		}
 
-		const inner = document.createElement('p')
+		var inner = document.createElement('p')
 		inner.style.width = '100%'
 		inner.style.height = '200px'
 
-		const outer = document.createElement('div')
+		var outer = document.createElement('div')
 		outer.style.position = 'absolute'
 		outer.style.top = '0px'
 		outer.style.left = '0px'
@@ -165,9 +165,9 @@ export default {
 		outer.appendChild(inner)
 
 		document.body.appendChild(outer)
-		const w1 = inner.offsetWidth
+		var w1 = inner.offsetWidth
 		outer.style.overflow = 'scroll'
-		let w2 = inner.offsetWidth
+		var w2 = inner.offsetWidth
 		if (w1 === w2) {
 			w2 = outer.clientWidth
 		}
@@ -199,13 +199,13 @@ export default {
 	 * or 0 if the strings are identical
 	 */
 	naturalSortCompare: function(a, b) {
-		let x
-		const aa = chunkify(a)
-		const bb = chunkify(b)
+		var x
+		var aa = chunkify(a)
+		var bb = chunkify(b)
 
 		for (x = 0; aa[x] && bb[x]; x++) {
 			if (aa[x] !== bb[x]) {
-				const aNum = Number(aa[x]); const bNum = Number(bb[x])
+				var aNum = Number(aa[x]); var bNum = Number(bb[x])
 				// note: == is correct here
 				/* eslint-disable-next-line */
 				if (aNum == aa[x] && bNum == bb[x]) {
@@ -226,7 +226,7 @@ export default {
 	 * @param {integer} interval in milliseconds
 	 */
 	waitFor: function(callback, interval) {
-		const internalCallback = function() {
+		var internalCallback = function() {
 			if (callback() !== true) {
 				setTimeout(internalCallback, interval)
 			}
@@ -242,13 +242,13 @@ export default {
 	 * @returns {boolean} true if the cookie with the given name has the given value
 	 */
 	isCookieSetToValue: function(name, value) {
-		const cookies = document.cookie.split(';')
-		for (let i = 0; i < cookies.length; i++) {
-			const cookie = cookies[i].split('=')
+		var cookies = document.cookie.split(';')
+		for (var i = 0; i < cookies.length; i++) {
+			var cookie = cookies[i].split('=')
 			if (cookie[0].trim() === name && cookie[1].trim() === value) {
 				return true
 			}
 		}
 		return false
-	},
+	}
 }

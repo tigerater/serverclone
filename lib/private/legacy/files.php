@@ -9,7 +9,6 @@
  * @author Jakob Sack <mail@jakobsack.de>
  * @author Joas Schilling <coding@schilljs.com>
  * @author Jörn Friedrich Dreyer <jfd@butonic.de>
- * @author Julius Härtl <jus@bitgrid.net>
  * @author Ko- <k.stoffelen@cs.ru.nl>
  * @author Lukas Reschke <lukas@statuscode.ch>
  * @author Michael Gapczynski <GapczynskiM@gmail.com>
@@ -181,11 +180,7 @@ class OC_Files {
 						$userFolder = \OC::$server->getRootFolder()->get(\OC\Files\Filesystem::getRoot());
 						$file = $userFolder->get($file);
 						if($file instanceof \OC\Files\Node\File) {
-							try {
-								$fh = $file->fopen('r');
-							} catch (\OCP\Files\NotPermittedException $e) {
-								continue;
-							}
+							$fh = $file->fopen('r');
 							$fileSize = $file->getSize();
 							$fileTime = $file->getMTime();
 						} else {
@@ -289,44 +284,30 @@ class OC_Files {
 	 */
 	private static function getSingleFile($view, $dir, $name, $params) {
 		$filename = $dir . '/' . $name;
-		$file = null;
+		OC_Util::obEnd();
+		$view->lockFile($filename, ILockingProvider::LOCK_SHARED);
+		
+		$rangeArray = array();
 
-		try {
-			$userFolder = \OC::$server->getRootFolder()->get(\OC\Files\Filesystem::getRoot());
-			$file = $userFolder->get($filename);
-			if(!$file instanceof \OC\Files\Node\File || !$file->isReadable()) {
-				http_response_code(403);
-				die('403 Forbidden');
-			}
-			$fileSize = $file->getSize();
-		} catch (\OCP\Files\NotPermittedException $e) {
-			http_response_code(403);
-			die('403 Forbidden');
-		} catch (\OCP\Files\InvalidPathException $e) {
-			http_response_code(403);
-			die('403 Forbidden');
-		} catch (\OCP\Files\NotFoundException $e) {
+		if (isset($params['range']) && substr($params['range'], 0, 6) === 'bytes=') {
+			$rangeArray = self::parseHttpRangeHeader(substr($params['range'], 6), 
+								 \OC\Files\Filesystem::filesize($filename));
+		}
+		
+		if (\OC\Files\Filesystem::isReadable($filename)) {
+			self::sendHeaders($filename, $name, $rangeArray);
+		} elseif (!\OC\Files\Filesystem::file_exists($filename)) {
 			http_response_code(404);
 			$tmpl = new OC_Template('', '404', 'guest');
 			$tmpl->printPage();
 			exit();
+		} else {
+			http_response_code(403);
+			die('403 Forbidden');
 		}
-
-		OC_Util::obEnd();
-		$view->lockFile($filename, ILockingProvider::LOCK_SHARED);
-
-		$rangeArray = array();
-
-		if (isset($params['range']) && substr($params['range'], 0, 6) === 'bytes=') {
-			$rangeArray = self::parseHttpRangeHeader(substr($params['range'], 6), $fileSize);
-		}
-
-		self::sendHeaders($filename, $name, $rangeArray);
-
 		if (isset($params['head']) && $params['head']) {
 			return;
 		}
-
 		if (!empty($rangeArray)) {
 			try {
 			    if (count($rangeArray) == 1) {
