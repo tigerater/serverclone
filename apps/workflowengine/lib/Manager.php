@@ -37,16 +37,12 @@ use OCA\WorkflowEngine\Helper\ScopeContext;
 use OCA\WorkflowEngine\Service\RuleMatcher;
 use OCP\AppFramework\QueryException;
 use OCP\DB\QueryBuilder\IQueryBuilder;
-use OCP\EventDispatcher\IEventDispatcher;
 use OCP\Files\Storage\IStorage;
 use OCP\IDBConnection;
 use OCP\IL10N;
 use OCP\ILogger;
 use OCP\IServerContainer;
 use OCP\IUserSession;
-use OCP\WorkflowEngine\Events\RegisterChecksEvent;
-use OCP\WorkflowEngine\Events\RegisterEntitiesEvent;
-use OCP\WorkflowEngine\Events\RegisterOperationsEvent;
 use OCP\WorkflowEngine\ICheck;
 use OCP\WorkflowEngine\IComplexOperation;
 use OCP\WorkflowEngine\IEntity;
@@ -54,7 +50,7 @@ use OCP\WorkflowEngine\IEntityEvent;
 use OCP\WorkflowEngine\IManager;
 use OCP\WorkflowEngine\IOperation;
 use OCP\WorkflowEngine\IRuleMatcher;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface as LegacyDispatcher;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 
 class Manager implements IManager {
@@ -83,8 +79,8 @@ class Manager implements IManager {
 	/** @var IL10N */
 	protected $l;
 
-	/** @var LegacyDispatcher */
-	protected $legacyEventDispatcher;
+	/** @var EventDispatcherInterface */
+	protected $eventDispatcher;
 
 	/** @var IEntity[] */
 	protected $registeredEntities = [];
@@ -104,26 +100,26 @@ class Manager implements IManager {
 	/** @var IUserSession */
 	protected $session;
 
-	/** @var IEventDispatcher */
-	private $dispatcher;
-
+	/**
+	 * @param IDBConnection $connection
+	 * @param IServerContainer $container
+	 * @param IL10N $l
+	 */
 	public function __construct(
 		IDBConnection $connection,
 		IServerContainer $container,
 		IL10N $l,
-		LegacyDispatcher $eventDispatcher,
+		EventDispatcherInterface $eventDispatcher,
 		ILogger $logger,
-		IUserSession $session,
-		IEventDispatcher $dispatcher
+		IUserSession $session
 	) {
 		$this->connection = $connection;
 		$this->container = $container;
 		$this->l = $l;
-		$this->legacyEventDispatcher = $eventDispatcher;
+		$this->eventDispatcher = $eventDispatcher;
 		$this->logger = $logger;
 		$this->operationsByScope = new CappedMemoryCache(64);
 		$this->session = $session;
-		$this->dispatcher = $dispatcher;
 	}
 
 	public function getRuleMatcher(): IRuleMatcher {
@@ -610,8 +606,7 @@ class Manager implements IManager {
 	 * @return IEntity[]
 	 */
 	public function getEntitiesList(): array {
-		$this->dispatcher->dispatchTyped(new RegisterEntitiesEvent($this));
-		$this->legacyEventDispatcher->dispatch(IManager::EVENT_NAME_REG_ENTITY, new GenericEvent($this));
+		$this->eventDispatcher->dispatch(IManager::EVENT_NAME_REG_ENTITY, new GenericEvent($this));
 
 		return array_values(array_merge($this->getBuildInEntities(), $this->registeredEntities));
 	}
@@ -620,8 +615,7 @@ class Manager implements IManager {
 	 * @return IOperation[]
 	 */
 	public function getOperatorList(): array {
-		$this->dispatcher->dispatchTyped(new RegisterOperationsEvent($this));
-		$this->legacyEventDispatcher->dispatch(IManager::EVENT_NAME_REG_OPERATION, new GenericEvent($this));
+		$this->eventDispatcher->dispatch(IManager::EVENT_NAME_REG_OPERATION, new GenericEvent($this));
 
 		return array_merge($this->getBuildInOperators(), $this->registeredOperators);
 	}
@@ -630,8 +624,7 @@ class Manager implements IManager {
 	 * @return ICheck[]
 	 */
 	public function getCheckList(): array {
-		$this->dispatcher->dispatchTyped(new RegisterChecksEvent($this));
-		$this->legacyEventDispatcher->dispatch(IManager::EVENT_NAME_REG_CHECK, new GenericEvent($this));
+		$this->eventDispatcher->dispatch(IManager::EVENT_NAME_REG_CHECK, new GenericEvent($this));
 
 		return array_merge($this->getBuildInChecks(), $this->registeredChecks);
 	}
