@@ -279,12 +279,7 @@ class ManagerTest extends TestCase {
 					return $this->createMock(IOperation::class);
 				} else if($class === File::class) {
 					return $this->getMockBuilder(File::class)
-						->setConstructorArgs([
-							$this->l,
-							$this->createMock(IURLGenerator::class),
-							$this->createMock(IRootFolder::class),
-							$this->createMock(ILogger::class)
-						])
+						->setConstructorArgs([$this->l, $this->createMock(IURLGenerator::class), $this->createMock(IRootFolder::class)])
 						->setMethodsExcept(['getEvents'])
 						->getMock();
 				}

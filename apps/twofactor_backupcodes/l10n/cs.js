@@ -1,7 +1,6 @@
 OC.L10N.register(
     "twofactor_backupcodes",
     {
-    "function" : "funkce",
     "_" : "_",
     "An error occurred while generating your backup codes" : "Při pokusu o vytvoření záložních kódů nastala chyba.",
     "{name} backup codes" : "{name} záložní kódy",
@@ -14,7 +13,6 @@ OC.L10N.register(
     "Generate backup codes" : "Vytvořit záložní kódy",
     "You created two-factor backup codes for your account" : "Vytvořili jste záložní kódy dvoufázového ověření pro váš účet",
     "Second-factor backup codes" : "Dvoufázové záložní kódy",
-    "You enabled two-factor authentication but did not generate backup codes yet. They are needed to restore access to your account in case you lose your second factor." : "Zapnuli jste si dvouúrovňové ověřování, ale doposud nenechali vytvořit záložní kódy. Ty jsou potřebné pro obnovení přístupu k vašemu účtu v případě, že ztratíte druhý faktor.",
     "Backup code" : "Záložní kód",
     "Use backup code" : "Použít záložní kód",
     "Two factor backup codes" : "Záložní kódy pro dvoufázové ověřování",
