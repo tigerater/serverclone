@@ -49,10 +49,11 @@ export default class Sidebar {
 	}
 
 	/**
+	 * @memberof Sidebar
 	 * Register a new tab view
 	 *
-	 * @memberof Sidebar
 	 * @param {Object} tab a new unregistered tab
+	 * @memberof Sidebar
 	 * @returns {Boolean}
 	 */
 	registerTab(tab) {
@@ -76,41 +77,32 @@ export default class Sidebar {
 	}
 
 	/**
-	 * Open the sidebar for the given file
+	 * Set the current sidebar file data
 	 *
-	 * @memberof Sidebar
 	 * @param {string} path the file path to load
+	 * @memberof Sidebar
 	 */
-	open(path) {
+	set file(path) {
 		this.#state.file = path
 	}
 
 	/**
-	 * Close the sidebar
+	 * Set the current sidebar file data
 	 *
-	 * @memberof Sidebar
-	 */
-	close() {
-		this.#state.file = ''
-	}
-
-	/**
-	 * Return current opened file
-	 *
-	 * @memberof Sidebar
 	 * @returns {String} the current opened file
+	 * @memberof Sidebar
 	 */
 	get file() {
 		return this.#state.file
 	}
 
 	/**
-	 * Set the current visible sidebar tab
+	 * Set the current sidebar tab
 	 *
-	 * @memberof Sidebar
 	 * @param {string} id the tab unique id
+	 * @memberof Sidebar
 	 */
-	setActiveTab(id) {
+	set activeTab(id) {
 		this.#state.activeTab = id
 	}
 
