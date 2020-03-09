@@ -1,11 +1,9 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
+
 /**
- * @copyright Copyright (c) 2016 Bjoern Schiessle <bjoern@schiessle.org>
- * @copyright Copyright (c) 2017 Lukas Reschke <lukas@statuscode.ch>
+ * @copyright 2019 Christoph Wurst <christoph@winzerhof-wurst.at>
  *
- * @author Joas Schilling <coding@schilljs.com>
- * @author Lukas Reschke <lukas@statuscode.ch>
+ * @author 2019 Christoph Wurst <christoph@winzerhof-wurst.at>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -21,8 +19,12 @@ declare(strict_types=1);
  *
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
  */
 
-$app = \OC::$server->query(\OCA\AdminAudit\AppInfo\Application::class);
-$app->register();
+namespace OCA\Files\Exception;
+
+use Exception;
+
+class TransferOwnershipException extends Exception {
+
+}
