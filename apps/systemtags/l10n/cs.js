@@ -2,7 +2,6 @@ OC.L10N.register(
     "systemtags",
     {
     "Tags" : "Štítky",
-    "Tag name is empty" : "Název štítku je prázdný",
     "Update" : "Aktualizovat",
     "Create" : "Vytvořit",
     "Select tag…" : "Zvolit štítek…",
