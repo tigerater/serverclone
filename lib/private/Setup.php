@@ -353,9 +353,11 @@ class Setup {
 
 		$this->config->setValues($newConfigValues);
 
-		$dbSetup->initialize($options);
 		try {
+			$dbSetup->initialize($options);
 			$dbSetup->setupDatabase($username);
+			// apply necessary migrations
+			$dbSetup->runMigrations();
 		} catch (\OC\DatabaseSetupException $e) {
 			$error[] = [
 				'error' => $e->getMessage(),
@@ -365,16 +367,6 @@ class Setup {
 		} catch (Exception $e) {
 			$error[] = [
 				'error' => 'Error while trying to create admin user: ' . $e->getMessage(),
-				'hint' => '',
-			];
-			return $error;
-		}
-		try {
-			// apply necessary migrations
-			$dbSetup->runMigrations();
-		} catch (Exception $e) {
-			$error[] = [
-				'error' => 'Error while trying to initialise the database: ' . $e->getMessage(),
 				'hint' => '',
 			];
 			return $error;
@@ -581,7 +573,7 @@ class Setup {
 		$content .= "    <IfModule mod_authz_host.c>\n";
 		$content .= "      Order Allow,Deny\n";
 		$content .= "      Deny from all\n";
-		$content .= "    <IifModule>\n";
+		$content .= "    </IfModule>\n";
 		$content .= "    Satisfy All\n";
 		$content .= "  </IfModule>\n";
 		$content .= "</IfModule>\n\n";
