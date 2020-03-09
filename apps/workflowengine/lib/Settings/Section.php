@@ -23,7 +23,6 @@
 
 namespace OCA\WorkflowEngine\Settings;
 
-use OCA\WorkflowEngine\AppInfo\Application;
 use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\Settings\IIconSection;
@@ -68,6 +67,6 @@ class Section implements IIconSection {
 	 * {@inheritdoc}
 	 */
 	public function getIcon() {
-		return $this->url->imagePath(Application::APP_ID, 'app-dark.svg');
+		return $this->url->imagePath('core', 'actions/tag.svg');
 	}
 }
