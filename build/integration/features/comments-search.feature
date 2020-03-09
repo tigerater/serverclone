@@ -20,7 +20,7 @@ Feature: comments-search
     Given user "user0" exists
     And user "user1" exists
     And User "user1" uploads file "data/textfile.txt" to "/sharedFileToComment.txt"
-    And as "user1" creating a share with
+    And As "user1" sending "POST" to "/apps/files_sharing/api/v1/shares" with
       | path | sharedFileToComment.txt |
       | shareWith | user0 |
       | shareType | 0 |
@@ -41,7 +41,7 @@ Feature: comments-search
     Given user "user0" exists
     And user "user1" exists
     And User "user0" uploads file "data/textfile.txt" to "/mySharedFileToComment.txt"
-    And as "user0" creating a share with
+    And As "user0" sending "POST" to "/apps/files_sharing/api/v1/shares" with
       | path | mySharedFileToComment.txt |
       | shareWith | user1 |
       | shareType | 0 |
@@ -62,7 +62,7 @@ Feature: comments-search
     Given user "user0" exists
     And user "user1" exists
     And User "user1" uploads file "data/textfile.txt" to "/sharedFileToComment.txt"
-    And as "user1" creating a share with
+    And As "user1" sending "POST" to "/apps/files_sharing/api/v1/shares" with
       | path | sharedFileToComment.txt |
       | shareWith | user0 |
       | shareType | 0 |
@@ -175,12 +175,12 @@ Feature: comments-search
     And user "user1" exists
     And User "user0" uploads file "data/textfile.txt" to "/myFileToComment.txt"
     And User "user0" uploads file "data/textfile.txt" to "/mySharedFileToComment.txt"
-    And as "user0" creating a share with
+    And As "user0" sending "POST" to "/apps/files_sharing/api/v1/shares" with
       | path | mySharedFileToComment.txt |
       | shareWith | user1 |
       | shareType | 0 |
     And User "user1" uploads file "data/textfile.txt" to "/sharedFileToComment.txt"
-    And as "user1" creating a share with
+    And As "user1" sending "POST" to "/apps/files_sharing/api/v1/shares" with
       | path | sharedFileToComment.txt |
       | shareWith | user0 |
       | shareType | 0 |

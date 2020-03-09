@@ -120,7 +120,7 @@ Feature: sharing
     And user "user1" exists
     And assure user "user0" is disabled
     And As an "user0"
-    When creating a share with
+    When sending "POST" to "/apps/files_sharing/api/v1/shares" with
       | path | welcome.txt |
       | shareWith | user1 |
       | shareType | 0 |
@@ -143,11 +143,11 @@ Feature: sharing
     And Deleting last share
     Then the OCS status code should be "100"
     And the HTTP status code should be "200"
-    And Getting info of last share
+    And Getting info of last share 
     And the OCS status code should be "404"
     And the HTTP status code should be "200"
     And As an "user1"
-    And Getting info of last share
+    And Getting info of last share 
     And the OCS status code should be "404"
     And the HTTP status code should be "200"
 
@@ -339,7 +339,7 @@ Feature: sharing
     And user "user0" belongs to group "sharing-group"
     And file "welcome.txt" of user "user0" is shared with group "sharing-group"
     And Deleting last share
-    When creating a share with
+    When sending "POST" to "/apps/files_sharing/api/v1/shares" with
       | path | welcome.txt |
       | shareWith | sharing-group |
       | shareType | 1 |
