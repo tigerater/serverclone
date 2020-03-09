@@ -24,9 +24,6 @@
 
 namespace OC\Hooks;
 
-/**
- * @deprecated 18.0.0 use events and the \OCP\EventDispatcher\IEventDispatcher service
- */
 class PublicEmitter extends BasicEmitter {
 	/**
 	 * @param string $scope
