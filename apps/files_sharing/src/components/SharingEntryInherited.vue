@@ -33,17 +33,17 @@
 				tooltip-message="" />
 		</template>
 		<ActionText icon="icon-user">
-			{{ t('files_sharing', 'Invited by {initiator}', { initiator: share.ownerDisplayName }) }}
+			{{ t('files_sharing', 'Added by {initiator}', { initiator: share.ownerDisplayName }) }}
 		</ActionText>
 		<ActionLink v-if="share.fileSource"
 			icon="icon-folder"
 			:href="fileTargetUrl">
-			{{ t('files_sharing', 'Open folder') }}
+			{{ t('files_sharing', 'Via folder') }}
 		</ActionLink>
 		<ActionButton v-if="share.canDelete"
 			icon="icon-delete"
 			@click.prevent="onDelete">
-			{{ t('files_sharing', 'Delete share') }}
+			{{ t('files_sharing', 'Unshare') }}
 		</actionbutton>
 	</SharingEntrySimple>
 </template>
@@ -68,7 +68,7 @@ export default {
 		ActionLink,
 		ActionText,
 		Avatar,
-		SharingEntrySimple
+		SharingEntrySimple,
 	},
 
 	mixins: [SharesMixin],
@@ -76,17 +76,17 @@ export default {
 	props: {
 		share: {
 			type: Share,
-			required: true
-		}
+			required: true,
+		},
 	},
 
 	computed: {
 		fileTargetUrl() {
 			return generateUrl('/f/{fileid}', {
-				fileid: this.share.fileSource
+				fileid: this.share.fileSource,
 			})
-		}
-	}
+		},
+	},
 }
 </script>
 

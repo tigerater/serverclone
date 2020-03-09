@@ -56,15 +56,15 @@ export default {
 	components: {
 		ActionButton,
 		SharingEntryInherited,
-		SharingEntrySimple
+		SharingEntrySimple,
 	},
 
 	props: {
 		fileInfo: {
 			type: Object,
 			default: () => {},
-			required: true
-		}
+			required: true,
+		},
 	},
 
 	data() {
@@ -72,7 +72,7 @@ export default {
 			loaded: false,
 			loading: false,
 			showInheritedShares: false,
-			shares: []
+			shares: [],
 		}
 	},
 	computed: {
@@ -86,9 +86,7 @@ export default {
 			return 'icon-triangle-s'
 		},
 		mainTitle() {
-			return t('files_sharing', 'Others with access {count}', {
-				count: this.loaded ? `: ${this.shares.length}` : ''
-			})
+			return t('files_sharing', 'Others with access')
 		},
 		toggleTooltip() {
 			return this.fileInfo.type === 'dir'
@@ -98,12 +96,12 @@ export default {
 		fullPath() {
 			const path = `${this.fileInfo.path}/${this.fileInfo.name}`
 			return path.replace('//', '/')
-		}
+		},
 	},
 	watch: {
 		fileInfo() {
 			this.resetState()
-		}
+		},
 	},
 	methods: {
 		/**
@@ -144,8 +142,8 @@ export default {
 			this.loading = false
 			this.showInheritedShares = false
 			this.shares = []
-		}
-	}
+		},
+	},
 }
 </script>
 

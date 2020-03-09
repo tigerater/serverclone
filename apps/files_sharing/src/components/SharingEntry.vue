@@ -40,13 +40,33 @@
 					{{ t('files_sharing', 'Allow editing') }}
 				</ActionCheckbox>
 
+				<!-- create permission -->
+				<ActionCheckbox
+					v-if="isFolder"
+					ref="canCreate"
+					:checked.sync="canCreate"
+					:value="permissionsCreate"
+					:disabled="saving">
+					{{ t('files_sharing', 'Allow creating') }}
+				</ActionCheckbox>
+
+				<!-- delete permission -->
+				<ActionCheckbox
+					v-if="isFolder"
+					ref="canDelete"
+					:checked.sync="canDelete"
+					:value="permissionsDelete"
+					:disabled="saving">
+					{{ t('files_sharing', 'Allow deleting') }}
+				</ActionCheckbox>
+
 				<!-- reshare permission -->
 				<ActionCheckbox
 					ref="canReshare"
 					:checked.sync="canReshare"
 					:value="permissionsShare"
 					:disabled="saving">
-					{{ t('files_sharing', 'Can reshare') }}
+					{{ t('files_sharing', 'Allow resharing') }}
 				</ActionCheckbox>
 
 				<!-- expiration date -->
@@ -130,11 +150,11 @@ export default {
 		ActionCheckbox,
 		ActionInput,
 		ActionTextEditable,
-		Avatar
+		Avatar,
 	},
 
 	directives: {
-		Tooltip
+		Tooltip,
 	},
 
 	mixins: [SharesMixin],
@@ -142,8 +162,10 @@ export default {
 	data() {
 		return {
 			permissionsEdit: OC.PERMISSION_UPDATE,
+			permissionsCreate: OC.PERMISSION_CREATE,
+			permissionsDelete: OC.PERMISSION_DELETE,
 			permissionsRead: OC.PERMISSION_READ,
-			permissionsShare: OC.PERMISSION_SHARE
+			permissionsShare: OC.PERMISSION_SHARE,
 		}
 	},
 
@@ -170,7 +192,7 @@ export default {
 					// todo: strong or italic?
 					// but the t function escape any html from the data :/
 					user: this.share.shareWithDisplayName,
-					owner: this.share.owner
+					owner: this.share.owner,
 				}
 
 				if (this.share.type === this.SHARE_TYPES.SHARE_TYPE_GROUP) {
@@ -197,8 +219,32 @@ export default {
 				return this.share.hasUpdatePermission
 			},
 			set: function(checked) {
-				this.updatePermissions(checked, this.canReshare)
-			}
+				this.updatePermissions({ isEditChecked: checked })
+			},
+		},
+
+		/**
+		 * Can the sharee create the shared file ?
+		 */
+		canCreate: {
+			get: function() {
+				return this.share.hasCreatePermission
+			},
+			set: function(checked) {
+				this.updatePermissions({ isCreateChecked: checked })
+			},
+		},
+
+		/**
+		 * Can the sharee delete the shared file ?
+		 */
+		canDelete: {
+			get: function() {
+				return this.share.hasDeletePermission
+			},
+			set: function(checked) {
+				this.updatePermissions({ isDeleteChecked: checked })
+			},
 		},
 
 		/**
@@ -209,8 +255,16 @@ export default {
 				return this.share.hasSharePermission
 			},
 			set: function(checked) {
-				this.updatePermissions(this.canEdit, checked)
-			}
+				this.updatePermissions({ isReshareChecked: checked })
+			},
+		},
+
+		/**
+		 * Is the current share a folder ?
+		 * @returns {boolean}
+		 */
+		isFolder() {
+			return this.fileInfo.type === 'dir'
 		},
 
 		/**
@@ -227,28 +281,29 @@ export default {
 						? this.config.defaultInternalExpirationDateString
 						: moment().format('YYYY-MM-DD')
 					: ''
-			}
+			},
 		},
 
 		dateMaxEnforced() {
 			return this.config.isDefaultInternalExpireDateEnforced
 				&& moment().add(1 + this.config.defaultInternalExpireDate, 'days')
-		}
+		},
 
 	},
 
 	methods: {
-		updatePermissions(isEditChecked, isReshareChecked) {
+		updatePermissions({ isEditChecked = this.canEdit, isCreateChecked = this.canCreate, isDeleteChecked = this.canDelete, isReshareChecked = this.canReshare } = {}) {
 			// calc permissions if checked
 			const permissions = this.permissionsRead
+				| (isCreateChecked ? this.permissionsCreate : 0)
+				| (isDeleteChecked ? this.permissionsDelete : 0)
 				| (isEditChecked ? this.permissionsEdit : 0)
 				| (isReshareChecked ? this.permissionsShare : 0)
 
 			this.share.permissions = permissions
 			this.queueUpdate('permissions')
-		}
-	}
-
+		},
+	},
 }
 </script>
 
