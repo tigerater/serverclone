@@ -181,7 +181,7 @@ class ShareAPIController extends OCSController {
 					throw new NotFoundException();
 				}
 			} else {
-				$node = reset($nodes);
+				$node = $nodes[0];
 			}
 		}
 
