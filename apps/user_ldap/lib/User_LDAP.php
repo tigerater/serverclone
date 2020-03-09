@@ -47,6 +47,7 @@ use OCA\User_LDAP\User\OfflineUser;
 use OCA\User_LDAP\User\User;
 use OCP\IConfig;
 use OCP\ILogger;
+use OCP\IUser;
 use OCP\IUserSession;
 use OCP\Notification\IManager as INotificationManager;
 use OCP\Util;
@@ -57,6 +58,9 @@ class User_LDAP extends BackendUtility implements \OCP\IUserBackend, \OCP\UserIn
 
 	/** @var INotificationManager */
 	protected $notificationManager;
+
+	/** @var string */
+	protected $currentUserInDeletionProcess;
 
 	/** @var UserPluginManager */
 	protected $userPluginManager;
@@ -72,6 +76,20 @@ class User_LDAP extends BackendUtility implements \OCP\IUserBackend, \OCP\UserIn
 		$this->ocConfig = $ocConfig;
 		$this->notificationManager = $notificationManager;
 		$this->userPluginManager = $userPluginManager;
+		$this->registerHooks($userSession);
+	}
+
+	protected function registerHooks(IUserSession $userSession) {
+		$userSession->listen('\OC\User', 'preDelete', [$this, 'preDeleteUser']);
+		$userSession->listen('\OC\User', 'postDelete', [$this, 'postDeleteUser']);
+	}
+
+	public function preDeleteUser(IUser $user) {
+		$this->currentUserInDeletionProcess = $user->getUID();
+	}
+
+	public function postDeleteUser() {
+		$this->currentUserInDeletionProcess = null;
 	}
 
 	/**
@@ -297,12 +315,6 @@ class User_LDAP extends BackendUtility implements \OCP\IUserBackend, \OCP\UserIn
 		if(is_null($user)) {
 			return false;
 		}
-		$uid = $user instanceof User ? $user->getUsername() : $user->getOCName();
-		$cacheKey = 'userExistsOnLDAP' . $uid;
-		$userExists = $this->access->connection->getFromCache($cacheKey);
-		if(!is_null($userExists)) {
-			return (bool)$userExists;
-		}
 
 		$dn = $user->getDN();
 		//check if user really still exists by reading its entry
@@ -310,22 +322,18 @@ class User_LDAP extends BackendUtility implements \OCP\IUserBackend, \OCP\UserIn
 			try {
 				$uuid = $this->access->getUserMapper()->getUUIDByDN($dn);
 				if (!$uuid) {
-					$this->access->connection->writeToCache($cacheKey, false);
 					return false;
 				}
 				$newDn = $this->access->getUserDnByUuid($uuid);
 				//check if renamed user is still valid by reapplying the ldap filter
 				if ($newDn === $dn || !is_array($this->access->readAttribute($newDn, '', $this->access->connection->ldapUserFilter))) {
-					$this->access->connection->writeToCache($cacheKey, false);
 					return false;
 				}
 				$this->access->getUserMapper()->setDNbyUUID($newDn, $uuid);
-				$this->access->connection->writeToCache($cacheKey, true);
 				return true;
 			} catch (ServerNotAvailableException $e) {
 				throw $e;
 			} catch (\Exception $e) {
-				$this->access->connection->writeToCache($cacheKey, false);
 				return false;
 			}
 		}
@@ -334,7 +342,6 @@ class User_LDAP extends BackendUtility implements \OCP\IUserBackend, \OCP\UserIn
 			$user->unmark();
 		}
 
-		$this->access->connection->writeToCache($cacheKey, true);
 		return true;
 	}
 
@@ -357,10 +364,15 @@ class User_LDAP extends BackendUtility implements \OCP\IUserBackend, \OCP\UserIn
 				$this->access->connection->ldapHost, ILogger::DEBUG);
 			$this->access->connection->writeToCache('userExists'.$uid, false);
 			return false;
+		} else if($user instanceof OfflineUser) {
+			//express check for users marked as deleted. Returning true is
+			//necessary for cleanup
+			return true;
 		}
 
-		$this->access->connection->writeToCache('userExists'.$uid, true);
-		return true;
+		$result = $this->userExistsOnLDAP($user);
+		$this->access->connection->writeToCache('userExists'.$uid, $result);
+		return $result;
 	}
 
 	/**
@@ -418,13 +430,21 @@ class User_LDAP extends BackendUtility implements \OCP\IUserBackend, \OCP\UserIn
 
 		// early return path if it is a deleted user
 		$user = $this->access->userManager->get($uid);
-		if($user instanceof User || $user instanceof OfflineUser) {
-			$path = $user->getHomePath() ?: false;
-		} else {
+		if($user instanceof OfflineUser) {
+			if($this->currentUserInDeletionProcess !== null
+				&& $this->currentUserInDeletionProcess === $user->getOCName()
+			) {
+				return $user->getHomePath();
+			} else {
+				throw new NoUserException($uid . ' is not a valid user anymore');
+			}
+		} else if ($user === null) {
 			throw new NoUserException($uid . ' is not a valid user anymore');
 		}
 
+		$path = $user->getHomePath();
 		$this->access->cacheUserHome($uid, $path);
+
 		return $path;
 	}
 
