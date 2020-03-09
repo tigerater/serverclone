@@ -23,7 +23,7 @@
 	<div>
 		<h3>{{ t('files', 'Transfer ownership of a file or folder') }} </h3>
 		<form @submit.prevent="submit">
-			<p>
+			<p class="transfer-select-row">
 				<span>{{ readableDirectory }}</span>
 				<button v-if="directory === undefined" @click.prevent="start">
 					{{ t('files', 'Choose file or folder to transfer') }}
@@ -33,7 +33,7 @@
 				</button>
 				<span class="error">{{ directoryPickerError }}</span>
 			</p>
-			<p>
+			<p class="new-owner-row">
 				<label>
 					<span>{{ t('files', 'New owner') }}</span>
 					<Multiselect
@@ -172,7 +172,7 @@ export default {
 				}
 
 				this.userSuggestions = {}
-				response.data.ocs.data.users.forEach(user => {
+				response.data.ocs.data.exact.users.concat(response.data.ocs.data.users).forEach(user => {
 					Vue.set(this.userSuggestions, user.value.shareWith, {
 						uid: user.value.shareWith,
 						displayName: user.label,
@@ -217,12 +217,35 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .middle-align {
 	vertical-align: middle;
 }
 p {
 	margin-top: 12px;
 	margin-bottom: 12px;
+}
+.new-owner-row {
+	display: flex;
+
+	label {
+		display: flex;
+		align-items: center;
+		flex-grow: 1;
+
+		span {
+			margin-right: 8px;
+		}
+
+		.multiselect {
+			flex-grow: 1;
+			max-width: 280px;
+		}
+	}
+}
+.transfer-select-row {
+	span {
+		margin-right: 8px;
+	}
 }
 </style>
