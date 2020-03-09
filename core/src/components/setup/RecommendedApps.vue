@@ -79,8 +79,8 @@ const recommended = {
 		description: t('core', 'Simple email app nicely integrated with Files, Contacts and Calendar.'),
 		icon: imagePath('core', 'actions/mail.svg'),
 	},
-	spreed: {
-		description: t('core', 'Chatting, video calls, screensharing, online meetings and web conferencing – in your browser and with mobile apps.'),
+	talk: {
+		description: t('core', 'Screensharing, online meetings and web conferencing – on desktop and with mobile apps.'),
 	},
 	onlyoffice: {
 		description: t('core', 'Collaboratively edit office documents.'),
