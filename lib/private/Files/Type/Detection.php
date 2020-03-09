@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 /**
  * @copyright Copyright (c) 2016, ownCloud, Inc.
  *
@@ -78,8 +77,8 @@ class Detection implements IMimeTypeDetector {
 	 */
 	public function __construct(IURLGenerator $urlGenerator,
 								ILogger $logger,
-								string $customConfigDir,
-								string $defaultConfigDir) {
+								$customConfigDir,
+								$defaultConfigDir) {
 		$this->urlGenerator = $urlGenerator;
 		$this->logger = $logger;
 		$this->customConfigDir = $customConfigDir;
@@ -97,9 +96,9 @@ class Detection implements IMimeTypeDetector {
 	 * @param string $mimetype
 	 * @param string|null $secureMimeType
 	 */
-	public function registerType(string $extension,
-								 string $mimetype,
-								 ?string $secureMimeType = null): void {
+	public function registerType($extension,
+								 $mimetype,
+								 $secureMimeType = null) {
 		$this->mimetypes[$extension] = array($mimetype, $secureMimeType);
 		$this->secureMimeTypes[$mimetype] = $secureMimeType ?: $mimetype;
 	}
@@ -113,12 +112,12 @@ class Detection implements IMimeTypeDetector {
 	 *
 	 * @param array $types
 	 */
-	public function registerTypeArray(array $types): void {
+	public function registerTypeArray($types) {
 		$this->mimetypes = array_merge($this->mimetypes, $types);
 
 		// Update the alternative mimetypes to avoid having to look them up each time.
 		foreach ($this->mimetypes as $mimeType) {
-			$this->secureMimeTypes[$mimeType[0]] = $mimeType[1] ?? $mimeType[0];
+			$this->secureMimeTypes[$mimeType[0]] = isset($mimeType[1]) ? $mimeType[1]: $mimeType[0];
 		}
 	}
 
@@ -137,7 +136,7 @@ class Detection implements IMimeTypeDetector {
 	/**
 	 * Add the mimetype aliases if they are not yet present
 	 */
-	private function loadAliases(): void {
+	private function loadAliases() {
 		if (!empty($this->mimeTypeAlias)) {
 			return;
 		}
@@ -149,12 +148,12 @@ class Detection implements IMimeTypeDetector {
 	/**
 	 * @return string[]
 	 */
-	public function getAllAliases(): array {
+	public function getAllAliases() {
 		$this->loadAliases();
 		return $this->mimeTypeAlias;
 	}
 
-	public function getOnlyDefaultAliases(): array {
+	public function getOnlyDefaultAliases() {
 		$this->loadMappings();
 		$this->mimeTypeAlias = json_decode(file_get_contents($this->defaultConfigDir . '/mimetypealiases.dist.json'), true);
 		return $this->mimeTypeAlias;
@@ -163,7 +162,7 @@ class Detection implements IMimeTypeDetector {
 	/**
 	 * Add mimetype mappings if they are not yet present
 	 */
-	private function loadMappings(): void {
+	private function loadMappings() {
 		if (!empty($this->mimetypes)) {
 			return;
 		}
@@ -177,7 +176,7 @@ class Detection implements IMimeTypeDetector {
 	/**
 	 * @return array
 	 */
-	public function getAllMappings(): array {
+	public function getAllMappings() {
 		$this->loadMappings();
 		return $this->mimetypes;
 	}
@@ -188,7 +187,7 @@ class Detection implements IMimeTypeDetector {
 	 * @param string $path
 	 * @return string
 	 */
-	public function detectPath($path): string {
+	public function detectPath($path) {
 		$this->loadMappings();
 
 		$fileName = basename($path);
@@ -200,81 +199,17 @@ class Detection implements IMimeTypeDetector {
 		if (strpos($fileName, '.') > 0) {
 
 			// remove versioning extension: name.v1508946057 and transfer extension: name.ocTransferId2057600214.part
-			$fileName = preg_replace('!((\.v\d+)|((\.ocTransferId\d+)?\.part))$!', '', $fileName);
+			$fileName = preg_replace('!((\.v\d+)|((.ocTransferId\d+)?.part))$!', '', $fileName);
 
 			//try to guess the type by the file extension
 			$extension = strtolower(strrchr($fileName, '.'));
 			$extension = substr($extension, 1); //remove leading .
-			return $this->mimetypes[$extension][0] ?? 'application/octet-stream';
-		}
-
-		return 'application/octet-stream';
-	}
-
-	/**
-	 * detect mimetype only based on the content of file
-	 * @param string $path
-	 * @return string
-	 * @since 18.0.0
-	 */
-	public function detectContent(string $path): string {
-		$this->loadMappings();
-
-		if (@is_dir($path)) {
-			// directories are easy
-			return 'httpd/unix-directory';
-		}
-
-		if (function_exists('finfo_open')
-			&& function_exists('finfo_file')
-			&& $finfo = finfo_open(FILEINFO_MIME)) {
-			$info = @finfo_file($finfo, $path);
-			finfo_close($finfo);
-			if ($info) {
-				$info = strtolower($info);
-				$mimeType = strpos($info, ';') !== false ? substr($info, 0, strpos($info, ';')) : $info;
-				$mimeType = $this->getSecureMimeType($mimeType);
-				if ($mimeType !== 'application/octet-stream') {
-					return $mimeType;
-				}
-			}
-		}
-
-		if (strpos($path, '://') !== false && strpos($path, 'file://') === 0) {
-			// Is the file wrapped in a stream?
+			return (isset($this->mimetypes[$extension]) && isset($this->mimetypes[$extension][0]))
+				? $this->mimetypes[$extension][0]
+				: 'application/octet-stream';
+		} else {
 			return 'application/octet-stream';
 		}
-
-		if (function_exists('mime_content_type')) {
-			// use mime magic extension if available
-			$mimeType = mime_content_type($path);
-			if ($mimeType !== false) {
-				$mimeType = $this->getSecureMimeType($mimeType);
-				if ($mimeType !== 'application/octet-stream') {
-					return $mimeType;
-				}
-			}
-		}
-
-		if (\OC_Helper::canExecute('file')) {
-			// it looks like we have a 'file' command,
-			// lets see if it does have mime support
-			$path = escapeshellarg($path);
-			$fp = popen("test -f $path && file -b --mime-type $path", 'r');
-			$mimeType = fgets($fp);
-			pclose($fp);
-
-			if ($mimeType !== false) {
-				//trim the newline
-				$mimeType = trim($mimeType);
-				$mimeType = $this->getSecureMimeType($mimeType);
-				if ($mimeType !== 'application/octet-stream') {
-					return $mimeType;
-				}
-			}
-
-		}
-		return 'application/octet-stream';
 	}
 
 	/**
@@ -283,14 +218,49 @@ class Detection implements IMimeTypeDetector {
 	 * @param string $path
 	 * @return string
 	 */
-	public function detect($path): string {
-		$mimeType = $this->detectPath($path);
+	public function detect($path) {
+		$this->loadMappings();
 
-		if ($mimeType !== 'application/octet-stream') {
-			return $mimeType;
+		if (@is_dir($path)) {
+			// directories are easy
+			return "httpd/unix-directory";
 		}
 
-		return $this->detectContent($path);
+		$mimeType = $this->detectPath($path);
+
+		if ($mimeType === 'application/octet-stream' and function_exists('finfo_open')
+			and function_exists('finfo_file') and $finfo = finfo_open(FILEINFO_MIME)
+		) {
+			$info = @strtolower(finfo_file($finfo, $path));
+			finfo_close($finfo);
+			if ($info) {
+				$mimeType = strpos($info, ';') !== false ? substr($info, 0, strpos($info, ';')) : $info;
+				return empty($mimeType) ? 'application/octet-stream' : $mimeType;
+			}
+
+		}
+		$isWrapped = (strpos($path, '://') !== false) and (substr($path, 0, 7) === 'file://');
+		if (!$isWrapped and $mimeType === 'application/octet-stream' && function_exists("mime_content_type")) {
+			// use mime magic extension if available
+			$mimeType = mime_content_type($path);
+		}
+		if (!$isWrapped and $mimeType === 'application/octet-stream' && \OC_Helper::canExecute("file")) {
+			// it looks like we have a 'file' command,
+			// lets see if it does have mime support
+			$path = escapeshellarg($path);
+			$fp = popen("file -b --mime-type $path 2>/dev/null", "r");
+			$reply = fgets($fp);
+			pclose($fp);
+
+			//trim the newline
+			$mimeType = trim($reply);
+
+			if (empty($mimeType)) {
+				$mimeType = 'application/octet-stream';
+			}
+
+		}
+		return $mimeType;
 	}
 
 	/**
@@ -299,20 +269,20 @@ class Detection implements IMimeTypeDetector {
 	 * @param string $data
 	 * @return string
 	 */
-	public function detectString($data): string {
-		if (function_exists('finfo_open') && function_exists('finfo_file')) {
+	public function detectString($data) {
+		if (function_exists('finfo_open') and function_exists('finfo_file')) {
 			$finfo = finfo_open(FILEINFO_MIME);
 			$info = finfo_buffer($finfo, $data);
 			return strpos($info, ';') !== false ? substr($info, 0, strpos($info, ';')) : $info;
+		} else {
+			$tmpFile = \OC::$server->getTempManager()->getTemporaryFile();
+			$fh = fopen($tmpFile, 'wb');
+			fwrite($fh, $data, 8024);
+			fclose($fh);
+			$mime = $this->detect($tmpFile);
+			unset($tmpFile);
+			return $mime;
 		}
-
-		$tmpFile = \OC::$server->getTempManager()->getTemporaryFile();
-		$fh = fopen($tmpFile, 'wb');
-		fwrite($fh, $data, 8024);
-		fclose($fh);
-		$mime = $this->detect($tmpFile);
-		unset($tmpFile);
-		return $mime;
 	}
 
 	/**
@@ -321,10 +291,12 @@ class Detection implements IMimeTypeDetector {
 	 * @param string $mimeType
 	 * @return string
 	 */
-	public function getSecureMimeType($mimeType): string {
+	public function getSecureMimeType($mimeType) {
 		$this->loadMappings();
 
-		return $this->secureMimeTypes[$mimeType] ?? 'application/octet-stream';
+		return isset($this->secureMimeTypes[$mimeType])
+			? $this->secureMimeTypes[$mimeType]
+			: 'application/octet-stream';
 	}
 
 	/**
@@ -332,7 +304,7 @@ class Detection implements IMimeTypeDetector {
 	 * @param string $mimetype the MIME type
 	 * @return string the url
 	 */
-	public function mimeTypeIcon($mimetype): string {
+	public function mimeTypeIcon($mimetype) {
 		$this->loadAliases();
 
 		while (isset($this->mimeTypeAlias[$mimetype])) {
@@ -343,7 +315,8 @@ class Detection implements IMimeTypeDetector {
 		}
 
 		// Replace slash and backslash with a minus
-		$icon = str_replace(['/', '\\'], '-', $mimetype);
+		$icon = str_replace('/', '-', $mimetype);
+		$icon = str_replace('\\', '-', $icon);
 
 		// Is it a dir?
 		if ($mimetype === 'dir') {
