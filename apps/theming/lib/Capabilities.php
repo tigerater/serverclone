@@ -83,8 +83,6 @@ class Capabilities implements IPublicCapability {
 					$this->url->getAbsoluteURL($this->theming->getBackground()),
 				'background-plain' => $backgroundLogo === 'backgroundColor',
 				'background-default' => !$this->util->isBackgroundThemed(),
-				'logoheader' => $this->url->getAbsoluteURL($this->theming->getLogo()),
-				'favicon' => $this->url->getAbsoluteURL($this->theming->getLogo()),
 			],
 		];
 	}

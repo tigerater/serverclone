@@ -207,12 +207,8 @@ export default {
 			// remove invalid data and format to user-select layout
 			const exactSuggestions = this.filterOutExistingShares(rawExactSuggestions)
 				.map(share => this.formatForMultiselect(share))
-				// sort by type so we can get user&groups first...
-				.sort((a, b) => a.shareType - b.shareType)
 			const suggestions = this.filterOutExistingShares(rawSuggestions)
 				.map(share => this.formatForMultiselect(share))
-				// sort by type so we can get user&groups first...
-				.sort((a, b) => a.shareType - b.shareType)
 
 			// lookup clickable entry
 			const lookupEntry = []
