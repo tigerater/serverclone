@@ -29,8 +29,7 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 
 \OC_App::loadApps(['dav']);
 
-/** @var Application $app */
-$app = \OC::$server->query(Application::class);
+$app = new Application();
 $app->registerHooks();
 
 \OC::$server->registerService('CardDAVSyncService', function() use ($app) {
