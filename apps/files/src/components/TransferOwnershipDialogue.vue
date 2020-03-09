@@ -42,20 +42,7 @@
 					<div class="step-header">
 						{{ t('files', 'Target user') }}
 					</div>
-					<Multiselect
-						v-model="selectedUser"
-						:options="formatedUserSuggestions"
-						:multiple="false"
-						:searchable="true"
-						:placeholder="t('core', 'Target user …')"
-						:preselect-first="true"
-						:preserve-search="true"
-						:loading="loadingUsers"
-						track-by="user"
-						label="displayName"
-						:clear-on-select="false"
-						:user-select="true"
-						@search-change="findUserDebounced" />
+					<input id="files-transfer-user" v-model="uid" type="text">
 				</li>
 				<li>
 					<input type="submit"
@@ -71,11 +58,8 @@
 
 <script>
 import axios from '@nextcloud/axios'
-import debounce from 'debounce'
 import { generateOcsUrl } from '@nextcloud/router'
 import { getFilePickerBuilder } from '@nextcloud/dialogs'
-import { Multiselect } from 'nextcloud-vue/dist/Components/Multiselect'
-import Vue from 'vue'
 
 import logger from '../logger'
 
@@ -88,36 +72,18 @@ const picker = getFilePickerBuilder(t('files', 'Select directory to transfer'))
 
 export default {
 	name: 'TransferOwnershipDialogue',
-	components: {
-		Multiselect
-	},
 	data() {
 		return {
 			directory: undefined,
 			directoryPickerError: undefined,
 			submitError: undefined,
-			loadingUsers: false,
-			selectedUser: null,
-			userSuggestions: {}
+			uid: ''
 		}
 	},
 	computed: {
 		canSubmit() {
-			return !!this.directory && !!this.selectedUser
-		},
-		formatedUserSuggestions() {
-			return Object.keys(this.userSuggestions).map((uid) => {
-				const user = this.userSuggestions[uid]
-				return {
-					user: user.uid,
-					displayName: user.displayName,
-					icon: 'icon-user'
-				}
-			})
+			return !!this.directory && !!this.uid
 		}
-	},
-	created() {
-		this.findUserDebounced = debounce(this.findUser, 300)
 	},
 	methods: {
 		start() {
@@ -139,41 +105,6 @@ export default {
 					this.directoryPickerError = error.message || t('files', 'Unknown error')
 				})
 		},
-		async findUser(query) {
-			this.query = query.trim()
-
-			if (query.length < 3) {
-				return
-			}
-
-			this.loadingUsers = true
-			try {
-				const response = await axios.get(generateOcsUrl('apps/files_sharing/api/v1') + 'sharees', {
-					params: {
-						format: 'json',
-						itemType: 'file',
-						search: query,
-						perPage: 20,
-						lookup: false
-					}
-				})
-
-				if (response.data.ocs.meta.statuscode !== 100) {
-					logger.error('Error fetching suggestions', { response })
-				}
-
-				response.data.ocs.data.users.forEach(user => {
-					Vue.set(this.userSuggestions, user.value.shareWith, {
-						uid: user.value.shareWith,
-						displayName: user.label
-					})
-				})
-			} catch (error) {
-				logger.error('could not fetch users', { error })
-			} finally {
-				this.loadingUsers = false
-			}
-		},
 		submit() {
 			if (!this.canSubmit) {
 				logger.warn('ignoring form submit')
@@ -182,7 +113,7 @@ export default {
 			this.submitError = undefined
 			const data = {
 				path: this.directory,
-				recipient: this.selectedUser.user
+				recipient: this.uid
 			}
 			logger.debug('submit transfer ownership form', data)
 
@@ -194,7 +125,7 @@ export default {
 					logger.info('Transfer ownership request sent', { data })
 
 					this.directory = undefined
-					this.selectedUser = null
+					this.recipient = undefined
 					OCP.Toast.success(t('files', 'Ownership transfer request sent'))
 				})
 				.catch(error => {
