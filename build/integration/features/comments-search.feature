@@ -20,11 +20,10 @@ Feature: comments-search
     Given user "user0" exists
     And user "user1" exists
     And User "user1" uploads file "data/textfile.txt" to "/sharedFileToComment.txt"
-    And as "user1" creating a share with
+    And As "user1" sending "POST" to "/apps/files_sharing/api/v1/shares" with
       | path | sharedFileToComment.txt |
       | shareWith | user0 |
       | shareType | 0 |
-    And user "user0" accepts last share
     And "user0" posts a comment with content "My first comment" on the file named "/sharedFileToComment.txt" it should return "201"
     When Logging in using web as "user0"
     And searching for "first" in app "files"
@@ -42,11 +41,10 @@ Feature: comments-search
     Given user "user0" exists
     And user "user1" exists
     And User "user0" uploads file "data/textfile.txt" to "/mySharedFileToComment.txt"
-    And as "user0" creating a share with
+    And As "user0" sending "POST" to "/apps/files_sharing/api/v1/shares" with
       | path | mySharedFileToComment.txt |
       | shareWith | user1 |
       | shareType | 0 |
-    And user "user1" accepts last share
     And "user1" posts a comment with content "Other's first comment" on the file named "/mySharedFileToComment.txt" it should return "201"
     When Logging in using web as "user0"
     And searching for "first" in app "files"
@@ -64,11 +62,10 @@ Feature: comments-search
     Given user "user0" exists
     And user "user1" exists
     And User "user1" uploads file "data/textfile.txt" to "/sharedFileToComment.txt"
-    And as "user1" creating a share with
+    And As "user1" sending "POST" to "/apps/files_sharing/api/v1/shares" with
       | path | sharedFileToComment.txt |
       | shareWith | user0 |
       | shareType | 0 |
-    And user "user0" accepts last share
     And "user1" posts a comment with content "Other's first comment" on the file named "/sharedFileToComment.txt" it should return "201"
     When Logging in using web as "user0"
     And searching for "first" in app "files"
@@ -178,17 +175,15 @@ Feature: comments-search
     And user "user1" exists
     And User "user0" uploads file "data/textfile.txt" to "/myFileToComment.txt"
     And User "user0" uploads file "data/textfile.txt" to "/mySharedFileToComment.txt"
-    And as "user0" creating a share with
+    And As "user0" sending "POST" to "/apps/files_sharing/api/v1/shares" with
       | path | mySharedFileToComment.txt |
       | shareWith | user1 |
       | shareType | 0 |
-    And user "user1" accepts last share
     And User "user1" uploads file "data/textfile.txt" to "/sharedFileToComment.txt"
-    And as "user1" creating a share with
+    And As "user1" sending "POST" to "/apps/files_sharing/api/v1/shares" with
       | path | sharedFileToComment.txt |
       | shareWith | user0 |
       | shareType | 0 |
-    And user "user0" accepts last share
     And "user0" posts a comment with content "My first comment to be found" on the file named "/myFileToComment.txt" it should return "201"
     And "user0" posts a comment with content "The second comment should not be found" on the file named "/myFileToComment.txt" it should return "201"
     And "user0" posts a comment with content "My first comment to be found" on the file named "/mySharedFileToComment.txt" it should return "201"
