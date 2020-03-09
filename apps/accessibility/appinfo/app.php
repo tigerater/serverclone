@@ -22,9 +22,7 @@ declare (strict_types = 1);
  *
  */
 
-use OCA\Accessibility\AppInfo\Application;
-
-$app = \OC::$server->query(Application::class);
+$app = new \OCA\Accessibility\AppInfo\Application();
 
 // Separate from the constructor since the route are not initialized before that
 // 1. create the app

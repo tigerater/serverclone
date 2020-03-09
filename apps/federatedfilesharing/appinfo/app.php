@@ -24,9 +24,8 @@
  */
 
 use OCA\FederatedFileSharing\Notifier;
-use OCA\FederatedFileSharing\AppInfo\Application;
 
-$app = \OC::$server->query(Application::class);
+$app = new \OCA\FederatedFileSharing\AppInfo\Application();
 $eventDispatcher = \OC::$server->getEventDispatcher();
 
 $manager = \OC::$server->getNotificationManager();

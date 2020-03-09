@@ -1,6 +1,10 @@
 <?php
+declare(strict_types=1);
 /**
- * @copyright Copyright (c) 2019 Robin Appelman <robin@icewind.nl>
+ * @copyright Copyright (c) 2019, Roeland Jago Douma <roeland@famdouma.nl>
+ *
+ * @author Roeland Jago Douma <roeland@famdouma.nl>
+ * @author John Molakvoæ <skjnldsv@protonmail.com>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -19,10 +23,23 @@
  *
  */
 
-namespace OCA\Theming\AppInfo;
+namespace OCA\Comments\Listener;
 
-class Application extends \OCP\AppFramework\App {
-	public function __construct() {
-		parent::__construct('theming', []);
+use OCA\Comments\AppInfo\Application;
+use OCA\Files\Event\LoadSidebar;
+use OCP\EventDispatcher\Event;
+use OCP\EventDispatcher\IEventListener;
+use OCP\Util;
+
+class LoadSidebarScripts implements IEventListener {
+	public function handle(Event $event): void {
+		if (!($event instanceof LoadSidebar)) {
+			return;
+		}
+
+		// TODO: make sure to only include the sidebar script when 
+		// we properly split it between files list and sidebar
+		Util::addScript(Application::APP_ID, 'comments');
 	}
+
 }
