@@ -44,7 +44,6 @@ use OC\Cache\CappedMemoryCache;
 use OC\Files\Mount\MoveableMount;
 use OC\HintException;
 use OC\Share20\Exception\ProviderException;
-use OCP\EventDispatcher\IEventDispatcher;
 use OCP\Files\File;
 use OCP\Files\Folder;
 use OCP\Files\IRootFolder;
@@ -102,7 +101,7 @@ class Manager implements IManager {
 	/** @var CappedMemoryCache */
 	private $sharingDisabledForUsersCache;
 	/** @var EventDispatcherInterface */
-	private $legacyDispatcher;
+	private $eventDispatcher;
 	/** @var LegacyHooks */
 	private $legacyHooks;
 	/** @var IMailer */
@@ -111,8 +110,6 @@ class Manager implements IManager {
 	private $urlGenerator;
 	/** @var \OC_Defaults */
 	private $defaults;
-	/** @var IEventDispatcher */
-	private $dispatcher;
 
 
 	/**
@@ -146,11 +143,10 @@ class Manager implements IManager {
 			IProviderFactory $factory,
 			IUserManager $userManager,
 			IRootFolder $rootFolder,
-			EventDispatcherInterface $legacyDispatcher,
+			EventDispatcherInterface $eventDispatcher,
 			IMailer $mailer,
 			IURLGenerator $urlGenerator,
-			\OC_Defaults $defaults,
-			IEventDispatcher $dispatcher
+			\OC_Defaults $defaults
 	) {
 		$this->logger = $logger;
 		$this->config = $config;
@@ -163,13 +159,12 @@ class Manager implements IManager {
 		$this->factory = $factory;
 		$this->userManager = $userManager;
 		$this->rootFolder = $rootFolder;
-		$this->legacyDispatcher = $legacyDispatcher;
+		$this->eventDispatcher = $eventDispatcher;
 		$this->sharingDisabledForUsersCache = new CappedMemoryCache();
-		$this->legacyHooks = new LegacyHooks($this->legacyDispatcher);
+		$this->legacyHooks = new LegacyHooks($this->eventDispatcher);
 		$this->mailer = $mailer;
 		$this->urlGenerator = $urlGenerator;
 		$this->defaults = $defaults;
-		$this->dispatcher = $dispatcher;
 	}
 
 	/**
@@ -200,7 +195,7 @@ class Manager implements IManager {
 
 		// Let others verify the password
 		try {
-			$this->legacyDispatcher->dispatch(new ValidatePasswordPolicyEvent($password));
+			$this->eventDispatcher->dispatch(new ValidatePasswordPolicyEvent($password));
 		} catch (HintException $e) {
 			throw new \Exception($e->getHint());
 		}
@@ -771,7 +766,7 @@ class Manager implements IManager {
 
 		// Pre share event
 		$event = new GenericEvent($share);
-		$this->legacyDispatcher->dispatch('OCP\Share::preShare', $event);
+		$this->eventDispatcher->dispatch('OCP\Share::preShare', $event);
 		if ($event->isPropagationStopped() && $event->hasArgument('error')) {
 			throw new \Exception($event->getArgument('error'));
 		}
@@ -784,9 +779,7 @@ class Manager implements IManager {
 
 		// Post share event
 		$event = new GenericEvent($share);
-		$this->legacyDispatcher->dispatch('OCP\Share::postShare', $event);
-
-		$this->dispatcher->dispatchTyped(new Share\Events\ShareCreatedEvent($share));
+		$this->eventDispatcher->dispatch('OCP\Share::postShare', $event);
 
 		if ($share->getShareType() === \OCP\Share::SHARE_TYPE_USER) {
 			$mailSend = $share->getMailSend();
@@ -1048,7 +1041,7 @@ class Manager implements IManager {
 		}
 		$provider->acceptShare($share, $recipientId);
 		$event = new GenericEvent($share);
-		$this->legacyDispatcher->dispatch('OCP\Share::postAcceptShare', $event);
+		$this->eventDispatcher->dispatch('OCP\Share::postAcceptShare', $event);
 
 		return $share;
 	}
@@ -1118,7 +1111,7 @@ class Manager implements IManager {
 		}
 
 		$event = new GenericEvent($share);
-		$this->legacyDispatcher->dispatch('OCP\Share::preUnshare', $event);
+		$this->eventDispatcher->dispatch('OCP\Share::preUnshare', $event);
 
 		// Get all children and delete them as well
 		$deletedShares = $this->deleteChildren($share);
@@ -1132,7 +1125,7 @@ class Manager implements IManager {
 
 		// Emit post hook
 		$event->setArgument('deletedShares', $deletedShares);
-		$this->legacyDispatcher->dispatch('OCP\Share::postUnshare', $event);
+		$this->eventDispatcher->dispatch('OCP\Share::postUnshare', $event);
 	}
 
 
@@ -1151,7 +1144,7 @@ class Manager implements IManager {
 
 		$provider->deleteFromSelf($share, $recipientId);
 		$event = new GenericEvent($share);
-		$this->legacyDispatcher->dispatch('OCP\Share::postUnshareFromSelf', $event);
+		$this->eventDispatcher->dispatch('OCP\Share::postUnshareFromSelf', $event);
 	}
 
 	public function restoreShare(IShare $share, string $recipientId): IShare {

@@ -152,7 +152,6 @@ OC.L10N.register(
     "Directory to move" : "Cartella da spostare",
     "No directory selected" : "Nessun cartella selezionata",
     "Target user" : "Utente di destinazione",
-    "Target user …" : "Utente di destinazione…",
     "Submit" : "Invia",
     "Select directory to transfer" : "Seleziona la cartella da trasferire",
     "Invalid path selected" : "Percorso selezionato non valido",

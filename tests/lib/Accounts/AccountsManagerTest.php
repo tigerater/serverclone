@@ -26,9 +26,7 @@ use OC\Accounts\Account;
 use OC\Accounts\AccountManager;
 use OCP\Accounts\IAccountManager;
 use OCP\BackgroundJob\IJobList;
-use OCP\ILogger;
 use OCP\IUser;
-use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Test\TestCase;
@@ -44,24 +42,21 @@ class AccountsManagerTest extends TestCase {
 	/** @var  \OCP\IDBConnection */
 	private $connection;
 
-	/** @var  EventDispatcherInterface|MockObject */
+	/** @var  EventDispatcherInterface | \PHPUnit_Framework_MockObject_MockObject */
 	private $eventDispatcher;
 
-	/** @var  IJobList|MockObject */
+	/** @var  IJobList | \PHPUnit_Framework_MockObject_MockObject */
 	private $jobList;
 
 	/** @var string accounts table name */
 	private $table = 'accounts';
 
-	/** @var ILogger|MockObject */
-	private $logger;
-
 	protected function setUp(): void {
 		parent::setUp();
-		$this->eventDispatcher = $this->createMock(EventDispatcherInterface::class);
+		$this->eventDispatcher = $this->getMockBuilder('Symfony\Component\EventDispatcher\EventDispatcherInterface')
+			->disableOriginalConstructor()->getMock();
 		$this->connection = \OC::$server->getDatabaseConnection();
-		$this->jobList = $this->createMock(IJobList::class);
-		$this->logger = $this->createMock(ILogger::class);
+		$this->jobList = $this->getMockBuilder(IJobList::class)->getMock();
 	}
 
 	protected function tearDown(): void {
@@ -74,11 +69,11 @@ class AccountsManagerTest extends TestCase {
 	 * get a instance of the accountManager
 	 *
 	 * @param array $mockedMethods list of methods which should be mocked
-	 * @return MockObject | AccountManager
+	 * @return \PHPUnit_Framework_MockObject_MockObject | AccountManager
 	 */
 	public function getInstance($mockedMethods = null) {
 		return $this->getMockBuilder(AccountManager::class)
-			->setConstructorArgs([$this->connection, $this->eventDispatcher, $this->jobList, $this->logger])
+			->setConstructorArgs([$this->connection, $this->eventDispatcher, $this->jobList])
 			->setMethods($mockedMethods)
 			->getMock();
 

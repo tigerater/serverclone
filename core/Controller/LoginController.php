@@ -31,9 +31,9 @@
 
 namespace OC\Core\Controller;
 
-use OC\AppFramework\Http\Request;
 use OC\Authentication\Login\Chain;
 use OC\Authentication\Login\LoginData;
+use OC\Authentication\TwoFactorAuth\Manager;
 use OC\Security\Bruteforce\Throttler;
 use OC\User\Session;
 use OC_App;
@@ -126,11 +126,7 @@ class LoginController extends Controller {
 
 		$this->session->set('clearingExecutionContexts', '1');
 		$this->session->close();
-
-		if (!$this->request->isUserAgent([Request::USER_AGENT_CHROME, Request::USER_AGENT_ANDROID_MOBILE_CHROME])) {
-			$response->addHeader('Clear-Site-Data', '"cache", "storage"');
-		}
-
+		$response->addHeader('Clear-Site-Data', '"cache", "storage"');
 		return $response;
 	}
 

@@ -39,96 +39,61 @@ class DetectionTest extends \Test\TestCase {
 		);
 	}
 
-	public function dataDetectPath(): array {
-		return [
-			['foo.txt', 'text/plain'],
-			['foo.png', 'image/png'],
-			['foo.bar.png', 'image/png'],
-			['.hidden.png', 'image/png'],
-			['.hidden.foo.png', 'image/png'],
-			['.hidden/foo.png', 'image/png'],
-			['.hidden/.hidden.png', 'image/png'],
-			['test.jpg/foo.png', 'image/png'],
-			['.png', 'application/octet-stream'],
-			['..hidden', 'application/octet-stream'],
-			['foo', 'application/octet-stream'],
-			['', 'application/octet-stream'],
-			['foo.png.ocTransferId123456789.part', 'image/png'],
-			['foo.png.v1234567890', 'image/png'],
-		];
-	}
+	public function testDetect() {
+		$dir = \OC::$SERVERROOT.'/tests/data';
 
-	/**
-	 * @dataProvider dataDetectPath
-	 *
-	 * @param string $path
-	 * @param string $expected
-	 */
-	public function testDetectPath(string $path, string $expected): void {
-		$this->assertEquals($expected, $this->detection->detectPath($path));
-	}
+		$result = $this->detection->detect($dir."/");
+		$expected = 'httpd/unix-directory';
+		$this->assertEquals($expected, $result);
 
-	public function dataDetectContent(): array {
-		return [
-			['/', 'httpd/unix-directory'],
-//			['/data.tar.gz', 'application/x-gzip'], TODO: fix as it fails hard on php7.4 now
-			['/data.zip', 'application/zip'],
-			['/testimage.mp3', 'audio/mpeg'],
-			['/testimage.png', 'image/png'],
-		];
-	}
+		$result = $this->detection->detect($dir."/data.tar.gz");
+		$expected = 'application/x-gzip';
+		$this->assertEquals($expected, $result);
 
-	/**
-	 * @dataProvider dataDetectContent
-	 *
-	 * @param string $path
-	 * @param string $expected
-	 */
-	public function testDetectContent(string $path, string $expected): void {
-		$this->assertEquals($expected, $this->detection->detectContent(\OC::$SERVERROOT . '/tests/data' . $path));
-	}
+		$result = $this->detection->detect($dir."/data.zip");
+		$expected = 'application/zip';
+		$this->assertEquals($expected, $result);
 
-	public function dataDetect(): array {
-		return [
-			['/', 'httpd/unix-directory'],
-			['/data.tar.gz', 'application/x-gzip'],
-			['/data.zip', 'application/zip'],
-			['/testimagelarge.svg', 'image/svg+xml'],
-			['/testimage.png', 'image/png'],
-		];
-	}
+		$result = $this->detection->detect($dir."/testimagelarge.svg");
+		$expected = 'image/svg+xml';
+		$this->assertEquals($expected, $result);
 
-	/**
-	 * @dataProvider dataDetect
-	 *
-	 * @param string $path
-	 * @param string $expected
-	 */
-	public function testDetect(string $path, string $expected): void {
-		$this->assertEquals($expected, $this->detection->detect(\OC::$SERVERROOT . '/tests/data' . $path));
-	}
-
-	public function testDetectString(): void {
-		$result = $this->detection->detectString('/data/data.tar.gz');
-		$expected = 'text/plain';
+		$result = $this->detection->detect($dir."/testimage.png");
+		$expected = 'image/png';
 		$this->assertEquals($expected, $result);
 	}
 
-	public function dataGetSecureMimeType(): array {
-		return [
-			['image/svg+xml', 'text/plain'],
-			['image/png', 'image/png'],
-		];
+	public function testGetSecureMimeType() {
+		$result = $this->detection->getSecureMimeType('image/svg+xml');
+		$expected = 'text/plain';
+		$this->assertEquals($expected, $result);
+
+		$result = $this->detection->getSecureMimeType('image/png');
+		$expected = 'image/png';
+		$this->assertEquals($expected, $result);
 	}
 
-	/**
-	 * @dataProvider dataGetSecureMimeType
-	 *
-	 * @param string $mimeType
-	 * @param string $expected
-	 */
-	public function testGetSecureMimeType(string $mimeType, string $expected): void {
-		$this->assertEquals($expected, $this->detection->getSecureMimeType($mimeType));
+	public function testDetectPath() {
+		$this->assertEquals('text/plain', $this->detection->detectPath('foo.txt'));
+		$this->assertEquals('image/png', $this->detection->detectPath('foo.png'));
+		$this->assertEquals('image/png', $this->detection->detectPath('foo.bar.png'));
+		$this->assertEquals('image/png', $this->detection->detectPath('.hidden.png'));
+		$this->assertEquals('image/png', $this->detection->detectPath('.hidden.foo.png'));
+		$this->assertEquals('image/png', $this->detection->detectPath('.hidden/foo.png'));
+		$this->assertEquals('image/png', $this->detection->detectPath('.hidden/.hidden.png'));
+		$this->assertEquals('image/png', $this->detection->detectPath('test.jpg/foo.png'));
+		$this->assertEquals('application/octet-stream', $this->detection->detectPath('.png'));
+		$this->assertEquals('application/octet-stream', $this->detection->detectPath('..hidden'));
+		$this->assertEquals('application/octet-stream', $this->detection->detectPath('foo'));
+		$this->assertEquals('application/octet-stream', $this->detection->detectPath(''));
+		$this->assertEquals('image/png', $this->detection->detectPath('foo.png.ocTransferId123456789.part'));
+		$this->assertEquals('image/png', $this->detection->detectPath('foo.png.v1234567890'));
+	}
+
+	public function testDetectString() {
+		$result = $this->detection->detectString("/data/data.tar.gz");
+		$expected = 'text/plain';
+		$this->assertEquals($expected, $result);
 	}
 
 	public function testMimeTypeIcon() {

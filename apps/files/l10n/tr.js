@@ -152,7 +152,6 @@ OC.L10N.register(
     "Directory to move" : "Taşınacak klasör",
     "No directory selected" : "Herhangi bir klasör seçilmemiş",
     "Target user" : "Hedef kullanıcı",
-    "Target user …" : "Hedef kullanıcı …",
     "Submit" : "Gönder",
     "Select directory to transfer" : "Aktarılacak klasörü seçin",
     "Invalid path selected" : "Seçilen yol geçersiz",
