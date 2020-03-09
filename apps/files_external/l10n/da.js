@@ -99,7 +99,6 @@ OC.L10N.register(
     "SMB / CIFS" : "SMB / CIFS",
     "Share" : "Del",
     "Show hidden files" : "Vis skjulte filer",
-    "Timeout" : "Timeout",
     "SMB / CIFS using OC login" : "SMB / CIFS med OC-login",
     "Username as share" : "Brugernavn som deling",
     "OpenStack Object Storage" : "OpenStack Object Storage",
