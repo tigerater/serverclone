@@ -17,6 +17,7 @@ OC.L10N.register(
     "Operation %s is invalid" : "הפעולה %s שגויה",
     "Predefined URLs" : "כתובות שמוגדרות מראש",
     "Files WebDAV" : "WebDAV קבצים",
+    "Sync clients" : "סנכרון לקוחות",
     "Android client" : "לקוח Android",
     "iOS client" : "לקוח iOS",
     "Desktop client" : "לקוח שולחן עבודה",
@@ -63,7 +64,6 @@ OC.L10N.register(
     "Start" : "התחלה",
     "End" : "סיום",
     "Select timezone…" : "בחירת אזור זמן…",
-    "Sync clients" : "סנכרון לקוחות",
     "Open documentation" : "פתיחת תיעוד",
     "Loading…" : "בטעינה…",
     "Tag management" : "ניהול תגיות"

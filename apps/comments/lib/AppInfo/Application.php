@@ -1,9 +1,8 @@
 <?php
 /**
- * @copyright Copyright (c) 2016, Arthur Schiwon <blizzz@arthur-schiwon.de>
+ *
  *
  * @author Arthur Schiwon <blizzz@arthur-schiwon.de>
- * @author John Molakvoæ <skjnldsv@protonmail.com>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -28,39 +27,33 @@ use OCA\Comments\Controller\Notifications;
 use OCA\Comments\EventHandler;
 use OCA\Comments\JSSettingsHelper;
 use OCA\Comments\Listener\LoadAdditionalScripts;
-use OCA\Comments\Listener\LoadSidebarScripts;
 use OCA\Comments\Notification\Notifier;
 use OCA\Comments\Search\Provider;
 use OCA\Files\Event\LoadAdditionalScriptsEvent;
-use OCA\Files\Event\LoadSidebar;
 use OCP\AppFramework\App;
 use OCP\Comments\CommentsEntityEvent;
 use OCP\EventDispatcher\IEventDispatcher;
 use OCP\Util;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class Application extends App {
 
-	const APP_ID = 'comments';
-
 	public function __construct (array $urlParams = array()) {
-		parent::__construct(self::APP_ID, $urlParams);
+		parent::__construct('comments', $urlParams);
 		$container = $this->getContainer();
 
 		$container->registerAlias('NotificationsController', Notifications::class);
 
 		$jsSettingsHelper = new JSSettingsHelper($container->getServer());
 		Util::connectHook('\OCP\Config', 'js', $jsSettingsHelper, 'extend');
-
-		$this->register();
 	}
 
-	private function register() {
+	public function register() {
 		$server = $this->getContainer()->getServer();
 
 		/** @var IEventDispatcher $newDispatcher */
 		$dispatcher = $server->query(IEventDispatcher::class);
-
-		$this->registerEventsScripts($dispatcher);
+		$this->registerSidebarScripts($dispatcher);
 		$this->registerDavEntity($dispatcher);
 		$this->registerNotifier();
 		$this->registerCommentsEventHandler();
@@ -68,9 +61,8 @@ class Application extends App {
 		$server->getSearch()->registerProvider(Provider::class, ['apps' => ['files']]);
 	}
 
-	protected function registerEventsScripts(IEventDispatcher $dispatcher) {
+	protected function registerSidebarScripts(IEventDispatcher $dispatcher) {
 		$dispatcher->addServiceListener(LoadAdditionalScriptsEvent::class, LoadAdditionalScripts::class);
-		$dispatcher->addServiceListener(LoadSidebar::class, LoadSidebarScripts::class);
 	}
 
 	protected function registerDavEntity(IEventDispatcher $dispatcher) {

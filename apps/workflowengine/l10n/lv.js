@@ -21,6 +21,7 @@ OC.L10N.register(
     "Check %s is invalid or does not exist" : "Pārbaude %s ir nederīga vai nepastāv",
     "Predefined URLs" : "Standarta URLs",
     "Files WebDAV" : "WebDAV datnes",
+    "Sync clients" : "Sync klients",
     "Android client" : "Android klients",
     "iOS client" : "iOS klients",
     "Desktop client" : "Darbvirsmas klients",
@@ -65,7 +66,6 @@ OC.L10N.register(
     "Start" : "Sākums",
     "End" : "Beigas",
     "Select timezone…" : "Izvēlieties laika joslu...",
-    "Sync clients" : "Sync klients",
     "Workflow" : "Darbplūsma",
     "Open documentation" : "Atvērt dokumentāciju",
     "Loading…" : "Ielādē …"

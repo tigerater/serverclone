@@ -39,8 +39,9 @@ $eventDispatcher->addListener(
 );
 
 $managerListener = function(ManagerEvent $event) {
+	$application = new \OCP\AppFramework\App('systemtags');
 	/** @var \OCA\SystemTags\Activity\Listener $listener */
-	$listener = \OC::$server->query(Listener::class);
+	$listener = $application->getContainer()->query(Listener::class);
 	$listener->event($event);
 };
 
@@ -51,7 +52,7 @@ $eventDispatcher->addListener(ManagerEvent::EVENT_UPDATE, $managerListener);
 $mapperListener = function(MapperEvent $event) {
 	$application = new \OCP\AppFramework\App('systemtags');
 	/** @var \OCA\SystemTags\Activity\Listener $listener */
-	$listener = \OC::$server->query(Listener::class);
+	$listener = $application->getContainer()->query(Listener::class);
 	$listener->mapperEvent($event);
 };
 

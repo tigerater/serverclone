@@ -21,8 +21,5 @@
  *
  */
 
-use \OCA\UpdateNotification\AppInfo\Application;
-
-/** @var Application $app */
-$app = \OC::$server->query(Application::class);
+$app = new \OCA\UpdateNotification\AppInfo\Application();
 $app->register();
