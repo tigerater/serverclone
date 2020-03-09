@@ -67,7 +67,6 @@ OC.L10N.register(
     "less or equals" : "gutxiago edo berdin",
     "greater or equals" : "gehiago",
     "greater" : "gehiago edo berdin",
-    "File system tag" : "Fitxategi sistemako etiketa",
     "Add rule" : "Gehitu araua",
     "Reset" : "Berrezarri",
     "Saving…" : "Gordetzen…",

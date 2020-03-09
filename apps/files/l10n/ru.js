@@ -138,7 +138,6 @@ OC.L10N.register(
     "Upload (max. %s)" : "Отправка (максимум %s)",
     "Accept" : "Принять",
     "File Management" : "Управление файлами",
-    "Transfer ownership of a file or folder" : "Изменение владельца файла или папки",
     "Change" : "Изменить",
     "%s used" : "%s использовано",
     "%s%% of %s used" : "использовано %s%% из %s",
