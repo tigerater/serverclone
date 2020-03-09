@@ -26,7 +26,7 @@ class SessionMiddlewareTest extends \Test\TestCase {
 	/** @var Controller */
 	private $controller;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->reflector = new ControllerMethodReflector();

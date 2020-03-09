@@ -44,7 +44,7 @@ class SettingsControllerTest extends TestCase {
 	/** @var SettingsController */
 	private $controller;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->request = $this->getMockBuilder(IRequest::class)->getMock();

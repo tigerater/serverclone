@@ -37,7 +37,7 @@ class FactoryTest extends \Test\TestCase {
 	/** @var Factory */
 	private $factory;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->rootFolder = $this->createMock(IRootFolder::class);

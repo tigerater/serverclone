@@ -49,7 +49,7 @@ class PublicShareMiddlewareTest extends \Test\TestCase {
 	private $middleware;
 
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->request = $this->createMock(IRequest::class);

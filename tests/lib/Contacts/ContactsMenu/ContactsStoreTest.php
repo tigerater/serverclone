@@ -46,7 +46,7 @@ class ContactsStoreTest extends TestCase {
 	/** @var IConfig|PHPUnit_Framework_MockObject_MockObject */
 	private $config;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->contactsManager = $this->createMock(IManager::class);

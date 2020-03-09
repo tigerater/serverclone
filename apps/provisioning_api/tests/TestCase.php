@@ -40,7 +40,7 @@ abstract class TestCase extends \Test\TestCase {
 	/** @var IGroupManager */
 	protected $groupManager;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->userManager = \OC::$server->getUserManager();
@@ -63,7 +63,7 @@ abstract class TestCase extends \Test\TestCase {
 		return count($users) == 1 ? reset($users) : $users;
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		foreach($this->users as $user) {
 			$user->delete();
 		}

@@ -48,7 +48,7 @@ class CssControllerTest extends TestCase {
 	/** @var CssController */
 	private $controller;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		/** @var Factory|\PHPUnit_Framework_MockObject_MockObject $factory */

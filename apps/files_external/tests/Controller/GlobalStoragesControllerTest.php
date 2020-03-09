@@ -34,7 +34,7 @@ use OCP\ILogger;
 use OCP\IRequest;
 
 class GlobalStoragesControllerTest extends StoragesControllerTest {
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->service = $this->getMockBuilder('\OCA\Files_External\Service\GlobalStoragesService')
 			->disableOriginalConstructor()

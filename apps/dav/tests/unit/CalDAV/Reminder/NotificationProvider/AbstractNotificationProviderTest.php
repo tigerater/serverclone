@@ -68,7 +68,7 @@ abstract class AbstractNotificationProviderTest extends TestCase {
 	 */
 	protected $user;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->logger = $this->createMock(ILogger::class);

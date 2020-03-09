@@ -30,7 +30,7 @@ namespace Test\Preview;
  */
 class OfficeTest extends Provider {
 
-	protected function setUp(): void {
+	public function setUp() {
 		$libreofficeBinary = \OC_Helper::findBinaryPath('libreoffice');
 		$openofficeBinary = ($libreofficeBinary) ? null : \OC_Helper::findBinaryPath('openoffice');
 

@@ -65,7 +65,7 @@ class PreviewControllerTest extends TestCase {
 	/** @var IUserSession|\PHPUnit_Framework_MockObject_MockObject */
 	private $userSession;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->rootFolder = $this->createMock(IRootFolder::class);

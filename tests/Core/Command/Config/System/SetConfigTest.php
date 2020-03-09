@@ -40,7 +40,7 @@ class SetConfigTest extends TestCase {
 	/** @var \Symfony\Component\Console\Command\Command */
 	protected $command;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$systemConfig = $this->systemConfig = $this->getMockBuilder(SystemConfig::class)
@@ -102,10 +102,9 @@ class SetConfigTest extends TestCase {
 
 	/**
 	 * @dataProvider setUpdateOnlyProvider
+	 * @expectedException \UnexpectedValueException
 	 */
 	public function testSetUpdateOnly($configNames, $existingData) {
-		$this->expectException(\UnexpectedValueException::class);
-
 		$this->systemConfig->expects($this->never())
 			->method('setValue');
 		$this->systemConfig->method('getValue')
@@ -170,10 +169,9 @@ class SetConfigTest extends TestCase {
 
 	/**
 	 * @dataProvider castValueInvalidProvider
+	 * @expectedException \InvalidArgumentException
 	 */
 	public function testCastValueInvalid($value, $type) {
-		$this->expectException(\InvalidArgumentException::class);
-
 		$this->invokePrivate($this->command, 'castValue', [$value, $type]);
 	}
 

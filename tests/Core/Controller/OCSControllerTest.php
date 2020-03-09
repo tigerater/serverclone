@@ -48,7 +48,7 @@ class OCSControllerTest extends TestCase {
 	/** @var OCSController */
 	private $controller;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->request = $this->createMock(IRequest::class);

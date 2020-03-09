@@ -40,18 +40,17 @@ class AvatarHomeTest extends TestCase {
 	/** @var IAvatarManager | \PHPUnit_Framework_MockObject_MockObject */
 	private $avatarManager;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->avatarManager = $this->createMock(IAvatarManager::class);
 		$this->home = new AvatarHome(['uri' => 'principals/users/admin'], $this->avatarManager);
 	}
 
 	/**
+	 * @expectedException \Sabre\DAV\Exception\Forbidden
 	 * @dataProvider providesForbiddenMethods
 	 */
 	public function testForbiddenMethods($method) {
-		$this->expectException(\Sabre\DAV\Exception\Forbidden::class);
-
 		$this->home->$method('');
 	}
 

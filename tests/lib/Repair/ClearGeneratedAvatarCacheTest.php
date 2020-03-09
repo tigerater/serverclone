@@ -42,7 +42,7 @@ class ClearGeneratedAvatarCacheTest extends \Test\TestCase {
 	/** @var ClearGeneratedAvatarCache */
 	protected $repair;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->outputMock    = $this->createMock(IOutput::class);

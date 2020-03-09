@@ -59,7 +59,7 @@ class DirectControllerTest extends TestCase {
 	/** @var DirectController */
 	private $controller;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->rootFolder = $this->createMock(IRootFolder::class);

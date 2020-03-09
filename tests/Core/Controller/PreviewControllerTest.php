@@ -49,7 +49,7 @@ class PreviewControllerTest extends \Test\TestCase {
 	/** @var PreviewController|\PHPUnit_Framework_MockObject_MockObject */
 	private $controller;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->rootFolder = $this->createMock(IRootFolder::class);

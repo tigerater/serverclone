@@ -108,7 +108,9 @@ class CachedSubscription extends \Sabre\CalDAV\Calendar {
 		return parent::getOwner();
 	}
 
-	
+	/**
+	 *
+	 */
 	public function delete() {
 		$this->caldavBackend->deleteSubscription($this->calendarInfo['id']);
 	}

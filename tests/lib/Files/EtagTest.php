@@ -28,7 +28,7 @@ class EtagTest extends \Test\TestCase {
 	 */
 	private $userBackend;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		\OC_Hook::clear('OC_Filesystem', 'setup');
@@ -46,7 +46,7 @@ class EtagTest extends \Test\TestCase {
 		\OC_User::useBackend($this->userBackend);
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		\OC::$server->getConfig()->setSystemValue('datadirectory', $this->datadir);
 
 		$this->logout();

@@ -36,7 +36,7 @@ class SimpleFileTest extends \Test\TestCase  {
 	/** @var SimpleFile */
 	private $simpleFile;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->file = $this->createMock(File::class);

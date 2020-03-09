@@ -87,7 +87,7 @@ class ManagerTest extends TestCase {
 	/** @var EventDispatcherInterface|MockObject */
 	private $eventDispatcher;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->user = $this->createMock(IUser::class);

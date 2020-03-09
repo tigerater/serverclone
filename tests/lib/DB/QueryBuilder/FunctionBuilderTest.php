@@ -35,7 +35,7 @@ class FunctionBuilderTest extends TestCase {
 	/** @var \Doctrine\DBAL\Connection|\OCP\IDBConnection */
 	protected $connection;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->connection = \OC::$server->getDatabaseConnection();

@@ -54,7 +54,7 @@ class CSSResourceLocatorTest extends \Test\TestCase {
 	/** @var ITimeFactory|\PHPUnit_Framework_MockObject_MockObject */
 	private $timeFactory;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->logger = $this->createMock(ILogger::class);

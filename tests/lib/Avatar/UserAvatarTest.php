@@ -31,7 +31,7 @@ class UserAvatarTest extends \Test\TestCase {
 	/** @var \OCP\IConfig|\PHPUnit_Framework_MockObject_MockObject */
 	private $config;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->folder = $this->createMock(SimpleFolder::class);

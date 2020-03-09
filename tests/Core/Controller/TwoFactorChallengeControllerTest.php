@@ -61,7 +61,7 @@ class TwoFactorChallengeControllerTest extends TestCase {
 	/** @var TwoFactorChallengeController|PHPUnit_Framework_MockObject_MockObject */
 	private $controller;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->request = $this->createMock(IRequest::class);

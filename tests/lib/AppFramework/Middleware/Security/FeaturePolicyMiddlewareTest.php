@@ -44,7 +44,7 @@ class FeaturePolicyMiddlewareTest extends \Test\TestCase {
 	/** @var FeaturePolicyManager|MockObject */
 	private $manager;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->controller = $this->createMock(Controller::class);

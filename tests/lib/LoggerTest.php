@@ -26,7 +26,7 @@ class LoggerTest extends TestCase implements IWriter {
 	/** @var array */
 	private $logs = [];
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->logs = [];
@@ -73,6 +73,7 @@ class LoggerTest extends TestCase implements IWriter {
 
 	public function userAndPasswordData() {
 		return [
+			['abc', 'def'],
 			['mySpecialUsername', 'MySuperSecretPassword'],
 			['my-user', '324324()#ä234'],
 			['my-user', ')qwer'],

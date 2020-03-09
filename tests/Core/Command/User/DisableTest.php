@@ -42,7 +42,7 @@ class DisableTest extends TestCase {
 	/** @var Disable */
 	protected $command;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->userManager = $this->createMock(IUserManager::class);

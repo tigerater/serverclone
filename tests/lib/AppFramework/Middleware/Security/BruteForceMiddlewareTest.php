@@ -40,7 +40,7 @@ class BruteForceMiddlewareTest extends TestCase {
 	/** @var BruteForceMiddleware */
 	private $bruteForceMiddleware;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->reflector = $this->createMock(ControllerMethodReflector::class);

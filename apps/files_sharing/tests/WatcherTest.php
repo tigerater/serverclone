@@ -53,7 +53,7 @@ class WatcherTest extends TestCase {
 	/** @var \OCP\Share\IShare */
 	private $_share;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		self::loginHelper(self::TEST_FILES_SHARING_API_USER1);
@@ -88,7 +88,7 @@ class WatcherTest extends TestCase {
 		$this->sharedCache = $this->sharedStorage->getCache();
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		if ($this->sharedCache) {
 			$this->sharedCache->clear();
 		}

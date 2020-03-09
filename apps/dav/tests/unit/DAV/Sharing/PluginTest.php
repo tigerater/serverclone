@@ -44,7 +44,7 @@ class PluginTest extends TestCase {
 	/** @var IShareable | \PHPUnit_Framework_MockObject_MockObject */
 	private $book;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		
 		/** @var Auth | \PHPUnit_Framework_MockObject_MockObject $authBackend */

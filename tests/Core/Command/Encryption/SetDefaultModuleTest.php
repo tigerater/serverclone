@@ -42,7 +42,7 @@ class SetDefaultModuleTest extends TestCase {
 	/** @var \Symfony\Component\Console\Command\Command */
 	protected $command;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->manager = $this->getMockBuilder(IManager::class)

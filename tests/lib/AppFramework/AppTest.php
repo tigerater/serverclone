@@ -56,7 +56,7 @@ class AppTest extends \Test\TestCase {
 	private $controllerMethod;
 	private $appPath;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->container = new \OC\AppFramework\DependencyInjection\DIContainer('test', array());
@@ -121,7 +121,7 @@ class AppTest extends \Test\TestCase {
 	}
 
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		rrmdir($this->appPath);
 		parent::tearDown();
 	}

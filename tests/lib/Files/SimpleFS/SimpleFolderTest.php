@@ -37,7 +37,7 @@ class SimpleFolderTest extends \Test\TestCase  {
 	/** @var SimpleFolder */
 	private $simpleFolder;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->folder = $this->createMock(Folder::class);

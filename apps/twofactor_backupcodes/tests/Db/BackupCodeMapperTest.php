@@ -49,7 +49,7 @@ class BackupCodeMapperTest extends TestCase {
 		$qb->execute();
 	}
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->db = \OC::$server->getDatabaseConnection();
@@ -58,7 +58,7 @@ class BackupCodeMapperTest extends TestCase {
 		$this->resetDB();
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		parent::tearDown();
 
 		$this->resetDB();

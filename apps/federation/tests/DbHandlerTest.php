@@ -49,7 +49,7 @@ class DbHandlerTest extends TestCase {
 	/** @var string  */
 	private $dbTable = 'trusted_servers';
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->connection = \OC::$server->getDatabaseConnection();
@@ -65,7 +65,7 @@ class DbHandlerTest extends TestCase {
 		$this->assertEmpty($result, 'we need to start with a empty trusted_servers table');
 	}
 
-	protected function tearDown(): void {
+	public function tearDown() {
 		parent::tearDown();
 		$query = $this->connection->getQueryBuilder()->delete($this->dbTable);
 		$query->execute();
@@ -161,7 +161,7 @@ class DbHandlerTest extends TestCase {
 		];
 	}
 
-	public function XtestAddToken() {
+	public function testAddToken() {
 		$this->dbHandler->addServer('server1');
 		$query = $this->connection->getQueryBuilder()->select('*')->from($this->dbTable);
 		$result = $query->execute()->fetchAll();
@@ -182,7 +182,7 @@ class DbHandlerTest extends TestCase {
 		);
 	}
 
-	public function XtestAddSharedSecret() {
+	public function testAddSharedSecret() {
 		$this->dbHandler->addServer('server1');
 		$query = $this->connection->getQueryBuilder()->select('*')->from($this->dbTable);
 		$result = $query->execute()->fetchAll();

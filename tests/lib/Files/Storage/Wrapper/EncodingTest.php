@@ -18,7 +18,7 @@ class EncodingTest extends \Test\Files\Storage\Storage {
 	 */
 	private $sourceStorage;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->sourceStorage = new \OC\Files\Storage\Temporary([]);
 		$this->instance = new \OC\Files\Storage\Wrapper\Encoding([
@@ -26,7 +26,7 @@ class EncodingTest extends \Test\Files\Storage\Storage {
 		]);
 	}
 
-	protected function tearDown(): void {
+	public function tearDown() {
 		$this->sourceStorage->cleanUp();
 		parent::tearDown();
 	}

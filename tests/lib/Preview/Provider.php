@@ -46,7 +46,7 @@ abstract class Provider extends \Test\TestCase {
 	/** @var \OC\Files\Storage\Storage */
 	protected $storage;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$userManager = \OC::$server->getUserManager();
@@ -68,7 +68,7 @@ abstract class Provider extends \Test\TestCase {
 		$this->userId = $userId;
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		$this->logout();
 
 		parent::tearDown();

@@ -45,7 +45,7 @@ class MandatoryTwoFactorTest extends TestCase {
 	/** @var MandatoryTwoFactor */
 	private $mandatoryTwoFactor;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->config = $this->createMock(IConfig::class);

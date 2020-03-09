@@ -46,11 +46,11 @@ abstract class StoragesControllerTest extends \Test\TestCase {
 	 */
 	protected $service;
 
-	protected function setUp(): void {
+	public function setUp() {
 		\OC_Mount_Config::$skipTest = true;
 	}
 
-	protected function tearDown(): void {
+	public function tearDown() {
 		\OC_Mount_Config::$skipTest = false;
 	}
 

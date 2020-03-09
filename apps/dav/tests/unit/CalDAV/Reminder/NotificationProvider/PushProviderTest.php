@@ -61,7 +61,7 @@ class PushProviderTest extends AbstractNotificationProviderTest {
     /** @var ITimeFactory|\PHPUnit\Framework\MockObject\MockObject */
     private $timeFactory;
 
-    protected function setUp(): void {
+    public function setUp() {
         parent::setUp();
 
         $this->config = $this->createMock(IConfig::class);

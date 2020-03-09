@@ -92,7 +92,7 @@ abstract class StoragesServiceTest extends \Test\TestCase {
 	 */
 	protected $mountCache;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->dbConfig = new CleaningDBConfig(\OC::$server->getDatabaseConnection(), \OC::$server->getCrypto());
 		self::$hookCalls = array();
@@ -175,7 +175,7 @@ abstract class StoragesServiceTest extends \Test\TestCase {
 			->willReturn($containerMock);
 	}
 
-	protected function tearDown(): void {
+	public function tearDown() {
 		\OC_Mount_Config::$skipTest = false;
 		self::$hookCalls = array();
 		if ($this->dbConfig) {
@@ -252,7 +252,10 @@ abstract class StoragesServiceTest extends \Test\TestCase {
 	}
 
 
-	protected function ActualNonExistingStorageTest() {
+	/**
+	 * @expectedException \OCA\Files_External\NotFoundException
+	 */
+	public function testNonExistingStorage() {
 		$backend = $this->backendService->getBackend('identifier:\OCA\Files_External\Lib\Backend\SMB');
 		$authMechanism = $this->backendService->getAuthMechanism('identifier:\Auth\Mechanism');
 		$storage = new StorageConfig(255);
@@ -260,12 +263,6 @@ abstract class StoragesServiceTest extends \Test\TestCase {
 		$storage->setBackend($backend);
 		$storage->setAuthMechanism($authMechanism);
 		$this->service->updateStorage($storage);
-	}
-
-	public function testNonExistingStorage() {
-		$this->expectException(\OCA\Files_External\NotFoundException::class);
-
-		$this->ActualNonExistingStorageTest();
 	}
 
 	public function deleteStorageDataProvider() {
@@ -337,14 +334,11 @@ abstract class StoragesServiceTest extends \Test\TestCase {
 		$this->assertCount($expectedCountAfterDeletion, $storages, "expected $expectedCountAfterDeletion storages, got " . json_encode($storages));
 	}
 
-	protected function actualDeletedUnexistingStorageTest() {
-		$this->service->removeStorage(255);
-	}
-
+	/**
+	 * @expectedException \OCA\Files_External\NotFoundException
+	 */
 	public function testDeleteUnexistingStorage() {
-		$this->expectException(\OCA\Files_External\NotFoundException::class);
-
-		$this->actualDeletedUnexistingStorageTest();
+		$this->service->removeStorage(255);
 	}
 
 	public function testCreateStorage() {

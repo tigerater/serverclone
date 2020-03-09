@@ -30,7 +30,7 @@ class KeyTest extends TestCase {
 	/** @var Key */
 	private $key;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->key = new Key('public', 'private');

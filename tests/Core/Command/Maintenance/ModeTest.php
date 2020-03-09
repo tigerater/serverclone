@@ -48,7 +48,7 @@ class ModeTest extends TestCase {
 	 *
 	 * @return void
 	 */
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		$this->config = $this->getMockBuilder(IConfig::class)
 			->getMock();

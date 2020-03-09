@@ -55,7 +55,7 @@ class CheckBackupCodeTest extends TestCase {
 	/** @var CheckBackupCodes */
 	private $checkBackupCodes;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->userManager = $this->createMock(IUserManager::class);

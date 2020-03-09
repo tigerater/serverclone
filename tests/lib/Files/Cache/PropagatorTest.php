@@ -20,7 +20,7 @@ class PropagatorTest extends TestCase {
 	/** @var  IStorage */
 	private $storage;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->storage = new Temporary();
 		$this->storage->mkdir('foo/bar');

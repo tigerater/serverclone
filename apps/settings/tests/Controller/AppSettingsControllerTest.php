@@ -76,7 +76,7 @@ class AppSettingsControllerTest extends TestCase {
 	/** @var ILogger|MockObject */
 	private $logger;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->request = $this->createMock(IRequest::class);

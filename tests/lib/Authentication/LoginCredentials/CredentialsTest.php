@@ -41,7 +41,7 @@ class CredentialsTest extends TestCase {
 	/** @var Credentials */
 	private $credentials;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->uid = 'user123';

@@ -30,12 +30,12 @@ class LoaderTest extends \Test\TestCase {
 	/** @var Loader */
 	protected $loader;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		$this->db = \OC::$server->getDatabaseConnection();
 		$this->loader = new Loader($this->db);
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		$deleteMimetypes = $this->db->getQueryBuilder();
 		$deleteMimetypes->delete('mimetypes')
 			->where($deleteMimetypes->expr()->like(

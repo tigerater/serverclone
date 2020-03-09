@@ -22,7 +22,7 @@ class HelperStorageTest extends \Test\TestCase {
 	/** @var \OC\Files\Storage\Storage */
 	private $storage;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->user = $this->getUniqueID('user_');
@@ -38,7 +38,7 @@ class HelperStorageTest extends \Test\TestCase {
 		$this->storageMock = null;
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		$this->user = null;
 
 		if ($this->storageMock) {

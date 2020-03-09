@@ -34,7 +34,7 @@ class UpdateLastPasswordConfirmCommandTest extends ALoginCommandTest {
 	/** @var ISession|MockObject */
 	private $session;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->session = $this->createMock(ISession::class);

@@ -49,7 +49,7 @@ class AddUserTest extends TestCase {
 	/** @var OutputInterface|\PHPUnit_Framework_MockObject_MockObject */
 	private $output;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->groupManager = $this->createMock(IGroupManager::class);

@@ -25,7 +25,13 @@
 
 namespace OCA\Files;
 
+use OC\DirectEditing\Manager;
 use OCP\Capabilities\ICapability;
+use OCP\DirectEditing\ACreateEmpty;
+use OCP\DirectEditing\ACreateFromTemplate;
+use OCP\DirectEditing\IEditor;
+use OCP\DirectEditing\RegisterDirectEditorEvent;
+use OCP\EventDispatcher\IEventDispatcher;
 use OCP\IConfig;
 
 /**
@@ -34,16 +40,25 @@ use OCP\IConfig;
  * @package OCA\Files
  */
 class Capabilities implements ICapability {
+
 	/** @var IConfig */
 	protected $config;
+
+	/** @var Manager */
+	protected $directEditingManager;
+
+	/** @var IEventDispatcher */
+	protected $eventDispatcher;
 
 	/**
 	 * Capabilities constructor.
 	 *
 	 * @param IConfig $config
 	 */
-	public function __construct(IConfig $config) {
+	public function __construct(IConfig $config, Manager $manager, IEventDispatcher $eventDispatcher) {
 		$this->config = $config;
+		$this->directEditingManager = $manager;
+		$this->eventDispatcher = $eventDispatcher;
 	}
 
 	/**
@@ -56,7 +71,45 @@ class Capabilities implements ICapability {
 			'files' => [
 				'bigfilechunking' => true,
 				'blacklisted_files' => $this->config->getSystemValue('blacklisted_files', ['.htaccess']),
+				'directEditing' => $this->getDirectEditingCapabilitites()
 			],
 		];
+	}
+
+	private function getDirectEditingCapabilitites(): array {
+		$this->eventDispatcher->dispatchTyped(new RegisterDirectEditorEvent($this->directEditingManager));
+
+		$capabilities = [
+			'editors' => [],
+			'creators' => []
+		];
+
+		/**
+		 * @var string $id
+		 * @var IEditor $editor
+		 */
+		foreach ($this->directEditingManager->getEditors() as $id => $editor) {
+			$capabilities['editors'][$id] = [
+				'name' => $editor->getName(),
+				'mimetypes' => $editor->getMimetypes(),
+				'optionalMimetypes' => $editor->getMimetypesOptional(),
+				'secure' => $editor->isSecure(),
+			];
+			/** @var ACreateEmpty|ACreateFromTemplate $creator */
+			foreach ($editor->getCreators() as $creator) {
+				$id = $creator->getId();
+				$capabilities['creators'][$id] = [
+					'id' => $id,
+					'name' => $creator->getName(),
+					'extension' => $creator->getExtension(),
+					'templates' => false
+				];
+				if ($creator instanceof ACreateFromTemplate) {
+					$capabilities['creators'][$id]['templates'] = true;
+				}
+
+			}
+		}
+		return $capabilities;
 	}
 }

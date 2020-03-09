@@ -43,7 +43,7 @@ class ExternalShareControllerTest extends \Test\TestCase {
 	/** @var IClientService */
 	private $clientService;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->request = $this->getMockBuilder('\\OCP\\IRequest')
 			->disableOriginalConstructor()->getMock();

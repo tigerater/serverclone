@@ -34,7 +34,7 @@ class HttpTest extends \Test\TestCase {
 	 */
 	private $http;
 
-	protected function setUp(): void {
+	protected function setUp(){
 		parent::setUp();
 
 		$this->server = array();

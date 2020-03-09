@@ -87,7 +87,7 @@ class DispatcherTest extends \Test\TestCase {
 	private $http;
 	private $reflector;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		$this->controllerMethod = 'test';
 

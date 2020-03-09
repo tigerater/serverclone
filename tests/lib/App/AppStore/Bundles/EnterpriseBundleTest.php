@@ -24,7 +24,7 @@ namespace Test\App\AppStore\Bundles;
 use OC\App\AppStore\Bundles\EnterpriseBundle;
 
 class EnterpriseBundleTest extends BundleBase {
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->bundle = new EnterpriseBundle($this->l10n);
 		$this->bundleIdentifier = 'EnterpriseBundle';

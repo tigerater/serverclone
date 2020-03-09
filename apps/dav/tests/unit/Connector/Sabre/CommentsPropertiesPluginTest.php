@@ -40,7 +40,7 @@ class CommentsPropertiesPluginTest extends \Test\TestCase {
 	protected $userSession;
 	protected $server;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->commentsManager = $this->getMockBuilder(ICommentsManager::class)

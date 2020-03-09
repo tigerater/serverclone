@@ -49,7 +49,7 @@ class DirectFileTest extends TestCase {
 	/** @var DirectFile */
 	private $directFile;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->direct = Direct::fromParams([

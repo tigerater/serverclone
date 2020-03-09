@@ -37,7 +37,7 @@ class ShareHelperTest extends TestCase {
 	/** @var ShareHelper */
 	private $helper;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->manager = $this->createMock(IManager::class);

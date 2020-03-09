@@ -26,7 +26,7 @@ class AppConfigTest extends TestCase {
 
 	protected $originalConfig;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->connection = \OC::$server->getDatabaseConnection();
@@ -111,7 +111,7 @@ class AppConfigTest extends TestCase {
 		])->execute();
 	}
 
-	protected function tearDown(): void {
+	public function tearDown() {
 		$sql = $this->connection->getQueryBuilder();
 		$sql->delete('appconfig');
 		$sql->execute();

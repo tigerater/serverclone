@@ -30,7 +30,7 @@ class ActionTest extends TestCase {
 	/** @var IAction */
 	protected $action;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->action = new Action();
 	}
@@ -64,10 +64,9 @@ class ActionTest extends TestCase {
 	 * @dataProvider dataSetLabelInvalid
 	 * @param mixed $label
 	 *
+	 * @expectedException \InvalidArgumentException
 	 */
 	public function testSetLabelInvalid($label) {
-		$this->expectException(\InvalidArgumentException::class);
-
 		$this->action->setLabel($label);
 	}
 
@@ -99,10 +98,9 @@ class ActionTest extends TestCase {
 	 * @dataProvider dataSetParsedLabelInvalid
 	 * @param mixed $label
 	 *
+	 * @expectedException \InvalidArgumentException
 	 */
 	public function testSetParsedLabelInvalid($label) {
-		$this->expectException(\InvalidArgumentException::class);
-
 		$this->action->setParsedLabel($label);
 	}
 
@@ -143,10 +141,9 @@ class ActionTest extends TestCase {
 	 * @param mixed $link
 	 * @param mixed $type
 	 *
+	 * @expectedException \InvalidArgumentException
 	 */
 	public function testSetLinkInvalid($link, $type) {
-		$this->expectException(\InvalidArgumentException::class);
-
 		$this->action->setLink($link, $type);
 	}
 

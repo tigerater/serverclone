@@ -45,7 +45,7 @@ class TwoFactorCommandTest extends ALoginCommandTest {
 	/** @var IURLGenerator|MockObject */
 	private $urlGenerator;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->twoFactorManager = $this->createMock(Manager::class);

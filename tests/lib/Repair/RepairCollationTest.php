@@ -58,7 +58,7 @@ class RepairCollationTest extends TestCase {
 	/** @var ILogger */
 	private $logger;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->connection = \OC::$server->getDatabaseConnection();
@@ -75,7 +75,7 @@ class RepairCollationTest extends TestCase {
 		$this->repair = new TestCollationRepair($this->config, $this->logger, $this->connection, false);
 	}
 
-	protected function tearDown(): void {
+	protected function tearDown() {
 		$this->connection->getSchemaManager()->dropTable($this->tableName);
 		parent::tearDown();
 	}

@@ -32,7 +32,7 @@ class AdminTest extends TestCase {
 	/** @var Admin */
 	private $admin;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->admin = new Admin();

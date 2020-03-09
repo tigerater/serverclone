@@ -74,7 +74,7 @@ class SettingsControllerTest extends TestCase {
 	/** @var \OCA\Encryption\Util|\PHPUnit_Framework_MockObject_MockObject */
 	private $utilMock;
 
-	protected function setUp(): void {
+	protected function setUp() {
 
 		parent::setUp();
 

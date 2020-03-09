@@ -29,7 +29,7 @@ class ConfigurationTest extends \Test\TestCase {
 	/** @var Configuration */
 	protected $configuration;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->configuration = new Configuration('t01', false);
 	}

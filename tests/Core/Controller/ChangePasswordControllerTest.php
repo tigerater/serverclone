@@ -49,7 +49,7 @@ class ChangePasswordControllerTest extends \Test\TestCase {
 	/** @var ChangePasswordController */
 	private $controller;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->userManager = $this->createMock(\OC\User\Manager::class);

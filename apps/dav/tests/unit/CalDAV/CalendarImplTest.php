@@ -41,7 +41,7 @@ class CalendarImplTest extends \Test\TestCase {
 	/** @var CalDavBackend | \PHPUnit_Framework_MockObject_MockObject */
 	private $backend;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->calendar = $this->createMock(Calendar::class);

@@ -15,7 +15,7 @@ class ResourceLocatorTest extends \Test\TestCase {
 	/** @var \PHPUnit_Framework_MockObject_MockObject */
 	protected $logger;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 		$this->logger = $this->createMock(ILogger::class);
 	}

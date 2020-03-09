@@ -58,7 +58,7 @@ class GeneratorTest extends \Test\TestCase {
 	/** @var Generator */
 	private $generator;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->config = $this->createMock(IConfig::class);

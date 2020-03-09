@@ -33,12 +33,12 @@ use OCA\Files_External\Service\GlobalStoragesService;
  * @group DB
  */
 class GlobalStoragesServiceTest extends StoragesServiceTest {
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->service = new GlobalStoragesService($this->backendService, $this->dbConfig, $this->mountCache);
 	}
 
-	protected function tearDown(): void {
+	public function tearDown() {
 		@unlink($this->dataDir . '/mount.json');
 		parent::tearDown();
 	}
@@ -471,7 +471,8 @@ class GlobalStoragesServiceTest extends StoragesServiceTest {
 		}
 	}
 
-	
+	/**
+	 */
 	public function testHooksRenameMountPoint() {
 		$storage = $this->makeTestStorageData();
 		$storage->setApplicableUsers(['user1', 'user2']);

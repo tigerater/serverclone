@@ -30,7 +30,7 @@ namespace Test\Preview;
  */
 class MovieTest extends Provider {
 
-	protected function setUp(): void {
+	public function setUp() {
 		$avconvBinary = \OC_Helper::findBinaryPath('avconv');
 		$ffmpegBinary = ($avconvBinary) ? null : \OC_Helper::findBinaryPath('ffmpeg');
 

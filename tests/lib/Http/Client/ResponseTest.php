@@ -19,7 +19,7 @@ class ResponseTest extends \Test\TestCase {
 	/** @var GuzzleResponse */
 	private $guzzleResponse;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->guzzleResponse = new GuzzleResponse(1337);
 	}

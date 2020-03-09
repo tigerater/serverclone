@@ -35,7 +35,7 @@ class CapabilitiesManagerTest extends TestCase {
 	/** @var ILogger */
 	private $logger;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 		$this->logger = $this->getMockBuilder(ILogger::class)->getMock();
 		$this->manager = new CapabilitiesManager($this->logger);
@@ -81,11 +81,10 @@ class CapabilitiesManagerTest extends TestCase {
 
 	/**
 	 * Test that we need something that implents ICapability
+	 * @expectedException \InvalidArgumentException
+	 * @expectedExceptionMessage The given Capability (Test\NoCapability) does not implement the ICapability interface
 	 */
 	public function testNoICapability() {
-		$this->expectException(\InvalidArgumentException::class);
-		$this->expectExceptionMessage('The given Capability (Test\\NoCapability) does not implement the ICapability interface');
-
 		$this->manager->registerCapability(function() {
 			return new NoCapability();
 		});

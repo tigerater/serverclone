@@ -46,7 +46,7 @@ class ProviderTest extends TestCase {
 	/** @var Provider */
 	private $provider;
 
-	protected function setUp(): void {
+	protected function setUp() {
 		parent::setUp();
 
 		$this->l10n = $this->createMock(IFactory::class);

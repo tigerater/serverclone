@@ -35,7 +35,7 @@ use OCA\User_LDAP\Tests\Migration\AbstractUUIDFixTest;
  * @group DB
  */
 class UUIDFixGroupTest extends AbstractUUIDFixTest {
-	protected function setUp(): void {
+	public function setUp() {
 		$this->isUser = false;
 		parent::setUp();
 

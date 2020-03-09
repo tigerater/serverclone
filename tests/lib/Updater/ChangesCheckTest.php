@@ -49,7 +49,7 @@ class ChangesCheckTest extends TestCase {
 	/** @var ILogger|\PHPUnit_Framework_MockObject_MockObject */
 	protected $logger;
 
-	protected function setUp(): void {
+	public function setUp() {
 		parent::setUp();
 
 		$this->clientService = $this->createMock(IClientService::class);
