@@ -87,8 +87,12 @@ class Hooks {
 	 * @return AccountManager
 	 */
 	protected function getAccountManager() {
-		if ($this->accountManager === null) {
-			$this->accountManager = \OC::$server->query(AccountManager::class);
+		if (is_null($this->accountManager)) {
+			$this->accountManager = new AccountManager(
+				\OC::$server->getDatabaseConnection(),
+				\OC::$server->getEventDispatcher(),
+				\OC::$server->getJobList()
+			);
 		}
 		return $this->accountManager;
 	}
