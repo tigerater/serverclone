@@ -29,7 +29,6 @@
  */
 
 use OCA\DAV\AppInfo\Application;
-use OCA\DAV\CalDAV\WebcalCaching\RefreshWebcalService;
 use OCA\DAV\CardDAV\CardDavBackend;
 use Symfony\Component\EventDispatcher\GenericEvent;
 
@@ -61,13 +60,6 @@ $eventDispatcher->addListener('\OCA\DAV\CalDAV\CalDavBackend::createSubscription
 	function(GenericEvent $event) use ($app) {
 		$jobList = $app->getContainer()->getServer()->getJobList();
 		$subscriptionData = $event->getArgument('subscriptionData');
-
-		/**
-		 * Initial subscription refetch
-		 * @var RefreshWebcalService $refreshWebcalService
-		 */
-		$refreshWebcalService = $app->getContainer()->query(RefreshWebcalService::class);
-		$refreshWebcalService->refreshSubscription($subscriptionData['principaluri'], $subscriptionData['uri']);
 
 		$jobList->add(\OCA\DAV\BackgroundJob\RefreshWebcalJob::class, [
 			'principaluri' => $subscriptionData['principaluri'],
