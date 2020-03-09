@@ -242,10 +242,9 @@
 						}"
 						:class="{ error: errors.note}"
 						:disabled="saving"
-						:placeholder="t('files_sharing', 'Enter a note for the share recipient')"
-						:value="share.note"
+						:value.sync="share.note"
 						icon="icon-edit"
-						@update:value="onNoteChange" />
+						@update:value="debounceQueueUpdate('note')" />
 				</template>
 
 				<!-- external sharing via url (social...) -->
@@ -734,7 +733,7 @@ export default {
 		 */
 		onPasswordSubmit() {
 			if (this.hasUnsavedPassword) {
-				this.share.password = this.share.newPassword.trim()
+				this.share.password = this.share.newPassword
 				this.queueUpdate('password')
 			}
 		},

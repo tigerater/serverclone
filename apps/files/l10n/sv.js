@@ -182,7 +182,6 @@ OC.L10N.register(
     "Shared with you" : "Delad med dig",
     "Shared by link" : "Delad via länk",
     "Deleted shares" : "Raderade delningar",
-    "Pending shares" : "Väntande delningar",
     "Text file" : "Textfil",
     "New text file.txt" : "Ny textfil.txt",
     "File handling" : "Filhantering",

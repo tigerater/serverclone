@@ -6,7 +6,6 @@
  * @author Bjoern Schiessle <bjoern@schiessle.org>
  * @author comradekingu <epost@anotheragency.no>
  * @author Daniel Calviño Sánchez <danxuliu@gmail.com>
- * @author exner104 <59639860+exner104@users.noreply.github.com>
  * @author Frederic Werner <frederic-github@werner-net.work>
  * @author Joas Schilling <coding@schilljs.com>
  * @author Lukas Reschke <lukas@statuscode.ch>
@@ -621,15 +620,9 @@ class ShareByMailProvider implements IShareProvider {
 		$emailTemplate->addBodyText($this->l->t('You can choose a different password at any time in the share dialog.'));
 		$emailTemplate->addFooter();
 
-		$instanceName = $this->defaults->getName();
-		$senderName = $this->l->t(
-			'%1$s via %2$s',
-			[
-				$initiatorDisplayName,
-				$instanceName
-			]
-		);
-		$message->setFrom([\OCP\Util::getDefaultEmailAddress($instanceName) => $senderName]);
+		if ($initiatorEMailAddress) {
+			$message->setFrom([$initiatorEMailAddress => $initiatorDisplayName]);
+		}
 		$message->setTo([$initiatorEMailAddress => $initiatorDisplayName]);
 		$message->useTemplate($emailTemplate);
 		$this->mailer->send($message);

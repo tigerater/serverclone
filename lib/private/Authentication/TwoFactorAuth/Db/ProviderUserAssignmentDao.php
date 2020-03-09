@@ -93,15 +93,6 @@ class ProviderUserAssignmentDao {
 
 	}
 
-	public function deleteByUser(string $uid) {
-		$qb = $this->conn->getQueryBuilder();
-
-		$deleteQuery = $qb->delete(self::TABLE_NAME)
-			->where($qb->expr()->eq('uid', $qb->createNamedParameter($uid)));
-
-		$deleteQuery->execute();
-	}
-
 	public function deleteAll(string $providerId) {
 		$qb = $this->conn->getQueryBuilder();
 

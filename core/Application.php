@@ -36,7 +36,6 @@ use OC\Authentication\Events\RemoteWipeStarted;
 use OC\Authentication\Listeners\RemoteWipeActivityListener;
 use OC\Authentication\Listeners\RemoteWipeEmailListener;
 use OC\Authentication\Listeners\RemoteWipeNotificationsListener;
-use OC\Authentication\Listeners\UserDeletedStoreCleanupListener;
 use OC\Authentication\Notifications\Notifier as AuthenticationNotifier;
 use OC\Core\Notification\RemoveLinkSharesNotifier;
 use OC\DB\MissingIndexInformation;
@@ -45,7 +44,6 @@ use OCP\AppFramework\App;
 use OCP\EventDispatcher\IEventDispatcher;
 use OCP\IDBConnection;
 use OCP\IServerContainer;
-use OCP\User\Events\UserDeletedEvent;
 use OCP\Util;
 use Symfony\Component\EventDispatcher\GenericEvent;
 
@@ -174,7 +172,6 @@ class Application extends App {
 		$eventDispatcher->addServiceListener(RemoteWipeFinished::class, RemoteWipeActivityListener::class);
 		$eventDispatcher->addServiceListener(RemoteWipeFinished::class, RemoteWipeNotificationsListener::class);
 		$eventDispatcher->addServiceListener(RemoteWipeFinished::class, RemoteWipeEmailListener::class);
-		$eventDispatcher->addServiceListener(UserDeletedEvent::class, UserDeletedStoreCleanupListener::class);
 	}
 
 }
