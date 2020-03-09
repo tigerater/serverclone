@@ -22,7 +22,6 @@
 namespace OCA\WorkflowEngine\AppInfo;
 
 use OCA\WorkflowEngine\Manager;
-use OCP\AppFramework\QueryException;
 use OCP\Template;
 use OCA\WorkflowEngine\Controller\RequestTime;
 use OCP\WorkflowEngine\IEntity;
@@ -90,16 +89,12 @@ class Application extends \OCP\AppFramework\App {
 						$eventName,
 						function (GenericEvent $event) use ($eventName, $operationClass, $entityClass) {
 							$ruleMatcher = $this->manager->getRuleMatcher();
-							try {
-								/** @var IEntity $entity */
-								$entity = $this->getContainer()->query($entityClass);
-								$entity->prepareRuleMatcher($ruleMatcher, $eventName, $event);
-								/** @var IOperation $operation */
-								$operation = $this->getContainer()->query($operationClass);
-								$operation->onEvent($eventName, $event, $ruleMatcher);
-							} catch (QueryException $e) {
-								// Ignore query exceptions since they might occur when an entity/operation were setup before by an app that is disabled now
-							}
+							/** @var IEntity $entity */
+							$entity = $this->getContainer()->query($entityClass);
+							$entity->prepareRuleMatcher($ruleMatcher, $eventName, $event);
+							/** @var IOperation $operation */
+							$operation = $this->getContainer()->query($operationClass);
+							$operation->onEvent($eventName, $event, $ruleMatcher);
 						}
 					);
 				}, $eventNames);

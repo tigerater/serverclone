@@ -33,7 +33,6 @@ $tmpl = new OCP\Template('files_sharing', 'list', '');
 $tmpl->assign('showgridview', $showgridview && !$isIE);
 
 OCP\Util::addScript('files_sharing', 'dist/files_sharing');
-OCP\Util::addScript('files_sharing', 'dist/files_sharing_tab');
 \OC::$server->getEventDispatcher()->dispatch('\OCP\Collaboration\Resources::loadAdditionalScripts');
 
 $tmpl->printPage();

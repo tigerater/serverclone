@@ -24,9 +24,6 @@
 
 namespace OC\Files\Type;
 
-/**
- * @deprecated 18.0.0
- */
 class TemplateManager {
 	protected $templates = array();
 
@@ -37,7 +34,6 @@ class TemplateManager {
 	/**
 	 * get the path of the template for a mimetype
 	 *
-	 * @deprecated 18.0.0
 	 * @param string $mimetype
 	 * @return string|null
 	 */
@@ -52,7 +48,6 @@ class TemplateManager {
 	/**
 	 * get the template content for a mimetype
 	 *
-	 * @deprecated 18.0.0
 	 * @param string $mimetype
 	 * @return string
 	 */

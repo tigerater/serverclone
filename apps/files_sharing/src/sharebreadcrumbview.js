@@ -93,7 +93,7 @@
 					dirInfo: self._dirInfo
 				})
 			})
-			OCA.Files.App.fileList.showDetailsView(fileInfoModel, 'sharing')
+			OCA.Files.App.fileList.showDetailsView(fileInfoModel, 'shareTabView')
 		}
 	})
 

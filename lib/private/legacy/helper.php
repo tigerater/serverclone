@@ -189,7 +189,6 @@ class OC_Helper {
 	}
 
 	/**
-	 * @deprecated 18.0.0
 	 * @return \OC\Files\Type\TemplateManager
 	 */
 	static public function getFileTemplateManager() {
