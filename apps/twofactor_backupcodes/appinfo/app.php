@@ -21,7 +21,5 @@
  *
  */
 
-use OCA\TwoFactorBackupCodes\AppInfo\Application;
-
-$app = \OC::$server->query(Application::class);
+$app = new \OCA\TwoFactorBackupCodes\AppInfo\Application();
 $app->register();
