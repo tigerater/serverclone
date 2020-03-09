@@ -2,9 +2,10 @@
 /**
  * @copyright Copyright (c) 2016, ownCloud, Inc.
  *
+ * @author Arthur Schiwon <blizzz@arthur-schiwon.de>
  * @author Morris Jobke <hey@morrisjobke.de>
  * @author Robin McCorkell <robin@mccorkell.me.uk>
- * @author Arthur Schiwon <blizzz@arthur-schiwon.de>
+ * @author Roeland Jago Douma <roeland@famdouma.nl>
  *
  * @license AGPL-3.0
  *
@@ -18,7 +19,7 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License, version 3,
- * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ * along with this program. If not, see <http://www.gnu.org/licenses/>
  *
  */
 
@@ -30,6 +31,7 @@ use OCA\Files_External\Lib\Auth\AuthMechanism;
 use OCA\Files_External\Lib\Backend\Backend;
 use OCA\Files_External\Lib\Config\IAuthMechanismProvider;
 use OCA\Files_External\Lib\Config\IBackendProvider;
+use OCP\EventDispatcher\GenericEvent;
 use OCP\IConfig;
 
 /**
@@ -110,7 +112,8 @@ class BackendService {
 		static $eventSent = false;
 		if(!$eventSent) {
 			\OC::$server->getEventDispatcher()->dispatch(
-				'OCA\\Files_External::loadAdditionalBackends'
+				'OCA\\Files_External::loadAdditionalBackends',
+				new GenericEvent()
 			);
 			$eventSent = true;
 		}

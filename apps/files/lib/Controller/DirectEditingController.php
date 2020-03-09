@@ -13,7 +13,7 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
@@ -96,11 +96,11 @@ class DirectEditingController extends OCSController {
 	/**
 	 * @NoAdminRequired
 	 */
-	public function open(int $fileId, string $editorId = null): DataResponse {
+	public function open(string $path, string $editorId = null): DataResponse {
 		$this->eventDispatcher->dispatchTyped(new RegisterDirectEditorEvent($this->directEditingManager));
 
 		try {
-			$token = $this->directEditingManager->open($fileId, $editorId);
+			$token = $this->directEditingManager->open($path, $editorId);
 			return new DataResponse([
 				'url' => $this->urlGenerator->linkToRouteAbsolute('files.DirectEditingView.edit', ['token' => $token])
 			]);
