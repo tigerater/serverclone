@@ -20,7 +20,6 @@ OC.L10N.register(
     "Saved" : "Gordeta",
     "Saving..." : "Gordetzen...",
     "Save" : "Gorde",
-    "external-storage" : "kanpo-biltegiratzea",
     "Username" : "Erabiltzaile izena",
     "Password" : "Pasahitza",
     "Credentials saved" : "Kredentzialak gordeta",
