@@ -27,6 +27,7 @@ declare(strict_types=1);
  *
  */
 
+
 namespace OCP\Dashboard\Service;
 
 
@@ -58,3 +59,4 @@ interface IWidgetsService {
 	public function getWidgetConfig(string $widgetId, string $userId): IWidgetConfig;
 
 }
+

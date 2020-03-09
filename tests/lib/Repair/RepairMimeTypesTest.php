@@ -6,7 +6,6 @@
  * later.
  * See the COPYING-README file.
  */
-
 namespace Test\Repair;
 
 use OC\Files\Storage\Temporary;
@@ -284,3 +283,4 @@ class RepairMimeTypesTest extends \Test\TestCase {
 		$this->renameMimeTypes($currentMimeTypes, $fixedMimeTypes);
 	}
 }
+

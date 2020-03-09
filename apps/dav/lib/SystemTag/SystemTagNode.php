@@ -24,16 +24,16 @@
 
 namespace OCA\DAV\SystemTag;
 
-use OCP\IUser;
+use Sabre\DAV\Exception\Forbidden;
+use Sabre\DAV\Exception\NotFound;
+use Sabre\DAV\Exception\MethodNotAllowed;
+use Sabre\DAV\Exception\Conflict;
+
 use OCP\SystemTag\ISystemTag;
 use OCP\SystemTag\ISystemTagManager;
-use OCP\SystemTag\TagAlreadyExistsException;
-
 use OCP\SystemTag\TagNotFoundException;
-use Sabre\DAV\Exception\Conflict;
-use Sabre\DAV\Exception\Forbidden;
-use Sabre\DAV\Exception\MethodNotAllowed;
-use Sabre\DAV\Exception\NotFound;
+use OCP\SystemTag\TagAlreadyExistsException;
+use OCP\IUser;
 
 /**
  * DAV node representing a system tag, with the name being the tag id.

@@ -27,6 +27,7 @@ declare(strict_types=1);
  *
  */
 
+
 namespace OCP\FullTextSearch\Exceptions;
 
 /**
@@ -38,3 +39,4 @@ namespace OCP\FullTextSearch\Exceptions;
  */
 class FullTextSearchAppNotAvailableException extends \Exception {
 }
+

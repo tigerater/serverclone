@@ -98,3 +98,4 @@ class Shared implements ISetting {
 		return false;
 	}
 }
+

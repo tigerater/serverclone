@@ -22,6 +22,7 @@
  *
  */
 
+
 namespace OCA\Encryption\Tests\Command;
 
 

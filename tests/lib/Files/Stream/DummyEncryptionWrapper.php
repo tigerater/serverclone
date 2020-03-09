@@ -19,6 +19,7 @@
  *
  */
 
+
 namespace Test\Files\Stream;
 
 class DummyEncryptionWrapper extends \OC\Files\Stream\Encryption {

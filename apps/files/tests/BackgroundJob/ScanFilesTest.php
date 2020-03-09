@@ -20,14 +20,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace OCA\Files\Tests\BackgroundJob;
 
-use OCA\Files\BackgroundJob\ScanFiles;
-use OCP\IConfig;
 use OCP\IUser;
-use OCP\IUserManager;
 use Test\TestCase;
+use OCP\IConfig;
+use OCP\IUserManager;
+use OCA\Files\BackgroundJob\ScanFiles;
 
 /**
  * Class ScanFilesTest

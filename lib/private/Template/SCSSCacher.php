@@ -32,9 +32,7 @@ use Leafo\ScssPhp\Compiler;
 use Leafo\ScssPhp\Exception\ParserException;
 use Leafo\ScssPhp\Formatter\Crunched;
 use Leafo\ScssPhp\Formatter\Expanded;
-use OC\Files\AppData\Factory;
 use OC\Memcache\NullCache;
-use OC\Template\IconsCacher;
 use OCP\AppFramework\Utility\ITimeFactory;
 use OCP\Files\IAppData;
 use OCP\Files\NotFoundException;
@@ -47,6 +45,8 @@ use OCP\IConfig;
 use OCP\ILogger;
 use OCP\IMemcache;
 use OCP\IURLGenerator;
+use OC\Files\AppData\Factory;
+use OC\Template\IconsCacher;
 
 class SCSSCacher {
 

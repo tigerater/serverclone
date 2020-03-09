@@ -153,3 +153,4 @@ class CleanUpTest extends \Test\TestCase {
 	}
 
 }
+

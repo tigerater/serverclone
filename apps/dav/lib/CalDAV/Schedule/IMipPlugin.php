@@ -23,7 +23,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace OCA\DAV\CalDAV\Schedule;
 
 use OCP\AppFramework\Utility\ITimeFactory;
@@ -45,7 +44,6 @@ use Sabre\VObject\ITip\Message;
 use Sabre\VObject\Parameter;
 use Sabre\VObject\Property;
 use Sabre\VObject\Recur\EventIterator;
-
 /**
  * iMIP handler.
  *

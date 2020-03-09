@@ -20,7 +20,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace OCA\DAV\CalDAV\ResourceBooking;
 
 use OCA\DAV\CalDAV\Proxy\ProxyMapper;
@@ -29,9 +28,9 @@ use OCP\IDBConnection;
 use OCP\IGroupManager;
 use OCP\ILogger;
 use OCP\IUserSession;
-use Sabre\DAV\Exception;
-use Sabre\DAV\PropPatch;
 use Sabre\DAVACL\PrincipalBackend\BackendInterface;
+use Sabre\DAV\Exception;
+use \Sabre\DAV\PropPatch;
 
 abstract class AbstractPrincipalBackend implements BackendInterface {
 

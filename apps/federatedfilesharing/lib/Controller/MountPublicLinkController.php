@@ -26,6 +26,7 @@
  *
  */
 
+
 namespace OCA\FederatedFileSharing\Controller;
 
 use OC\Files\Filesystem;

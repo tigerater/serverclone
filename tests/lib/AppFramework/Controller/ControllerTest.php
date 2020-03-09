@@ -21,14 +21,16 @@
  *
  */
 
+
 namespace Test\AppFramework\Controller;
 
 use OC\AppFramework\Http\Request;
 use OCP\AppFramework\Controller;
-use OCP\AppFramework\Http\DataResponse;
-use OCP\AppFramework\Http\JSONResponse;
 use OCP\AppFramework\Http\TemplateResponse;
+use OCP\AppFramework\Http\JSONResponse;
+use OCP\AppFramework\Http\DataResponse;
 use OCP\IConfig;
+
 
 class ChildController extends Controller {
 

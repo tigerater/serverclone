@@ -21,6 +21,7 @@
  *
  */
 
+
 namespace Test\AppFramework\Controller;
 
 use OC\AppFramework\Http\Request;
@@ -29,6 +30,7 @@ use OCP\AppFramework\Http\EmptyContentSecurityPolicy;
 use OCP\AppFramework\OCSController;
 use OCP\IConfig;
 use OCP\Security\ISecureRandom;
+
 
 class ChildOCSController extends OCSController {}
 

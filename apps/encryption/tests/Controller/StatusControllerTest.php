@@ -24,6 +24,7 @@
  *
  */
 
+
 namespace OCA\Encryption\Tests\Controller;
 
 

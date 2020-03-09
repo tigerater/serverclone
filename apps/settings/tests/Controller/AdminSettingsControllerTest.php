@@ -20,11 +20,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace OCA\Settings\Tests\Controller;
 
-use OCA\Settings\Controller\AdminSettingsController;
 use OCA\Settings\Personal\ServerDevNotice;
+use OCA\Settings\Controller\AdminSettingsController;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\Group\ISubAdmin;
 use OCP\IGroupManager;

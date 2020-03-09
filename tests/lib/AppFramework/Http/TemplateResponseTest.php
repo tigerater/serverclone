@@ -21,10 +21,12 @@
  *
  */
 
+
 namespace Test\AppFramework\Http;
 
-use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\TemplateResponse;
+use OCP\AppFramework\Http;
+
 
 class TemplateResponseTest extends \Test\TestCase {
 

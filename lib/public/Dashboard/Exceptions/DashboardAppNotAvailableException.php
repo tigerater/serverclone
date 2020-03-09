@@ -38,3 +38,4 @@ namespace OCP\Dashboard\Exceptions;
  */
 class DashboardAppNotAvailableException extends \Exception {
 }
+

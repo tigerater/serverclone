@@ -27,10 +27,12 @@ declare(strict_types=1);
  *
  */
 
+
 namespace OCP\FullTextSearch\Model;
 
 
 use OCP\FullTextSearch\IFullTextSearchProvider;
+
 
 /**
  * Interface ISearchResult
@@ -193,3 +195,4 @@ interface ISearchResult {
 	public function setTimedOut(bool $timedOut): ISearchResult;
 
 }
+

@@ -24,6 +24,7 @@
  *
  */
 
+
 namespace OC\DB;
 
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;

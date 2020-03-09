@@ -32,6 +32,7 @@ namespace OCP\Dashboard\Model;
 
 use OCP\Dashboard\IDashboardWidget;
 
+
 /**
  * Interface IWidgetRequest
  *
@@ -133,3 +134,4 @@ interface IWidgetRequest {
 	public function addResultArray(string $key, array $result): IWidgetRequest;
 
 }
+

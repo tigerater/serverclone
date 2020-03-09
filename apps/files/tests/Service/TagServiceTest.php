@@ -22,7 +22,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace OCA\Files\Tests\Service;
 
 use OC\Tags;
@@ -181,3 +180,4 @@ class TagServiceTest extends \Test\TestCase {
 		$subdir->delete();
 	}
 }
+

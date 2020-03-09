@@ -19,6 +19,7 @@
  *
  */
 
+
 namespace OC\Federation;
 
 use OC\AppFramework\Http;

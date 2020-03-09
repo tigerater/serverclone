@@ -19,11 +19,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-
 namespace OCA\DAV\Connector\Sabre;
 
-use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
+use Sabre\Xml\Writer;
 
 /**
  * Checksumlist property

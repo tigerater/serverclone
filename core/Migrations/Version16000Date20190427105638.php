@@ -25,8 +25,9 @@ namespace OC\Core\Migrations;
 use Closure;
 use OCP\DB\ISchemaWrapper;
 use OCP\IDBConnection;
-use OCP\Migration\IOutput;
 use OCP\Migration\SimpleMigrationStep;
+use OCP\Migration\IOutput;
+
 
 class Version16000Date20190427105638 extends SimpleMigrationStep {
 

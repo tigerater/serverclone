@@ -21,12 +21,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 namespace OCA\DAV\Migration;
 
 use OCP\DB\ISchemaWrapper;
-use OCP\Migration\IOutput;
 use OCP\Migration\SimpleMigrationStep;
+use OCP\Migration\IOutput;
 
 class Version1004Date20170825134824 extends SimpleMigrationStep {
 	/**
