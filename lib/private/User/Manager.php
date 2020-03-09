@@ -3,10 +3,13 @@
  * @copyright Copyright (c) 2016, ownCloud, Inc.
  *
  * @author Arthur Schiwon <blizzz@arthur-schiwon.de>
+ * @author Bjoern Schiessle <bjoern@schiessle.org>
+ * @author Christoph Wurst <christoph@winzerhof-wurst.at>
+ * @author Georg Ehrke <oc.list@georgehrke.com>
  * @author Joas Schilling <coding@schilljs.com>
+ * @author John Molakvoæ (skjnldsv) <skjnldsv@protonmail.com>
  * @author Jörn Friedrich Dreyer <jfd@butonic.de>
  * @author Lukas Reschke <lukas@statuscode.ch>
- * @author Michael U <mdusher@users.noreply.github.com>
  * @author Morris Jobke <hey@morrisjobke.de>
  * @author Robin Appelman <robin@icewind.nl>
  * @author Roeland Jago Douma <roeland@famdouma.nl>
@@ -25,7 +28,7 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License, version 3,
- * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ * along with this program. If not, see <http://www.gnu.org/licenses/>
  *
  */
 
@@ -294,10 +297,6 @@ class Manager extends PublicEmitter implements IUserManager {
 	 * @return bool|IUser the created user or false
 	 */
 	public function createUser($uid, $password) {
-		if (!$this->verifyUid($uid)) {
-			return false;
-		}
-
 		$localBackends = [];
 		foreach ($this->backends as $backend) {
 			if ($backend instanceof Database) {
@@ -332,22 +331,30 @@ class Manager extends PublicEmitter implements IUserManager {
 
 		// Check the name for bad characters
 		// Allowed are: "a-z", "A-Z", "0-9" and "_.@-'"
-		if (preg_match('/[^a-zA-Z0-9 _\.@\-\']/', $uid)) {
+		if (preg_match('/[^a-zA-Z0-9 _.@\-\']/', $uid)) {
 			throw new \InvalidArgumentException($l->t('Only the following characters are allowed in a username:'
 				. ' "a-z", "A-Z", "0-9", and "_.@-\'"'));
 		}
+
 		// No empty username
 		if (trim($uid) === '') {
 			throw new \InvalidArgumentException($l->t('A valid username must be provided'));
 		}
+
 		// No whitespace at the beginning or at the end
 		if (trim($uid) !== $uid) {
 			throw new \InvalidArgumentException($l->t('Username contains whitespace at the beginning or at the end'));
 		}
+
 		// Username only consists of 1 or 2 dots (directory traversal)
 		if ($uid === '.' || $uid === '..') {
 			throw new \InvalidArgumentException($l->t('Username must not consist of dots only'));
 		}
+
+		if (!$this->verifyUid($uid)) {
+			throw new \InvalidArgumentException($l->t('Username is invalid because files already exist for this user'));
+		}
+
 		// No empty password
 		if (trim($password) === '') {
 			throw new \InvalidArgumentException($l->t('A valid password must be provided'));
@@ -623,10 +630,18 @@ class Manager extends PublicEmitter implements IUserManager {
 	private function verifyUid(string $uid): bool {
 		$appdata = 'appdata_' . $this->config->getSystemValueString('instanceid');
 
-		if ($uid === '.htaccess' || $uid === 'files_external' || $uid === '.ocdata' || $uid === 'owncloud.log' || $uid === 'nextcloud.log' || $uid === $appdata) {
+		if (\in_array($uid, [
+			'.htaccess',
+			'files_external',
+			'.ocdata',
+			'owncloud.log',
+			'nextcloud.log',
+			$appdata], true)) {
 			return false;
 		}
 
-		return true;
+		$dataDirectory = $this->config->getSystemValueString('datadirectory', \OC::$SERVERROOT . '/data');
+
+		return !file_exists(rtrim($dataDirectory, '/') . '/' . $uid);
 	}
 }

@@ -1,11 +1,13 @@
 <?php
+
 declare(strict_types=1);
+
 /**
  * @copyright Copyright (c) 2019, Roeland Jago Douma <roeland@famdouma.nl>
  * @copyright Copyright (c) 2019, Joas Schilling <coding@schilljs.com>
  *
- * @author Roeland Jago Douma <roeland@famdouma.nl>
  * @author Joas Schilling <coding@schilljs.com>
+ * @author Roeland Jago Douma <roeland@famdouma.nl>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -20,7 +22,7 @@ declare(strict_types=1);
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
 
@@ -56,6 +58,8 @@ class Notifier implements INotifier {
 	protected $userManager;
 	/** @var IURLGenerator */
 	protected $url;
+	/** @var string */
+	private $userId;
 
 
 	public function __construct(IFactory $l10nFactory,
@@ -63,13 +67,15 @@ class Notifier implements INotifier {
 								IRootFolder $rootFolder,
 								IGroupManager $groupManager,
 								IUserManager $userManager,
-								IURLGenerator $url) {
+								IURLGenerator $url,
+								string $userId) {
 		$this->l10nFactory = $l10nFactory;
 		$this->shareManager = $shareManager;
 		$this->rootFolder = $rootFolder;
 		$this->groupManager = $groupManager;
 		$this->userManager = $userManager;
 		$this->url = $url;
+		$this->userId = $userId;
 	}
 
 	/**
@@ -111,7 +117,7 @@ class Notifier implements INotifier {
 		$attemptId = $notification->getObjectId();
 
 		try {
-			$share = $this->shareManager->getShareById($attemptId);
+			$share = $this->shareManager->getShareById($attemptId, $this->userId);
 		} catch (ShareNotFound $e) {
 			throw new AlreadyProcessedException();
 		}

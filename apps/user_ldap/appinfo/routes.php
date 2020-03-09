@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * @copyright Copyright (c) 2016, ownCloud, Inc.
  *
@@ -19,7 +19,7 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License, version 3,
- * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ * along with this program. If not, see <http://www.gnu.org/licenses/>
  *
  */
 
@@ -49,7 +49,8 @@ $application->registerRoutes($this, [
 	]
 ]);
 
-$application = new OCA\User_LDAP\AppInfo\Application();
+/** @var \OCA\User_LDAP\AppInfo\Application $application */
+$application = \OC::$server->query(\OCA\User_LDAP\AppInfo\Application::class);
 $application->registerRoutes($this, [
 	'routes' => [
 		['name' => 'renewPassword#tryRenewPassword', 'url' => '/renewpassword', 'verb' => 'POST'],
