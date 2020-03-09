@@ -35,6 +35,13 @@ use OCP\IServerContainer;
 interface IProviderFactory {
 
 	/**
+	 * IProviderFactory constructor.
+	 * @param IServerContainer $serverContainer
+	 * @since 9.0.0
+	 */
+	public function __construct(IServerContainer $serverContainer);
+
+	/**
 	 * @param string $id
 	 * @return IShareProvider
 	 * @throws ProviderException
