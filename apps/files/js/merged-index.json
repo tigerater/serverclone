@@ -1,4 +1,5 @@
 [
+  "dist/sidebar.js",
   "app.js",
   "breadcrumb.js",
   "detailfileinfoview.js",
