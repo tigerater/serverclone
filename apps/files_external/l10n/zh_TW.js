@@ -106,6 +106,7 @@ OC.L10N.register(
     "Available for" : "可用的",
     "Add storage" : "增加儲存區",
     "Advanced settings" : "進階設定",
-    "Allow users to mount external storage" : "允許使用者能自行掛載外部儲存"
+    "Allow users to mount external storage" : "允許使用者能自行掛載外部儲存",
+    "Some of the configured external mount points are not connected. Please click on the red row(s) for more information" : "有些外部掛載位置設定無法連線，請點(多個)紅色橫幅了解詳情。"
 },
 "nplurals=1; plural=0;");

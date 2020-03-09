@@ -189,12 +189,7 @@ class Trashbin {
 
 		$target = $user . '/files_trashbin/files/' . $targetFilename . '.d' . $timestamp;
 		$source = $owner . '/files_trashbin/files/' . $sourceFilename . '.d' . $timestamp;
-		$free = $view->free_space($target);
-		$isUnknownOrUnlimitedFreeSpace = $free < 0;
-		$isEnoughFreeSpaceLeft = $view->filesize($source) < $free;
-		if ($isUnknownOrUnlimitedFreeSpace || $isEnoughFreeSpaceLeft) {
-			self::copy_recursive($source, $target, $view);
-		}
+		self::copy_recursive($source, $target, $view);
 
 
 		if ($view->file_exists($target)) {
@@ -747,8 +742,7 @@ class Trashbin {
 	 */
 	private static function scheduleExpire($user) {
 		// let the admin disable auto expire
-		/** @var Application $application */
-		$application = \OC::$server->query(Application::class);
+		$application = new Application();
 		$expiration = $application->getContainer()->query('Expiration');
 		if ($expiration->isEnabled()) {
 			\OC::$server->getCommandBus()->push(new Expire($user));
@@ -765,8 +759,7 @@ class Trashbin {
 	 * @return int size of deleted files
 	 */
 	protected static function deleteFiles($files, $user, $availableSpace) {
-		/** @var Application $application */
-		$application = \OC::$server->query(Application::class);
+		$application = new Application();
 		$expiration = $application->getContainer()->query('Expiration');
 		$size = 0;
 
@@ -793,8 +786,7 @@ class Trashbin {
 	 * @return integer[] size of deleted files and number of deleted files
 	 */
 	public static function deleteExpiredFiles($files, $user) {
-		/** @var Application $application */
-		$application = \OC::$server->query(Application::class);
+		$application = new Application();
 		$expiration = $application->getContainer()->query('Expiration');
 		$size = 0;
 		$count = 0;

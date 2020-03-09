@@ -12,6 +12,9 @@
     "Name" : "Όνομα",
     "Actions" : "Ενέργειες",
     "Deleted" : "Διαγραμμένα",
-    "Delete" : "Διαγραφή"
+    "Delete" : "Διαγραφή",
+    "Couldn't delete %s permanently" : "Αδύνατη η μόνιμη διαγραφή του %s",
+    "Couldn't restore %s" : "Αδυναμία επαναφοράς %s",
+    "Error" : "Σφάλμα"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

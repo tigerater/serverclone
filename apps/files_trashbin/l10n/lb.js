@@ -13,6 +13,9 @@ OC.L10N.register(
     "Select all" : "All auswielen",
     "Name" : "Numm",
     "Deleted" : "Geläscht",
-    "Delete" : "Läschen"
+    "Delete" : "Läschen",
+    "Couldn't delete %s permanently" : "Konnt %s net permanent läschen",
+    "Couldn't restore %s" : "Konnt %s net erëmhierstellen",
+    "Error" : "Fehler"
 },
 "nplurals=2; plural=(n != 1);");

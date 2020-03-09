@@ -63,7 +63,6 @@ class Client implements IClient {
 		$defaults = [
 			RequestOptions::PROXY => $this->getProxyUri(),
 			RequestOptions::VERIFY => $this->getCertBundle(),
-			RequestOptions::TIMEOUT => 30,
 		];
 
 		$options = array_merge($defaults, $options);

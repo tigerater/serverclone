@@ -28,7 +28,6 @@
     "privacy",
     "provisioning_api",
     "recommendations",
-    "settings",
     "serverinfo",
     "sharebymail",
     "support",
@@ -50,7 +49,6 @@
     "lookup_server_connector",
     "provisioning_api",
     "oauth2",
-    "settings",
     "twofactor_backupcodes",
     "workflowengine"
   ]

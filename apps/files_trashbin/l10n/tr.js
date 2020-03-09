@@ -21,6 +21,9 @@ OC.L10N.register(
     "Name" : "Ad",
     "Actions" : "İşlemler",
     "Deleted" : "Silinme",
-    "Delete" : "Sil"
+    "Delete" : "Sil",
+    "Couldn't delete %s permanently" : "%s kalıcı olarak silinemedi",
+    "Couldn't restore %s" : "%s geri yüklenemedi",
+    "Error" : "Hata"
 },
 "nplurals=2; plural=(n > 1);");

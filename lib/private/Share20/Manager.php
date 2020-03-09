@@ -1313,7 +1313,8 @@ class Manager implements IManager {
 	}
 
 	protected function checkExpireDate($share) {
-		if ($share->isExpired()) {
+		if ($share->getExpirationDate() !== null &&
+			$share->getExpirationDate() <= new \DateTime()) {
 			$this->deleteShare($share);
 			throw new ShareNotFound($this->l->t('The requested share does not exist anymore'));
 		}

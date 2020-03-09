@@ -28,10 +28,7 @@ namespace OCP\Group\Backend;
  * @since 17.0.0
  */
 interface IGetDisplayNameBackend {
-
 	/**
-	 * @param string $gid
-	 * @return string
 	 * @since 17.0.0
 	 */
 	public function getDisplayName(string $gid): string;

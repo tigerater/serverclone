@@ -115,7 +115,6 @@ class AppFetcher extends Fetcher {
 
 			if (empty($releases)) {
 				// Remove apps that don't have a matching release
-				$response['data'][$dataKey] = [];
 				continue;
 			}
 
@@ -137,7 +136,7 @@ class AppFetcher extends Fetcher {
 			}
 		}
 
-		$response['data'] = array_values(array_filter($response['data']));
+		$response['data'] = array_values($response['data']);
 		return $response;
 	}
 

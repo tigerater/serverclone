@@ -1,12 +1,12 @@
-import Vue from 'vue'
-import App from './Accessibility.vue'
+import Vue from 'vue';
+import App from './App.vue';
 
 /* global t */
 // bind to window
-Vue.prototype.OC = OC
-Vue.prototype.t = t
+Vue.prototype.OC = OC;
+Vue.prototype.t = t;
 
-export default new Vue({
+new Vue({
 	el: '#accessibility',
 	render: h => h(App)
-})
+});

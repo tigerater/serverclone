@@ -13,6 +13,9 @@ OC.L10N.register(
     "Select all" : "Избери всички",
     "Name" : "Име",
     "Deleted" : "Изтрито",
-    "Delete" : "Изтрий"
+    "Delete" : "Изтрий",
+    "Couldn't delete %s permanently" : "Неуспешно безвъзвратно изтриване на %s.",
+    "Couldn't restore %s" : "Неуспешно възстановяване на %s",
+    "Error" : "Грешка"
 },
 "nplurals=2; plural=(n != 1);");

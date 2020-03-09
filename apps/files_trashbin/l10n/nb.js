@@ -14,6 +14,9 @@ OC.L10N.register(
     "Name" : "Navn",
     "Actions" : "Handlinger",
     "Deleted" : "Slettet",
-    "Delete" : "Slett"
+    "Delete" : "Slett",
+    "Couldn't delete %s permanently" : "Kunne ikke slette %s fullstendig",
+    "Couldn't restore %s" : "Kunne ikke gjenopprette %s",
+    "Error" : "Feil"
 },
 "nplurals=2; plural=(n != 1);");

@@ -21,11 +21,13 @@
  *
  */
 
-namespace OCA\Settings\Tests\AppInfo;
+namespace Tests\Settings;
 
-use OCA\Settings\Admin\Sharing;
+use function get_class;
+use OC\Settings\Admin\Sharing;
 use OC\Settings\Manager;
-use OCA\Settings\Personal\Security;
+use OC\Settings\Mapper;
+use OC\Settings\Personal\Security;
 use OC\Settings\Section;
 use OCP\IDBConnection;
 use OCP\IL10N;
@@ -33,6 +35,7 @@ use OCP\ILogger;
 use OCP\IServerContainer;
 use OCP\IURLGenerator;
 use OCP\L10N\IFactory;
+use OCP\Settings\ISettings;
 use OCP\Settings\ISubAdminSettings;
 use Test\TestCase;
 
@@ -241,24 +244,15 @@ class ManagerTest extends TestCase {
 		$section->expects($this->once())
 			->method('getPriority')
 			->willReturn(16);
-		$section2 = $this->createMock(Security\Authtokens::class);
-		$section2->expects($this->once())
-			->method('getPriority')
-			->willReturn(100);
-		$this->container->expects($this->at(0))
+		$this->container->expects($this->once())
 			->method('query')
 			->with(Security::class)
 			->willReturn($section);
-		$this->container->expects($this->at(1))
-			->method('query')
-			->with(Security\Authtokens::class)
-			->willReturn($section2);
 
 		$settings = $this->manager->getPersonalSettings('security');
 
 		$this->assertEquals([
-			16 => [$section],
-			100 => [$section2],
+			16 => [$section]
 		], $settings);
 	}
 

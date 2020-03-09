@@ -2,7 +2,6 @@
 declare (strict_types = 1);
 /**
  * @copyright Copyright (c) 2018 John Molakvoæ (skjnldsv) <skjnldsv@protonmail.com>
- * @copyright Copyright (c) 2019 Janis Köhr <janiskoehr@icloud.com>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -133,9 +132,6 @@ class AccessibilityController extends Controller {
 
 		foreach ($userValues as $key => $scssFile) {
 			if ($scssFile !== false) {
-				if ($scssFile === 'highcontrast' && in_array('dark', $userValues)) {
-					$scssFile .= 'dark';
-				}
 				$imports .= '@import "' . $scssFile . '";';
 			}
 		}
@@ -171,7 +167,7 @@ class AccessibilityController extends Controller {
 		$appWebRoot = substr($this->appRoot, strlen($this->serverRoot) - strlen(\OC::$WEBROOT));
 		$css        = $this->rebaseUrls($css, $appWebRoot . '/css');
 
-		if (in_array('dark', $userValues) && $this->iconsCacher->getCachedList() && $this->iconsCacher->getCachedList()->getSize() > 0) {
+		if (in_array('themedark', $userValues) && $this->iconsCacher->getCachedList() && $this->iconsCacher->getCachedList()->getSize() > 0) {
 			$iconsCss = $this->invertSvgIconsColor($this->iconsCacher->getCachedList()->getContent());
 			$css = $css . $iconsCss;
 		}
@@ -205,27 +201,16 @@ class AccessibilityController extends Controller {
 
 		if ($user === null) {
 			$theme = false;
-			$highcontrast = false;
 		} else {
 			$theme = $this->config->getUserValue($user->getUID(), $this->appName, 'theme', false);
-			$highcontrast = $this->config->getUserValue($user->getUID(), $this->appName, 'highcontrast', false) !== false;
 		}
-		if ($theme !== false) {
-			$responseJS = '(function() {
+
+		$responseJS = '(function() {
 	OCA.Accessibility = {
-		highcontrast: ' . json_encode($highcontrast) . ',
 		theme: ' . json_encode($theme) . ',
-	};
-	document.body.classList.add(' . json_encode($theme) . ');
-})();';
-		} else {
-			$responseJS = '(function() {
-	OCA.Accessibility = {
-		highcontrast: ' . json_encode($highcontrast) . ',
-		theme: ' . json_encode($theme) . ',
+		
 	};
 })();';
-		}
 		$response = new DataDownloadResponse($responseJS, 'javascript', 'text/javascript');
 		$response->cacheFor(3600);
 		return $response;
@@ -239,9 +224,8 @@ class AccessibilityController extends Controller {
 	private function getUserValues(): array{
 		$userTheme = $this->config->getUserValue($this->userSession->getUser()->getUID(), $this->appName, 'theme', false);
 		$userFont  = $this->config->getUserValue($this->userSession->getUser()->getUID(), $this->appName, 'font', false);
-		$userHighContrast = $this->config->getUserValue($this->userSession->getUser()->getUID(), $this->appName, 'highcontrast', false);
 
-		return [$userTheme, $userHighContrast, $userFont];
+		return [$userTheme, $userFont];
 	}
 
 	/**

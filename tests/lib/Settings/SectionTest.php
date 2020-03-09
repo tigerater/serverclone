@@ -21,7 +21,7 @@
  *
  */
 
-namespace OCA\Settings\Tests\AppInfo;
+namespace Tests\Settings;
 
 use OC\Settings\Section;
 use Test\TestCase;

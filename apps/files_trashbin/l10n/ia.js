@@ -13,6 +13,9 @@ OC.L10N.register(
     "Select all" : "Selectionar toto",
     "Name" : "Nomine",
     "Deleted" : "Delite",
-    "Delete" : "Deler"
+    "Delete" : "Deler",
+    "Couldn't delete %s permanently" : "Impossibile deler %s permanentemente",
+    "Couldn't restore %s" : "Impossibile restaurar %s",
+    "Error" : "Error"
 },
 "nplurals=2; plural=(n != 1);");

@@ -23,6 +23,8 @@ use Test\TestCase;
 
 /**
  * Class FileTest
+ *
+ * @group DB
  */
 class FileTest extends TestCase
 {

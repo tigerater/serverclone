@@ -37,7 +37,6 @@ class NotFoundResponse extends Response {
 	public function __construct() {
 		parent::__construct();
 
-		$this->setContentSecurityPolicy(new ContentSecurityPolicy());
 		$this->setStatus(404);
 	}
 

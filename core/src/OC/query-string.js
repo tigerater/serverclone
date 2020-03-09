@@ -1,4 +1,4 @@
-/**
+/*
  * @copyright 2019 Christoph Wurst <christoph@winzerhof-wurst.at>
  *
  * @author 2019 Christoph Wurst <christoph@winzerhof-wurst.at>
@@ -22,14 +22,15 @@
 /**
  * Parses a URL query string into a JS map
  * @param {string} queryString query string in the format param1=1234&param2=abcde&param3=xyz
- * @returns {Object.<string, string>} map containing key/values matching the URL parameters
+ * @return {Object.<string, string>} map containing key/values matching the URL parameters
  */
 export const parse = queryString => {
-	let parts
-	let pos
-	let components
-	let result = {}
-	let key
+	let parts,
+		pos,
+		components,
+		result = {},
+		key,
+		value
 	if (!queryString) {
 		return null
 	}
@@ -72,13 +73,13 @@ export const parse = queryString => {
 /**
  * Builds a URL query from a JS map.
  * @param {Object.<string, string>} params map containing key/values matching the URL parameters
- * @returns {string} String containing a URL query (without question) mark
+ * @return {string} String containing a URL query (without question) mark
  */
 export const build = params => {
 	if (!params) {
 		return ''
 	}
-	return $.map(params, function(value, key) {
+	return $.map(params, function (value, key) {
 		var s = encodeURIComponent(key)
 		if (value !== null && typeof (value) !== 'undefined') {
 			s += '=' + encodeURIComponent(value)

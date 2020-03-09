@@ -21,6 +21,9 @@ OC.L10N.register(
     "Name" : "Name",
     "Actions" : "Aktionen",
     "Deleted" : "Gelöscht",
-    "Delete" : "Löschen"
+    "Delete" : "Löschen",
+    "Couldn't delete %s permanently" : "Konnte %s nicht dauerhaft löschen",
+    "Couldn't restore %s" : "Konnte %s nicht wiederherstellen",
+    "Error" : "Fehler"
 },
 "nplurals=2; plural=(n != 1);");

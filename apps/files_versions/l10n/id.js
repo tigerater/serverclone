@@ -4,6 +4,7 @@ OC.L10N.register(
     "Versions" : "Versi",
     "Failed to revert {file} to revision {timestamp}." : "Gagal mengembalikan {file} ke revisi {timestamp}.",
     "_%n byte_::_%n bytes_" : ["%n bytes"],
-    "Restore" : "Pulihkan"
+    "Restore" : "Pulihkan",
+    "Could not revert: %s" : "Tidak dapat mengembalikan: %s"
 },
 "nplurals=1; plural=0;");

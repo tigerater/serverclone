@@ -24,7 +24,7 @@ const capabilities = window._oc_capabilities || {}
 /**
  * Returns the capabilities
  *
- * @returns {Array} capabilities
+ * @return {Array} capabilities
  *
  * @since 14.0
  */

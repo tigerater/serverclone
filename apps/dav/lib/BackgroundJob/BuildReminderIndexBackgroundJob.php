@@ -66,7 +66,6 @@ class BuildReminderIndexBackgroundJob extends QueuedJob {
 								ILogger $logger,
 								IJobList $jobList,
 								ITimeFactory $timeFactory) {
-		parent::__construct($timeFactory);
 		$this->db = $db;
 		$this->reminderService = $reminderService;
 		$this->logger = $logger;

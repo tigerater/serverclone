@@ -59,7 +59,7 @@ class CreateSessionTokenCommand extends ALoginCommand {
 		);
 		$this->userSession->updateTokens(
 			$loginData->getUser()->getUID(),
-			$loginData->getPassword()
+			$loginData->getUsername()
 		);
 
 		return $this->processNextOrFinishSuccessfully($loginData);

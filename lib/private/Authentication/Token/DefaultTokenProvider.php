@@ -196,9 +196,8 @@ class DefaultTokenProvider implements IProvider {
 	 * @param string $oldSessionId
 	 * @param string $sessionId
 	 * @throws InvalidTokenException
-	 * @return IToken
 	 */
-	public function renewSessionToken(string $oldSessionId, string $sessionId): IToken {
+	public function renewSessionToken(string $oldSessionId, string $sessionId) {
 		$token = $this->getToken($oldSessionId);
 
 		$newToken = new DefaultToken();
@@ -215,8 +214,6 @@ class DefaultTokenProvider implements IProvider {
 		$newToken->setLastActivity($this->time->getTime());
 		$this->mapper->insert($newToken);
 		$this->mapper->delete($token);
-
-		return $newToken;
 	}
 
 	/**

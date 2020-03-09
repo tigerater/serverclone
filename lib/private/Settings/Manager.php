@@ -30,7 +30,6 @@
 namespace OC\Settings;
 
 use Closure;
-use OC\Settings\Personal\PersonalInfo;
 use OCP\AppFramework\QueryException;
 use OCP\IL10N;
 use OCP\ILogger;
@@ -246,32 +245,32 @@ class Manager implements IManager {
 
 		if ($section === 'overview') {
 			/** @var ISettings $form */
-			$form = $this->container->query(\OCA\Settings\Admin\Overview::class);
+			$form = $this->container->query(Admin\Overview::class);
 			if ($filter === null || $filter($form)) {
 				$forms[$form->getPriority()] = [$form];
 			}
 		}
 		if ($section === 'server') {
 			/** @var ISettings $form */
-			$form = $this->container->query(\OCA\Settings\Admin\Server::class);
+			$form = $this->container->query(Admin\Server::class);
 			if ($filter === null || $filter($form)) {
 				$forms[$form->getPriority()] = [$form];
 			}
-			$form = $this->container->query(\OCA\Settings\Admin\Mail::class);
+			$form = $this->container->query(Admin\Mail::class);
 			if ($filter === null || $filter($form)) {
 				$forms[$form->getPriority()] = [$form];
 			}
 		}
 		if ($section === 'security') {
 			/** @var ISettings $form */
-			$form = $this->container->query(\OCA\Settings\Admin\Security::class);
+			$form = $this->container->query(Admin\Security::class);
 			if ($filter === null || $filter($form)) {
 				$forms[$form->getPriority()] = [$form];
 			}
 		}
 		if ($section === 'sharing') {
 			/** @var ISettings $form */
-			$form = $this->container->query(\OCA\Settings\Admin\Sharing::class);
+			$form = $this->container->query(Admin\Sharing::class);
 			if ($filter === null || $filter($form)) {
 				$forms[$form->getPriority()] = [$form];
 			}
@@ -290,23 +289,19 @@ class Manager implements IManager {
 
 		if ($section === 'personal-info') {
 			/** @var ISettings $form */
-			$form = $this->container->query(\OCA\Settings\Personal\PersonalInfo::class);
+			$form = $this->container->query(Personal\PersonalInfo::class);
 			$forms[$form->getPriority()] = [$form];
-			$form = new \OCA\Settings\Personal\ServerDevNotice();
+			$form = new Personal\ServerDevNotice();
 			$forms[$form->getPriority()] = [$form];
 		}
 		if ($section === 'security') {
 			/** @var ISettings $form */
-			$form = $this->container->query(\OCA\Settings\Personal\Security::class);
-			$forms[$form->getPriority()] = [$form];
-
-			/** @var ISettings $form */
-			$form = $this->container->query(\OCA\Settings\Personal\Security\Authtokens::class);
+			$form = $this->container->query(Personal\Security::class);
 			$forms[$form->getPriority()] = [$form];
 		}
 		if ($section === 'additional') {
 			/** @var ISettings $form */
-			$form = $this->container->query(\OCA\Settings\Personal\Additional::class);
+			$form = $this->container->query(Personal\Additional::class);
 			$forms[$form->getPriority()] = [$form];
 		}
 

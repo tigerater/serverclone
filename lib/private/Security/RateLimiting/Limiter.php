@@ -28,7 +28,9 @@ use OC\Security\Normalizer\IpAddress;
 use OC\Security\RateLimiting\Backend\IBackend;
 use OC\Security\RateLimiting\Exception\RateLimitExceededException;
 use OCP\AppFramework\Utility\ITimeFactory;
+use OCP\IRequest;
 use OCP\IUser;
+use OCP\IUserSession;
 
 class Limiter {
 	/** @var IBackend */
@@ -37,10 +39,14 @@ class Limiter {
 	private $timeFactory;
 
 	/**
+	 * @param IUserSession $userSession
+	 * @param IRequest $request
 	 * @param ITimeFactory $timeFactory
 	 * @param IBackend $backend
 	 */
-	public function __construct(ITimeFactory $timeFactory,
+	public function __construct(IUserSession $userSession,
+								IRequest $request,
+								ITimeFactory $timeFactory,
 								IBackend $backend) {
 		$this->backend = $backend;
 		$this->timeFactory = $timeFactory;
@@ -56,7 +62,7 @@ class Limiter {
 	private function register(string $methodIdentifier,
 							  string $userIdentifier,
 							  int $period,
-							  int $limit): void {
+							  int $limit) {
 		$existingAttempts = $this->backend->getAttempts($methodIdentifier, $userIdentifier, $period);
 		if ($existingAttempts >= $limit) {
 			throw new RateLimitExceededException();
@@ -77,7 +83,7 @@ class Limiter {
 	public function registerAnonRequest(string $identifier,
 										int $anonLimit,
 										int $anonPeriod,
-										string $ip): void {
+										string $ip) {
 		$ipSubnet = (new IpAddress($ip))->getSubnet();
 
 		$anonHashIdentifier = hash('sha512', 'anon::' . $identifier . $ipSubnet);
@@ -96,7 +102,7 @@ class Limiter {
 	public function registerUserRequest(string $identifier,
 										int $userLimit,
 										int $userPeriod,
-										IUser $user): void {
+										IUser $user) {
 		$userHashIdentifier = hash('sha512', 'user::' . $identifier . $user->getUID());
 		$this->register($identifier, $userHashIdentifier, $userPeriod, $userLimit);
 	}

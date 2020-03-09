@@ -115,6 +115,8 @@ OC.L10N.register(
     "Available for" : "Tilgængelig for",
     "Add storage" : "Tilføj lager",
     "Advanced settings" : "Avancerede indstillinger",
-    "Allow users to mount external storage" : "Tillad brugere at montere eksternt lager"
+    "Allow users to mount external storage" : "Tillad brugere at montere eksternt lager",
+    "Some of the configured external mount points are not connected. Please click on the red row(s) for more information" : "Nogle af de konfigureret eksterne mount points er ikke forbundet. Klik venligst på de(n) røde række(r) for mere information",
+    "\"%s\" is not installed. Mounting of %s is not possible. Please ask your system administrator to install it." : "\"%s\" er ikke installeret. Monteringen af %s er ikke mulig. Anmod din systemadministrator om at installere det."
 },
 "nplurals=2; plural=(n != 1);");

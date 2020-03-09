@@ -58,7 +58,7 @@ class LoginPageContext implements Context, ActorAwareInterface {
 	 * @return Locator
 	 */
 	public static function loginButton() {
-		return Locator::forThe()->id("submit-form")->
+		return Locator::forThe()->id("submit")->
 				describedAs("Login button in Login page");
 	}
 

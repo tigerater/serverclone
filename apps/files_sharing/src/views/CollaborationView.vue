@@ -21,10 +21,7 @@
   -->
 
 <template>
-	<CollectionList v-if="fileId"
-		:id="fileId"
-		type="file"
-		:name="filename" />
+	<collection-list v-if="fileId" type="file" :id="fileId" :name="filename"></collection-list>
 </template>
 
 <script>
@@ -32,22 +29,22 @@ import { CollectionList } from 'nextcloud-vue-collections'
 
 export default {
 	name: 'CollaborationView',
-	components: {
-		CollectionList
-	},
 	computed: {
 		fileId() {
 			if (this.$root.model && this.$root.model.id) {
-				return '' + this.$root.model.id
+				return '' + this.$root.model.id;
 			}
-			return null
+			return null;
 		},
 		filename() {
 			if (this.$root.model && this.$root.model.name) {
-				return '' + this.$root.model.name
+				return '' + this.$root.model.name;
 			}
-			return ''
+			return '';
 		}
+	},
+	components: {
+		CollectionList
 	}
 }
 </script>

@@ -21,13 +21,11 @@
   -->
 <template>
 	<tr>
-		<td>{{ name }}</td>
-		<td>{{ redirectUri }}</td>
-		<td><code>{{ clientId }}</code></td>
-		<td><code>{{ renderedSecret }}</code><a class="icon-toggle has-tooltip" :title="t('oauth2', 'Show client secret')" @click="toggleSecret" /></td>
-		<td class="action-column">
-			<span><a class="icon-delete has-tooltip" :title="t('oauth2', 'Delete')" @click="$emit('delete', id)" /></span>
-		</td>
+		<td>{{name}}</td>
+		<td>{{redirectUri}}</td>
+		<td><code>{{clientId}}</code></td>
+		<td><code>{{renderedSecret}}</code><a class='icon-toggle has-tooltip' :title="t('oauth2', 'Show client secret')" @click="toggleSecret"></a></td>
+		<td class="action-column"><span><a class="icon-delete has-tooltip" :title="t('oauth2', 'Delete')" @click="$emit('delete', id)"></a></span></td>
 	</tr>
 </template>
 
@@ -41,27 +39,27 @@ export default {
 		}
 	},
 	data: function() {
-		return {
-			id: this.client.id,
-			name: this.client.name,
-			redirectUri: this.client.redirectUri,
-			clientId: this.client.clientId,
-			clientSecret: this.client.clientSecret,
-			renderSecret: false
-		}
+			return {
+				id: this.client.id,
+				name: this.client.name,
+				redirectUri: this.client.redirectUri,
+				clientId: this.client.clientId,
+				clientSecret: this.client.clientSecret,
+				renderSecret: false,
+			};
 	},
 	computed: {
 		renderedSecret: function() {
 			if (this.renderSecret) {
-				return this.clientSecret
+				return this.clientSecret;
 			} else {
-				return '****'
+				return '****';
 			}
 		}
 	},
 	methods: {
 		toggleSecret() {
-			this.renderSecret = !this.renderSecret
+			this.renderSecret = !this.renderSecret;
 		}
 	}
 }

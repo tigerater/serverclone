@@ -20,6 +20,9 @@ OC.L10N.register(
     "Name" : "Név",
     "Actions" : "Műveletek",
     "Deleted" : "Törölve",
-    "Delete" : "Törlés"
+    "Delete" : "Törlés",
+    "Couldn't delete %s permanently" : "Nem sikerült %s végleges törlése",
+    "Couldn't restore %s" : "Nem sikerült %s visszaállítása",
+    "Error" : "Hiba"
 },
 "nplurals=2; plural=(n != 1);");

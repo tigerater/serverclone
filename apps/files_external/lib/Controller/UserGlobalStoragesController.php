@@ -27,7 +27,6 @@ namespace OCA\Files_External\Controller;
 
 use OCA\Files_External\Lib\Auth\AuthMechanism;
 use OCA\Files_External\Lib\Auth\IUserProvided;
-use OCA\Files_External\Lib\Auth\Password\UserGlobalAuth;
 use OCA\Files_External\Lib\InsufficientDataForMeaningfulAnswerException;
 use OCP\ILogger;
 use \OCP\IRequest;
@@ -157,7 +156,7 @@ class UserGlobalStoragesController extends StoragesController {
 		try {
 			$storage = $this->service->getStorage($id);
 			$authMechanism = $storage->getAuthMechanism();
-			if ($authMechanism instanceof IUserProvided || $authMechanism instanceof  UserGlobalAuth) {
+			if ($authMechanism instanceof IUserProvided) {
 				$authMechanism->saveBackendOptions($this->userSession->getUser(), $id, $backendOptions);
 				$authMechanism->manipulateStorageConfig($storage, $this->userSession->getUser());
 			} else {

@@ -128,12 +128,13 @@ OC.L10N.register(
     "Shared by link" : "Gedeel per skakel",
     "Text file" : "Tekslêer",
     "New text file.txt" : "Nuwe tekslêer.txt",
+    "Target folder" : "Teikengids",
     "File handling" : "Lêerhantering",
     "Maximum upload size" : "Maksimum oplaaigrootte",
     "max. possible: " : "maks. moontlik:",
     "Save" : "Stoor",
-    "Cancel upload" : "Kanselleer oplaai",
     "%s of %s used" : "%s van %s gebruik",
+    "Cancel upload" : "Kanselleer oplaai",
     "%1$s%% of %2$s used" : "%1$s%% van %2$s gebruik"
 },
 "nplurals=2; plural=(n != 1);");

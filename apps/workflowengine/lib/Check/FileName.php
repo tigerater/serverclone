@@ -22,16 +22,20 @@ declare(strict_types=1);
 
 namespace OCA\WorkflowEngine\Check;
 
-use OCA\WorkflowEngine\Entity\File;
+use OCP\Files\Storage\IStorage;
 use OCP\IL10N;
 use OCP\IRequest;
-use OCP\WorkflowEngine\IFileCheck;
 
-class FileName extends AbstractStringCheck implements IFileCheck {
-	use TFileCheck;
+class FileName extends AbstractStringCheck {
 
 	/** @var IRequest */
 	protected $request;
+
+	/** @var IStorage */
+	protected $storage;
+
+	/** @var string */
+	protected $path;
 
 	/**
 	 * @param IL10N $l
@@ -43,10 +47,19 @@ class FileName extends AbstractStringCheck implements IFileCheck {
 	}
 
 	/**
+	 * @param IStorage $storage
+	 * @param string $path
+	 */
+	public function setFileInfo(IStorage $storage, $path) {
+		$this->storage = $storage;
+		$this->path = $path;
+	}
+
+	/**
 	 * @return string
 	 */
 	protected function getActualValue(): string {
-		return $this->path === null ? '' : basename($this->path);
+		return basename($this->path);
 	}
 
 	/**
@@ -61,13 +74,5 @@ class FileName extends AbstractStringCheck implements IFileCheck {
 			$actualValue = mb_strtolower($actualValue);
 		}
 		return parent::executeStringCheck($operator, $checkValue, $actualValue);
-	}
-
-	public function supportedEntities(): array {
-		return [ File::class ];
-	}
-
-	public function isAvailableForScope(int $scope): bool {
-		return true;
 	}
 }

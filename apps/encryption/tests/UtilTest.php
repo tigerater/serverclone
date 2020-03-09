@@ -36,10 +36,8 @@ use OCP\Files\Mount\IMountPoint;
 use OCP\Files\Storage;
 use OCP\IConfig;
 use OCP\ILogger;
-use OCP\IUser;
 use OCP\IUserManager;
 use OCP\IUserSession;
-use PHPUnit\Framework\MockObject\MockObject;
 use Test\TestCase;
 
 class UtilTest extends TestCase {
@@ -93,20 +91,27 @@ class UtilTest extends TestCase {
 			->getMock();
 		/** @var \OCP\ILogger $loggerMock */
 		$loggerMock = $this->createMock(ILogger::class);
+		/** @var \OCP\IUserSession|\PHPUnit_Framework_MockObject_MockObject $userSessionMock */
+		$userSessionMock = $this->getMockBuilder(IUserSession::class)
+			->disableOriginalConstructor()
+			->setMethods([
+				'isLoggedIn',
+				'getUID',
+				'login',
+				'logout',
+				'setUser',
+				'getUser'
+			])
+			->getMock();
 
-		$user = $this->createMock(IUser::class);
-		$user->expects($this->any())
-			->method('getUID')
-			->willReturn('admin');
+		$userSessionMock->method('isLoggedIn')->will($this->returnValue(true));
 
-		/** @var IUserSession|MockObject $userSessionMock */
-		$userSessionMock = $this->createMock(IUserSession::class);
+		$userSessionMock->method('getUID')->will($this->returnValue('admin'));
+
 		$userSessionMock->expects($this->any())
-			->method('getUser')
-			->willReturn($user);
-		$userSessionMock->expects($this->any())
-			->method('isLoggedIn')
-			->willReturn(true);
+			->method($this->anything())
+			->will($this->returnSelf());
+
 
 		$this->configMock = $this->createMock(IConfig::class);
 

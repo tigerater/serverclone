@@ -392,9 +392,9 @@ OCA = OCA || {};
 
 		/**
 		 * @typedef {object} viewSaveInfo
-		 * @property {Function} val
-		 * @property {Function} attr
-		 * @property {Function} is
+		 * @property {function} val
+		 * @property {function} attr
+		 * @property {function} is
 		 */
 
 		/**

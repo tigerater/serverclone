@@ -2,7 +2,6 @@ OC.L10N.register(
     "systemtags",
     {
     "Tags" : "Etiketler",
-    "Tag name is empty" : "Etiket adı boş",
     "Update" : "Güncelle",
     "Create" : "Ekle",
     "Select tag…" : "Etiket seçin...",

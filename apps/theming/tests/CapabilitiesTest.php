@@ -37,6 +37,7 @@ use Test\TestCase;
 /**
  * Class CapabilitiesTest
  *
+ * @group DB
  * @package OCA\Theming\Tests
  */
 class CapabilitiesTest extends TestCase  {

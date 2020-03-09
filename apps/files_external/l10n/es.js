@@ -74,7 +74,6 @@ OC.L10N.register(
     "Log-in credentials, save in database" : "Credenciales de inicio de sesión, salvar en la base de datos",
     "Username and password" : "Nombre de usuario y contraseña",
     "Log-in credentials, save in session" : "Credenciales de login, guardar en la sesión",
-    "Global credentials, user entered" : "Credenciales Globales, introducidas por el usuario",
     "User entered, store in database" : "Usuario registrado, almacenar en la base de datos",
     "RSA public key" : "Clave pública RSA",
     "Public key" : "Clave pública",
@@ -105,7 +104,6 @@ OC.L10N.register(
     "SMB / CIFS" : "SMB / CIFS",
     "Share" : "Compartir",
     "Show hidden files" : "Mostrar archivos ocultos",
-    "Timeout" : "Se agotó el tiempo",
     "SMB / CIFS using OC login" : "SMB / CIFS que usan acceso OC",
     "Username as share" : "Nombre de usuario como compartir",
     "OpenStack Object Storage" : "Almacenamiento de objeto OpenStack",
@@ -131,6 +129,8 @@ OC.L10N.register(
     "Add storage" : "Añadir almacenamiento",
     "Advanced settings" : "Configuración avanzada",
     "Allow users to mount external storage" : "Permitir a los usuarios montar un almacenamiento externo",
-    "Global credentials can be used to authenticate with multiple external storages that have the same credentials." : "Se pueden usar credenciales globales para autenticar con múltiples almacenamientos externos que tengan las mismas credenciales."
+    "Global credentials can be used to authenticate with multiple external storages that have the same credentials." : "Se pueden usar credenciales globales para autenticar con múltiples almacenamientos externos que tengan las mismas credenciales.",
+    "Some of the configured external mount points are not connected. Please click on the red row(s) for more information" : "Algunos de los puntos de montaje externos configurados no están conectados. Por favor, haga clic en la fila roja (s) para obtener más información",
+    "\"%s\" is not installed. Mounting of %s is not possible. Please ask your system administrator to install it." : "\"%s\" no está instalado. El montaje de %s no es posible. Por favor, pregunte a su administrador del sistema para instalarlo."
 },
 "nplurals=2; plural=(n != 1);");

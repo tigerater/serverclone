@@ -268,7 +268,7 @@ class DAV extends Common {
 				);
 				$this->statCache->set($path, $response);
 			} catch (ClientHttpException $e) {
-				if ($e->getHttpStatus() === 404 || $e->getHttpStatus() === 405) {
+				if ($e->getHttpStatus() === 404) {
 					$this->statCache->clear($path . '/');
 					$this->statCache->set($path, false);
 					return false;

@@ -16,6 +16,7 @@ OC.L10N.register(
     "No comments yet, start the conversation!" : "Ingen kommetarar enno, start samtala!",
     "More comments …" : "Fleire kommentarar...",
     "Save" : "Lagra",
-    "Comment" : "Kommentér"
+    "Comment" : "Kommentér",
+    "You were mentioned on “%s”, in a comment by a user that has since been deleted" : "Du ble nemnt i \"%s\", i en kommentar av ein brukar som i ettertid har blitt sletta"
 },
 "nplurals=2; plural=(n != 1);");

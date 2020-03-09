@@ -1,4 +1,4 @@
-/**
+/*
  * @copyright 2019 Christoph Wurst <christoph@winzerhof-wurst.at>
  *
  * @author 2019 Christoph Wurst <christoph@winzerhof-wurst.at>
@@ -19,22 +19,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { emit } from '@nextcloud/event-bus'
-
-let token = document.getElementsByTagName('head')[0].getAttribute('data-requesttoken')
+let token = document.getElementsByTagName('head')[0].getAttribute('data-requesttoken');
+const observers = []
 
 /**
- * @returns {string}
+ * @return {string}
  */
 export const getToken = () => token
 
 /**
- * @param {String} newToken new token
+ * @param {Function} observer
+ * @return {number}
+ */
+export const subscribe = observer => observers.push(observer)
+
+/**
+ * @param {String} newToken
  */
 export const setToken = newToken => {
 	token = newToken
 
-	emit('csrf-token-update', {
-		token
-	})
+	observers.forEach(o => o(token))
 }

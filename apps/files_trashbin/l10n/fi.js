@@ -20,6 +20,9 @@ OC.L10N.register(
     "Name" : "Nimi",
     "Actions" : "Toiminnot",
     "Deleted" : "Poistettu",
-    "Delete" : "Poista"
+    "Delete" : "Poista",
+    "Couldn't delete %s permanently" : "Kohdetta %s ei voitu poistaa pysyvästi",
+    "Couldn't restore %s" : "Kohteen %s palautus epäonnistui",
+    "Error" : "Virhe"
 },
 "nplurals=2; plural=(n != 1);");

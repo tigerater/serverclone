@@ -298,7 +298,7 @@ class Server extends ServerContainer implements IServerContainer {
 				$this->getLogger(),
 				$this->getUserManager()
 			);
-			$connector = new HookConnector($root, $view, $c->getEventDispatcher());
+			$connector = new HookConnector($root, $view);
 			$connector->viewToNode();
 
 			$previewConnector = new \OC\Preview\WatcherConnector($root, $c->getSystemConfig());
@@ -597,6 +597,14 @@ class Server extends ServerContainer implements IServerContainer {
 		});
 		$this->registerAlias('Search', \OCP\ISearch::class);
 
+		$this->registerService(\OC\Security\RateLimiting\Limiter::class, function (Server $c) {
+			return new \OC\Security\RateLimiting\Limiter(
+				$this->getUserSession(),
+				$this->getRequest(),
+				new \OC\AppFramework\Utility\TimeFactory(),
+				$c->query(\OC\Security\RateLimiting\Backend\IBackend::class)
+			);
+		});
 		$this->registerService(\OC\Security\RateLimiting\Backend\IBackend::class, function ($c) {
 			return new \OC\Security\RateLimiting\Backend\MemoryCache(
 				$this->getMemCacheFactory(),
@@ -1185,6 +1193,14 @@ class Server extends ServerContainer implements IServerContainer {
 
 		$this->registerAlias(IDashboardManager::class, DashboardManager::class);
 		$this->registerAlias(IFullTextSearchManager::class, FullTextSearchManager::class);
+
+		$this->registerService(\OC\Security\IdentityProof\Manager::class, function (Server $c) {
+			return new \OC\Security\IdentityProof\Manager(
+				$c->query(\OC\Files\AppData\Factory::class),
+				$c->getCrypto(),
+				$c->getConfig()
+			);
+		});
 
 		$this->registerAlias(ISubAdmin::class, SubAdmin::class);
 

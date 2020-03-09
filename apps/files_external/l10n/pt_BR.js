@@ -74,7 +74,6 @@ OC.L10N.register(
     "Log-in credentials, save in database" : "Credenciais de acesso, salvas no banco de dados",
     "Username and password" : "Nome de usuário e senha",
     "Log-in credentials, save in session" : "Credenciais de login, guardadas em sessão",
-    "Global credentials, user entered" : "Credenciais globais, usuário inserido",
     "User entered, store in database" : "Usuário adicionado, armazenado no banco de dados",
     "RSA public key" : "Chave pública RSA",
     "Public key" : "Chave pública",
@@ -105,7 +104,6 @@ OC.L10N.register(
     "SMB / CIFS" : "SMB / CIFS",
     "Share" : "Compartilhar",
     "Show hidden files" : "Mostrar arquivos ocultos",
-    "Timeout" : "Tempo de validade",
     "SMB / CIFS using OC login" : "SMB / CIFS usando OC login",
     "Username as share" : "Nome de usuário como compartilhamento",
     "OpenStack Object Storage" : "Armazenamento de Objetos OpenStack",
@@ -131,6 +129,8 @@ OC.L10N.register(
     "Add storage" : "Adic. armazenamento",
     "Advanced settings" : "Configurações avançadas",
     "Allow users to mount external storage" : "Permitir que usuários montem armazenamento externo",
-    "Global credentials can be used to authenticate with multiple external storages that have the same credentials." : "Credenciais globais podem ser usadas para autenticar com vários armazenamentos externos que possuem as mesmas credenciais."
+    "Global credentials can be used to authenticate with multiple external storages that have the same credentials." : "Credenciais globais podem ser usadas para autenticar com vários armazenamentos externos que possuem as mesmas credenciais.",
+    "Some of the configured external mount points are not connected. Please click on the red row(s) for more information" : "Alguns dos pontos de montagem externos configurados não estão conectados. Clique na(s) linha(s) vermelha(s) para mais informações",
+    "\"%s\" is not installed. Mounting of %s is not possible. Please ask your system administrator to install it." : "\"%s\" não está instalado. A montagem de %s não foi possível. Por favor, solicite a instalação ao administrador do sistema."
 },
 "nplurals=2; plural=(n > 1);");

@@ -74,7 +74,6 @@ OC.L10N.register(
     "Log-in credentials, save in database" : "Poświadczenia logowania, zapisz w bazie danych",
     "Username and password" : "Nazwa użytkownika i hasło",
     "Log-in credentials, save in session" : "Poświadczenia logowania, zapisz w sesji",
-    "Global credentials, user entered" : "Globalne poświadczenia, wprowadzone przez użytkownika",
     "User entered, store in database" : "Wprowadzony użytkownik, zapisz w bazie danych",
     "RSA public key" : "Klucz publiczny RSA",
     "Public key" : "Klucz publiczny",
@@ -105,7 +104,6 @@ OC.L10N.register(
     "SMB / CIFS" : "SMB / CIFS",
     "Share" : "Udostępnij",
     "Show hidden files" : "Pokaż ukryte pliki",
-    "Timeout" : "Przekroczono limit czasu",
     "SMB / CIFS using OC login" : "SMB / CIFS przy użyciu loginu OC",
     "Username as share" : "Nazwa użytkownika jako udostępniona",
     "OpenStack Object Storage" : "Magazyn obiektów OpenStack",
@@ -131,6 +129,8 @@ OC.L10N.register(
     "Add storage" : "Dodaj zewnętrzne magazyny",
     "Advanced settings" : "Ustawienia zaawansowane",
     "Allow users to mount external storage" : "Pozwól użytkownikom montować zewnętrzne zasoby dyskowe",
-    "Global credentials can be used to authenticate with multiple external storages that have the same credentials." : "Poświadczenia globalne mogą być używane do uwierzytelniania z wieloma zewnętrznymi magazynami, o ile posiadają takie same poświadczenia."
+    "Global credentials can be used to authenticate with multiple external storages that have the same credentials." : "Poświadczenia globalne mogą być używane do uwierzytelniania z wieloma zewnętrznymi magazynami, o ile posiadają takie same poświadczenia.",
+    "Some of the configured external mount points are not connected. Please click on the red row(s) for more information" : "Niektóre skonfigurowane zewnętrzne punkty montowania są nie podłączone. Proszę kliknąć na czerwony rząd (y), aby uzyskać więcej informacji",
+    "\"%s\" is not installed. Mounting of %s is not possible. Please ask your system administrator to install it." : "\"%s\" nie jest zainstalowane. Zamontowanie %s jest niemożliwe. Proszę poprosić swojego administratora systemu, żeby dokonał instalacji."
 },
 "nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);");

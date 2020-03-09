@@ -2,7 +2,6 @@
 declare (strict_types = 1);
 /**
  * @copyright Copyright (c) 2018 John Molakvoæ (skjnldsv) <skjnldsv@protonmail.com>
- * @copyright Copyright (c) 2019 Janis Köhr <janiskoehr@icloud.com>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -84,7 +83,6 @@ class ConfigController extends OCSController {
 	 */
 	public function getConfig(): DataResponse {
 		return new DataResponse([
-			'highcontrast' => $this->config->getUserValue($this->userId, $this->appName, 'highcontrast', false),
 			'theme' => $this->config->getUserValue($this->userId, $this->appName, 'theme', false),
 			'font' => $this->config->getUserValue($this->userId, $this->appName, 'font', false)
 		]);
@@ -100,7 +98,7 @@ class ConfigController extends OCSController {
 	 * @throws Exception
 	 */
 	public function setConfig(string $key, $value): DataResponse {
-		if ($key === 'theme' || $key === 'font' || $key === 'highcontrast') {
+		if ($key === 'theme' || $key === 'font') {
 
 			if ($value === false) {
 				$this->config->deleteUserValue($this->userId, $this->appName, $key);
@@ -115,12 +113,11 @@ class ConfigController extends OCSController {
 			}
 
 			$themes = $this->accessibilityProvider->getThemes();
-			$highcontrast = array($this->accessibilityProvider->getHighContrast());
 			$fonts  = $this->accessibilityProvider->getFonts();
 
 			$availableOptions = array_map(function($option) {
 				return $option['id'];
-			}, array_merge($themes, $highcontrast, $fonts));
+			}, array_merge($themes, $fonts));
 
 			if (in_array($value, $availableOptions)) {
 				$this->config->setUserValue($this->userId, $this->appName, $key, $value);

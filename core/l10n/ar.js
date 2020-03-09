@@ -225,7 +225,14 @@ OC.L10N.register(
     "Couldn't send reset email. Please make sure your username is correct." : "تعذر إرسال البريد الإلكتروني لإعادة التعيين. الرجاء التأكد من صحة اسم المستخدم.",
     "Dismiss" : "تجاهل",
     "Sending email …" : "جارٍ إرسال البريد …",
+    "Copy URL" : "انسخ الرابط",
+    "Enable" : "تنشيط",
+    "{sharee} (group)" : "{sharee} (group)",
+    "{sharee} (remote)" : "{sharee} (remote)",
+    "{sharee} (email)" : "{sharee} (email)",
     "Wrong password." : "كلمة السر خاطئة.",
-    "New Password" : "كلمة السر الجديدة"
+    "Redirecting …" : "عملية التحويل جارية …",
+    "New Password" : "كلمة السر الجديدة",
+    "Thank you for your patience." : "شكرا لك على صبرك."
 },
 "nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;");

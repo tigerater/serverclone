@@ -21,6 +21,9 @@ OC.L10N.register(
     "Name" : "Nomo",
     "Actions" : "Agoj",
     "Deleted" : "Forigita",
-    "Delete" : "Forigi"
+    "Delete" : "Forigi",
+    "Couldn't delete %s permanently" : "Ne povis foriĝi %s por ĉiam",
+    "Couldn't restore %s" : "Ne povis restaŭriĝi %s",
+    "Error" : "Eraro"
 },
 "nplurals=2; plural=(n != 1);");

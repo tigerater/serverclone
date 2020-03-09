@@ -20,6 +20,9 @@ OC.L10N.register(
     "Name" : "Heiti",
     "Actions" : "Aðgerðir",
     "Deleted" : "Eytt",
-    "Delete" : "Eyða"
+    "Delete" : "Eyða",
+    "Couldn't delete %s permanently" : "Ekki tókst að eyða %s varanlega",
+    "Couldn't restore %s" : "Gat ekki endurheimt %s",
+    "Error" : "Villa"
 },
 "nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);");

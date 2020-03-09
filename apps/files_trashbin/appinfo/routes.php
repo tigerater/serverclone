@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 /**
  * @copyright Copyright (c) 2016, ownCloud, Inc.
  * @copyright Copyright (c) 2016, Roeland Jago Douma <roeland@famdouma.nl>
@@ -23,7 +22,10 @@ declare(strict_types=1);
  *
  */
 
-return [
+namespace OCA\Files_Trashbin\AppInfo;
+
+$application = new Application();
+$application->registerRoutes($this, [
 	'routes' => [
 		[
 			'name' => 'Preview#getPreview',
@@ -31,4 +33,4 @@ return [
 			'verb' => 'GET',
 		],
 	],
-];
+]);

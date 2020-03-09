@@ -31,6 +31,10 @@ use OCP\IUserSession;
 use Test\TestCase;
 
 class LimiterTest extends TestCase {
+	/** @var IUserSession|\PHPUnit_Framework_MockObject_MockObject */
+	private $userSession;
+	/** @var IRequest|\PHPUnit_Framework_MockObject_MockObject */
+	private $request;
 	/** @var ITimeFactory|\PHPUnit_Framework_MockObject_MockObject */
 	private $timeFactory;
 	/** @var IBackend|\PHPUnit_Framework_MockObject_MockObject */
@@ -41,10 +45,14 @@ class LimiterTest extends TestCase {
 	public function setUp() {
 		parent::setUp();
 
+		$this->userSession = $this->createMock(IUserSession::class);
+		$this->request = $this->createMock(IRequest::class);
 		$this->timeFactory = $this->createMock(ITimeFactory::class);
 		$this->backend = $this->createMock(IBackend::class);
 
 		$this->limiter = new Limiter(
+			$this->userSession,
+			$this->request,
 			$this->timeFactory,
 			$this->backend
 		);

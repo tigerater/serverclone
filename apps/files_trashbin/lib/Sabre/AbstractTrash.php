@@ -79,10 +79,6 @@ abstract class AbstractTrash implements ITrash {
 		return $this->data->getOriginalLocation();
 	}
 
-	public function getTitle(): string {
-		return $this->data->getTitle();
-	}
-
 	public function delete() {
 		$this->trashManager->removeItem($this->data);
 	}

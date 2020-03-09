@@ -11,6 +11,9 @@
     "Select all" : "Kies alle",
     "Name" : "Naam",
     "Deleted" : "Geskrap",
-    "Delete" : "Skrap"
+    "Delete" : "Skrap",
+    "Couldn't delete %s permanently" : "Kon nie %s permanent skrap nie",
+    "Couldn't restore %s" : "Kon nie %s herstel nie",
+    "Error" : "Fout"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

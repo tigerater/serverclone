@@ -260,8 +260,8 @@
 				var result = $searchResults.find('tr.result')[currentResult];
 				if (result) {
 					var $result = $(result);
-					var currentOffset = $(window).scrollTop();
-					$(window).animate(
+					var currentOffset = $('#app-content').scrollTop();
+					$('#app-content').animate(
 						{
 							// Scrolling to the top of the new result
 							scrollTop:
@@ -302,15 +302,16 @@
 					lastQuery !== false &&
 					lastResults.length > 0
 				) {
-					if ($(window).scrollTop() + $(window).height() > $searchResults.height() - 300) {
-  						self.search(lastQuery, lastInApps, lastPage + 1);
+					var resultsBottom = $searchResults.offset().top + $searchResults.height();
+					var containerBottom = $searchResults.offsetParent().offset().top + $searchResults.offsetParent().height();
+					if (resultsBottom < containerBottom * 1.2) {
+						self.search(lastQuery, lastInApps, lastPage + 1);
 					}
 					placeStatus();
 				}
 			}
 
-			$(window).on('scroll', _.bind(onScroll, this)); // For desktop browser
-			$("body").on('scroll', _.bind(onScroll, this)); // For mobile browser
+			$('#app-content').on('scroll', _.bind(onScroll, this));
 
 			/**
 			 * scrolls the search results to the top
@@ -318,9 +319,9 @@
 			function scrollToResults() {
 				setTimeout(function() {
 					if (isStatusOffScreen()) {
-						var newScrollTop = $(window).prop('scrollHeight') - $searchResults.height();
+						var newScrollTop = $('#app-content').prop('scrollHeight') - $searchResults.height();
 						console.log('scrolling to ' + newScrollTop);
-						$(window).animate(
+						$('#app-content').animate(
 							{
 								scrollTop: newScrollTop
 							},

@@ -13,6 +13,9 @@ OC.L10N.register(
     "Select all" : "Përzgjidhi krejt",
     "Name" : "Emër",
     "Deleted" : "U fshi",
-    "Delete" : "Fshije"
+    "Delete" : "Fshije",
+    "Couldn't delete %s permanently" : "%s s'u fshi dot përgjithmonë",
+    "Couldn't restore %s" : "S’u rikthye dot %s",
+    "Error" : "Gabim"
 },
 "nplurals=2; plural=(n != 1);");

@@ -67,12 +67,12 @@ class Cache extends CacheJail {
 
 		parent::__construct(
 			null,
-			''
+			null
 		);
 	}
 
 	protected function getRoot() {
-		if ($this->root === '') {
+		if (is_null($this->root)) {
 			$absoluteRoot = $this->sourceRootInfo->getPath();
 
 			// the sourceRootInfo path is the absolute path of the folder in the "real" storage
@@ -138,7 +138,7 @@ class Cache extends CacheJail {
 
 	protected function formatCacheEntry($entry, $path = null) {
 		if (is_null($path)) {
-			$path = $entry['path'] ?? '';
+			$path = isset($entry['path']) ? $entry['path'] : '';
 			$entry['path'] = $this->getJailedPath($path);
 		} else {
 			$entry['path'] = $path;

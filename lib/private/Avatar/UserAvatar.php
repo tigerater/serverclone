@@ -97,7 +97,7 @@ class UserAvatar extends Avatar {
 
 		$this->validateAvatar($img);
 
-		$this->remove(true);
+		$this->remove();
 		$type = $this->getAvatarImageType($img);
 		$file = $this->folder->newFile('avatar.' . $type);
 		$file->putContent($data);
@@ -193,7 +193,7 @@ class UserAvatar extends Avatar {
 	 * @throws \OCP\Files\NotPermittedException
 	 * @throws \OCP\PreConditionNotMetException
 	 */
-	public function remove(bool $silent = false) {
+	public function remove() {
 		$avatars = $this->folder->getDirectoryListing();
 
 		$this->config->setUserValue($this->user->getUID(), 'avatar', 'version',
@@ -203,9 +203,7 @@ class UserAvatar extends Avatar {
 			$avatar->delete();
 		}
 		$this->config->setUserValue($this->user->getUID(), 'avatar', 'generated', 'true');
-		if(!$silent) {
-			$this->user->triggerChange('avatar', '');
-		}
+		$this->user->triggerChange('avatar', '');
 	}
 
 	/**

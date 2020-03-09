@@ -670,13 +670,8 @@
 			this.$showGridView.next('#view-toggle')
 				.removeClass('icon-toggle-filelist icon-toggle-pictures')
 				.addClass(show ? 'icon-toggle-filelist' : 'icon-toggle-pictures')
-
+				
 			$('.list-container').toggleClass('view-grid', show);
-			if (show) {
-				// If switching into grid view from list view, too few files might be displayed
-				// Try rendering the next page
-				this._onScroll();
-			}
 		},
 
 		/**
@@ -828,7 +823,7 @@
 				this.updateSelectionSummary();
 			} else {
 				// clicked directly on the name
-				if (!this._detailsView || $(event.target).is('.nametext, .name, .thumbnail') || $(event.target).closest('.nametext').length) {
+				if (!this._detailsView || $(event.target).is('.nametext, .name') || $(event.target).closest('.nametext').length) {
 					var filename = $tr.attr('data-file');
 					var renaming = $tr.data('renaming');
 					if (!renaming) {
@@ -2743,7 +2738,7 @@
 		 *
 		 * @since 8.2
 		 */
-		createFile: function(name, options) {
+		createFile: function(name) {
 			var self = this;
 			var deferred = $.Deferred();
 			var promise = deferred.promise();
@@ -2767,8 +2762,7 @@
 				)
 				.done(function() {
 					// TODO: error handling / conflicts
-					options = _.extend({scrollTo: true}, options || {});
-					self.addAndFetchFileInfo(targetPath, '', options).then(function(status, data) {
+					self.addAndFetchFileInfo(targetPath, '', {scrollTo: true}).then(function(status, data) {
 						deferred.resolve(status, data);
 					}, function() {
 						OC.Notification.show(t('files', 'Could not create file "{file}"',

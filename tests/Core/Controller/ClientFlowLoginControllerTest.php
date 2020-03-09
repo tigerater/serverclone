@@ -200,7 +200,6 @@ class ClientFlowLoginControllerTest extends TestCase {
 			->willReturn('Mac OS X Sync Client');
 		$client = new Client();
 		$client->setName('My external service');
-		$client->setRedirectUri('https://example.com/redirect.php');
 		$this->clientMapper
 			->expects($this->once())
 			->method('getByIdentifier')
@@ -250,7 +249,7 @@ class ClientFlowLoginControllerTest extends TestCase {
 			'guest'
 		);
 		$csp = new Http\ContentSecurityPolicy();
-		$csp->addAllowedFormActionDomain('https://example.com/redirect.php');
+		$csp->addAllowedFormActionDomain('nc://*');
 		$expected->setContentSecurityPolicy($csp);
 		$this->assertEquals($expected, $this->clientFlowLoginController->showAuthPickerPage('MyClientIdentifier'));
 	}

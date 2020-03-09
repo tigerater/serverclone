@@ -21,4 +21,3 @@
 
 $application = new \OCA\WorkflowEngine\AppInfo\Application();
 $application->registerHooksAndListeners();
-$application->registerRuleListeners();

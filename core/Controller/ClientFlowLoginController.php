@@ -196,11 +196,7 @@ class ClientFlowLoginController extends Controller {
 		$this->session->set(self::stateName, $stateToken);
 
 		$csp = new Http\ContentSecurityPolicy();
-		if ($client) {
-			$csp->addAllowedFormActionDomain($client->getRedirectUri());
-		} else {
-			$csp->addAllowedFormActionDomain('nc://*');
-		}
+		$csp->addAllowedFormActionDomain('nc://*');
 
 		$response = new StandaloneTemplateResponse(
 			$this->appName,
@@ -245,11 +241,7 @@ class ClientFlowLoginController extends Controller {
 		}
 
 		$csp = new Http\ContentSecurityPolicy();
-		if ($client) {
-			$csp->addAllowedFormActionDomain($client->getRedirectUri());
-		} else {
-			$csp->addAllowedFormActionDomain('nc://*');
-		}
+		$csp->addAllowedFormActionDomain('nc://*');
 
 		$response = new StandaloneTemplateResponse(
 			$this->appName,

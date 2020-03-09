@@ -13,6 +13,9 @@ OC.L10N.register(
     "Select all" : "Chọn tất cả",
     "Name" : "Tên",
     "Deleted" : "Đã xóa",
-    "Delete" : "Xóa"
+    "Delete" : "Xóa",
+    "Couldn't delete %s permanently" : "Không thể xóa %s vĩnh viễn",
+    "Couldn't restore %s" : "Không thể khôi phục %s",
+    "Error" : "Lỗi"
 },
 "nplurals=1; plural=0;");

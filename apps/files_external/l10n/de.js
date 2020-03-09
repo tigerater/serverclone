@@ -74,7 +74,6 @@ OC.L10N.register(
     "Log-in credentials, save in database" : "Anmeldedaten in Datenbank speichern",
     "Username and password" : "Benutzername und Passwort",
     "Log-in credentials, save in session" : "Anmeldedaten in Sitzung speichern",
-    "Global credentials, user entered" : "Globale Anmeldeinformationen, vom Benutzer eingegeben",
     "User entered, store in database" : "Benutzer eingetragen, in Datenbank gespeichert",
     "RSA public key" : "RSA öffentlicher Schlüssel",
     "Public key" : "Öffentlicher Schlüssel",
@@ -105,7 +104,6 @@ OC.L10N.register(
     "SMB / CIFS" : "SMB / CIFS",
     "Share" : "Share",
     "Show hidden files" : "Versteckte Dateien anzeigen",
-    "Timeout" : "Zeitüberschreitung",
     "SMB / CIFS using OC login" : "SMB / CIFS mit OC-Anmeldung",
     "Username as share" : "Benutzername als Freigabe",
     "OpenStack Object Storage" : "Openstack-Objektspeicher",
@@ -131,6 +129,8 @@ OC.L10N.register(
     "Add storage" : "Speicher hinzufügen",
     "Advanced settings" : "Erweiterte Einstellungen",
     "Allow users to mount external storage" : "Benutzern erlauben, externen Speicher einzubinden",
-    "Global credentials can be used to authenticate with multiple external storages that have the same credentials." : "Globale Zugangsdaten können für die Authentifizierung für mehrere externe Speicher verwendet werden, solange sie identische Zugangsdaten benötigen."
+    "Global credentials can be used to authenticate with multiple external storages that have the same credentials." : "Globale Zugangsdaten können für die Authentifizierung für mehrere externe Speicher verwendet werden, solange sie identische Zugangsdaten benötigen.",
+    "Some of the configured external mount points are not connected. Please click on the red row(s) for more information" : "Einige der konfigurierten externen Einbindungspunkte sind nicht verbunden. Bitte klicke auf die roten Zeile(n) für weitere Informationen",
+    "\"%s\" is not installed. Mounting of %s is not possible. Please ask your system administrator to install it." : "\"%s\" ist nicht installiert. Das Hinzufügen von %s ist nicht möglich. Bitte wende Dich zur Installation an den Administrator."
 },
 "nplurals=2; plural=(n != 1);");

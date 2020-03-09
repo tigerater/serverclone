@@ -13,6 +13,9 @@ OC.L10N.register(
     "Select all" : "เลือกทั้งหมด",
     "Name" : "ชื่อ",
     "Deleted" : "ลบแล้ว",
-    "Delete" : "ลบ"
+    "Delete" : "ลบ",
+    "Couldn't delete %s permanently" : "ไม่สามารถลบ %s แบบถาวร",
+    "Couldn't restore %s" : "ไม่สามารถกู้คืน %s",
+    "Error" : "ข้อผิดพลาด"
 },
 "nplurals=1; plural=0;");

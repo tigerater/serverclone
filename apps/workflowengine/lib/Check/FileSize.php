@@ -22,12 +22,11 @@
 namespace OCA\WorkflowEngine\Check;
 
 
-use OCA\WorkflowEngine\Entity\File;
+use OCP\Files\Storage\IStorage;
 use OCP\IL10N;
 use OCP\IRequest;
 use OCP\Util;
 use OCP\WorkflowEngine\ICheck;
-use OCP\WorkflowEngine\IEntity;
 
 class FileSize implements ICheck {
 
@@ -47,6 +46,13 @@ class FileSize implements ICheck {
 	public function __construct(IL10N $l, IRequest $request) {
 		$this->l = $l;
 		$this->request = $request;
+	}
+
+	/**
+	 * @param IStorage $storage
+	 * @param string $path
+	 */
+	public function setFileInfo(IStorage $storage, $path) {
 	}
 
 	/**
@@ -109,13 +115,5 @@ class FileSize implements ICheck {
 
 		$this->size = $size;
 		return $this->size;
-	}
-
-	public function supportedEntities(): array {
-		return [ File::class ];
-	}
-
-	public function isAvailableForScope(int $scope): bool {
-		return true;
 	}
 }

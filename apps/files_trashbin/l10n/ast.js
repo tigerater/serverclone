@@ -13,6 +13,9 @@ OC.L10N.register(
     "Select all" : "Esbillar too",
     "Name" : "Nome",
     "Deleted" : "Desanicióse",
-    "Delete" : "Desaniciar"
+    "Delete" : "Desaniciar",
+    "Couldn't delete %s permanently" : "Nun pudo desaniciase dafechu %s",
+    "Couldn't restore %s" : "Nun pudo restaurase %s",
+    "Error" : "Fallu"
 },
 "nplurals=2; plural=(n != 1);");

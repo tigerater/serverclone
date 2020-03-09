@@ -104,6 +104,8 @@ class App {
 
 			if ($appName === 'core') {
 				$appNameSpace = 'OC\\Core';
+			} else if ($appName === 'settings') {
+				$appNameSpace = 'OC\\Settings';
 			} else {
 				$appNameSpace = self::buildAppNamespace($appName);
 			}

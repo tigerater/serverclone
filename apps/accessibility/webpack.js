@@ -5,7 +5,6 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, './js'),
 		publicPath: '/js/',
-		filename: 'accessibility.js',
-		jsonpFunction: 'webpackJsonpAccessibility'
+		filename: 'accessibility.js'
 	}
 }

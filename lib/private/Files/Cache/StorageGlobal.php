@@ -69,15 +69,7 @@ class StorageGlobal {
 	 */
 	public function getStorageInfo($storageId) {
 		if (!isset($this->cache[$storageId])) {
-			$builder = $this->connection->getQueryBuilder();
-			$query = $builder->select(['id', 'numeric_id', 'available', 'last_checked'])
-				->from('storages')
-				->where($builder->expr()->eq('id', $builder->createNamedParameter($storageId)));
-
-			$row = $query->execute()->fetch();
-			if ($row) {
-				$this->cache[$storageId] = $row;
-			}
+			$this->loadForStorageIds([$storageId]);
 		}
 		return isset($this->cache[$storageId]) ? $this->cache[$storageId] : null;
 	}

@@ -19,26 +19,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import Vue from 'vue'
-import queryString from 'query-string'
+import Vue from 'vue';
+import queryString from 'query-string';
 
-// eslint-disable-next-line no-unused-vars
-import OC from './OC/index' // TODO: Not needed but L10n breaks if removed
-import LoginView from './views/Login.vue'
-import Nextcloud from './mixins/Nextcloud'
+import OC from './OC/index'; // TODO: Not needed but L10n breaks if removed
+import LoginView from './views/Login.vue';
+import Nextcloud from './mixins/Nextcloud';
 
-const query = queryString.parse(location.search)
+const query = queryString.parse(location.search);
 if (query.clear === '1') {
 	try {
-		window.localStorage.clear()
-		window.sessionStorage.clear()
-		console.debug('Browser storage cleared')
+		window.localStorage.clear();
+		window.sessionStorage.clear();
+		console.debug('Browser storage cleared');
 	} catch (e) {
-		console.error('Could not clear browser storage', e)
+		console.error('Could not clear browser storage', e);
 	}
 }
 
-Vue.mixin(Nextcloud)
+Vue.mixin(Nextcloud);
 
 const fromStateOr = (key, orValue) => {
 	try {
@@ -48,7 +47,7 @@ const fromStateOr = (key, orValue) => {
 	}
 }
 
-const View = Vue.extend(LoginView)
+const View = Vue.extend(LoginView);
 new View({
 	propsData: {
 		errors: fromStateOr('loginErrors', []),
@@ -61,6 +60,6 @@ new View({
 		resetPasswordLink: fromStateOr('loginResetPasswordLink', ''),
 		autoCompleteAllowed: fromStateOr('loginAutocomplete', true),
 		resetPasswordTarget: fromStateOr('resetPasswordTarget', ''),
-		resetPasswordUser: fromStateOr('resetPasswordUser', '')
+		resetPasswordUser: fromStateOr('resetPasswordUser', ''),
 	}
-}).$mount('#login')
+}).$mount('#login');

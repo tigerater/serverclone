@@ -26,13 +26,10 @@ namespace OCA\Comments\AppInfo;
 use OCA\Comments\Controller\Notifications;
 use OCA\Comments\EventHandler;
 use OCA\Comments\JSSettingsHelper;
-use OCA\Comments\Listener\LoadAdditionalScripts;
 use OCA\Comments\Notification\Notifier;
 use OCA\Comments\Search\Provider;
-use OCA\Files\Event\LoadAdditionalScriptsEvent;
 use OCP\AppFramework\App;
 use OCP\Comments\CommentsEntityEvent;
-use OCP\EventDispatcher\IEventDispatcher;
 use OCP\Util;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
@@ -51,8 +48,7 @@ class Application extends App {
 	public function register() {
 		$server = $this->getContainer()->getServer();
 
-		/** @var IEventDispatcher $newDispatcher */
-		$dispatcher = $server->query(IEventDispatcher::class);
+		$dispatcher = $server->getEventDispatcher();
 		$this->registerSidebarScripts($dispatcher);
 		$this->registerDavEntity($dispatcher);
 		$this->registerNotifier();
@@ -61,11 +57,16 @@ class Application extends App {
 		$server->getSearch()->registerProvider(Provider::class, ['apps' => ['files']]);
 	}
 
-	protected function registerSidebarScripts(IEventDispatcher $dispatcher) {
-		$dispatcher->addServiceListener(LoadAdditionalScriptsEvent::class, LoadAdditionalScripts::class);
+	protected function registerSidebarScripts(EventDispatcherInterface $dispatcher) {
+		$dispatcher->addListener(
+			'OCA\Files::loadAdditionalScripts',
+			function() {
+				Util::addScript('comments', 'comments');
+			}
+		);
 	}
 
-	protected function registerDavEntity(IEventDispatcher $dispatcher) {
+	protected function registerDavEntity(EventDispatcherInterface $dispatcher) {
 		$dispatcher->addListener(CommentsEntityEvent::EVENT_ENTITY, function(CommentsEntityEvent $event) {
 			$event->addEntityCollection('files', function($name) {
 				$nodes = \OC::$server->getUserFolder()->getById((int)$name);

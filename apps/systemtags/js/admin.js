@@ -1,6 +1,5 @@
 /**
  * @copyright Copyright (c) 2016 Joas Schilling <coding@schilljs.com>
- * @copyright Copyright (c) 2019 Gary Kim <gary@garykim.dev>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -83,11 +82,6 @@
 				userVisible: level === 2 || level === 3,
 				userAssignable: level === 3
 			};
-
-			if (!data.name) {
-				OCP.Toast.error(t('systemtags_manager', 'Tag name is empty'));
-				return;
-			}
 
 			if (tagId) {
 				var model = this.collection.get(tagId);

@@ -1249,18 +1249,6 @@ class OC_Util {
 			$content = false;
 		}
 
-		if (strpos($url, 'https:') === 0) {
-			$url = 'http:' . substr($url, 6);
-		} else {
-			$url = 'https:' . substr($url, 5);
-		}
-
-		try {
-			$fallbackContent = \OC::$server->getHTTPClientService()->newClient()->get($url)->getBody();
-		} catch (\Exception $e) {
-			$fallbackContent = false;
-		}
-
 		// cleanup
 		@unlink($testFile);
 
@@ -1268,7 +1256,7 @@ class OC_Util {
 		 * If the content is not equal to test content our .htaccess
 		 * is working as required
 		 */
-		return $content !== $testContent && $fallbackContent !== $testContent;
+		return $content !== $testContent;
 	}
 
 	/**

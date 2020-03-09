@@ -118,6 +118,8 @@ OC.L10N.register(
     "Click to recheck the configuration" : "დააწკაპუნეთ კონფიგურაციის ხელახალი შემოწმებისთვის",
     "Add storage" : "საცავის დამატება",
     "Advanced settings" : "დამატებითი პარამეტრები",
-    "Allow users to mount external storage" : "მივცეთ მომხმარებლებს გარე საცავის მონტაჟის უფლება"
+    "Allow users to mount external storage" : "მივცეთ მომხმარებლებს გარე საცავის მონტაჟის უფლება",
+    "Some of the configured external mount points are not connected. Please click on the red row(s) for more information" : "ზოგი კონფიგურირებული გარე მონტაჟის წერიტილი არაა დაკავშირებული. მეტი ინფორმაციისთვის გთხოვთ დააწკაპუნოთ წითელ რიგ(ებ)ს.",
+    "\"%s\" is not installed. Mounting of %s is not possible. Please ask your system administrator to install it." : "\"%s\" არაა დაყენებული. %s-ის მონტაჟი ვერ ხერხდება. გთხოვთ სთხოვოთ თქვენი სისტემის ადმინისტრატორს მისი დაყენება."
 },
 "nplurals=2; plural=(n!=1);");

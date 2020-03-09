@@ -125,27 +125,22 @@ class Storage extends Wrapper {
 	 * @return bool
 	 */
 	protected function shouldMoveToTrash($path) {
-		$normalized = Filesystem::normalizePath($this->mountPoint . '/' . $path);
-		$parts = explode('/', $normalized);
-		if (count($parts) < 4) {
-			return false;
-		}
 
 		// check if there is a app which want to disable the trash bin for this file
 		$fileId = $this->storage->getCache()->getId($path);
-		$owner = $this->storage->getOwner($path);
-		if ($owner === false) {
-			$nodes = $this->rootFolder->getById($fileId);
-		} else {
-			$nodes = $this->rootFolder->getUserFolder($owner)->getById($fileId);
-		}
-
+		$nodes = $this->rootFolder->getById($fileId);
 		foreach ($nodes as $node) {
 			$event = $this->createMoveToTrashEvent($node);
 			$this->eventDispatcher->dispatch('OCA\Files_Trashbin::moveToTrash', $event);
 			if ($event->shouldMoveToTrashBin() === false) {
 				return false;
 			}
+		}
+
+		$normalized = Filesystem::normalizePath($this->mountPoint . '/' . $path);
+		$parts = explode('/', $normalized);
+		if (count($parts) < 4) {
+			return false;
 		}
 
 		if ($parts[2] === 'files' && $this->userManager->userExists($parts[1])) {

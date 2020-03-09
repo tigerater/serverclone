@@ -13,14 +13,11 @@
 	var Drop = {
 		/** @type {Function} **/
 		_template: undefined,
-
-		/** @type {bool} */
-		_uploading: false,
-
+	
 		addFileToUpload: function(e, data) {
 			var errors = [];
 			var output = this.template();
-
+			
 			var filesClient = new OC.Files.Client({
 				host: OC.getHost(),
 				port: OC.getPort(),
@@ -30,7 +27,7 @@
 				root: OC.getRootPath() + '/public.php/webdav',
 				useHTTPS: OC.getProtocol() === 'https'
 			});
-
+			
 			// We only process one file at a time 🤷‍♀️
 			var name = data.files[0].name;
 			// removing unwanted characters
@@ -46,13 +43,13 @@
 			}
 			var base = OC.getProtocol() + '://' + OC.getHost();
 			data.url = base + OC.getRootPath() + '/public.php/webdav/' + encodeURI(name);
-
+	
 			data.multipart = false;
-
+	
 			if (!data.headers) {
 				data.headers = {};
 			}
-
+	
 			var userName = filesClient.getUserName();
 			var password = filesClient.getPassword();
 			if (userName) {
@@ -60,39 +57,32 @@
 				data.headers['Authorization'] =
 					'Basic ' + btoa(userName + ':' + (password || ''));
 			}
-
+	
 			$('#drop-upload-done-indicator').addClass('hidden');
 			$('#drop-upload-progress-indicator').removeClass('hidden');
 
 			$('#drop-uploaded-files').append(output({isUploading: true, name: data.files[0].name}));
 			$('[data-toggle="tooltip"]').tooltip();
 			data.submit();
-
+	
 			return true;
 		},
-
+		
 		updateFileItem: function (fileName, fileItem) {
 			$('#drop-uploaded-files li[data-name="' + fileName + '"]').replaceWith(fileItem);
 			$('[data-toggle="tooltip"]').tooltip();
 		},
-
+		
 		initialize: function () {
 			$(document).bind('drop dragover', function (e) {
 				// Prevent the default browser drop action:
 				e.preventDefault();
 			});
 			var output = this.template();
-			var self = this;
 			$('#public-upload').fileupload({
 				type: 'PUT',
 				dropZone: $('#public-upload'),
 				sequentialUploads: true,
-				start: function(e) {
-					self._uploading = true;
-				},
-				stop: function(e) {
-					self._uploading = false;
-				},
 				add: function(e, data) {
 					Drop.addFileToUpload(e, data);
 					//we return true to keep trying to upload next file even
@@ -130,9 +120,6 @@
 				e.preventDefault();
 				$('#public-upload #emptycontent input').focus().trigger('click');
 			});
-			window.onbeforeunload = function() {
-				return self.confirmBeforeUnload();
-			}
 		},
 
 		/**
@@ -141,13 +128,7 @@
 		 */
 		template: function () {
 			return OCA.Sharing.Templates['files_drop'];
-		},
-
-		confirmBeforeUnload: function() {
-			if (this._uploading) {
-				return t('files', 'This will stop your current uploads.')
-			}
-		},
+		}
 	};
 
 	OCA.FilesSharingDrop = Drop;

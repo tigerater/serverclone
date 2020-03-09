@@ -5,8 +5,7 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, './js'),
 		publicPath: '/js/',
-		filename: 'comments.js',
-		jsonpFunction: 'webpackJsonpComments'
+		filename: 'comments.js'
 	},
 	externals: {
 		jquery: 'jQuery'

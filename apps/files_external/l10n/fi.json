@@ -68,11 +68,10 @@
     "Domain" : "Domaini",
     "Rackspace" : "Rackspace",
     "API key" : "API-avain",
-    "Global credentials" : "Yleiset tunnistetiedot",
+    "Global credentials" : "Globaalit valtuudet",
     "Log-in credentials, save in database" : "Kirjautumistiedot, tallennetaan tietokantaan",
     "Username and password" : "Käyttäjätunnus ja salasana",
     "Log-in credentials, save in session" : "Kirjautumistiedot, tallenna istuntoon",
-    "Global credentials, user entered" : "Yleiset tunnistetiedot, käyttäjän syöttämät",
     "User entered, store in database" : "Käyttäjän antama, tallennettu tietokantaan",
     "RSA public key" : "Julkinen RSA-avain",
     "Public key" : "Julkinen avain",
@@ -103,7 +102,6 @@
     "SMB / CIFS" : "SMB / CIFS",
     "Share" : "Jaa",
     "Show hidden files" : "Näytä piilotiedostot",
-    "Timeout" : "Aikakatkaisu",
     "SMB / CIFS using OC login" : "SMB / CIFS käyttäen OC-kirjautumista",
     "Username as share" : "Käyttäjänimi jakona",
     "OpenStack Object Storage" : "OpenStack Object Storage",
@@ -127,6 +125,7 @@
     "Add storage" : "Lisää tallennustila",
     "Advanced settings" : "Lisäasetukset",
     "Allow users to mount external storage" : "Salli käyttäjien liittää erillisiä tallennustiloja",
-    "Global credentials can be used to authenticate with multiple external storages that have the same credentials." : "Yleisiä tunnistetietoja voidaan käyttää useisiin ulkoisiin tallennustiloihin tunnistautumiseen, joissa käytetään samoja tunnistetietoja."
+    "Some of the configured external mount points are not connected. Please click on the red row(s) for more information" : "Jotkin määritetyt erilliset liitospisteet eivät ole yhdistettynä. Napsauta punaisia rivejä saadaksesi lisätietoja",
+    "\"%s\" is not installed. Mounting of %s is not possible. Please ask your system administrator to install it." : "\"%s\" ei ole asennettu. Kohteen %s liittäminen ei ole mahdollista. Pyydä järjestelmän ylläpitäjää asentamaan puuttuva kohde."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

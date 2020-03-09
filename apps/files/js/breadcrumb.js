@@ -200,10 +200,9 @@
 		 * Makes a breadcrumb structure based on the given path
 		 *
 		 * @param {String} dir path to split into a breadcrumb structure
-		 * @param {String} [rootIcon=icon-home] icon to use for root
 		 * @return {Object.<String, String>} map of {dir: path, name: displayName}
 		 */
-		_makeCrumbs: function(dir, rootIcon) {
+		_makeCrumbs: function(dir) {
 			var crumbs = [];
 			var pathToHere = '';
 			// trim leading and trailing slashes
@@ -222,7 +221,7 @@
 				name: t('core', 'Home'),
 				dir: '/',
 				class: 'crumbhome',
-				linkclass: rootIcon || 'icon-home'
+				linkclass: 'icon-home'
 			});
 			for (var i = 0; i < parts.length; i++) {
 				var part = parts[i];

@@ -13,6 +13,9 @@ OC.L10N.register(
     "Select all" : "Vælg alle",
     "Name" : "Navn",
     "Deleted" : "Slettet",
-    "Delete" : "Slet"
+    "Delete" : "Slet",
+    "Couldn't delete %s permanently" : "Kunne ikke slette %s permanent",
+    "Couldn't restore %s" : "Kunne ikke gendanne %s",
+    "Error" : "Fejl"
 },
 "nplurals=2; plural=(n != 1);");

@@ -878,8 +878,10 @@ class OC_Image implements \OCP\IImage {
 		$widthOrig = imagesx($this->resource);
 		$heightOrig = imagesy($this->resource);
 		$process = imagecreatetruecolor($width, $height);
-		if ($process === false) {
+
+		if ($process == false) {
 			$this->logger->error(__METHOD__ . '(): Error creating true color image', array('app' => 'core'));
+			imagedestroy($process);
 			return false;
 		}
 
@@ -890,8 +892,8 @@ class OC_Image implements \OCP\IImage {
 			imagesavealpha($process, true);
 		}
 
-		$res = imagecopyresampled($process, $this->resource, 0, 0, 0, 0, $width, $height, $widthOrig, $heightOrig);
-		if ($res === false) {
+		imagecopyresampled($process, $this->resource, 0, 0, 0, 0, $width, $height, $widthOrig, $heightOrig);
+		if ($process == false) {
 			$this->logger->error(__METHOD__ . '(): Error re-sampling process image', array('app' => 'core'));
 			imagedestroy($process);
 			return false;

@@ -42,7 +42,6 @@ namespace OCP;
 interface IUserSession {
 	/**
 	 * Do a user login
-	 *
 	 * @param string $user the username
 	 * @param string $password the password
 	 * @return bool true if successful
@@ -53,7 +52,6 @@ interface IUserSession {
 	/**
 	 * Logs the user out including all the session data
 	 * Logout, destroys session
-	 *
 	 * @return void
 	 * @since 6.0.0
 	 */
@@ -82,19 +80,4 @@ interface IUserSession {
 	 * @since 8.0.0
 	 */
 	public function isLoggedIn();
-
-	/**
-	 * get getImpersonatingUserID
-	 *
-	 * @return string|null
-	 * @since 18.0.0
-	 */
-	public function getImpersonatingUserID(): ?string;
-
-	/**
-	 * set setImpersonatingUserID
-	 *
-	 * @since 18.0.0
-	 */
-	public function setImpersonatingUserID(bool $useCurrentUser = true): void;
 }

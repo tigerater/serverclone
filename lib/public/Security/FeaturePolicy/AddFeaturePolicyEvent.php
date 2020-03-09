@@ -40,7 +40,6 @@ class AddFeaturePolicyEvent extends Event {
 	 * @since 17.0.0
 	 */
 	public function __construct(FeaturePolicyManager $policyManager) {
-		parent::__construct();
 		$this->policyManager = $policyManager;
 	}
 

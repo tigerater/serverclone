@@ -13,7 +13,8 @@
 		/**
 		 * @namespace
 		 */
-		OCA.Comments = {}
+		OCA.Comments = {};
 	}
 
-})()
+})();
+

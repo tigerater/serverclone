@@ -20,6 +20,7 @@
     "Apps" : "Applikatiounen",
     "Users" : "Benotzer",
     "Set an admin password." : "Admin Passwuert setzen",
-    "Authentication error" : "Authentifikatioun's Fehler"
+    "Authentication error" : "Authentifikatioun's Fehler",
+    "%s shared »%s« with you" : "Den/D' %s huet »%s« mat dir gedeelt"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

@@ -46,7 +46,6 @@ class InfoXmlTest extends TestCase {
 			['provisioning_api'],
 			['systemtags'],
 			['theming'],
-			['settings'],
 			['twofactor_backupcodes'],
 			['updatenotification'],
 			['user_ldap'],

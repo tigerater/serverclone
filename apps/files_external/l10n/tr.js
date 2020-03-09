@@ -74,7 +74,6 @@ OC.L10N.register(
     "Log-in credentials, save in database" : "Oturum kimlik doğrulama bilgileri, veritabanına kaydet",
     "Username and password" : "Kullanıcı adı ve parola",
     "Log-in credentials, save in session" : "Oturum kimlik doğrulama bilgileri, oturuma kaydet",
-    "Global credentials, user entered" : "Genel kimlik doğrulama bilgileri, kullanıcı tarafından yazılmış",
     "User entered, store in database" : "Kullanıcı yazdı, veritabanında sakla",
     "RSA public key" : "Herkese açık RSA anahtarı",
     "Public key" : "Herkese açık anahtar",
@@ -105,7 +104,6 @@ OC.L10N.register(
     "SMB / CIFS" : "SMB / CIFS",
     "Share" : "Paylaş",
     "Show hidden files" : "Gizli dosyaları görüntüle",
-    "Timeout" : "Zaman aşımı",
     "SMB / CIFS using OC login" : "OC oturum açma ile SMB / CIFS",
     "Username as share" : "Paylaşım olarak kullanıcı adı",
     "OpenStack Object Storage" : "OpenStack Nesne Depolama",
@@ -131,6 +129,8 @@ OC.L10N.register(
     "Add storage" : "Depolama ekle",
     "Advanced settings" : "Gelişmiş ayarlar",
     "Allow users to mount external storage" : "Kullanıcılar dış depolama bağlayabilsin",
-    "Global credentials can be used to authenticate with multiple external storages that have the same credentials." : "Aynı kimlik doğrulama bilgilerini kullanan bir çok dış depolama aygıtına genel kimlik doğrulama bilgileri ile erişebilirsiniz."
+    "Global credentials can be used to authenticate with multiple external storages that have the same credentials." : "Aynı kimlik doğrulama bilgilerini kullanan bir çok dış depolama aygıtına genel kimlik doğrulama bilgileri ile erişebilirsiniz.",
+    "Some of the configured external mount points are not connected. Please click on the red row(s) for more information" : "Yapılandırılmış dış bağlama noktalarından bazıları bağlı değil. Lütfen ayrıntılı bilgi almak için kırmızı satırlara tıklayın",
+    "\"%s\" is not installed. Mounting of %s is not possible. Please ask your system administrator to install it." : "%s kurulmamış. %s bağlanamaz. Lütfen kurulum için sistem yöneticinizle görüşün."
 },
 "nplurals=2; plural=(n > 1);");
