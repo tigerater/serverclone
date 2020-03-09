@@ -60,7 +60,6 @@ OC.L10N.register(
     "Welcome aboard %s" : "Добре дошли %s",
     "Your username is: %s" : "Потребителско име: %s",
     "Set your password" : "Задайте парола",
-    "Personal info" : "Лични данни",
     "Create" : "Създай",
     "Change" : "Промени",
     "Unlimited" : "Неограничено",

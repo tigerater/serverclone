@@ -105,8 +105,6 @@ OC.L10N.register(
     "Go to %s" : "Gå till %s",
     "Install Client" : "Installera Klient",
     "Logged in user must be a subadmin" : "Inloggad användare måste vara en del-administratör",
-    "Personal info" : "Personlig information",
-    "Mobile & desktop" : "Mobil & skrivbord",
     "Create" : "Skapa",
     "Change" : "Ändra",
     "Reshare" : "Dela vidare",
