@@ -22,7 +22,7 @@
 $expectedFiles = [
 	'.',
 	'..',
-	'.babelrc.js',
+	'.babelrc',
 	'.codecov.yml',
 	'.drone.yml',
 	'.eslintrc.js',
