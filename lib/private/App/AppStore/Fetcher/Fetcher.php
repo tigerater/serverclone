@@ -174,10 +174,10 @@ abstract class Fetcher {
 			$file->putContent(json_encode($responseJson));
 			return json_decode($file->getContent(), true)['data'];
 		} catch (ConnectException $e) {
-			$this->logger->warning('Could not connect to appstore: ' . $e->getMessage(), ['app' => 'appstoreFetcher']);
+			$this->logger->logException($e, ['app' => 'appstoreFetcher', 'level' => ILogger::INFO, 'message' => 'Could not connect to appstore']);
 			return [];
 		} catch (\Exception $e) {
-			$this->logger->logException($e, ['app' => 'appstoreFetcher', 'level' => ILogger::WARN]);
+			$this->logger->logException($e, ['app' => 'appstoreFetcher', 'level' => ILogger::INFO]);
 			return [];
 		}
 	}

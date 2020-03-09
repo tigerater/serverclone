@@ -882,7 +882,6 @@ class Server extends ServerContainer implements IServerContainer {
 		$this->registerService(\OCP\Files\IMimeTypeDetector::class, function (Server $c) {
 			return new \OC\Files\Type\Detection(
 				$c->getURLGenerator(),
-				$c->getLogger(),
 				\OC::$configDir,
 				\OC::$SERVERROOT . '/resources/config/'
 			);
@@ -1087,7 +1086,6 @@ class Server extends ServerContainer implements IServerContainer {
 
 		$this->registerAlias(\OCP\Collaboration\AutoComplete\IManager::class, \OC\Collaboration\AutoComplete\Manager::class);
 
-		$this->registerAlias(\OCP\Collaboration\Resources\IProviderManager::class, \OC\Collaboration\Resources\ProviderManager::class);
 		$this->registerAlias(\OCP\Collaboration\Resources\IManager::class, \OC\Collaboration\Resources\Manager::class);
 
 		$this->registerService('SettingsManager', function (Server $c) {

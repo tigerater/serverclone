@@ -121,7 +121,6 @@ interface IManager extends IProvider {
 	/**
 	 * @param string $provider
 	 * @since 16.0.0
-	 * @deprecated 18.0.0 Use IProviderManager::registerResourceProvider instead
 	 */
 	public function registerResourceProvider(string $provider): void;
 }
