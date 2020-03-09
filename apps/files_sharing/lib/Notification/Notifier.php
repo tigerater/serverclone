@@ -176,7 +176,7 @@ class Notifier implements INotifier {
 					'share' => [
 						'type' => 'highlight',
 						'id' => $notification->getObjectId(),
-						'name' => $share->getTarget(),
+						'name' => $share->getNode()->getName(),
 					],
 					'user' =>  [
 						'type' => 'user',
@@ -212,7 +212,7 @@ class Notifier implements INotifier {
 					'share' => [
 						'type' => 'highlight',
 						'id' => $notification->getObjectId(),
-						'name' => $share->getTarget(),
+						'name' => $share->getNode()->getName(),
 					],
 					'group' => [
 						'type' => 'user-group',
