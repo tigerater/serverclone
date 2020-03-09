@@ -13,7 +13,10 @@
 					:operation="operation"
 					@click.native="createNewRule(operation)" />
 
-				<a :key="'add'" :href="appstoreUrl" class="actions__item colored more">
+				<a v-if="showAppStoreHint"
+					:key="'add'"
+					:href="appstoreUrl"
+					class="actions__item colored more">
 					<div class="icon icon-add" />
 					<div class="actions__item__description">
 						<h3>{{ t('workflowengine', 'More flows') }}</h3>
@@ -49,6 +52,7 @@ import Rule from './Rule'
 import Operation from './Operation'
 import { mapGetters, mapState } from 'vuex'
 import { loadState } from '@nextcloud/initial-state'
+import { generateUrl } from '@nextcloud/router'
 
 const ACTION_LIMIT = 3
 
@@ -56,21 +60,21 @@ export default {
 	name: 'Workflow',
 	components: {
 		Operation,
-		Rule
+		Rule,
 	},
 	data() {
 		return {
 			showMoreOperations: false,
-			appstoreUrl: '/index.php/settings/apps/workflow',
-			scope: loadState('workflowengine', 'scope')
+			appstoreUrl: generateUrl('settings/apps/workflow'),
+			scope: loadState('workflowengine', 'scope'),
 		}
 	},
 	computed: {
 		...mapGetters({
-			rules: 'getRules'
+			rules: 'getRules',
 		}),
 		...mapState({
-			operations: 'operations'
+			operations: 'operations',
 		}),
 		hasMoreOperations() {
 			return Object.keys(this.operations).length > ACTION_LIMIT
@@ -80,7 +84,10 @@ export default {
 				return Object.values(this.operations)
 			}
 			return Object.values(this.operations).slice(0, ACTION_LIMIT)
-		}
+		},
+		showAppStoreHint() {
+			return this.scope === 0 && OC.isUserAdmin()
+		},
 	},
 	mounted() {
 		this.$store.dispatch('fetchRules')
@@ -88,8 +95,8 @@ export default {
 	methods: {
 		createNewRule(operation) {
 			this.$store.dispatch('createNewRule', operation)
-		}
-	}
+		},
+	},
 }
 </script>
 
@@ -108,7 +115,7 @@ export default {
 	.actions {
 		display: flex;
 		flex-wrap: wrap;
-		max-width: 900px;
+		max-width: 1200px;
 		.actions__item {
 			max-width: 280px;
 			flex-basis: 250px;

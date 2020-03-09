@@ -22,11 +22,14 @@
 <template>
 	<div id="files-sharing-personal-settings" class="section">
 		<h2>{{ t('files', 'Sharing') }}</h2>
-		<input id="files-sharing-personal-settings-accept"
-			v-model="accepting"
-			type="checkbox"
-			@change="toggleEnabled">
-		<label for="files-sharing-personal-settings-accept">{{ t('files_sharing', 'Accept user and group shares by default') }}</label>
+		<p>
+			<input id="files-sharing-personal-settings-accept"
+				v-model="accepting"
+				class="checkbox"
+				type="checkbox"
+				@change="toggleEnabled">
+			<label for="files-sharing-personal-settings-accept">{{ t('files_sharing', 'Accept user and group shares by default') }}</label>
+		</p>
 	</div>
 </template>
 
@@ -39,7 +42,7 @@ export default {
 	name: 'PersonalSettings',
 	data() {
 		return {
-			accepting: true
+			accepting: true,
 		}
 	},
 	mounted() {
@@ -50,10 +53,10 @@ export default {
 			axios.put(
 				generateUrl('/apps/files_sharing/settings/defaultAccept'),
 				{
-					accept: this.accepting
+					accept: this.accepting,
 				}
 			)
-		}
-	}
+		},
+	},
 }
 </script>

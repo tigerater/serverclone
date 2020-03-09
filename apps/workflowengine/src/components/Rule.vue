@@ -10,6 +10,7 @@
 				<Check :check="check"
 					:rule="rule"
 					@update="updateRule"
+					@validate="validate"
 					@remove="removeCheck(check)" />
 			</p>
 			<p>
@@ -18,7 +19,7 @@
 					type="button"
 					class="check--add"
 					value="Add a new filter"
-					@click="rule.checks.push({class: null, operator: null, value: null})">
+					@click="rule.checks.push({class: null, operator: null, value: ''})">
 			</p>
 		</div>
 		<div class="flow-icon icon-confirm" />
@@ -30,8 +31,7 @@
 					@input="updateOperation" />
 			</Operation>
 			<div class="buttons">
-				<button v-tooltip="ruleStatus.tooltip"
-					class="status-button icon"
+				<button class="status-button icon"
 					:class="ruleStatus.class"
 					@click="saveRule">
 					{{ ruleStatus.title }}
@@ -43,6 +43,9 @@
 					{{ t('workflowengine', 'Delete') }}
 				</button>
 			</div>
+			<p v-if="error" class="error-message">
+				{{ error }}
+			</p>
 		</div>
 	</div>
 </template>
@@ -58,16 +61,16 @@ import Operation from './Operation'
 export default {
 	name: 'Rule',
 	components: {
-		Operation, Check, Event, Actions, ActionButton
+		Operation, Check, Event, Actions, ActionButton,
 	},
 	directives: {
-		Tooltip
+		Tooltip,
 	},
 	props: {
 		rule: {
 			type: Object,
-			required: true
-		}
+			required: true,
+		},
 	},
 	data() {
 		return {
@@ -75,8 +78,7 @@ export default {
 			checks: [],
 			error: null,
 			dirty: this.rule.id < 0,
-			checking: false,
-			originalRule: null
+			originalRule: null,
 		}
 	},
 	computed: {
@@ -84,14 +86,14 @@ export default {
 			return this.$store.getters.getOperationForRule(this.rule)
 		},
 		ruleStatus() {
-			if (this.error || !this.rule.valid || this.rule.checks.some((check) => check.invalid === true)) {
+			if (this.error || !this.rule.valid || this.rule.checks.length === 0 || this.rule.checks.some((check) => check.invalid === true)) {
 				return {
 					title: t('workflowengine', 'The configuration is invalid'),
 					class: 'icon-close-white invalid',
-					tooltip: { placement: 'bottom', show: true, content: this.error }
+					tooltip: { placement: 'bottom', show: true, content: this.error },
 				}
 			}
-			if (!this.dirty || this.checking) {
+			if (!this.dirty) {
 				return { title: t('workflowengine', 'Active'), class: 'icon icon-checkmark' }
 			}
 			return { title: t('workflowengine', 'Save'), class: 'icon-confirm-white primary' }
@@ -100,7 +102,7 @@ export default {
 		lastCheckComplete() {
 			const lastCheck = this.rule.checks[this.rule.checks.length - 1]
 			return typeof lastCheck === 'undefined' || lastCheck.class !== null
-		}
+		},
 	},
 	mounted() {
 		this.originalRule = JSON.parse(JSON.stringify(this.rule))
@@ -110,22 +112,17 @@ export default {
 			this.$set(this.rule, 'operation', operation)
 			await this.updateRule()
 		},
-		async updateRule() {
-			this.checking = true
+		validate(state) {
+			this.error = null
+			this.$store.dispatch('updateRule', this.rule)
+		},
+		updateRule() {
 			if (!this.dirty) {
 				this.dirty = true
 			}
-			try {
-				// TODO: add new verify endpoint
-				// let result = await axios.post(OC.generateUrl(`/apps/workflowengine/operations/test`), this.rule)
-				this.error = null
-				this.checking = false
-				this.$store.dispatch('updateRule', this.rule)
-			} catch (e) {
-				console.error('Failed to update operation', e)
-				this.error = e.response.ocs.meta.message
-				this.checking = false
-			}
+
+			this.error = null
+			this.$store.dispatch('updateRule', this.rule)
 		},
 		async saveRule() {
 			try {
@@ -161,8 +158,8 @@ export default {
 				this.$delete(this.rule.checks, index)
 			}
 			this.$store.dispatch('updateRule', this.rule)
-		}
-	}
+		},
+	},
 }
 </script>
 
@@ -174,10 +171,17 @@ export default {
 
 	.buttons {
 		display: block;
+		overflow: hidden;
+
 		button {
 			float: right;
 			height: 34px;
 		}
+	}
+
+	.error-message {
+		float: right;
+		margin-right: 10px;
 	}
 
 	.status-button {

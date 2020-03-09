@@ -49,7 +49,12 @@ return [
 			'name' => 'Settings#setDefaultAccept',
 			'url' => '/settings/defaultAccept',
 			'verb' => 'PUT',
-		]
+		],
+		[
+			'name' => 'Accept#accept',
+			'url' => '/accept/{shareId}',
+			'verb' => 'GET',
+		],
 	],
 	'ocs' => [
 		/*
@@ -69,6 +74,11 @@ return [
 			'name' => 'ShareAPI#createShare',
 			'url'  => '/api/v1/shares',
 			'verb' => 'POST',
+		],
+		[
+			'name' => 'ShareAPI#pendingShares',
+			'url'  => '/api/v1/shares/pending',
+			'verb' => 'GET',
 		],
 		[
 			'name' => 'ShareAPI#getShare',
