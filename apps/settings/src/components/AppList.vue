@@ -158,9 +158,7 @@ export default {
 		bundleApps() {
 			return function(bundle) {
 				return this.$store.getters.getAllApps
-					.filter(app => {
-						return app.bundleIds !== undefined && app.bundleIds.includes(bundle)
-					})
+					.filter(app => app.bundleId === bundle)
 			}
 		},
 		searchApps() {
