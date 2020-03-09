@@ -575,8 +575,3 @@ export default {
 	},
 }
 </script>
-<style scoped>
-	.row::v-deep .multiselect__single {
-		z-index: auto !important;
-	}
-</style>
