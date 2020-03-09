@@ -124,9 +124,10 @@ class Manager implements IManager {
 
 	public function create(string $path, string $editorId, string $creatorId, $templateId = null): string {
 		$userFolder = $this->rootFolder->getUserFolder($this->userId);
-		if ($userFolder->nodeExists($path)) {
+		try {
+			$file = $userFolder->get($path);
 			throw new \RuntimeException('File already exists');
-		} else {
+		} catch (\OCP\Files\NotFoundException $e) {
 			$file = $userFolder->newFile($path);
 			$editor = $this->getEditor($editorId);
 			$creators = $editor->getCreators();
