@@ -280,7 +280,8 @@ class ThemingController extends Controller {
 			);
 		}
 
-		if ($key === 'background' && strpos($detectedMimeType, 'image/svg') === false) {
+		$resizeKeys = ['background'];
+		if (in_array($key, $resizeKeys, true)) {
 			// Optimize the image since some people may upload images that will be
 			// either to big or are not progressive rendering.
 			$newImage = @imagecreatefromstring(file_get_contents($image['tmp_name'], 'r'));

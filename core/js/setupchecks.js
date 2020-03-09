@@ -40,7 +40,6 @@
 						'<d:propfind xmlns:d="DAV:">' +
 						'<d:prop><d:resourcetype/></d:prop>' +
 						'</d:propfind>',
-				contentType: 'application/xml; charset=utf-8',
 				complete: afterCall,
 				allowAuthErrors: true
 			});
@@ -573,8 +572,12 @@
 					});
 				}
 
-				const referrerPolicy = xhr.getResponseHeader('Referrer-Policy')
-				if (referrerPolicy === null || !/(no-referrer(-when-downgrade)?|strict-origin(-when-cross-origin)?|same-origin)(,|$)/.test(referrerPolicy)) {
+				if (!xhr.getResponseHeader('Referrer-Policy') ||
+					(xhr.getResponseHeader('Referrer-Policy').toLowerCase() !== 'no-referrer' &&
+					xhr.getResponseHeader('Referrer-Policy').toLowerCase() !== 'no-referrer-when-downgrade' &&
+					xhr.getResponseHeader('Referrer-Policy').toLowerCase() !== 'strict-origin' &&
+					xhr.getResponseHeader('Referrer-Policy').toLowerCase() !== 'strict-origin-when-cross-origin' &&
+					xhr.getResponseHeader('Referrer-Policy').toLowerCase() !== 'same-origin')) {
 					messages.push({
 						msg: t('core', 'The "{header}" HTTP header is not set to "{val1}", "{val2}", "{val3}", "{val4}" or "{val5}". This can leak referer information. See the <a target="_blank" rel="noreferrer noopener" href="{link}">W3C Recommendation ↗</a>.',
 							{
@@ -587,7 +590,7 @@
 								link: 'https://www.w3.org/TR/referrer-policy/'
 							}),
 						type: OC.SetupChecks.MESSAGE_TYPE_INFO
-					})
+					});
 				}
 			} else {
 				messages.push({

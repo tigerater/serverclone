@@ -26,9 +26,6 @@
 
 namespace OCA\DAV\CalDAV;
 
-use OCA\DAV\AppInfo\PluginManager;
-use OCA\DAV\CalDAV\Integration\ExternalCalendar;
-use OCA\DAV\CalDAV\Integration\ICalendarProvider;
 use Sabre\CalDAV\Backend\BackendInterface;
 use Sabre\CalDAV\Backend\NotificationSupport;
 use Sabre\CalDAV\Backend\SchedulingSupport;
@@ -47,9 +44,6 @@ class CalendarHome extends \Sabre\CalDAV\CalendarHome {
 	/** @var \OCP\IConfig */
 	private $config;
 
-	/** @var PluginManager */
-	private $pluginManager;
-
 	/** @var bool */
 	private $returnCachedSubscriptions=false;
 
@@ -57,10 +51,6 @@ class CalendarHome extends \Sabre\CalDAV\CalendarHome {
 		parent::__construct($caldavBackend, $principalInfo);
 		$this->l10n = \OC::$server->getL10N('dav');
 		$this->config = \OC::$server->getConfig();
-		$this->pluginManager = new PluginManager(
-			\OC::$server,
-			\OC::$server->getAppManager()
-		);
 	}
 
 	/**
@@ -76,7 +66,7 @@ class CalendarHome extends \Sabre\CalDAV\CalendarHome {
 	function createExtendedCollection($name, MkCol $mkCol) {
 		$reservedNames = [BirthdayService::BIRTHDAY_CALENDAR_URI];
 
-		if (\in_array($name, $reservedNames, true) || ExternalCalendar::doesViolateReservedName($name)) {
+		if (in_array($name, $reservedNames)) {
 			throw new MethodNotAllowed('The resource you tried to create has a reserved name');
 		}
 
@@ -111,14 +101,6 @@ class CalendarHome extends \Sabre\CalDAV\CalendarHome {
 				} else {
 					$objects[] = new Subscription($this->caldavBackend, $subscription);
 				}
-			}
-		}
-
-		foreach ($this->pluginManager->getCalendarPlugins() as $calendarPlugin) {
-			/** @var ICalendarProvider $calendarPlugin */
-			$calendars = $calendarPlugin->fetchAllForCalendarHome($this->principalInfo['uri']);
-			foreach ($calendars as $calendar) {
-				$objects[] = $calendar;
 			}
 		}
 
@@ -157,21 +139,7 @@ class CalendarHome extends \Sabre\CalDAV\CalendarHome {
 					return new Subscription($this->caldavBackend, $subscription);
 				}
 			}
-		}
 
-		if (ExternalCalendar::isAppGeneratedCalendar($name)) {
-			[$appId, $calendarUri] = ExternalCalendar::splitAppGeneratedCalendarUri($name);
-
-			foreach ($this->pluginManager->getCalendarPlugins() as $calendarPlugin) {
-				/** @var ICalendarProvider $calendarPlugin */
-				if ($calendarPlugin->getAppId() !== $appId) {
-					continue;
-				}
-
-				if ($calendarPlugin->hasCalendarInCalendarHome($this->principalInfo['uri'], $calendarUri)) {
-					return $calendarPlugin->getCalendarInCalendarHome($this->principalInfo['uri'], $calendarUri);
-				}
-			}
 		}
 
 		throw new NotFound('Node with name \'' . $name . '\' could not be found');
@@ -187,7 +155,7 @@ class CalendarHome extends \Sabre\CalDAV\CalendarHome {
 		return $this->caldavBackend->calendarSearch($principalUri, $filters, $limit, $offset);
 	}
 
-
+	
 	public function enableCachedSubscriptionsForThisRequest() {
 		$this->returnCachedSubscriptions = true;
 	}

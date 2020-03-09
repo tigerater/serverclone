@@ -52,7 +52,7 @@ class LogContext {
 						];
 						break;
 					default:
-						continue 2;
+						continue;
 				}
 			}
 		}

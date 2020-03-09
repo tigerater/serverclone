@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 /**
  * @copyright Copyright (c) 2016 Lukas Reschke <lukas@statuscode.ch>
  *
@@ -32,46 +31,25 @@ namespace OCA\Settings\Tests\Settings\Admin;
 
 use OCA\Settings\Settings\Admin\Server;
 use OCP\AppFramework\Http\TemplateResponse;
-use OCP\AppFramework\Utility\ITimeFactory;
 use OCP\IConfig;
-use OCP\IDBConnection;
-use PHPUnit\Framework\MockObject\MockObject;
 use Test\TestCase;
 
-
-/**
- * @group DB
- */
 class ServerTest extends TestCase {
 	/** @var Server */
 	private $admin;
-	/** @var IDBConnection */
-	private $connection;
-	/** @var ITimeFactory|MockObject */
-	private $timeFactory;
-	/** @var IConfig|MockObject */
+	/** @var IConfig */
 	private $config;
 
 	protected function setUp(): void {
 		parent::setUp();
-		$this->connection = \OC::$server->getDatabaseConnection();
-		$this->timeFactory = $this->createMock(ITimeFactory::class);
 		$this->config = $this->createMock(IConfig::class);
 
-		$this->admin = $this->getMockBuilder(Server::class)
-			->onlyMethods(['cronMaxAge'])
-			->setConstructorArgs([
-				$this->connection,
-				$this->timeFactory,
-				$this->config,
-			])
-			->getMock();
+		$this->admin = new Server(
+			$this->config
+		);
 	}
 
-	public function testGetForm(): void {
-		$this->admin->expects($this->once())
-			->method('cronMaxAge')
-			->willReturn(1337);
+	public function testGetForm() {
 		$this->config
 			->expects($this->at(0))
 			->method('getAppValue')
@@ -93,8 +71,7 @@ class ServerTest extends TestCase {
 			[
 				'backgroundjobs_mode' => 'ajax',
 				'lastcron'            => false,
-				'cronErrors'          => '',
-				'cronMaxAge'          => 1337,
+				'cronErrors'		  => '',
 				'cli_based_cron_possible' => true,
 				'cli_based_cron_user' => function_exists('posix_getpwuid') ? posix_getpwuid(fileowner(\OC::$configDir . 'config.php'))['name'] : '', // to not explode here because of posix extension not being disabled - which is already checked in the line above
 			],
@@ -104,11 +81,11 @@ class ServerTest extends TestCase {
 		$this->assertEquals($expected, $this->admin->getForm());
 	}
 
-	public function testGetSection(): void {
+	public function testGetSection() {
 		$this->assertSame('server', $this->admin->getSection());
 	}
 
-	public function testGetPriority(): void {
+	public function testGetPriority() {
 		$this->assertSame(0, $this->admin->getPriority());
 	}
 }

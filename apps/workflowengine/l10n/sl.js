@@ -21,7 +21,6 @@ OC.L10N.register(
     "Check #%s does not exist" : "Preverba #%s ne obstaja.",
     "Check %s is invalid or does not exist" : "Preverba %s ne obstaja.",
     "Flow" : "Flow",
-    "Folder" : "Mapa",
     "Images" : "Slike",
     "No results" : "Ni zadetkov",
     "%s (invisible)" : "%s (nevidno)",

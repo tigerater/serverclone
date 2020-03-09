@@ -25,14 +25,13 @@
 	 * @namespace
 	 */
 	OCA.Sharing.Util = {
-
-		/**
-		 * Regular expression for splitting parts of remote share owners:
-		 * "user@example.com/"
-		 * "user@example.com/path/to/owncloud"
-		 * "user@anotherexample.com@example.com/path/to/owncloud
-		 */
-		_REMOTE_OWNER_REGEXP: new RegExp('^(([^@]*)@(([^@^/^\\s]*)@)?)([^[\\s/]*)([/](.*))?$'),
+	
+		/**	
+		 * Regular expression for splitting parts of remote share owners:	
+		 * "user@example.com/path/to/owncloud"	
+		 * "user@anotherexample.com@example.com/path/to/owncloud	
+		 */	
+		_REMOTE_OWNER_REGEXP: new RegExp('^([^@]*)@(([^@]*)@)?([^/]*)([/](.*)?)?$'),
 
 		/**
 		 * Initialize the sharing plugin.
@@ -351,24 +350,26 @@
 		*/	
 		_formatRemoteShare: function(shareWith, shareWithDisplayName, message) {	
 			var parts = OCA.Sharing.Util._REMOTE_OWNER_REGEXP.exec(shareWith)	
-			if (!parts || !parts[6]) {
+			if (!parts) {	
 				// display avatar of the user	
 				var avatar = '<span class="avatar" data-username="' + escapeHTML(shareWith) + '" title="' + message + ' ' + escapeHTML(shareWithDisplayName) + '"></span>'	
 				var hidden = '<span class="hidden-visually">' + message + ' ' + escapeHTML(shareWithDisplayName) + '</span> '	
 				return avatar + hidden	
 			}	
 
-			var userName = parts[2]
-			var userDomain = parts[4]
-			var server = parts[5]
-
-			var tooltip = message + ' ' + userName
-			if (userDomain) {
-				tooltip += '@' + userDomain
-			}
-			if (server) {
-				tooltip += '@' + server
-			}
+			var userName = parts[1]	
+			var userDomain = parts[3]	
+			var server = parts[4]	
+			var tooltip = message + ' ' + userName	
+			if (userDomain) {	
+				tooltip += '@' + userDomain	
+			}	
+			if (server) {	
+				if (!userDomain) {	
+					userDomain = '…'	
+				}	
+				tooltip += '@' + server	
+			}	
 
 			var html = '<span class="remoteAddress" title="' + escapeHTML(tooltip) + '">'	
 			html += '<span class="username">' + escapeHTML(userName) + '</span>'	

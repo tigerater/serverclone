@@ -40,7 +40,6 @@ OC.L10N.register(
     "Select a comparator" : "Изберете компаратор",
     "Select a file type" : "Изберете вид на датотека",
     "e.g. httpd/unix-directory" : "Пр. httpd/unix-directory",
-    "Folder" : "Папка",
     "Images" : "Слики",
     "Office documents" : "Office документи",
     "PDF documents" : "PDF документи",
