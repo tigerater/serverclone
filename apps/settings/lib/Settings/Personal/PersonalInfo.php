@@ -8,8 +8,7 @@
  * @author Joas Schilling <coding@schilljs.com>
  * @author John Molakvoæ (skjnldsv) <skjnldsv@protonmail.com>
  * @author Morris Jobke <hey@morrisjobke.de>
- * @author Robin Appelman <robin@icewind.nl>
- * @author Roeland Jago Douma <roeland@famdouma.nl>
+ * @author Roeland Jago Douma <rullzer@users.noreply.github.com>
  * @author Thomas Citharel <tcit@tcit.fr>
  *
  * @license GNU AGPL version 3 or any later version
@@ -251,13 +250,6 @@ class PersonalInfo implements ISettings {
 		$localesForLanguage = array_filter($localeCodes, function($localeCode) use ($userLang) {
 			return 0 === strpos($localeCode['code'], $userLang);
 		});
-
-		if (!$userLocale) {
-			$userLocale = [
-				'code' => 'en',
-				'name' => 'English'
-			];
-		}
 
 		return [
 			'activelocaleLang' => $userLocaleString,

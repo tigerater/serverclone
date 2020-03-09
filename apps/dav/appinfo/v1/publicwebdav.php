@@ -5,7 +5,6 @@
  * @author Bjoern Schiessle <bjoern@schiessle.org>
  * @author Björn Schießle <bjoern@schiessle.org>
  * @author Joas Schilling <coding@schilljs.com>
- * @author Julius Härtl <jus@bitgrid.net>
  * @author Lukas Reschke <lukas@statuscode.ch>
  * @author Morris Jobke <hey@morrisjobke.de>
  * @author Robin Appelman <robin@icewind.nl>
@@ -53,8 +52,7 @@ $serverFactory = new OCA\DAV\Connector\Sabre\ServerFactory(
 	\OC::$server->getMountManager(),
 	\OC::$server->getTagManager(),
 	\OC::$server->getRequest(),
-	\OC::$server->getPreviewManager(),
-	\OC::$server->getEventDispatcher()
+	\OC::$server->getPreviewManager()
 );
 
 $requestUri = \OC::$server->getRequest()->getRequestUri();

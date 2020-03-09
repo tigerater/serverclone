@@ -489,7 +489,7 @@ class UsersController extends AUserData {
 			}
 
 			if ($this->appManager->isEnabledForUser('federatedfilesharing')) {
-				$federatedFileSharing = \OC::$server->query(\OCA\FederatedFileSharing\AppInfo\Application::class);
+				$federatedFileSharing = new \OCA\FederatedFileSharing\AppInfo\Application();
 				$shareProvider = $federatedFileSharing->getFederatedShareProvider();
 				if ($shareProvider->isLookupServerUploadEnabled()) {
 					$permittedFields[] = AccountManager::PROPERTY_PHONE;

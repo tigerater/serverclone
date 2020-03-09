@@ -12,7 +12,6 @@
  * @author Christopher Schäpers <kondou@ts.unde.re>
  * @author Christoph Wurst <christoph@winzerhof-wurst.at>
  * @author Damjan Georgievski <gdamjan@gmail.com>
- * @author Daniel Kesselberg <mail@danielkesselberg.de>
  * @author Georg Ehrke <oc.list@georgehrke.com>
  * @author Joas Schilling <coding@schilljs.com>
  * @author John Molakvoæ (skjnldsv) <skjnldsv@protonmail.com>
@@ -799,7 +798,6 @@ class Server extends ServerContainer implements IServerContainer {
 		$this->registerService(AppManager::class, function (Server $c) {
 			return new \OC\App\AppManager(
 				$c->getUserSession(),
-				$c->getConfig(),
 				$c->query(\OC\AppConfig::class),
 				$c->getGroupManager(),
 				$c->getMemCacheFactory(),
@@ -1173,8 +1171,7 @@ class Server extends ServerContainer implements IServerContainer {
 				$c->getEventDispatcher(),
 				$c->getMailer(),
 				$c->getURLGenerator(),
-				$c->getThemingDefaults(),
-				$c->query(IEventDispatcher::class)
+				$c->getThemingDefaults()
 			);
 
 			return $manager;

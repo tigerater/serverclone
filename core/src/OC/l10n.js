@@ -19,7 +19,7 @@ import {
 	getAppTranslations,
 	hasAppTranslations,
 	registerAppTranslations,
-	unregisterAppTranslations,
+	unregisterAppTranslations
 } from './l10n-registry'
 
 /**
@@ -40,15 +40,15 @@ const L10n = {
 	load: function(appName, callback) {
 		// already available ?
 		if (hasAppTranslations(appName) || OC.getLocale() === 'en') {
-			const deferred = $.Deferred()
-			const promise = deferred.promise()
+			var deferred = $.Deferred()
+			var promise = deferred.promise()
 			promise.then(callback)
 			deferred.resolve()
 			return promise
 		}
 
-		const self = this
-		const url = OC.filePath(appName, 'l10n', OC.getLocale() + '.json')
+		var self = this
+		var url = OC.filePath(appName, 'l10n', OC.getLocale() + '.json')
 
 		// load JSON translation bundle per AJAX
 		return $.get(url)
@@ -87,19 +87,19 @@ const L10n = {
 	 * @returns {string}
 	 */
 	translate: function(app, text, vars, count, options) {
-		const defaultOptions = {
-			escape: true,
+		var defaultOptions = {
+			escape: true
 		}
-		const allOptions = options || {}
+		var allOptions = options || {}
 		_.defaults(allOptions, defaultOptions)
 
 		// TODO: cache this function to avoid inline recreation
 		// of the same function over and over again in case
 		// translate() is used in a loop
-		const _build = function(text, vars, count) {
+		var _build = function(text, vars, count) {
 			return text.replace(/%n/g, count).replace(/{([^{}]*)}/g,
 				function(a, b) {
-					const r = vars[b]
+					var r = vars[b]
 					if (typeof r === 'string' || typeof r === 'number') {
 						if (allOptions.escape) {
 							return DOMPurify.sanitize(escapeHTML(r))
@@ -112,9 +112,9 @@ const L10n = {
 				}
 			)
 		}
-		let translation = text
-		const bundle = getAppTranslations(app)
-		const value = bundle.translations[text]
+		var translation = text
+		var bundle = getAppTranslations(app)
+		var value = bundle.translations[text]
 		if (typeof (value) !== 'undefined') {
 			translation = value
 		}
@@ -142,9 +142,9 @@ const L10n = {
 		const bundle = getAppTranslations(app)
 		const value = bundle.translations[identifier]
 		if (typeof (value) !== 'undefined') {
-			const translation = value
+			var translation = value
 			if ($.isArray(translation)) {
-				const plural = bundle.pluralFunction(count)
+				var plural = bundle.pluralFunction(count)
 				return this.translate(app, translation[plural], vars, count, options)
 			}
 		}
@@ -164,7 +164,7 @@ const L10n = {
 	 * @private
 	 */
 	_getPlural: function(number) {
-		let language = OC.getLanguage()
+		var language = OC.getLanguage()
 		if (language === 'pt_BR') {
 			// temporary set a locale for brazilian
 			language = 'xbr'
@@ -315,7 +315,7 @@ const L10n = {
 		default:
 			return 0
 		}
-	},
+	}
 }
 
 export default L10n

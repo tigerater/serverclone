@@ -10,8 +10,5 @@ module.exports = {
 		dayNames: true,
 		firstDay: true
 	},
-	extends: ['nextcloud'],
-	rules: {
-		'no-tabs': 'warn',
-	}
+	extends: ['nextcloud']
 }

@@ -69,7 +69,7 @@ export default {
 
 	components: {
 		AppSidebar,
-		LegacyView,
+		LegacyView
 	},
 
 	data() {
@@ -78,7 +78,7 @@ export default {
 			Sidebar: OCA.Files.Sidebar.state,
 			error: null,
 			fileInfo: null,
-			starLoading: false,
+			starLoading: false
 		}
 	},
 
@@ -174,19 +174,19 @@ export default {
 					'star-loading': this.starLoading,
 					starred: this.fileInfo.isFavourited,
 					subtitle: this.subtitle,
-					title: this.fileInfo.name,
+					title: this.fileInfo.name
 				}
 			} else if (this.error) {
 				return {
 					key: 'error', // force key to re-render
 					subtitle: '',
-					title: '',
+					title: ''
 				}
 			} else {
 				return {
 					class: 'icon-loading',
 					subtitle: '',
-					title: '',
+					title: ''
 				}
 			}
 		},
@@ -215,7 +215,7 @@ export default {
 		 */
 		defaultActionListener() {
 			return this.defaultAction ? 'figure-click' : null
-		},
+		}
 	},
 
 	watch: {
@@ -244,7 +244,7 @@ export default {
 					console.error('Error while loading the file data', error)
 				}
 			}
-		},
+		}
 	},
 
 	methods: {
@@ -255,7 +255,11 @@ export default {
 		 * @returns {boolean}
 		 */
 		canDisplay(tab) {
-			return tab.isEnabled(this.fileInfo)
+			if (tab.isLegacyTab) {
+				return this.fileInfo && tab.component.canDisplay && tab.component.canDisplay(this.fileInfo)
+			}
+			// if the tab does not have an enabled method, we assume it's always available
+			return tab.enabled ? tab.enabled(this.fileInfo) : true
 		},
 		onClose() {
 			this.resetData()
@@ -286,7 +290,7 @@ export default {
 		 * @returns {string} Url to the icon for mimeType
 		 */
 		getIconUrl(fileInfo) {
-			const mimeType = fileInfo.mimetype || 'application/octet-stream'
+			var mimeType = fileInfo.mimetype || 'application/octet-stream'
 			if (mimeType === 'httpd/unix-directory') {
 				// use default folder icon
 				if (fileInfo.mountType === 'shared' || fileInfo.mountType === 'shared-root') {
@@ -312,11 +316,11 @@ export default {
 			if (tab.isLegacyTab) {
 				return {
 					is: LegacyTab,
-					component: tab.component,
+					component: tab.component
 				}
 			}
 			return {
-				is: tab.component,
+				is: tab.component
 			}
 		},
 
@@ -348,7 +352,7 @@ export default {
 								<oc:favorite>1</oc:favorite>
 							</d:prop>
 						${state ? '</d:set>' : '</d:remove>'}
-						</d:propertyupdate>`,
+						</d:propertyupdate>`
 				})
 
 				// TODO: Obliterate as soon as possible and use events with new files app
@@ -371,11 +375,11 @@ export default {
 					fileInfo: this.fileInfo,
 					dir: this.fileInfo.dir,
 					fileList: OCA.Files.App.fileList,
-					$file: $('body'),
+					$file: $('body')
 				})
 			}
-		},
-	},
+		}
+	}
 }
 </script>
 <style lang="scss" scoped>

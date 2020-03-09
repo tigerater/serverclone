@@ -3,7 +3,6 @@
  * @copyright Copyright (c) 2018 Bjoern Schiessle <bjoern@schiessle.org>
  *
  * @author Bjoern Schiessle <bjoern@schiessle.org>
- * @author Maxence Lange <maxence@artificial-owl.com>
  * @author Roeland Jago Douma <roeland@famdouma.nl>
  *
  * @license GNU AGPL version 3 or any later version
@@ -51,7 +50,6 @@ use OCP\IUserManager;
 use OCP\Notification\IManager as INotificationManager;
 use OCP\Share;
 use OCP\Share\Exceptions\ShareNotFound;
-use OCP\Share\IManager;
 use OCP\Share\IShare;
 use OCP\Util;
 
@@ -71,9 +69,6 @@ class CloudFederationProviderFiles implements ICloudFederationProvider {
 
 	/** @var IUserManager */
 	private $userManager;
-
-	/** @var IManager */
-	private $shareManager;
 
 	/** @var ICloudIdManager */
 	private $cloudIdManager;
@@ -107,7 +102,6 @@ class CloudFederationProviderFiles implements ICloudFederationProvider {
 	 * @param AddressHandler $addressHandler
 	 * @param ILogger $logger
 	 * @param IUserManager $userManager
-	 * @param IManager $shareManager
 	 * @param ICloudIdManager $cloudIdManager
 	 * @param IActivityManager $activityManager
 	 * @param INotificationManager $notificationManager
@@ -122,7 +116,6 @@ class CloudFederationProviderFiles implements ICloudFederationProvider {
 								AddressHandler $addressHandler,
 								ILogger $logger,
 								IUserManager $userManager,
-								IManager $shareManager,
 								ICloudIdManager $cloudIdManager,
 								IActivityManager $activityManager,
 								INotificationManager $notificationManager,
@@ -137,7 +130,6 @@ class CloudFederationProviderFiles implements ICloudFederationProvider {
 		$this->addressHandler = $addressHandler;
 		$this->logger = $logger;
 		$this->userManager = $userManager;
-		$this->shareManager = $shareManager;
 		$this->cloudIdManager = $cloudIdManager;
 		$this->activityManager = $activityManager;
 		$this->notificationManager = $notificationManager;
@@ -811,16 +803,6 @@ class CloudFederationProviderFiles implements ICloudFederationProvider {
 			$share->getToken() === $token
 		) {
 			return true;
-		}
-
-		if ($share->getShareType() === IShare::TYPE_CIRCLE) {
-			try {
-				$knownShare = $this->shareManager->getShareByToken($token);
-				if ($knownShare->getId() === $share->getId()) {
-					return true;
-				}
-			} catch (ShareNotFound $e) {
-			}
 		}
 
 		throw new AuthenticationFailedException();

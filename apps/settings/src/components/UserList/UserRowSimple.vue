@@ -15,16 +15,12 @@
 		<div class="name">
 			{{ user.id }}
 			<div class="displayName subtitle">
-				<div v-tooltip="user.displayname.length > 20 ? user.displayname : ''" class="cellText">
-					{{ user.displayname }}
-				</div>
+				{{ user.displayname }}
 			</div>
 		</div>
 		<div />
 		<div class="mailAddress">
-			<div v-tooltip="user.email !== null && user.email.length > 20 ? user.email : ''" class="cellText">
-				{{ user.email }}
-			</div>
+			{{ user.email }}
 		</div>
 		<div class="groups">
 			{{ userGroupsLabels }}
@@ -85,45 +81,45 @@ export default {
 	components: {
 		PopoverMenu,
 		ActionButton,
-		Actions,
+		Actions
 	},
 	directives: {
-		ClickOutside,
+		ClickOutside
 	},
 	mixins: [UserRowMixin],
 	props: {
 		user: {
 			type: Object,
-			required: true,
+			required: true
 		},
 		loading: {
 			type: Object,
-			required: true,
+			required: true
 		},
 		showConfig: {
 			type: Object,
-			required: true,
+			required: true
 		},
 		userActions: {
 			type: Array,
-			required: true,
+			required: true
 		},
 		openedMenu: {
 			type: Boolean,
-			required: true,
+			required: true
 		},
 		feedbackMessage: {
 			type: String,
-			required: true,
+			required: true
 		},
 		subAdminsGroups: {
 			type: Array,
-			required: true,
+			required: true
 		},
 		settings: {
 			type: Object,
-			required: true,
-		},
+			required: true
+		}
 	},
 	computed: {
 		userGroupsLabels() {
@@ -144,7 +140,7 @@ export default {
 		},
 		canEdit() {
 			return getCurrentUser().uid !== this.user.id && this.user.id !== 'admin'
-		},
+		}
 
 	},
 	methods: {
@@ -153,15 +149,11 @@ export default {
 		},
 		toggleEdit() {
 			this.$emit('update:editing', true)
-		},
-	},
+		}
+	}
 }
 </script>
 
 <style scoped>
-	.cellText {
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-	}
+
 </style>
