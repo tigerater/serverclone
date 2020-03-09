@@ -98,9 +98,7 @@ const store = new Vuex.Store({
 				entity: entity ? entity.id : rule.fixedEntity,
 				events,
 				name: '', // unused in the new ui, there for legacy reasons
-				checks: [
-					{ class: null, operator: null, value: '' },
-				],
+				checks: [],
 				operation: rule.operation || '',
 			})
 		},
