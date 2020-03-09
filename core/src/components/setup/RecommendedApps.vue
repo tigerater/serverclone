@@ -82,12 +82,6 @@ const recommended = {
 	talk: {
 		description: t('core', 'Screensharing, online meetings and web conferencing – on desktop and with mobile apps.'),
 	},
-	onlyoffice: {
-		description: t('core', 'Collaboratively edit office documents.'),
-	},
-	documentserver_community: {
-		description: t('core', 'Local document editing back-end used by the OnlyOffice app.'),
-	},
 }
 const recommendedIds = Object.keys(recommended)
 const defaultPageUrl = loadState('core', 'defaultPageUrl')
@@ -155,7 +149,7 @@ export default {
 				.catch(error => logger.error('could not install recommended apps', { error }))
 		},
 		customIcon(appId) {
-			if (!(appId in recommended) || !recommended[appId].icon) {
+			if (!(appId in recommended)) {
 				logger.warn(`no app icon for recommended app ${appId}`)
 				return imagePath('core', 'places/default-app-icon.svg')
 			}
@@ -174,7 +168,7 @@ export default {
 
 <style lang="scss" scoped>
 .body-login-container {
-
+	max-width: 290px;
 }
 
 p.loading, p.loading-error {
