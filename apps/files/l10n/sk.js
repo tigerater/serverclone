@@ -182,7 +182,6 @@ OC.L10N.register(
     "Shared with you" : "Vám sprístupnené",
     "Shared by link" : "Sprístupnené prostredníctvom odkazu",
     "Deleted shares" : "Vymazané zdieľania",
-    "Pending shares" : "Čakajúce prístupy",
     "Text file" : "Textový súbor",
     "New text file.txt" : "Nový text file.txt",
     "File handling" : "Nastavenie správania sa k súborom",

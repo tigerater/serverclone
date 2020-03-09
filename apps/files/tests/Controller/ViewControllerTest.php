@@ -6,7 +6,6 @@
  * @author Daniel Kesselberg <mail@danielkesselberg.de>
  * @author Joas Schilling <coding@schilljs.com>
  * @author John Molakvoæ (skjnldsv) <skjnldsv@protonmail.com>
- * @author Julius Härtl <jus@bitgrid.net>
  * @author Lukas Reschke <lukas@statuscode.ch>
  * @author Michael Weimann <mail@michael-weimann.eu>
  * @author Morris Jobke <hey@morrisjobke.de>
@@ -148,7 +147,7 @@ class ViewControllerTest extends TestCase {
 		$nav->assign('usage', '123 B');
 		$nav->assign('quota', 100);
 		$nav->assign('total_space', '100 B');
-		$nav->assign('webdav_url', 'http://localhost/remote.php/dav/files/testuser1/');
+		//$nav->assign('webdavurl', '');
 		$nav->assign('navigationItems', [
 			'files' => [
 				'id' => 'files',

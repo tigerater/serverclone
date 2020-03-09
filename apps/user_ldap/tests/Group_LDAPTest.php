@@ -1054,7 +1054,7 @@ class Group_LDAPTest extends TestCase {
 		$ldap = new GroupLDAP($access, $pluginManager);
 		$resultingMembers = $this->invokePrivate($ldap, '_groupMembers', [$groupDN]);
 
-		$this->assertEqualsCanonicalizing($expectedMembers, $resultingMembers);
+		$this->assertEquals($expectedMembers, $resultingMembers, '', 0.0, 10, true);
 	}
 
 	public function displayNameProvider() {

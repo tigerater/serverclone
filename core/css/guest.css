@@ -99,8 +99,7 @@ body {
 }
 
 .wrapper {
-	width: 100%;
-	max-width: 700px;
+	max-width: 100%;
 	margin-top: 10vh;
 }
 
@@ -471,10 +470,6 @@ form .warning input[type='checkbox']+label {
 	color: #fff !important;
 }
 
-.body-login-container.two-factor {
-	max-width: 290px;
-	margin: 15px auto 0;
-}
 .two-factor-provider {
 	display: flex;
 	border-radius: 3px; /* --border-radius */
@@ -647,11 +642,6 @@ form #selectDbType label span {
 }
 .groupbottom input[type=submit] {
 	box-shadow: none !important;
-}
-
-#install-recommended-apps + label span {
-	display: inline-block;
-	opacity: .7;
 }
 
 /* Errors */
