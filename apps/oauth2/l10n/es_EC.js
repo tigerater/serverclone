@@ -8,7 +8,6 @@ OC.L10N.register(
     "Client Identifier" : "Identificador del cliente",
     "Secret" : "Secreto",
     "Add client" : "Agregar cliente",
-    "Add" : "Agregar",
-    "Delete" : "Borrar"
+    "Add" : "Agregar"
 },
 "nplurals=2; plural=(n != 1);");

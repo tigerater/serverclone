@@ -6,7 +6,6 @@
     "Client Identifier" : "კლიენტის იდენტიფიკატორი",
     "Secret" : "საიდუმლო",
     "Add client" : "კლიენტის დამატება",
-    "Add" : "დამატება",
-    "Delete" : "წაშლა"
+    "Add" : "დამატება"
 },"pluralForm" :"nplurals=2; plural=(n!=1);"
 }

@@ -139,7 +139,6 @@ OC.L10N.register(
     "Accept" : "Kabul Et",
     "Reject" : "Reddet",
     "File Management" : "Dosya Yönetimi",
-    "Change" : "Değiştir",
     "Invalid path selected" : "Seçilen yol geçersiz",
     "Ownership transfer request sent" : "Sahiplik aktarımı isteği gönderildi",
     "Error while loading the file data" : "Dosya verileri yüklenirken sorun çıktı",

@@ -63,7 +63,6 @@ OC.L10N.register(
     "Delete" : "Обриши",
     "The configuration is invalid" : "Конфигурација је неисправна",
     "Save" : "Сачувај",
-    "Browse the app store" : "Прегледајте продавницу апликација",
     "Show less" : "Прикажи мање",
     "Show more" : "Прикажи више",
     "matches" : "се поклапа са",

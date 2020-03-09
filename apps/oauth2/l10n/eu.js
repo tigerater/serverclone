@@ -8,7 +8,6 @@ OC.L10N.register(
     "Client Identifier" : "Bezeroaren Identifikadorea",
     "Secret" : "Sekretua",
     "Add client" : "Bezeroa gehitu",
-    "Add" : "Gehitu",
-    "Delete" : "Ezabatu"
+    "Add" : "Gehitu"
 },
 "nplurals=2; plural=(n != 1);");

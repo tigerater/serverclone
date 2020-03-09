@@ -12,7 +12,6 @@ OC.L10N.register(
     "No entries found in this folder" : "Šajā mapē nekas nav atrasts",
     "Select all" : "Atzīmēt visu",
     "Name" : "Nosaukums",
-    "Actions" : "Darbības",
     "Deleted" : "Dzēsts",
     "Delete" : "Dzēst"
 },

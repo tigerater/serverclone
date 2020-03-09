@@ -87,7 +87,6 @@ OC.L10N.register(
     "Back" : "Tagasi",
     "Continue" : "Jätka",
     "Please renew your password." : "Palun uuenda oma parool.",
-    "An internal error occurred." : "Tekkis sisemine tõrge.",
     "Please try again or contact your administrator." : "Proovi uuesti või võta ühendust administraatoriga.",
     "Current password" : "Praegune parool",
     "New password" : "Uus parool",
