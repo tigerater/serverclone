@@ -31,6 +31,7 @@ module.exports = [
 	},
 	{
 		entry: {
+			share_backend: path.resolve(__dirname, 'js/merged-share-backend.js'),
 			systemtags: path.resolve(__dirname, 'js/systemtags/merged-systemtags.js')
 		},
 		output: {
