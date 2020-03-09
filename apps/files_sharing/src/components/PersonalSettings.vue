@@ -20,7 +20,7 @@
   -->
 
 <template>
-	<div v-if="!enforceAcceptShares" id="files-sharing-personal-settings" class="section">
+	<div id="files-sharing-personal-settings" class="section" v-if="!enforceAcceptShares">
 		<h2>{{ t('files', 'Sharing') }}</h2>
 		<p>
 			<input id="files-sharing-personal-settings-accept"
