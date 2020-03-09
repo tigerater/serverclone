@@ -81,11 +81,7 @@ export default {
 		},
 		operators() {
 			if (!this.currentOption) { return [] }
-			const operators = this.checks[this.currentOption.class].operators
-			if (typeof operators === 'function') {
-				return operators(this.check)
-			}
-			return operators
+			return this.checks[this.currentOption.class].operators
 		},
 		currentComponent() {
 			if (!this.currentOption) { return [] }
@@ -122,8 +118,7 @@ export default {
 			return this.valid
 		},
 		updateCheck() {
-			const matchingOperator = this.operators.findIndex((operator) => this.check.operator === operator.operator)
-			if (this.check.class !== this.currentOption.class || matchingOperator === -1) {
+			if (this.check.class !== this.currentOption.class) {
 				this.currentOperator = this.operators[0]
 			}
 			this.check.class = this.currentOption.class
