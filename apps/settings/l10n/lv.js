@@ -103,7 +103,6 @@ OC.L10N.register(
     "Add group" : "Pievienot grupu",
     "Everyone" : "Visi",
     "Admins" : "Admins",
-    "Send email to new user" : "Sūtīt e-pastu jaunajam lietotājam",
     "Never" : "Nekad",
     "App update" : "Programmu atjaunināšana",
     "SSL Root Certificates" : "SSL Root Sertifikāti",

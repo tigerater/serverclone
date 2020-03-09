@@ -134,26 +134,24 @@ class AvatarController extends Controller {
 
 		if ($scope !== IAccountManager::VISIBILITY_PUBLIC && $this->userId === null) {
 			// Public avatar access is not allowed
-			$response = new JSONResponse([], Http::STATUS_NOT_FOUND);
-			$response->cacheFor(1800);
-			return $response;
+			return new JSONResponse([], Http::STATUS_NOT_FOUND);
 		}
 
 		try {
 			$avatar = $this->avatarManager->getAvatar($userId);
 			$avatarFile = $avatar->getFile($size);
-			$response = new FileDisplayResponse(
+			$resp = new FileDisplayResponse(
 				$avatarFile,
-				$avatar->isCustomAvatar() ? Http::STATUS_OK : Http::STATUS_CREATED,
-				['Content-Type' => $avatarFile->getMimeType()]
+				Http::STATUS_OK,
+				['Content-Type' => $avatarFile->getMimeType(), 'X-NC-IsCustomAvatar' => (int)$avatar->isCustomAvatar()]
 			);
 		} catch (\Exception $e) {
 			return new JSONResponse([], Http::STATUS_NOT_FOUND);
 		}
 
 		// Cache for 30 minutes
-		$response->cacheFor(1800);
-		return $response;
+		$resp->cacheFor(1800);
+		return $resp;
 	}
 
 	/**
