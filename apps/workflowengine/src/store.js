@@ -25,23 +25,22 @@ import Vuex from 'vuex'
 import axios from '@nextcloud/axios'
 import { getApiUrl } from './helpers/api'
 import confirmPassword from 'nextcloud-password-confirmation'
-import { loadState } from '@nextcloud/initial-state'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
 	state: {
 		rules: [],
-		scope: loadState('workflowengine', 'scope'),
-		operations: loadState('workflowengine', 'operators'),
+		scope: OCP.InitialState.loadState('workflowengine', 'scope'),
+		operations: OCP.InitialState.loadState('workflowengine', 'operators'),
 
 		plugins: Vue.observable({
 			checks: {},
 			operators: {}
 		}),
 
-		entities: loadState('workflowengine', 'entities'),
-		events: loadState('workflowengine', 'entities')
+		entities: OCP.InitialState.loadState('workflowengine', 'entities'),
+		events: OCP.InitialState.loadState('workflowengine', 'entities')
 			.map((entity) => entity.events.map(event => {
 				return {
 					id: `${entity.id}::${event.eventName}`,
@@ -49,7 +48,7 @@ const store = new Vuex.Store({
 					...event
 				}
 			})).flat(),
-		checks: loadState('workflowengine', 'checks')
+		checks: OCP.InitialState.loadState('workflowengine', 'checks')
 	},
 	mutations: {
 		addRule(state, rule) {
@@ -71,9 +70,7 @@ const store = new Vuex.Store({
 			plugin = Object.assign(
 				{ color: 'var(--color-primary-element)' },
 				plugin, state.operations[plugin.id] || {})
-			if (typeof state.operations[plugin.id] !== 'undefined') {
-				Vue.set(state.operations, plugin.id, plugin)
-			}
+			Vue.set(state.operations, plugin.id, plugin)
 		}
 	},
 	actions: {

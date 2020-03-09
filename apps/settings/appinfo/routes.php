@@ -38,7 +38,8 @@ namespace OCA\Settings;
 
 use OCA\Settings\AppInfo\Application;
 
-$application = new Application();
+/** @var Application $application */
+$application = \OC::$server->query(Application::class);
 $this->useCollection('root');
 $application->registerRoutes($this, [
 	'resources' => [
@@ -89,7 +90,12 @@ $application->registerRoutes($this, [
 		['name' => 'ChangePassword#changeUserPassword', 'url' => '/settings/users/changepassword', 'verb' => 'POST'],
 		['name' => 'TwoFactorSettings#index', 'url' => '/settings/api/admin/twofactorauth', 'verb' => 'GET'],
 		['name' => 'TwoFactorSettings#update', 'url' => '/settings/api/admin/twofactorauth', 'verb' => 'PUT'],
-
-		['name' => 'Help#help', 'url' => '/settings/help/{mode}', 'verb' => 'GET', 'defaults' => ['mode' => '']],
 	]
 ]);
+
+/** @var $this \OCP\Route\IRouter */
+
+// Settings pages
+$this->create('settings_help', '/settings/help')
+	->actionInclude('settings/help.php');
+

@@ -1,4 +1,3 @@
-import { loadState } from '@nextcloud/initial-state'
 import Vue from 'vue'
 
 import AdminTwoFactor from './components/AdminTwoFactor.vue'
@@ -14,7 +13,7 @@ window.OC = window.OC || {}
 window.OC.Settings = window.OC.Settings || {}
 
 store.replaceState(
-	loadState('settings', 'mandatory2FAState')
+	OCP.InitialState.loadState('settings', 'mandatory2FAState')
 )
 
 const View = Vue.extend(AdminTwoFactor)

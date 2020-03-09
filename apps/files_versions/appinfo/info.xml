@@ -37,9 +37,6 @@
 	</commands>
 
 	<sabre>
-		<plugins>
-			<plugin>OCA\Files_Versions\Sabre\Plugin</plugin>
-		</plugins>
 		<collections>
 			<collection>OCA\Files_Versions\Sabre\RootCollection</collection>
 		</collections>

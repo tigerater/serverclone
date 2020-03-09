@@ -1,4 +1,4 @@
-/**
+/*
  * @copyright 2019 Christoph Wurst <christoph@winzerhof-wurst.at>
  *
  * @author 2019 Christoph Wurst <christoph@winzerhof-wurst.at>
@@ -20,5 +20,4 @@
  */
 
 import './console'
-import './closest'
 import './windows-phone'

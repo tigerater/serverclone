@@ -19,7 +19,6 @@
  *
  */
 
-script('core', 'login/grant');
 style('core', 'login/authpicker');
 
 /** @var array $_ */
@@ -43,7 +42,8 @@ $urlGenerator = $_['urlGenerator'];
 			<input type="hidden" name="requesttoken" value="<?php p($_['requesttoken']) ?>" />
 			<input type="hidden" name="stateToken" value="<?php p($_['stateToken']) ?>" />	
 			<div id="submit-wrapper">
-				<input type="submit" class="login primary icon-confirm-white" title="" value="<?php p($l->t('Grant access')); ?>" />
+				<input type="submit" id="submit" class="login primary" title="" value="<?php p($l->t('Grant access')); ?>" />
+				<div class="submit-icon icon-confirm-white"></div>
 			</div>	
 		</form>
 	</p>

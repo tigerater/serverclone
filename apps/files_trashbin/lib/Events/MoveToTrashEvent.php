@@ -26,7 +26,7 @@ namespace OCA\Files_Trashbin\Events;
 
 
 use OCP\Files\Node;
-use OCP\EventDispatcher\Event;
+use Symfony\Component\EventDispatcher\Event;
 
 /**
  * Class MoveToTrashEvent

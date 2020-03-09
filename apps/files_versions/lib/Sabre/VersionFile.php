@@ -86,8 +86,4 @@ class VersionFile implements IFile {
 	public function rollBack() {
 		$this->versionManager->rollback($this->version);
 	}
-
-	public function getVersion(): IVersion {
-		return $this->version;
-	}
 }

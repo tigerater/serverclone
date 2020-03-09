@@ -23,7 +23,7 @@
 <template>
 	<MultiselectTag v-model="newValue"
 		:multiple="false"
-		:label="t('workflowengine', 'Select a tag')"
+		label="Select a tag"
 		@input="update" />
 </template>
 

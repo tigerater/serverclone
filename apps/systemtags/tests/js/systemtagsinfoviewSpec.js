@@ -45,7 +45,7 @@ describe('OCA.SystemTags.SystemTagsInfoView tests', function() {
 			var fetchStub = sinon.stub(OC.SystemTags.SystemTagsMappingCollection.prototype, 'fetch');
 			var setDataStub = sinon.stub(OC.SystemTags.SystemTagsInputField.prototype, 'setData');
 
-			expect(view.$el.hasClass('hidden')).toEqual(false);
+			expect(view.$el.hasClass('hidden')).toEqual(true);
 
 			view.setFileInfo({id: '123'});
 			expect(view.$el.find('input[name=tags]').length).toEqual(1);
@@ -211,10 +211,10 @@ describe('OCA.SystemTags.SystemTagsInfoView tests', function() {
 
 			expect(view.isVisible()).toBeTruthy();
 		});
-		it('is visible after rendering', function() {
+		it('is not visible after rendering', function() {
 			view.render();
 
-			expect(view.isVisible()).toBeTruthy();
+			expect(view.isVisible()).toBeFalsy();
 		});
 		it('shows and hides the element', function() {
 			view.show();

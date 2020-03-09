@@ -22,91 +22,56 @@
 
 <template>
 	<div>
-		<Multiselect :value="currentValue"
-			:loading="status.isLoading && groups.length === 0"
+		<Multiselect v-model="newValue"
+			:class="{'icon-loading-small': groups.length === 0}"
 			:options="groups"
 			:multiple="false"
 			label="displayname"
 			track-by="id"
-			@search-change="searchAsync"
-			@input="(value) => $emit('input', value.id)" />
+			@input="setValue" />
 	</div>
 </template>
 
 <script>
 import { Multiselect } from 'nextcloud-vue/dist/Components/Multiselect'
+import valueMixin from '../../mixins/valueMixin'
 import axios from '@nextcloud/axios'
-
-const groups = []
-const status = {
-	isLoading: false
-}
-
 export default {
 	name: 'RequestUserGroup',
 	components: {
 		Multiselect
 	},
-	props: {
-		value: {
-			type: String,
-			default: ''
-		},
-		check: {
-			type: Object,
-			default: () => { return {} }
-		}
-	},
+	mixins: [
+		valueMixin
+	],
 	data() {
 		return {
-			groups: groups,
-			status: status
+			groups: []
 		}
 	},
-	computed: {
-		currentValue() {
-			return this.groups.find(group => group.id === this.value) || null
-		}
-	},
-	async mounted() {
-		if (this.groups.length === 0) {
-			await this.searchAsync('')
-		}
-		if (this.currentValue === null) {
-			await this.searchAsync(this.value)
-		}
+	beforeMount() {
+		axios.get(OC.linkToOCS('cloud', 2) + 'groups').then((response) => {
+			this.groups = response.data.ocs.data.groups.reduce((obj, item) => {
+				obj.push({
+					id: item,
+					displayname: item
+				})
+				return obj
+			}, [])
+			this.updateInternalValue(this.value)
+		}, (error) => {
+			console.error('Error while loading group list', error.response)
+		})
 	},
 	methods: {
-		searchAsync(searchQuery) {
-			if (this.status.isLoading) {
-				return
-			}
-
-			this.status.isLoading = true
-			return axios.get(OC.linkToOCS('cloud', 2) + 'groups?limit=20&search=' + encodeURI(searchQuery)).then((response) => {
-				response.data.ocs.data.groups.reduce((obj, item) => {
-					obj.push({
-						id: item,
-						displayname: item
-					})
-					return obj
-				}, []).forEach((group) => this.addGroup(group))
-				this.status.isLoading = false
-			}, (error) => {
-				console.error('Error while loading group list', error.response)
-			})
+		updateInternalValue() {
+			this.newValue = this.groups.find(group => group.id === this.value) || null
 		},
-		addGroup(group) {
-			const index = this.groups.findIndex((item) => item.id === group.id)
-			if (index === -1) {
-				this.groups.push(group)
+		setValue(value) {
+			if (value !== null) {
+				this.$emit('input', this.newValue.id)
 			}
 		}
 	}
 }
 </script>
-<style scoped>
-	.multiselect {
-		width: 100%;
-	}
-</style>

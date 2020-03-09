@@ -323,13 +323,6 @@
 				data.isEncrypted = false;
 			}
 
-			var isFavouritedProp = props['{' + Client.NS_OWNCLOUD + '}favorite'];
-			if (!_.isUndefined(isFavouritedProp)) {
-				data.isFavourited = isFavouritedProp === '1';
-			} else {
-				data.isFavourited = false;
-			}
-
 			var contentType = props[Client.PROPERTY_GETCONTENTTYPE];
 			if (!_.isUndefined(contentType)) {
 				data.mimetype = contentType;
