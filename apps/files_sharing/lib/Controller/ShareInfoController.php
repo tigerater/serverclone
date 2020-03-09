@@ -81,7 +81,11 @@ class ShareInfoController extends ApiController {
 			return new JSONResponse([], Http::STATUS_FORBIDDEN);
 		}
 
-		$permissionMask = $share->getPermissions();
+		$isWritable = $share->getPermissions() & (\OCP\Constants::PERMISSION_UPDATE | \OCP\Constants::PERMISSION_CREATE);
+		if (!$isWritable) {
+			$this->addROWrapper();
+		}
+
 		$node = $share->getNode();
 
 		if ($dir !== null && $node instanceof Folder) {
@@ -92,34 +96,34 @@ class ShareInfoController extends ApiController {
 			}
 		}
 
-		return new JSONResponse($this->parseNode($node, $permissionMask));
+		return new JSONResponse($this->parseNode($node));
 	}
 
-	private function parseNode(Node $node, int $permissionMask) {
+	private function parseNode(Node $node) {
 		if ($node instanceof File) {
-			return $this->parseFile($node, $permissionMask);
+			return $this->parseFile($node);
 		}
-		return $this->parseFolder($node, $permissionMask);
+		return $this->parseFolder($node);
 	}
 
-	private function parseFile(File $file, int $permissionMask) {
-		return $this->format($file, $permissionMask);
+	private function parseFile(File $file) {
+		return $this->format($file);
 	}
 
-	private function parseFolder(Folder $folder, int $permissionMask) {
-		$data = $this->format($folder, $permissionMask);
+	private function parseFolder(Folder $folder) {
+		$data = $this->format($folder);
 
 		$data['children'] = [];
 
 		$nodes = $folder->getDirectoryListing();
 		foreach ($nodes as $node) {
-			$data['children'][] = $this->parseNode($node, $permissionMask);
+			$data['children'][] = $this->parseNode($node);
 		}
 
 		return $data;
 	}
 
-	private function format(Node $node, int $permissionMask) {
+	private function format(Node $node) {
 		$entry = [];
 
 		$entry['id'] = $node->getId();
@@ -127,12 +131,21 @@ class ShareInfoController extends ApiController {
 		$entry['mtime'] = $node->getMTime();
 
 		$entry['name'] = $node->getName();
-		$entry['permissions'] = $node->getPermissions() & $permissionMask;
+		$entry['permissions'] = $node->getPermissions();
 		$entry['mimetype'] = $node->getMimetype();
 		$entry['size'] = $node->getSize();
 		$entry['type'] = $node->getType();
 		$entry['etag'] = $node->getEtag();
 
 		return $entry;
+	}
+
+	protected function addROWrapper() {
+		// FIXME: should not add storage wrappers outside of preSetup, need to find a better way
+		$previousLog = \OC\Files\Filesystem::logWarningWhenAddingStorageWrapper(false);
+		\OC\Files\Filesystem::addStorageWrapper('readonly', function ($mountPoint, $storage) {
+			return new \OC\Files\Storage\Wrapper\PermissionsMask(array('storage' => $storage, 'mask' => \OCP\Constants::PERMISSION_READ + \OCP\Constants::PERMISSION_SHARE));
+		});
+		\OC\Files\Filesystem::logWarningWhenAddingStorageWrapper($previousLog);
 	}
 }
