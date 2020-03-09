@@ -224,15 +224,12 @@ class Updater implements IUpdater {
 	private function updateStorageMTimeOnly($internalPath) {
 		$fileId = $this->cache->getId($internalPath);
 		if ($fileId !== -1) {
-			$mtime = $this->storage->filemtime($internalPath);
-			if ($mtime !== false) {
-				$this->cache->update(
-					$fileId, [
-						'mtime' => null, // this magic tells it to not overwrite mtime
-						'storage_mtime' => $mtime
-					]
-				);
-			}
+			$this->cache->update(
+				$fileId, [
+					'mtime' => null, // this magic tells it to not overwrite mtime
+					'storage_mtime' => $this->storage->filemtime($internalPath)
+				]
+			);
 		}
 	}
 
