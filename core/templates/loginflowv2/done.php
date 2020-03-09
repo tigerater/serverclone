@@ -30,8 +30,7 @@ style('core', 'login/authpicker');
 <div class="picker-window">
 	<h2><?php p($l->t('Account connected')) ?></h2>
 	<p class="info">
-		<?php p($l->t('Your client should now be connected!')) ?><br/>
-		<?php p($l->t('You can close this window.')) ?>
+		<?php print_unescaped($l->t('Your client should now be connected! You can close this window.')) ?>
 	</p>
 
 	<br/>
