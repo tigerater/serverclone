@@ -21,7 +21,7 @@ class ResponseTest extends \Test\TestCase {
 
 	protected function setUp(): void {
 		parent::setUp();
-		$this->guzzleResponse = new GuzzleResponse(418);
+		$this->guzzleResponse = new GuzzleResponse(1337);
 	}
 
 	public function testGetBody() {
@@ -31,7 +31,7 @@ class ResponseTest extends \Test\TestCase {
 
 	public function testGetStatusCode() {
 		$response = new Response($this->guzzleResponse);
-		$this->assertSame(418, $response->getStatusCode());
+		$this->assertSame(1337, $response->getStatusCode());
 	}
 
 	public function testGetHeader() {

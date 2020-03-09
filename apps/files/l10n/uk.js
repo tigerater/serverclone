@@ -137,7 +137,6 @@ OC.L10N.register(
     "Unlimited" : "Необмежено",
     "Upload (max. %s)" : "Вивантаження (макс. %s)",
     "Accept" : "Прийняти",
-    "Reject" : "Скасувати",
     "File Management" : "Управління файлами",
     "Tags" : "Теги",
     "%s used" : "%s використано",
