@@ -261,7 +261,7 @@ export default {
 		},
 		onClose() {
 			this.resetData()
-			OCA.Files.Sidebar.close()
+			OCA.Files.Sidebar.file = ''
 		},
 		resetData() {
 			this.error = null
@@ -297,7 +297,7 @@ export default {
 		 * @param {string} id tab unique id
 		 */
 		setActiveTab(id) {
-			OCA.Files.Sidebar.setActiveTab(id)
+			OCA.Files.Sidebar.activeTab = id
 		},
 
 		/**
