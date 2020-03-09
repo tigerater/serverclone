@@ -40,7 +40,6 @@ OC.L10N.register(
     "Select a comparator" : "Pasirinkite palyginimą",
     "Select a file type" : "Pasirinkite failo tipą",
     "e.g. httpd/unix-directory" : "pvz., httpd/unix-directory",
-    "Folder" : "Aplankas",
     "Images" : "Paveikslai",
     "Office documents" : "Raštinės dokumentai",
     "PDF documents" : "PDF dokumentai",

@@ -36,7 +36,6 @@ OC.L10N.register(
     "Select a filter" : "Выберите фильтр",
     "Select a comparator" : "Выберите компаратор",
     "Select a file type" : "Выберите тип файла",
-    "Folder" : "Каталог",
     "Images" : "Изображения",
     "Office documents" : "Офисные документы",
     "PDF documents" : "PDF документы",

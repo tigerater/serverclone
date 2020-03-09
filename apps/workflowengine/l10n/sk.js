@@ -36,7 +36,6 @@ OC.L10N.register(
     "Select a comparator" : "Vybrať porovnávač",
     "Select a file type" : "Vyberte typ súboru",
     "e.g. httpd/unix-directory" : "napr. adresár  httpd/unix",
-    "Folder" : "Priečinok",
     "Images" : "Obrázky",
     "Office documents" : "Dokumenty Office",
     "PDF documents" : "Dokumenty PDF",

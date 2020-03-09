@@ -20,7 +20,6 @@ OC.L10N.register(
     "Check %s is invalid" : "Check %s is invalid",
     "Check #%s does not exist" : "Check #%s does not exist",
     "Check %s is invalid or does not exist" : "Check %s is invalid or does not exist",
-    "Folder" : "Folder",
     "Images" : "Images",
     "No results" : "No results",
     "%s (invisible)" : "%s (invisible)",
